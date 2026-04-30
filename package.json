@@ -1,0 +1,14 @@
+{
+  "name": "lake-effect",
+  "version": "1.0.0",
+  "description": "Lake-Effect project repository",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Jamie Douglass",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}

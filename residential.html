@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Residential — Lake Effect Architects</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      padding: 0 48px;
+      border-bottom: 0.5px solid var(--border);
+      display: flex; align-items: center; gap: 0;
+    }
+    .filter-btn {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); background: none; border: none;
+      cursor: pointer; padding: 20px 24px;
+      border-bottom: 1.5px solid transparent;
+      margin-bottom: -0.5px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .filter-btn:hover { color: var(--charcoal); }
+    .filter-btn.active { color: var(--charcoal); border-color: var(--accent-dark); }
+
+    /* ── PROJECT MASONRY ── */
+    .projects-section { padding: 72px 48px; }
+    .projects-masonry {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: var(--border);
+    }
+    .project-item {
+      background: var(--cream);
+      cursor: pointer;
+      overflow: hidden;
+      transition: background 0.2s;
+    }
+    .project-item.wide { grid-column: span 2; }
+    .project-item:hover { background: var(--cream-dark); }
+    .project-item:hover .proj-img-inner { transform: scale(1.04); }
+
+    .proj-img {
+      width: 100%; overflow: hidden;
+      background: var(--charcoal-mid);
+    }
+    .project-item:not(.wide) .proj-img { aspect-ratio: 4/3; }
+    .project-item.wide .proj-img { aspect-ratio: 21/9; }
+    .proj-img-inner {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+      min-height: 200px;
+    }
+    .proj-meta {
+      padding: 28px 32px;
+      border-top: 0.5px solid var(--border);
+      display: flex; justify-content: space-between; align-items: flex-end;
+    }
+    .proj-category {
+      font-size: 9px; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent-dark); margin-bottom: 6px;
+    }
+    .proj-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px; font-weight: 400;
+      color: var(--charcoal); line-height: 1.15;
+    }
+    .proj-location { font-size: 11px; color: var(--muted); margin-top: 4px; }
+    .proj-arrow {
+      font-size: 18px; color: var(--accent-dark);
+      transition: transform 0.2s;
+    }
+    .project-item:hover .proj-arrow { transform: translate(4px,-4px); }
+
+    /* ── APPROACH SIDEBAR ── */
+    .residential-approach {
+      padding: 80px 48px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      border-top: 0.5px solid var(--border);
+    }
+    .approach-list { display: flex; flex-direction: column; gap: 32px; margin-top: 48px; }
+    .approach-list-item { display: flex; gap: 24px; }
+    .approach-list-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px; color: var(--accent);
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .approach-list-content {}
+    .approach-list-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-weight: 400;
+      color: var(--charcoal); margin-bottom: 8px;
+    }
+    .approach-list-body { font-size: 11px; line-height: 1.9; color: var(--muted); }
+
+    /* ── TESTIMONIAL ── */
+    .testimonial-band {
+      background: var(--charcoal);
+      padding: 80px 48px;
+      display: grid; grid-template-columns: 1fr 2fr;
+      gap: 72px; align-items: center;
+      border-top: 0.5px solid rgba(253,252,250,0.06);
+    }
+    .testimonial-label {
+      font-size: 9px; font-weight: 600;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--accent);
+    }
+    blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 2.5vw, 34px);
+      font-weight: 300; font-style: italic;
+      color: rgba(253,252,250,0.8);
+      line-height: 1.4;
+    }
+    .quote-attribution {
+      margin-top: 24px;
+      font-size: 11px; font-style: normal;
+      color: rgba(253,252,250,0.35);
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <p class="page-hero-eyebrow fade-up">Residential Architecture</p>
+  <h1 class="page-hero-title fade-up delay-1">Homes built<br>for how you <em>live</em></h1>
+  <p class="page-hero-sub fade-up delay-2">From sprawling lakefront estates to thoughtful renovations, each residential project begins with a single question: how do you want to live? Everything else follows from the answer.</p>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="setFilter(this,'all')">All Projects</button>
+  <button class="filter-btn" onclick="setFilter(this,'new')">New Construction</button>
+  <button class="filter-btn" onclick="setFilter(this,'renovation')">Renovation</button>
+  <button class="filter-btn" onclick="setFilter(this,'addition')">Additions</button>
+</div>
+
+<!-- PROJECTS GRID -->
+<section class="projects-section">
+  <div class="projects-masonry">
+
+    <!-- Featured wide card -->
+    <div class="project-item wide">
+      <div class="proj-img">
+        <div class="proj-img-inner">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="10" y="36" width="60" height="34" stroke="rgba(184,169,138,0.4)" stroke-width="0.75"/><polyline points="4,38 40,16 76,38" stroke="rgba(184,169,138,0.4)" stroke-width="0.75" fill="none"/><rect x="28" y="50" width="24" height="20" stroke="rgba(184,169,138,0.3)" stroke-width="0.5"/><line x1="40" y1="36" x2="40" y2="50" stroke="rgba(184,169,138,0.2)" stroke-width="0.5"/><line x1="18" y1="42" x2="18" y2="70" stroke="rgba(184,169,138,0.15)" stroke-width="0.5"/><line x1="62" y1="42" x2="62" y2="70" stroke="rgba(184,169,138,0.15)" stroke-width="0.5"/></svg>
+        </div>
+      </div>
+      <div class="proj-meta">
+        <div>
+          <div class="proj-category">Featured &nbsp;·&nbsp; New Construction</div>
+          <div class="proj-name">Lakefront Residence, Lake Forest</div>
+          <div class="proj-location">Lake Forest, Illinois &nbsp;·&nbsp; 6,400 sf</div>
+        </div>
+        <span class="proj-arrow">↗</span>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="project-item">
+      <div class="proj-img">
+        <div class="proj-img-inner">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect x="7" y="28" width="42" height="22" stroke="rgba(184,169,138,0.4)" stroke-width="0.75"/><polyline points="3,30 28,14 53,30" stroke="rgba(184,169,138,0.4)" stroke-width="0.75" fill="none"/><rect x="20" y="38" width="16" height="12" stroke="rgba(184,169,138,0.25)" stroke-width="0.5"/></svg>
+        </div>
+      </div>
+      <div class="proj-meta">
+        <div>
+          <div class="proj-category">Renovation</div>
+          <div class="proj-name">Prairie Style Restoration</div>
+          <div class="proj-location">Winnetka, Illinois</div>
+        </div>
+        <span class="proj-arrow">↗</span>
+      </div>
+    </div>
+    <div class="project-item">
+      <div class="proj-img">
+        <div class="proj-img-inner">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect x="5" y="24" width="46" height="26" stroke="rgba(184,169,138,0.4)" stroke-width="0.75"/><polyline points="2,26 28,10 54,26" stroke="rgba(184,169,138,0.4)" stroke-width="0.75" fill="none"/><rect x="18" y="36" width="20" height="14" stroke="rgba(184,169,138,0.25)" stroke-width="0.5"/><rect x="8" y="32" width="8" height="8" stroke="rgba(184,169,138,0.2)" stroke-width="0.5"/></svg>
+        </div>
+      </div>
+      <div class="proj-meta">
+        <div>
+          <div class="proj-category">New Construction</div>
+          <div class="proj-name">Contemporary Addition</div>
+          <div class="proj-location">Evanston, Illinois</div>
+        </div>
+        <span class="proj-arrow">↗</span>
+      </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="project-item">
+      <div class="proj-img">
+        <div class="proj-img-inner">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect x="8" y="20" width="40" height="30" stroke="rgba(184,169,138,0.35)" stroke-width="0.75"/><polyline points="4,22 28,8 52,22" stroke="rgba(184,169,138,0.35)" stroke-width="0.75" fill="none"/><rect x="20" y="34" width="16" height="16" stroke="rgba(184,169,138,0.2)" stroke-width="0.5"/><line x1="8" y1="32" x2="20" y2="32" stroke="rgba(184,169,138,0.15)" stroke-width="0.5"/></svg>
+        </div>
+      </div>
+      <div class="proj-meta">
+        <div>
+          <div class="proj-category">Addition</div>
+          <div class="proj-name">North Shore Expansion</div>
+          <div class="proj-location">Highland Park, Illinois</div>
+        </div>
+        <span class="proj-arrow">↗</span>
+      </div>
+    </div>
+    <div class="project-item">
+      <div class="proj-img">
+        <div class="proj-img-inner">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect x="6" y="22" width="44" height="28" stroke="rgba(184,169,138,0.4)" stroke-width="0.75"/><line x1="6" y1="34" x2="50" y2="34" stroke="rgba(184,169,138,0.2)" stroke-width="0.5"/><rect x="22" y="38" width="12" height="12" stroke="rgba(184,169,138,0.25)" stroke-width="0.5"/><rect x="10" y="24" width="10" height="8" stroke="rgba(184,169,138,0.2)" stroke-width="0.5"/><rect x="36" y="24" width="10" height="8" stroke="rgba(184,169,138,0.2)" stroke-width="0.5"/></svg>
+        </div>
+      </div>
+      <div class="proj-meta">
+        <div>
+          <div class="proj-category">Renovation</div>
+          <div class="proj-name">Vintage Bungalow Revival</div>
+          <div class="proj-location">Wilmette, Illinois</div>
+        </div>
+        <span class="proj-arrow">↗</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="residential-approach">
+  <div>
+    <div class="section-eyebrow" style="margin-bottom:16px;">Our residential practice</div>
+    <h2 class="section-title">Every home begins<br>with listening</h2>
+    <p style="font-size:12px;line-height:1.95;color:var(--mid);margin-top:24px;">We work closely with clients from the earliest conversations through construction completion, making sure every decision reflects how they actually live—not how architects imagine they should.</p>
+    <a href="contact.html" class="btn-dark" style="margin-top:40px; text-decoration:none; display:inline-flex; align-items:center; gap:12px;">Start a conversation →</a>
+  </div>
+  <div>
+    <div class="approach-list">
+      <div class="approach-list-item">
+        <div class="approach-list-num">01</div>
+        <div class="approach-list-content">
+          <div class="approach-list-title">Programming</div>
+          <p class="approach-list-body">We begin by documenting exactly how you live: how many people, how often you entertain, your relationship to outdoor space, storage needs, and long-term vision.</p>
+        </div>
+      </div>
+      <div class="approach-list-item">
+        <div class="approach-list-num">02</div>
+        <div class="approach-list-content">
+          <div class="approach-list-title">Design &amp; Development</div>
+          <p class="approach-list-body">Schematic concepts evolve into fully developed drawings, with material selections, specifications, and full cost clarity before a shovel enters the ground.</p>
+        </div>
+      </div>
+      <div class="approach-list-item">
+        <div class="approach-list-num">03</div>
+        <div class="approach-list-content">
+          <div class="approach-list-title">Construction Support</div>
+          <p class="approach-list-body">We stay present through construction, visiting regularly, answering contractor questions, and protecting the design intent through every field decision.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<div class="testimonial-band">
+  <div class="testimonial-label">Client perspective</div>
+  <div>
+    <blockquote>
+      "Working with Lake Effect felt less like hiring an architect and more like gaining a trusted partner. The final home is exactly what we described in our first meeting—only better."
+    </blockquote>
+    <p class="quote-attribution">— Residential Client, Lake Forest IL</p>
+  </div>
+</div>
+
+<script src="components.js"></script>
+<script>
+  initPage('residential');
+  function setFilter(btn, type) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Lake Effect Architects</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── CONTACT LAYOUT ── */
+    .contact-main {
+      display: grid; grid-template-columns: 5fr 4fr;
+      min-height: calc(100vh - 72px);
+    }
+    .contact-form-side {
+      padding: 80px 60px 80px 48px;
+      border-right: 0.5px solid var(--border);
+    }
+    .contact-info-side {
+      padding: 80px 48px 80px 56px;
+      background: var(--cream-dark);
+      display: flex; flex-direction: column;
+    }
+
+    .contact-form-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 3.5vw, 52px);
+      font-weight: 300; color: var(--charcoal);
+      line-height: 1.08; margin-bottom: 12px;
+    }
+    .contact-form-sub {
+      font-size: 12px; line-height: 1.9;
+      color: var(--muted); margin-bottom: 56px;
+      max-width: 440px;
+    }
+
+    /* Form */
+    .form-row { display: flex; flex-direction: column; gap: 8px; margin-bottom: 36px; }
+    .form-label {
+      font-size: 9px; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .form-input {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px; color: var(--charcoal);
+      background: transparent; border: none;
+      border-bottom: 0.5px solid var(--border-strong);
+      padding: 13px 0; outline: none;
+      letter-spacing: 0.02em;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .form-input::placeholder { color: rgba(28,28,26,0.3); }
+    .form-input:focus { border-color: var(--accent-dark); }
+    select.form-input { appearance: none; cursor: pointer; background-image: none; }
+    .form-textarea { resize: none; min-height: 120px; }
+    .form-two-col {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px;
+    }
+    .form-submit-row {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 12px;
+    }
+    .form-submit {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--white); background: var(--charcoal);
+      border: none; cursor: pointer;
+      padding: 16px 40px;
+      display: flex; align-items: center; gap: 14px;
+      transition: background 0.2s;
+    }
+    .form-submit:hover { background: var(--accent-dark); }
+    .form-note {
+      font-size: 10px; color: var(--muted);
+      letter-spacing: 0.04em; max-width: 200px; line-height: 1.6;
+    }
+
+    /* Info side */
+    .info-block { margin-bottom: 52px; }
+    .info-label {
+      font-size: 9px; font-weight: 600;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--accent-dark); margin-bottom: 12px;
+    }
+    .info-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 400;
+      color: var(--charcoal); line-height: 1.3;
+    }
+    .info-value a {
+      color: inherit; text-decoration: none;
+      border-bottom: 0.5px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .info-value a:hover { border-color: var(--accent-dark); }
+    .info-sub {
+      font-size: 11px; color: var(--muted);
+      margin-top: 6px; line-height: 1.7;
+    }
+    .divider-thin { height: 0.5px; background: var(--border); margin-bottom: 52px; }
+
+    .faq-section { margin-top: auto; }
+    .faq-item {
+      padding: 20px 0;
+      border-top: 0.5px solid var(--border);
+    }
+    .faq-item:last-child { border-bottom: 0.5px solid var(--border); }
+    .faq-q {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px; font-weight: 400;
+      color: var(--charcoal); margin-bottom: 8px;
+      cursor: pointer; display: flex; justify-content: space-between;
+    }
+    .faq-q-toggle { color: var(--accent-dark); font-size: 14px; }
+    .faq-a {
+      font-size: 11px; line-height: 1.9; color: var(--muted);
+      display: none;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* Success state */
+    .form-success {
+      display: none;
+      text-align: center; padding: 60px 40px;
+    }
+    .form-success.show { display: block; }
+    .success-icon {
+      width: 56px; height: 56px;
+      border: 0.5px solid var(--accent-dark);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 28px;
+      font-size: 20px; color: var(--accent-dark);
+    }
+    .success-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px; font-weight: 300;
+      color: var(--charcoal); margin-bottom: 16px;
+    }
+    .success-body { font-size: 12px; line-height: 1.9; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<div class="contact-main">
+
+  <!-- FORM SIDE -->
+  <div class="contact-form-side">
+    <div class="section-eyebrow" style="margin-bottom:20px;">New Projects</div>
+    <h1 class="contact-form-title">Start a<br>conversation</h1>
+    <p class="contact-form-sub">We'd love to hear about your project. Tell us a little about what you're envisioning, and we'll be in touch within one business day.</p>
+
+    <form id="contact-form">
+      <!-- 
+        FORMSPREE SETUP:
+        1. Go to formspree.io and create a free account
+        2. Create a new form — you'll get an ID like "xpzgkwvb"
+        3. Replace YOUR_FORM_ID below with that ID
+        The form will then submit to Formspree and emails will go to rob@leffect.com
+      -->
+      <input type="hidden" name="_subject" value="New project inquiry — Lake Effect Architects">
+      <input type="hidden" name="_replyto" id="reply-to-field">
+      <div class="form-two-col">
+        <div class="form-row">
+          <label class="form-label">First Name</label>
+          <input type="text" name="first_name" class="form-input" placeholder="Jane" required>
+        </div>
+        <div class="form-row">
+          <label class="form-label">Last Name</label>
+          <input type="text" name="last_name" class="form-input" placeholder="Smith" required>
+        </div>
+      </div>
+      <div class="form-two-col">
+        <div class="form-row">
+          <label class="form-label">Email Address</label>
+          <input type="email" name="email" class="form-input" placeholder="jane@email.com" required>
+        </div>
+        <div class="form-row">
+          <label class="form-label">Phone (optional)</label>
+          <input type="tel" name="phone" class="form-input" placeholder="847 555 0100">
+        </div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">Project Type</label>
+        <select name="project_type" class="form-input">
+          <option value="" disabled selected>Select a service area</option>
+          <option>Residential — New Construction</option>
+          <option>Residential — Renovation or Addition</option>
+          <option>Commercial Architecture</option>
+          <option>Furniture Design</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label class="form-label">Project Location</label>
+        <input type="text" name="location" class="form-input" placeholder="City, State">
+      </div>
+      <div class="form-row">
+        <label class="form-label">Approximate Budget (optional)</label>
+        <select name="budget" class="form-input">
+          <option value="" disabled selected>Select a range</option>
+          <option>Under $250,000</option>
+          <option>$250,000 – $500,000</option>
+          <option>$500,000 – $1,000,000</option>
+          <option>$1,000,000 – $2,500,000</option>
+          <option>Over $2,500,000</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label class="form-label">Tell us about your project</label>
+        <textarea name="message" class="form-input form-textarea" placeholder="A brief description of what you're envisioning..."></textarea>
+      </div>
+      <div class="form-submit-row">
+        <button type="submit" class="form-submit">Send inquiry <span>→</span></button>
+        <p class="form-note">We respond to all inquiries within one business day.</p>
+      </div>
+    </form>
+
+    <div class="form-success" id="form-success">
+      <div class="success-icon">✓</div>
+      <div class="success-title">Thank you for reaching out</div>
+      <p class="success-body">We've received your inquiry and will be in touch within one business day. We look forward to learning more about your project.</p>
+    </div>
+  </div>
+
+  <!-- INFO SIDE -->
+  <div class="contact-info-side">
+    <div class="info-block">
+      <div class="info-label">Phone</div>
+      <div class="info-value"><a href="tel:8472344688">847.234.4688</a></div>
+      <div class="info-sub">Monday – Friday, 9am – 5pm CT</div>
+    </div>
+    <div class="info-block">
+      <div class="info-label">Fax</div>
+      <div class="info-value">847.234.8911</div>
+    </div>
+    <div class="info-block">
+      <div class="info-label">Email</div>
+      <div class="info-value"><a href="mailto:rob@leffect.com">rob@leffect.com</a></div>
+      <div class="info-sub">For all project inquiries and general correspondence</div>
+    </div>
+    <div class="info-block">
+      <div class="info-label">Mailing Address</div>
+      <div class="info-value" style="font-size:18px;">P.O. Box 155<br>Lake Bluff, IL 60044</div>
+    </div>
+
+    <div class="divider-thin"></div>
+
+    <div class="faq-section">
+      <div class="section-eyebrow" style="margin-bottom:24px;">Common Questions</div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">Do you work outside of the North Shore? <span class="faq-q-toggle">+</span></div>
+        <p class="faq-a">Our primary practice area is the North Shore of Chicago—Lake County through Evanston. We consider projects beyond that area on a case-by-case basis. Reach out and let us know where you're located.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">How do architectural fees work? <span class="faq-q-toggle">+</span></div>
+        <p class="faq-a">We typically work on a percentage of construction cost for full-service commissions, and hourly for consulting or partial services. We're transparent about fees from the first conversation—no surprises.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">What's the first step? <span class="faq-q-toggle">+</span></div>
+        <p class="faq-a">Fill out the form on this page and we'll schedule a brief introductory call. We'll ask questions about your project, answer yours about our process, and determine whether we're a good fit.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">How long does an architectural project take? <span class="faq-q-toggle">+</span></div>
+        <p class="faq-a">A new residential project typically takes 12–18 months from first meeting through permit issuance, with construction adding another 12–24 months. Renovations and furniture projects move faster. We'll give you a realistic timeline at our first meeting.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="components.js"></script>
+<script>
+  initPage(null);
+
+  document.getElementById('contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const FORMSPREE_ID = 'YOUR_FORM_ID'; // Replace with your Formspree form ID
+
+    const submitBtn = this.querySelector('.form-submit');
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+
+    const formData = new FormData(this);
+
+    try {
+      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        this.style.display = 'none';
+        document.getElementById('form-success').classList.add('show');
+      } else {
+        submitBtn.textContent = 'Something went wrong — try again';
+        submitBtn.disabled = false;
+      }
+    } catch (err) {
+      submitBtn.textContent = 'Something went wrong — try again';
+      submitBtn.disabled = false;
+    }
+  });
+
+  function toggleFAQ(el) {
+    const item = el.closest('.faq-item');
+    const toggle = el.querySelector('.faq-q-toggle');
+    const isOpen = item.classList.toggle('open');
+    toggle.textContent = isOpen ? '−' : '+';
+  }
+</script>
+</body>
+</html>

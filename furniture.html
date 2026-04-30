@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Furniture Design — Lake Effect Architects</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── PHILOSOPHY BAND ── */
+    .philosophy-band {
+      padding: 80px 48px;
+      display: grid; grid-template-columns: 5fr 4fr;
+      gap: 80px; align-items: start;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .philosophy-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 300; font-style: italic;
+      color: var(--charcoal); line-height: 1.3;
+    }
+    .philosophy-right {}
+    .philosophy-body {
+      font-size: 12px; line-height: 1.95;
+      color: var(--mid); margin-bottom: 24px;
+    }
+
+    /* ── PIECES GRID ── */
+    .pieces-section { padding: 80px 48px; }
+    .pieces-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px; background: var(--border);
+    }
+    .piece-card {
+      background: var(--cream); cursor: pointer; overflow: hidden;
+    }
+    .piece-card:hover .piece-img-inner { transform: scale(1.05); }
+    .piece-img {
+      width: 100%; aspect-ratio: 1;
+      background: var(--cream-dark); overflow: hidden;
+    }
+    .piece-img-inner {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .piece-meta {
+      padding: 24px 28px;
+      border-top: 0.5px solid var(--border);
+    }
+    .piece-type {
+      font-size: 9px; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent-dark); margin-bottom: 6px;
+    }
+    .piece-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 21px; font-weight: 400;
+      color: var(--charcoal); line-height: 1.15;
+    }
+    .piece-material { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+    /* ── PROCESS DETAIL ── */
+    .furniture-process {
+      background: var(--charcoal);
+      padding: 80px 48px;
+    }
+    .process-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2px; background: rgba(253,252,250,0.05);
+      margin-top: 52px;
+    }
+    .process-card {
+      background: var(--charcoal);
+      padding: 44px 36px;
+      border-right: 0.5px solid rgba(253,252,250,0.07);
+      transition: background 0.25s;
+    }
+    .process-card:last-child { border-right: none; }
+    .process-card:hover { background: var(--charcoal-mid); }
+    .process-card-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px; color: var(--accent); margin-bottom: 20px;
+    }
+    .process-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-weight: 400;
+      color: var(--white); margin-bottom: 12px;
+    }
+    .process-card-body {
+      font-size: 11px; line-height: 1.9;
+      color: rgba(253,252,250,0.45);
+    }
+
+    /* ── MATERIALS ── */
+    .materials-section {
+      padding: 80px 48px;
+      border-top: 0.5px solid var(--border);
+    }
+    .materials-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2px; background: var(--border); margin-top: 48px;
+    }
+    .material-card {
+      background: var(--cream); padding: 36px 32px;
+      border-right: 0.5px solid var(--border);
+      transition: background 0.2s;
+    }
+    .material-card:last-child { border-right: none; }
+    .material-card:hover { background: var(--cream-dark); }
+    .material-swatch {
+      width: 40px; height: 40px;
+      margin-bottom: 20px;
+      border: 0.5px solid var(--border);
+    }
+    .material-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; font-weight: 400;
+      color: var(--charcoal); margin-bottom: 8px;
+    }
+    .material-desc { font-size: 11px; line-height: 1.8; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <p class="page-hero-eyebrow fade-up">Furniture Design</p>
+  <h1 class="page-hero-title fade-up delay-1">When the right piece<br>doesn't <em>exist yet</em></h1>
+  <p class="page-hero-sub fade-up delay-2">Custom furniture and millwork designed as an extension of the architectural vision—ensuring every room is complete, every detail intentional, and every piece made to last.</p>
+</div>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy-band">
+  <div>
+    <p class="philosophy-quote">"Furniture is architecture at the human scale. The same principles apply: proportion, material, and the relationship between parts."</p>
+  </div>
+  <div class="philosophy-right">
+    <div class="section-eyebrow" style="margin-bottom:16px;">Our philosophy</div>
+    <p class="philosophy-body">Our furniture design practice grew organically from our architecture work. When clients asked for pieces that completed a room—a dining table scaled precisely to a dining room, a desk built into a library's alcove—we began designing and producing them.</p>
+    <p class="philosophy-body">Today, furniture design is a full offering. We work with trusted fabricators in the Chicago area to produce custom pieces in wood, metal, and upholstery—each built to specification and designed to last generations.</p>
+    <a href="contact.html" class="btn-dark" style="text-decoration:none; display:inline-flex; align-items:center; gap:12px;">Commission a piece →</a>
+  </div>
+</section>
+
+<!-- PIECES GRID -->
+<section class="pieces-section">
+  <div class="section-header">
+    <span class="section-eyebrow">Selected Pieces</span>
+    <div class="section-line"></div>
+    <h2 class="section-title">Custom furniture &amp;<br>millwork</h2>
+  </div>
+  <div class="pieces-grid">
+    <div class="piece-card">
+      <div class="piece-img"><div class="piece-img-inner">
+        <svg width="72" height="72" viewBox="0 0 72 72" fill="none"><rect x="10" y="38" width="52" height="8" stroke="rgba(140,126,101,0.6)" stroke-width="0.75"/><rect x="16" y="28" width="40" height="10" stroke="rgba(140,126,101,0.5)" stroke-width="0.5"/><line x1="14" y1="46" x2="11" y2="62" stroke="rgba(140,126,101,0.4)" stroke-width="0.5"/><line x1="58" y1="46" x2="61" y2="62" stroke="rgba(140,126,101,0.4)" stroke-width="0.5"/><line x1="24" y1="46" x2="22" y2="62" stroke="rgba(140,126,101,0.3)" stroke-width="0.5"/><line x1="48" y1="46" x2="50" y2="62" stroke="rgba(140,126,101,0.3)" stroke-width="0.5"/></svg>
+      </div></div>
+      <div class="piece-meta">
+        <div class="piece-type">Seating</div>
+        <div class="piece-name">Custom Dining Suite</div>
+        <div class="piece-material">White oak, linen upholstery</div>
+      </div>
+    </div>
+    <div class="piece-card">
+      <div class="piece-img"><div class="piece-img-inner">
+        <svg width="72" height="72" viewBox="0 0 72 72" fill="none"><rect x="8" y="20" width="56" height="36" stroke="rgba(140,126,101,0.6)" stroke-width="0.75"/><line x1="8" y1="30" x2="64" y2="30" stroke="rgba(140,126,101,0.2)" stroke-width="0.5"/><line x1="8" y1="40" x2="64" y2="40" stroke="rgba(140,126,101,0.2)" stroke-width="0.5"/><line x1="36" y1="20" x2="36" y2="56" stroke="rgba(140,126,101,0.2)" stroke-width="0.5"/><line x1="8" y1="14" x2="8" y2="20" stroke="rgba(140,126,101,0.3)" stroke-width="0.5"/><line x1="64" y1="14" x2="64" y2="20" stroke="rgba(140,126,101,0.3)" stroke-width="0.5"/></svg>
+      </div></div>
+      <div class="piece-meta">
+        <div class="piece-type">Storage</div>
+        <div class="piece-name">Library Bookcase System</div>
+        <div class="piece-material">Walnut, aged brass hardware</div>
+      </div>
+    </div>
+    <div class="piece-card">
+      <div class="piece-img"><div class="piece-img-inner">
+        <svg width="72" height="72" viewBox="0 0 72 72" fill="none"><rect x="12" y="28" width="48" height="30" stroke="rgba(140,126,101,0.55)" stroke-width="0.75"/><rect x="22" y="16" width="28" height="12" stroke="rgba(140,126,101,0.45)" stroke-width="0.5"/><rect x="18" y="40" width="36" height="14" stroke="rgba(140,126,101,0.3)" stroke-width="0.4"/></svg>
+      </div></div>
+      <div class="piece-meta">
+        <div class="piece-type">Tables</div>
+        <div class="piece-name">Console &amp; Entry Table</div>
+        <div class="piece-material">Dark stained oak, steel base</div>
+      </div>
+    </div>
+    <div class="piece-card">
+      <div class="piece-img"><div class="piece-img-inner">
+        <svg width="72" height="72" viewBox="0 0 72 72" fill="none"><rect x="6" y="16" width="60" height="44" stroke="rgba(140,126,101,0.5)" stroke-width="0.75"/><line x1="6" y1="28" x2="66" y2="28" stroke="rgba(140,126,101,0.2)" stroke-width="0.5"/><rect x="16" y="32" width="16" height="24" stroke="rgba(140,126,101,0.2)" stroke-width="0.4"/><rect x="40" y="32" width="16" height="24" stroke="rgba(140,126,101,0.2)" stroke-width="0.4"/></svg>
+      </div></div>
+      <div class="piece-meta">
+        <div class="piece-type">Millwork</div>
+        <div class="piece-name">Kitchen Cabinet Suite</div>
+        <div class="piece-material">Painted poplar, quartersawn oak</div>
+      </div>
+    </div>
+    <div class="piece-card">
+      <div class="piece-img"><div class="piece-img-inner">
+        <svg width="72" height="72" viewBox="0 0 72 72" fill="none"><rect x="18" y="10" width="36" height="54" stroke="rgba(140,126,101,0.5)" stroke-width="0.75"/><line x1="18" y1="22" x2="54" y2="22" stroke="rgba(140,126,101,0.2)" stroke-width="0.5"/><rect x="26" y="28" width="20" height="14" stroke="rgba(140,126,101,0.25)" stroke-width="0.4"/><rect x="24" y="46" width="24" height="14" stroke="rgba(140,126,101,0.2)" stroke-width="0.4"/></svg>
+      </div></div>
+      <div class="piece-meta">
+        <div class="piece-type">Millwork</div>
+        <div class="piece-name">Study Built-In</div>
+        <div class="piece-material">Cherry, antiqued nickel pulls</div>
+      </div>
+    </div>
+    <div class="piece-card">
+      <div class="piece-img"><div class="piece-img-inner">
+        <svg width="72" height="72" viewBox="0 0 72 72" fill="none"><ellipse cx="36" cy="38" rx="26" ry="18" stroke="rgba(140,126,101,0.55)" stroke-width="0.75"/><line x1="20" y1="56" x2="17" y2="64" stroke="rgba(140,126,101,0.35)" stroke-width="0.5"/><line x1="52" y1="56" x2="55" y2="64" stroke="rgba(140,126,101,0.35)" stroke-width="0.5"/><line x1="36" y1="56" x2="36" y2="64" stroke="rgba(140,126,101,0.35)" stroke-width="0.5"/></svg>
+      </div></div>
+      <div class="piece-meta">
+        <div class="piece-type">Tables</div>
+        <div class="piece-name">Oval Dining Table</div>
+        <div class="piece-material">Bleached ash, turned legs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="furniture-process">
+  <div class="section-eyebrow" style="color:var(--accent);margin-bottom:16px;">How we work</div>
+  <h2 class="section-title" style="color:var(--white);">From sketch<br>to heirloom</h2>
+  <div class="process-grid">
+    <div class="process-card">
+      <div class="process-card-num">01</div>
+      <div class="process-card-title">Brief</div>
+      <p class="process-card-body">We begin by understanding the room, the use, and the aesthetic direction. Dimensions, materials, and functional requirements are documented before any drawing begins.</p>
+    </div>
+    <div class="process-card">
+      <div class="process-card-num">02</div>
+      <div class="process-card-title">Design</div>
+      <p class="process-card-body">Measured drawings are produced to exact specification—often in the context of architectural drawings so the piece can be understood in its room.</p>
+    </div>
+    <div class="process-card">
+      <div class="process-card-num">03</div>
+      <div class="process-card-title">Fabrication</div>
+      <p class="process-card-body">We work with trusted Chicago-area craftspeople who share our commitment to quality. We oversee production from material selection through final finish.</p>
+    </div>
+    <div class="process-card">
+      <div class="process-card-num">04</div>
+      <div class="process-card-title">Installation</div>
+      <p class="process-card-body">Every piece is installed and adjusted on-site. We don't consider a commission complete until the piece is in place and exactly right.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MATERIALS -->
+<section class="materials-section">
+  <div class="section-header">
+    <span class="section-eyebrow">Materials</span>
+    <div class="section-line"></div>
+    <h2 class="section-title">What we work with</h2>
+  </div>
+  <div class="materials-grid">
+    <div class="material-card">
+      <div class="material-swatch" style="background:#8B6914;"></div>
+      <div class="material-name">Walnut</div>
+      <p class="material-desc">American black walnut for tables, case goods, and millwork. Chosen for its richness and the way it ages.</p>
+    </div>
+    <div class="material-card">
+      <div class="material-swatch" style="background:#C8A96E;"></div>
+      <div class="material-name">White Oak</div>
+      <p class="material-desc">Versatile and beautiful, white oak takes stain beautifully and holds up to daily use. Our most-specified material.</p>
+    </div>
+    <div class="material-card">
+      <div class="material-swatch" style="background:#5A5A5A;"></div>
+      <div class="material-name">Steel &amp; Brass</div>
+      <p class="material-desc">Blackened steel bases and aged brass hardware add structural interest and longevity to wood-dominant pieces.</p>
+    </div>
+    <div class="material-card">
+      <div class="material-swatch" style="background:#E8E0D0;border:0.5px solid var(--border);"></div>
+      <div class="material-name">Natural Stone</div>
+      <p class="material-desc">Marble, limestone, and soapstone tops for kitchen and bath. We source slabs with our clients to ensure the right match.</p>
+    </div>
+  </div>
+</section>
+
+<script src="components.js"></script>
+<script>initPage('furniture');</script>
+</body>
+</html>

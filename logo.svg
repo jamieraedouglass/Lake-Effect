@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 230" width="340" height="115">
+  <defs>
+    <style>
+      .logo-roman {
+        font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+        font-size: 88px;
+        font-weight: 400;
+        font-style: normal;
+        fill: #1a1a1a;
+      }
+      .logo-italic {
+        font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+        font-size: 88px;
+        font-weight: 400;
+        font-style: italic;
+        fill: #888888;
+      }
+      .logo-sub {
+        font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+        font-size: 17px;
+        font-weight: 300;
+        fill: #555555;
+        letter-spacing: 9px;
+      }
+    </style>
+  </defs>
+
+  <text x="90" y="100" class="logo-roman">lake </text>
+  <text x="296" y="100" class="logo-italic">effect</text>
+
+  <path d="M 88 122 Q 118 112 148 122 Q 178 132 208 122 Q 238 112 268 122 Q 298 132 328 122 Q 358 112 388 122 Q 418 132 448 122 Q 478 112 508 122 Q 538 132 568 122"
+    fill="none" stroke="#b8c8d8" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M 94 134 Q 124 124 154 134 Q 184 144 214 134 Q 244 124 274 134 Q 304 144 334 134 Q 364 124 394 134 Q 424 144 454 134 Q 484 124 514 134 Q 544 144 572 134"
+    fill="none" stroke="#b8c8d8" stroke-width="1.2" stroke-linecap="round" opacity="0.65"/>
+  <path d="M 98 144 Q 128 136 158 144 Q 188 152 218 144 Q 248 136 278 144 Q 308 152 338 144 Q 368 136 398 144 Q 428 152 458 144 Q 488 136 518 144 Q 548 152 575 144"
+    fill="none" stroke="#b8c8d8" stroke-width="0.8" stroke-linecap="round" opacity="0.4"/>
+
+  <text x="340" y="196" class="logo-sub" text-anchor="middle">ARCHITECTS, INC.</text>
+</svg>
