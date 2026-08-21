@@ -1,3 +1,5 @@
+import { sameSite, clientKey, overLimit } from './guard.js';
+
 const TO = 'rob@leffect.com';
 const FROM = 'Lake Effect Site <inquiries@leffect.com>';
 const LIMITS = { first_name: 80, last_name: 80, email: 160, phone: 40,
@@ -8,6 +10,8 @@ const escapeHtml = v => String(v).replace(/[&<>"']/g,
 
 export default async function handler(request) {
   if (request.method !== 'POST') return json({ error: 'Use POST.' }, 405);
+  if (!sameSite(request)) return json({ error: 'forbidden' }, 403);
+  if (overLimit(clientKey(request), { max: 4, windowMs: 600_000 })) return json({ error: 'busy' }, 429);
 
   let body;
   try {

@@ -2,6 +2,7 @@ import Anthropic from '@anthropic-ai/sdk';
 import { z } from 'zod';
 import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod';
 import { sections } from './site-index.js';
+import { sameSite, clientKey, overLimit } from './guard.js';
 
 const MAX_QUESTION_CHARS = 400;
 const MAX_TURNS = 8;
@@ -56,6 +57,8 @@ export default async function handler(request) {
   if (request.method !== 'POST') {
     return json({ error: 'Use POST.' }, 405);
   }
+  if (!sameSite(request)) return json({ error: 'forbidden' }, 403);
+  if (overLimit(clientKey(request), { max: 12, windowMs: 60_000 })) return json({ error: 'busy' }, 429);
 
   let messages;
   try {

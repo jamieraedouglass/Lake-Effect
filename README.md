@@ -68,6 +68,15 @@ silently. Nothing breaks in the meantime.
 `npm run build:index` — the function imports the module, the browser fetches
 the JSON. Neither is hand-edited.
 
+### Abuse
+
+`api/guard.js` rejects requests whose Origin or Referer is not this site, and
+rate-limits per IP: 12 questions a minute for Ask, 4 inquiries per 10 minutes
+for the form. Both are in-memory, so the window is per serverless instance
+rather than global — enough to stop a casual script, not a determined attacker.
+Set `ALLOWED_ORIGINS` if the site is served from another domain. If this ever
+needs to be strict, move the counter to Vercel KV.
+
 ### What it will and will not say
 
 The system prompt in `api/ask.js` holds the guardrails: answer only from the
@@ -97,6 +106,8 @@ horizontal overflow.
 Anything that serves the folder over HTTP will do:
 
     npm start        # python3 -m http.server 8000
+    npm run build    # sync chrome, rebuild the Ask index and the sitemap
+    npm test         # 13 checks
 
 Then open http://localhost:8000. Opening `index.html` off the filesystem mostly
 works too, but the nav and footer are injected by JavaScript, so use a server if
@@ -117,9 +128,13 @@ anything looks wrong.
     project-pebble-beach.html        individual project page
     project-lake-bluff-historic.html individual project page
     components.js                 nav + footer, injected into every page
+    404.html                      not-found page
+    robots.txt, sitemap.xml       generated; sitemap by npm run build:sitemap
     ask.js                        the Ask panel and its no-backend fallback
     api/ask.js                    serverless function behind the Ask panel
     api/contact.js                inquiry form, delivered by Resend
+    api/guard.js                  origin check and rate limiting for both
+    scripts/build-chrome.mjs      syncs nav, footer and head into every page
     scripts/build-index.mjs       rebuilds assets/site-index.json
     test/check.mjs                the checks behind `npm test`
     css/base.css                  tokens, reset, page hero, buttons
@@ -128,8 +143,16 @@ anything looks wrong.
     css/<page>.css                one file per page, its own media queries
     assets/<project-slug>/        photos and plans for one project
 
-Each page ends with `initPage('<name>')`, which injects the nav and footer and
-highlights the matching nav link. Pass nothing on pages that aren't in the nav.
+The nav and footer are **in the HTML of every page**, not injected by
+JavaScript, so crawlers and no-JS visitors see the whole link graph. They are
+generated from one source in `scripts/build-chrome.mjs` — edit them there and
+run `npm run build:chrome`. `npm test` fails if any page's copy has drifted.
+
+`initPage()` is only behaviour now: the mobile menu toggle and the Ask panel.
+
+Changing the domain means changing `SITE_URL` in `scripts/build-chrome.mjs`
+and re-running `npm run build`, which updates every canonical tag and the
+sitemap. `robots.txt` names the sitemap and needs the same edit by hand.
 
 ## Before this goes live
 

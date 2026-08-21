@@ -6,7 +6,7 @@ const ASK_HTML = `
   </svg>
 </button>
 
-<div class="ask-panel" id="ask-panel" role="dialog" aria-labelledby="ask-title" hidden>
+<div class="ask-panel" id="ask-panel" role="dialog" aria-modal="true" aria-labelledby="ask-title" hidden>
   <div class="ask-head">
     <div>
       <div class="ask-eyebrow">Ask</div>
@@ -15,7 +15,7 @@ const ASK_HTML = `
     <button class="ask-close" type="button" aria-label="Close">×</button>
   </div>
 
-  <div class="ask-thread" id="ask-thread">
+  <div class="ask-thread" id="ask-thread" role="log" aria-live="polite" aria-atomic="false">
     <div class="ask-intro">
       <p>Ask anything about the practice and I'll point you to the part of the site that covers it.</p>
       <div class="ask-suggestions" id="ask-suggestions">
@@ -59,14 +59,16 @@ function searchSections(question, sections) {
   if (!terms.length) return [];
   return sections
     .map(s => {
-      const hay = `${s.pageTitle} ${s.eyebrow} ${s.heading} ${s.text}`.toLowerCase();
-      const label = `${s.heading} ${s.eyebrow} ${s.pageTitle}`.toLowerCase();
+      const title = s.pageTitle.toLowerCase();
+      const label = `${s.heading} ${s.eyebrow}`.toLowerCase();
+      const hay = `${title} ${label} ${s.text}`.toLowerCase();
       let score = 0, matched = 0;
       for (const t of terms) {
         const hits = hay.split(t).length - 1;
         if (!hits) continue;
         matched++;
-        if (label.includes(t)) score += 5;
+        if (title.includes(t)) score += 8;
+        if (label.includes(t)) score += 4;
         score += Math.min(hits, 3);
       }
       if (terms.length > 1 && matched < 2) score = 0;
@@ -160,16 +162,47 @@ async function fallback(question, pending) {
 
   if (!hits.length) {
     pending.textContent =
-      'That one is not on the site. Rob answers inquiries himself, so the contact page is the surest route to an answer.';
-    addLinks([{ label: 'Contact', href: 'contact.html#inquiry' }]);
+      "I could not find that on the site. Rob answers inquiries himself, so the contact page is the surest route to an answer.";
+    addLinks([{ label: 'Contact the studio', href: 'contact.html#inquiry' }]);
   } else {
-    pending.textContent = 'Here is where the site covers that.';
-    addLinks(hits.map(s => ({
-      label: `${s.pageTitle}${s.heading ? ' · ' + s.heading : ''}`,
-      href: s.href,
-    })));
+    const pageOf = s => s.pageTitle.replace(/^Project · /, '');
+    const samePage = hits.every(h => pageOf(h) === pageOf(hits[0]));
+    pending.textContent = hits.length === 1
+      ? `${describe(hits[0])} is where the site covers that.`
+      : samePage
+        ? `${pageOf(hits[0])} covers that, across a few sections.`
+        : `${describe(hits[0])} is the closest match. A couple of other pages touch on it too.`;
+    addLinks(hits.map(s => ({ label: describe(s), href: s.href })));
   }
   history.push({ role: 'assistant', content: pending.textContent });
+}
+
+function describe(section) {
+  const page = section.pageTitle.replace(/^Project · /, '');
+  const label = (section.heading || section.eyebrow || '').trim();
+  if (!label || label.toLowerCase() === page.toLowerCase()) return page;
+  return `${page}: ${label}`;
+}
+
+function focusables(panel) {
+  return [...panel.querySelectorAll('button, input, a[href]')].filter(el => el.offsetParent !== null);
+}
+
+function trapFocus(e) {
+  if (e.key !== 'Tab') return;
+  const panel = document.getElementById('ask-panel');
+  if (panel.hidden) return;
+  const items = focusables(panel);
+  if (!items.length) return;
+  const first = items[0];
+  const last = items[items.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
 }
 
 function togglePanel(open) {
@@ -178,7 +211,13 @@ function togglePanel(open) {
   panel.hidden = !open;
   launcher.classList.toggle('is-open', open);
   launcher.setAttribute('aria-expanded', String(open));
-  if (open) document.getElementById('ask-input').focus();
+  if (open) {
+    document.addEventListener('keydown', trapFocus);
+    document.getElementById('ask-input').focus();
+  } else {
+    document.removeEventListener('keydown', trapFocus);
+    launcher.focus();
+  }
 }
 
 function initAsk() {

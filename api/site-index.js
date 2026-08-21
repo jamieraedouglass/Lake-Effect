@@ -96,16 +96,7 @@ export const sections = [
     "href": "furniture.html#drawn-for-one-room-built-to-fit-it",
     "eyebrow": "Our philosophy",
     "heading": "Drawn for one room, built to fit it",
-    "text": "Furniture Design Drawn for one room, built to fit it Custom furniture and millwork, usually drawn alongside the architecture for the room it's going into. Sometimes that's an entire kitchen, sometimes it's one table. Furniture is architecture at the scale of a room. Proportion and material do the same work here, there's just less of it to hide behind. Our philosophy The furniture work grew out of the architecture. Clients kept asking for pieces that would suit rooms we'd just drawn: a dining table at the right length for the space, a desk built into an awkward alcove. Eventually it made sense to offer it properly. We draw the pieces and hand them to fabricators in the Chicago area we've used for years. Wood, metal and upholstery, all built to our specifications and detailed so they can be repaired rather than replaced. Commission a piece →"
-  },
-  {
-    "page": "furniture.html",
-    "pageTitle": "Furniture Design",
-    "anchor": "custom-furniture-and-millwork",
-    "href": "furniture.html#custom-furniture-and-millwork",
-    "eyebrow": "Selected Pieces",
-    "heading": "Custom furniture & millwork",
-    "text": "Selected Pieces Custom furniture & millwork Seating Custom Dining Suite White oak, linen upholstery Storage Library Bookcase System Walnut, aged brass hardware Tables Console & Entry Table Dark stained oak, steel base Millwork Kitchen Cabinet Suite Painted poplar, quartersawn oak Millwork Study Built-In Cherry, antiqued nickel pulls Tables Oval Dining Table Bleached ash, turned legs"
+    "text": "Furniture Design Drawn for one room, built to fit it Custom furniture and millwork, usually drawn alongside the architecture for the room it's going into. Sometimes that's an entire kitchen, sometimes it's one table. Furniture is architecture at the scale of a room. Proportion and material do the same work here, there's just less of it to hide behind. Our philosophy The furniture work grew out of the architecture. Clients kept asking for pieces that would suit rooms we'd just drawn: a dining table at the right length for the space, a desk built into an awkward alcove. Eventually it made sense to offer it properly. We draw the pieces and hand them to fabricators in the Chicago area we've used for years. Wood, metal and upholstery, all built to our specifications and detailed so they can be repaired rather than replaced. Recent commissions are being photographed and will appear here. Commission a piece →"
   },
   {
     "page": "furniture.html",
@@ -217,7 +208,7 @@ export const sections = [
   },
   {
     "page": "privacy.html",
-    "pageTitle": "privacy.html",
+    "pageTitle": "Privacy",
     "anchor": "privacy",
     "href": "privacy.html#privacy",
     "eyebrow": "",
@@ -226,7 +217,7 @@ export const sections = [
   },
   {
     "page": "privacy.html",
-    "pageTitle": "privacy.html",
+    "pageTitle": "Privacy",
     "anchor": "privacy-detail",
     "href": "privacy.html#privacy-detail",
     "eyebrow": "",
@@ -415,7 +406,7 @@ export const sections = [
   },
   {
     "page": "terms.html",
-    "pageTitle": "terms.html",
+    "pageTitle": "Terms of Use",
     "anchor": "terms",
     "href": "terms.html#terms",
     "eyebrow": "",
@@ -424,7 +415,7 @@ export const sections = [
   },
   {
     "page": "terms.html",
-    "pageTitle": "terms.html",
+    "pageTitle": "Terms of Use",
     "anchor": "terms-detail",
     "href": "terms.html#terms-detail",
     "eyebrow": "",

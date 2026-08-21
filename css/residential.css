@@ -94,7 +94,7 @@
 .approach-list-item { display: flex; gap: 24px; }
 .approach-list-num {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 15px; color: var(--accent);
+  font-size: 15px; color: var(--accent-dark);
   flex-shrink: 0; margin-top: 2px;
 }
 .approach-list-title {

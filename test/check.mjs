@@ -197,17 +197,31 @@ console.log('\nLake Effect site checks\n');
 }
 
 {
-  const js = read('components.js');
-  const navPages = [...js.matchAll(/data-page="([\w-]+)"/g)].map(m => m[1]);
   const problems = [];
+  const canonical = read('index.html').match(/<nav id="main-nav">[\s\S]*?<\/nav>/)[0];
+  const navHrefs = [...canonical.matchAll(/href="([\w./-]+\.html)"/g)].map(m => m[1]);
+  const navKeys = [...canonical.matchAll(/data-page="([\w-]+)"/g)].map(m => m[1]);
+
+  for (const href of navHrefs) {
+    if (!existsSync(join(root, href))) problems.push(`nav links to missing ${href}`);
+  }
+
   for (const page of pages) {
-    const m = read(page).match(/initPage\('([\w-]+)'\)/);
-    if (m && !navPages.includes(m[1])) problems.push(`${page}: initPage('${m[1]}') matches no nav item`);
+    const html = read(page);
+    const nav = html.match(/<nav id="main-nav">[\s\S]*?<\/nav>/);
+    if (!nav) { problems.push(`${page}: no nav in the markup`); continue; }
+    const stripped = nav[0].replace(/ class="active" aria-current="page"/g, '');
+    if (stripped !== canonical.replace(/ class="active" aria-current="page"/g, '')) {
+      problems.push(`${page}: nav has drifted — run npm run build:chrome`);
+    }
+    const active = [...nav[0].matchAll(/data-page="([\w-]+)"[^>]*class="active"/g)].map(m => m[1]);
+    if (active.length > 1) problems.push(`${page}: ${active.length} nav items marked active`);
+    if (active.length && !navKeys.includes(active[0])) {
+      problems.push(`${page}: active item "${active[0]}" is not a nav item`);
+    }
+    if (!html.includes('<footer>')) problems.push(`${page}: no footer in the markup`);
   }
-  for (const m of js.matchAll(/href="([\w-]+\.html)" data-page=/g)) {
-    if (!existsSync(join(root, m[1]))) problems.push(`nav links to missing ${m[1]}`);
-  }
-  check('nav highlighting targets exist', problems);
+  check('nav and footer are in the markup and in sync', problems);
 }
 
 {
@@ -226,7 +240,10 @@ console.log('\nLake Effect site checks\n');
       if (!s.text || s.text.length < 20) problems.push(`${s.href} — section text is empty`);
     }
     const covered = new Set(sections.map(s => s.page));
-    for (const page of pages) if (!covered.has(page)) problems.push(`${page} contributes no sections`);
+    for (const page of pages) {
+      if (page === '404.html') continue;
+      if (!covered.has(page)) problems.push(`${page} contributes no sections`);
+    }
   }
   check('ask index resolves to real sections', problems);
 }

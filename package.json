@@ -5,7 +5,10 @@
   "description": "Marketing site for Lake Effect Architects, Lake Bluff IL",
   "scripts": {
     "start": "python3 -m http.server 8000",
+    "build": "npm run build:chrome && npm run build:index && npm run build:sitemap",
+    "build:chrome": "node scripts/build-chrome.mjs",
     "build:index": "node scripts/build-index.mjs",
+    "build:sitemap": "node scripts/build-sitemap.mjs",
     "test": "node test/check.mjs"
   },
   "author": "Jamie Douglass",
