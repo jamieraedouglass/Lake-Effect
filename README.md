@@ -47,7 +47,8 @@ On Vercel, which is what this is set up for:
 
 1. Import the repo. `vercel.json` is already here; `api/ask.js` is picked up
    automatically as `POST /api/ask`.
-2. Set `ANTHROPIC_API_KEY` in Project Settings → Environment Variables, ticked
+2. Set `ANTHROPIC_API_KEY` and `RESEND_API_KEY` in Project Settings →
+   Environment Variables, ticked
    for **Production** and **Preview** if you want it live on preview
    deployments too. Redeploy after adding it — existing builds do not pick up
    new variables.
@@ -110,12 +111,15 @@ anything looks wrong.
     furniture.html                furniture and millwork
     about.html                    studio, process, location
     contact.html                  inquiry form + FAQ
+    privacy.html                  what the site collects
+    terms.html                    terms of use
     project-lake-bluff-mcm.html      individual project page
     project-pebble-beach.html        individual project page
     project-lake-bluff-historic.html individual project page
     components.js                 nav + footer, injected into every page
     ask.js                        the Ask panel and its no-backend fallback
     api/ask.js                    serverless function behind the Ask panel
+    api/contact.js                inquiry form, delivered by Resend
     scripts/build-index.mjs       rebuilds assets/site-index.json
     test/check.mjs                the checks behind `npm test`
     css/base.css                  tokens, reset, page hero, buttons
@@ -131,9 +135,13 @@ highlights the matching nav link. Pass nothing on pages that aren't in the nav.
 
 - Project names, locations and photography are placeholders. Every grid that
   holds them is marked with a `TODO` comment.
-- The contact form posts to Formspree. Create a form, then set `FORMSPREE_ID`
-  near the bottom of `contact.html`. Until that's filled in the form refuses to
-  submit and tells the visitor to email or call instead.
+- The contact form posts to `api/contact`, which sends through Resend. Set
+  `RESEND_API_KEY` in the Vercel environment and verify the sending domain in
+  Resend, then check the `FROM` address at the top of `api/contact.js` matches
+  a verified sender. Until the key is set the endpoint returns 503 and the form
+  tells the visitor to email or call instead.
+- Both `privacy.html` and `terms.html` are written in plain language and
+  describe what the site actually does. Neither has been reviewed by a lawyer.
 - The residential page had a client testimonial that we couldn't attribute to a
   real client, so it's been pulled. The markup note is still in the file.
 - There is no mobile layout yet. Every grid is fixed-column, so the site is

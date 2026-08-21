@@ -49,10 +49,10 @@ const FOOTER_HTML = `
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2025 Lake Effect Architects, Inc. &nbsp;·&nbsp; Lake Bluff, Illinois</p>
+    <p class="footer-copy">© 2026 Lake Effect Architects, Inc. &nbsp;·&nbsp; Lake Bluff, Illinois</p>
     <div class="footer-legal">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
     </div>
   </div>
 </footer>`;
