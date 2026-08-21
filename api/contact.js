@@ -9,6 +9,18 @@ const escapeHtml = v => String(v).replace(/[&<>"']/g,
   c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 export default async function handler(request) {
+  if (request.method === 'GET') {
+    return json({
+      ok: true,
+      keyConfigured: Boolean(process.env.LE_RESEND_API_KEY ?? process.env.RESEND_API_KEY),
+      keyName: process.env.LE_RESEND_API_KEY ? 'LE_RESEND_API_KEY'
+        : process.env.RESEND_API_KEY ? 'RESEND_API_KEY' : null,
+      from: FROM,
+      to: TO,
+      commit: process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? null,
+    });
+  }
+
   if (request.method !== 'POST') return json({ error: 'Use POST.' }, 405);
   if (!sameSite(request)) return json({ error: 'forbidden' }, 403);
   const LIMIT = { max: 4, windowMs: 600_000 };

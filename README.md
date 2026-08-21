@@ -90,6 +90,22 @@ silently. Nothing breaks in the meantime.
 `npm run build:index` — the function imports the module, the browser fetches
 the JSON. Neither is hand-edited.
 
+### Checking a deployment
+
+Open `/api/ask` in a browser. A GET returns what is actually running:
+
+    {"ok":true,"keyConfigured":true,"keyName":"LE_ANTHROPIC_API_KEY",
+     "zod":"4.x","structuredOutputs":true,"sections":47,"commit":"e5f4ed1"}
+
+- `commit` is the build Vercel is serving. If it is behind, it has not
+  redeployed.
+- `zod` must be `4.x` and `structuredOutputs` must be true.
+- `keyConfigured` false means the variable is missing or the build predates it.
+- A 500 on this GET means the function crashes before it runs at all — check
+  the Vercel function logs.
+
+`/api/contact` answers the same way.
+
 ### Abuse
 
 `api/guard.js` rejects requests whose Origin or Referer is not this site, and

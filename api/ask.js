@@ -4,6 +4,8 @@ import { betaZodOutputFormat } from '@anthropic-ai/sdk/helpers/beta/zod';
 import { sections } from './site-index.js';
 import { sameSite, clientKey, atLimit, recordHit } from './guard.js';
 
+const ZOD_VERSION = typeof z.toJSONSchema === 'function' ? '4.x' : '3.x';
+
 const MAX_QUESTION_CHARS = 400;
 const MAX_TURNS = 8;
 
@@ -54,6 +56,19 @@ Site content:
 ${CORPUS}`;
 
 export default async function handler(request) {
+  if (request.method === 'GET') {
+    return json({
+      ok: true,
+      keyConfigured: Boolean(process.env.LE_ANTHROPIC_API_KEY ?? process.env.ANTHROPIC_API_KEY),
+      keyName: process.env.LE_ANTHROPIC_API_KEY ? 'LE_ANTHROPIC_API_KEY'
+        : process.env.ANTHROPIC_API_KEY ? 'ANTHROPIC_API_KEY' : null,
+      zod: ZOD_VERSION,
+      structuredOutputs: typeof z.toJSONSchema === 'function',
+      sections: sections.length,
+      commit: process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? null,
+    });
+  }
+
   if (request.method !== 'POST') {
     return json({ error: 'Use POST.' }, 405);
   }
