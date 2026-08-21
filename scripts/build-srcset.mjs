@@ -1,0 +1,86 @@
+import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
+import { join, dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { SMALL_WIDTH, smallName } from './build-images.mjs';
+
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+
+const SIZES = [
+  [/class="project-hero-image"/, '100vw'],
+  [/<figure class="[^"]*\bfull\b[^"]*">/, '100vw'],
+  [/<figure class="[^"]*\btall\b[^"]*">/, '(max-width: 860px) 100vw, 50vw'],
+  [/<figure>/, '(max-width: 860px) 100vw, 50vw'],
+  [/class="proj-img-inner"/, '(max-width: 860px) 100vw, 50vw'],
+  [/class="work-image-inner"/, '(max-width: 860px) 100vw, 66vw'],
+  [/class="work-side-image-inner"/, '(max-width: 860px) 100vw, 33vw'],
+  [/class="hero-image"/, '(max-width: 860px) 100vw, 50vw'],
+];
+
+function sizesFor(html, imgStart, tag, planSizes) {
+  const own = tag.match(/class="([^"]*)"/)?.[1] ?? '';
+  if (/\bhero-image\b/.test(own)) return '(max-width: 860px) 100vw, 50vw';
+  if (/plan-image/.test(html.slice(Math.max(0, imgStart - 120), imgStart))) return planSizes;
+
+  const before = html.slice(Math.max(0, imgStart - 600), imgStart);
+  let best = null;
+  let bestAt = -1;
+  for (const [pattern, value] of SIZES) {
+    const matches = [...before.matchAll(new RegExp(pattern.source, 'g'))];
+    if (!matches.length) continue;
+    const at = matches[matches.length - 1].index;
+    if (at > bestAt) {
+      bestAt = at;
+      best = value;
+    }
+  }
+  return best;
+}
+
+const pages = readdirSync(root).filter(f => f.endsWith('.html'));
+let touched = 0;
+let tagged = 0;
+const missing = [];
+
+for (const page of pages) {
+  const path = join(root, page);
+  const original = readFileSync(path, 'utf8');
+  let s = original;
+  const planSizes = original.includes('class="plans one"')
+    ? '(max-width: 860px) 100vw, 900px'
+    : '(max-width: 860px) 100vw, 50vw';
+
+  s = s.replace(/\n?\s*srcset="[^"]*"/g, '').replace(/\n?\s*sizes="[^"]*"/g, '');
+
+  s = s.replace(/<img\b[^>]*>/g, (tag, offset) => {
+    const src = tag.match(/src="(assets\/[^"]+)"/)?.[1];
+    if (!src) return tag;
+
+    const small = smallName(src);
+    if (!existsSync(join(root, small))) return tag;
+
+    const sizes = sizesFor(s, offset, tag, planSizes);
+    if (!sizes) {
+      missing.push(`${page}: ${src}`);
+      return tag;
+    }
+
+    const width = Number(tag.match(/width="(\d+)"/)?.[1] ?? 0);
+    if (!width) return tag;
+
+    tagged++;
+    return tag.replace(/>$/,
+      `\n           srcset="${small} ${SMALL_WIDTH}w, ${src} ${width}w"\n           sizes="${sizes}">`);
+  });
+
+  if (s !== original) {
+    writeFileSync(path, s);
+    touched++;
+  }
+}
+
+console.log(`srcset on ${tagged} images across ${touched} pages`);
+if (missing.length) {
+  console.log('no sizes rule matched:');
+  for (const m of missing) console.log(`  ${m}`);
+  process.exit(1);
+}

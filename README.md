@@ -140,7 +140,9 @@ anything looks wrong.
     api/ask.js                    serverless function behind the Ask panel
     api/contact.js                inquiry form, delivered by Resend
     api/guard.js                  origin check and rate limiting for both
-    scripts/build-chrome.mjs      syncs nav, footer and head into every page
+    scripts/build-chrome.mjs      syncs nav, footer, titles and head links
+    scripts/build-images.mjs      writes the 800px variant of every photo
+    scripts/build-srcset.mjs      puts srcset and sizes on every <img>
     scripts/build-index.mjs       rebuilds assets/site-index.json
     test/check.mjs                the checks behind `npm test`
     css/base.css                  tokens, reset, page hero, buttons

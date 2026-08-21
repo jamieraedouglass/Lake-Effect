@@ -296,5 +296,21 @@ console.log('\nLake Effect site checks\n');
   check('no dead css rules', problems);
 }
 
+{
+  const problems = [];
+  for (const page of pages) {
+    for (const tag of read(page).matchAll(/<img\b[^>]*>/g)) {
+      const src = tag[0].match(/src="(assets\/[^"]+)"/)?.[1];
+      if (!src) continue;
+      if (!/\ssrcset="/.test(tag[0])) { problems.push(`${page}: ${src} has no srcset`); continue; }
+      if (!/\ssizes="/.test(tag[0])) problems.push(`${page}: ${src} has srcset but no sizes`);
+      for (const candidate of tag[0].matchAll(/(assets\/[^\s"]+)\s+\d+w/g)) {
+        if (!existsSync(join(root, candidate[1]))) problems.push(`${page}: srcset points at missing ${candidate[1]}`);
+      }
+    }
+  }
+  check('responsive images resolve', problems);
+}
+
 console.log(`\n${checks - failures}/${checks} checks passed\n`);
 process.exit(failures ? 1 : 0);
