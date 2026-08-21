@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(root, 'assets', 'site-index.json');
+const OUT_MODULE = join(root, 'api', 'site-index.js');
 
 const PAGE_TITLES = {
   'index.html': 'Home',
@@ -69,6 +70,7 @@ const index = {
 };
 
 writeFileSync(OUT, JSON.stringify(index, null, 2) + '\n');
+writeFileSync(OUT_MODULE, `export const sections = ${JSON.stringify(sections, null, 2)};\n`);
 
 const words = sections.reduce((n, s) => n + s.text.split(' ').length, 0);
 console.log(`site-index.json · ${sections.length} sections, ~${words} words (~${Math.round(words * 1.4)} tokens)`);

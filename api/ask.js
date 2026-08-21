@@ -1,7 +1,7 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { z } from 'zod';
 import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod';
-import siteIndex from '../assets/site-index.json' with { type: 'json' };
+import { sections } from './site-index.js';
 
 const MAX_QUESTION_CHARS = 400;
 const MAX_TURNS = 8;
@@ -24,7 +24,7 @@ const AnswerSchema = z.object({
     .describe('False when the site content does not answer the question.'),
 });
 
-const CORPUS = siteIndex.sections
+const CORPUS = sections
   .map(s => [
     `## ${s.pageTitle} · ${s.heading || s.eyebrow || s.anchor}`,
     `href: ${s.href}`,
@@ -112,7 +112,7 @@ export default async function handler(request) {
       });
     }
 
-    const known = new Set(siteIndex.sections.map(s => s.href));
+    const known = new Set(sections.map(s => s.href));
     known.add('contact.html');
     const result = response.parsed_output;
 

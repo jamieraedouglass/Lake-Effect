@@ -39,20 +39,33 @@ With prompt caching a question costs well under a cent.
 
 ### Turning the Claude answers on
 
-The API key cannot live in the page — it would be public and drainable — so
-this part needs a host that runs functions. Netlify, Vercel and Cloudflare
-Pages all have a free tier and connect straight to the GitHub repo.
+The API key never goes in the page or the repo — it would be public and
+drainable. It lives in the host's environment variables and only the function
+reads it.
 
-1. Deploy the repo to one of them.
-2. `cd api && npm install`, or let the host install from `api/package.json`.
-3. Set `ANTHROPIC_API_KEY` in the host's environment variables.
-4. Route `POST /api/ask` to `api/ask.js`. It is a standard
-   `(Request) => Response` handler, which Netlify and Vercel take as-is;
-   Cloudflare Pages wants it renamed to `functions/api/ask.js` and exported as
-   `onRequestPost({ request, env })`, reading the key from `env`.
+On Vercel, which is what this is set up for:
 
-Until step 3 is done the function returns 503 and the panel quietly falls back
-to search. Nothing breaks in the meantime.
+1. Import the repo. `vercel.json` is already here; `api/ask.js` is picked up
+   automatically as `POST /api/ask`.
+2. Set `ANTHROPIC_API_KEY` in Project Settings → Environment Variables, ticked
+   for **Production** and **Preview** if you want it live on preview
+   deployments too. Redeploy after adding it — existing builds do not pick up
+   new variables.
+3. Nothing else. `api/package.json` declares the dependencies and Vercel
+   installs them.
+
+Locally, `npm start` is a plain static file server and does not run functions
+at all, so the panel falls back to keyword search. That is expected, and it is
+also the honest preview of what a visitor sees before the key is set. To
+exercise the real path locally, use `vercel dev` with the key in `.env.local`
+(gitignored; copy `.env.example`).
+
+Until the key is set the function returns 503 and the panel falls back
+silently. Nothing breaks in the meantime.
+
+`api/site-index.js` is generated alongside `assets/site-index.json` by
+`npm run build:index` — the function imports the module, the browser fetches
+the JSON. Neither is hand-edited.
 
 ### What it will and will not say
 
