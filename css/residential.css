@@ -1,0 +1,133 @@
+.filter-bar {
+  padding: 0 48px;
+  border-bottom: 0.5px solid var(--border);
+  display: flex; align-items: center;
+}
+.filter-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); background: none; border: none;
+  cursor: pointer; padding: 20px 24px;
+  border-bottom: 1.5px solid transparent;
+  margin-bottom: -0.5px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.filter-btn:hover { color: var(--charcoal); }
+.filter-btn.active { color: var(--charcoal); border-color: var(--accent-dark); }
+
+.projects-section { padding: 72px 48px; }
+.projects-masonry {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  background: var(--border);
+}
+.project-item {
+  background: var(--cream);
+  display: block; text-decoration: none; color: inherit;
+  overflow: hidden;
+  transition: background 0.2s;
+}
+.project-item.wide { grid-column: span 2; }
+.project-item[hidden] { display: none; }
+.project-item:hover { background: var(--cream-dark); }
+.project-item:hover .proj-img-inner { transform: scale(1.04); }
+.project-item:hover .proj-arrow { transform: translate(4px,-4px); }
+
+.proj-img {
+  width: 100%; overflow: hidden;
+  background: var(--panel);
+}
+.project-item:not(.wide) .proj-img { aspect-ratio: 4/3; }
+.project-item.wide .proj-img { aspect-ratio: 16/9; }
+.proj-img-inner {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+  min-height: 200px;
+}
+.proj-img-inner img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.proj-meta {
+  padding: 28px 32px;
+  border-top: 0.5px solid var(--border);
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 20px;
+}
+.proj-category {
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent-dark); margin-bottom: 6px;
+}
+.proj-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px; font-weight: 400;
+  color: var(--charcoal); line-height: 1.15;
+}
+.proj-location { font-size: 11px; color: var(--muted); margin-top: 4px; }
+.proj-arrow {
+  font-size: 18px; color: var(--accent-dark);
+  flex-shrink: 0; transition: transform 0.2s;
+}
+.projects-empty {
+  grid-column: 1 / -1;
+  background: var(--cream);
+  padding: 72px 32px; text-align: center;
+  font-size: 11px; letter-spacing: 0.06em; color: var(--muted);
+}
+
+.residential-approach {
+  padding: 80px 48px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  border-top: 0.5px solid var(--border);
+}
+.approach-intro {
+  font-size: 12px; line-height: 1.95;
+  color: var(--mid); margin-top: 24px;
+}
+.residential-approach .btn-dark { margin-top: 40px; }
+.approach-list { display: flex; flex-direction: column; gap: 32px; margin-top: 48px; }
+.approach-list-item { display: flex; gap: 24px; }
+.approach-list-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; color: var(--accent);
+  flex-shrink: 0; margin-top: 2px;
+}
+.approach-list-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 400;
+  color: var(--charcoal); margin-bottom: 8px;
+}
+.approach-list-body { font-size: 11px; line-height: 1.9; color: var(--muted); }
+
+@media (max-width: 1080px) {
+  .filter-bar { padding: 0 28px; }
+  .projects-section { padding: 56px 28px; }
+  .residential-approach { padding: 64px 28px; gap: 48px; }
+}
+
+@media (max-width: 860px) {
+  .projects-masonry { grid-template-columns: 1fr; }
+  .project-item.wide { grid-column: auto; }
+  .project-item.wide .proj-img { aspect-ratio: 16/10; }
+  .residential-approach { grid-template-columns: 1fr; gap: 40px; }
+  .approach-list { margin-top: 8px; }
+  .filter-bar {
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .filter-bar::-webkit-scrollbar { display: none; }
+  .filter-btn { white-space: nowrap; padding: 18px 16px; }
+}
+
+@media (max-width: 560px) {
+  .filter-bar { padding: 0 20px; }
+  .projects-section { padding: 40px 20px; }
+  .residential-approach { padding: 56px 20px; }
+  .proj-meta { padding: 22px 20px; }
+  .proj-img-inner { min-height: 150px; }
+}

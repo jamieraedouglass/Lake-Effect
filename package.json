@@ -1,14 +1,13 @@
 {
   "name": "lake-effect",
   "version": "1.0.0",
-  "description": "Lake-Effect project repository",
-  "main": "index.js",
+  "private": true,
+  "description": "Marketing site for Lake Effect Architects, Lake Bluff IL",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "python3 -m http.server 8000",
+    "build:index": "node scripts/build-index.mjs",
+    "test": "node test/check.mjs"
   },
-  "keywords": [],
   "author": "Jamie Douglass",
-  "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {}
+  "license": "MIT"
 }

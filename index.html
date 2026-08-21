@@ -3,361 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lake Effect Architects — Architecture & Design, Lake Bluff IL</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* ── HERO ── */
-    .hero {
-      height: 100vh; min-height: 680px;
-      display: grid; grid-template-columns: 1fr 1fr;
-      padding-top: 80px;
-    }
-    .hero-left {
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 80px 56px 88px 48px;
-      background: var(--charcoal);
-      position: relative; overflow: hidden;
-    }
-    .hero-left::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 30% 80%, rgba(184,169,138,0.07) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .hero-eyebrow {
-      font-size: 10px; font-weight: 500;
-      letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 32px;
-    }
-    .hero-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(52px, 5.5vw, 80px);
-      font-weight: 300; line-height: 1.0;
-      color: var(--white); margin-bottom: 36px;
-    }
-    .hero-title em { font-style: italic; color: var(--accent); }
-    .hero-body {
-      font-size: 12px; line-height: 1.95;
-      color: rgba(253,252,250,0.55);
-      max-width: 380px; margin-bottom: 52px;
-    }
-    .hero-actions { display: flex; align-items: center; gap: 36px; }
-    .hero-btn {
-      display: inline-flex; align-items: center; gap: 14px;
-      font-size: 10px; font-weight: 600;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--white); text-decoration: none;
-      padding: 15px 32px;
-      border: 0.5px solid rgba(253,252,250,0.28);
-      transition: background 0.2s, border-color 0.2s;
-    }
-    .hero-btn:hover {
-      background: rgba(253,252,250,0.07);
-      border-color: rgba(253,252,250,0.55);
-    }
-    .hero-btn .arrow { transition: transform 0.2s; }
-    .hero-btn:hover .arrow { transform: translateX(5px); }
-    .hero-link {
-      font-size: 10px; font-weight: 500;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(253,252,250,0.45); text-decoration: none;
-      transition: color 0.2s; border-bottom: 0.5px solid transparent;
-    }
-    .hero-link:hover { color: var(--accent); border-color: var(--accent); }
-
-    .hero-right {
-      position: relative; overflow: hidden;
-      background: var(--charcoal-mid);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .hero-placeholder {
-      display: flex; flex-direction: column; align-items: center;
-      gap: 16px; opacity: 0.5;
-    }
-    .hero-placeholder-text {
-      font-size: 9px; font-weight: 500;
-      letter-spacing: 0.25em; text-transform: uppercase;
-      color: var(--accent-light);
-    }
-    .hero-stats {
-      position: absolute; bottom: 40px; right: 40px;
-      display: flex; gap: 40px;
-    }
-    .hero-stat { text-align: right; }
-    .hero-stat-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 36px; font-weight: 300;
-      color: var(--accent); display: block; line-height: 1;
-      margin-bottom: 4px;
-    }
-    .hero-stat-label {
-      font-size: 9px; font-weight: 500;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(253,252,250,0.35);
-    }
-
-    /* ── PRINCIPLES BAR ── */
-    .principles {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      border-bottom: 0.5px solid var(--border);
-    }
-    .principle {
-      padding: 48px 36px;
-      border-right: 0.5px solid var(--border);
-      transition: background 0.25s;
-    }
-    .principle:last-child { border-right: none; }
-    .principle:hover { background: rgba(28,28,26,0.04); }
-    .principle-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 13px; color: var(--accent); margin-bottom: 20px;
-    }
-    .principle-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 20px; font-weight: 400;
-      color: var(--charcoal); margin-bottom: 12px; line-height: 1.2;
-    }
-    .principle-body { font-size: 11px; line-height: 1.9; color: var(--muted); }
-
-    /* ── SERVICES ── */
-    .services-section { padding: 100px 48px; }
-    .services-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 2px; background: var(--border);
-    }
-    .service-card {
-      background: var(--cream);
-      padding: 52px 44px;
-      cursor: default;
-      transition: background 0.35s;
-      position: relative; overflow: hidden;
-    }
-    .service-card::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0;
-      width: 0; height: 1px;
-      background: var(--accent);
-      transition: width 0.45s ease;
-    }
-    .service-card:hover { background: var(--charcoal); }
-    .service-card:hover::after { width: 100%; }
-    .service-card:hover .service-num { color: var(--accent); }
-    .service-card:hover .service-title,
-    .service-card:hover .service-body { color: rgba(253,252,250,0.9); }
-    .service-card:hover .service-title { color: var(--white); }
-    .service-card:hover .service-link { color: var(--accent-light); }
-
-    .service-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 13px; color: var(--accent); margin-bottom: 36px;
-      transition: color 0.35s;
-    }
-    .service-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 28px; font-weight: 400;
-      color: var(--charcoal); margin-bottom: 18px; line-height: 1.15;
-      transition: color 0.35s;
-    }
-    .service-body {
-      font-size: 11px; line-height: 1.95;
-      color: var(--mid); margin-bottom: 36px;
-      transition: color 0.35s;
-    }
-    .service-link {
-      font-size: 9px; font-weight: 600;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--accent-dark); text-decoration: none;
-      display: inline-flex; align-items: center; gap: 10px;
-      transition: color 0.35s, gap 0.2s;
-    }
-    .service-link:hover { gap: 16px; }
-
-    /* ── APPROACH BAND ── */
-    .approach-band {
-      display: grid; grid-template-columns: 1fr 1fr;
-      background: var(--charcoal);
-    }
-    .approach-visual {
-      background: #202020;
-      min-height: 500px;
-      display: flex; align-items: center; justify-content: center;
-      position: relative; overflow: hidden;
-    }
-    .approach-visual svg { position: relative; z-index: 1; }
-    .approach-content {
-      padding: 84px 64px;
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .approach-eyebrow {
-      font-size: 9px; font-weight: 600;
-      letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 24px;
-    }
-    .approach-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(30px, 3vw, 46px);
-      font-weight: 300; color: var(--white);
-      line-height: 1.1; margin-bottom: 28px;
-    }
-    .approach-body {
-      font-size: 12px; line-height: 1.95;
-      color: rgba(253,252,250,0.5); margin-bottom: 44px;
-    }
-    .process-steps { display: flex; flex-direction: column; gap: 0; }
-    .process-step {
-      display: flex; align-items: center; gap: 16px;
-      padding: 16px 0;
-      border-bottom: 0.5px solid rgba(253,252,250,0.07);
-      font-size: 11px; letter-spacing: 0.06em;
-      color: rgba(253,252,250,0.6);
-      transition: color 0.2s;
-    }
-    .process-step:last-child { border-bottom: none; }
-    .process-step:hover { color: rgba(253,252,250,0.9); }
-    .process-dot {
-      width: 5px; height: 5px; border-radius: 50%;
-      background: var(--accent); flex-shrink: 0;
-    }
-    .process-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 11px; color: rgba(184,169,138,0.45);
-      min-width: 20px;
-    }
-
-    /* ── RECENT WORK TEASER ── */
-    .work-teaser { padding: 100px 48px; }
-    .work-teaser-grid {
-      display: grid; grid-template-columns: 2fr 1fr;
-      gap: 2px; background: var(--border);
-    }
-    .work-card {
-      background: var(--cream-dark);
-      overflow: hidden; cursor: pointer;
-    }
-    .work-image {
-      width: 100%; aspect-ratio: 16/10;
-      background: var(--charcoal-mid);
-      display: flex; align-items: center; justify-content: center;
-      transition: transform 0s;
-      overflow: hidden;
-    }
-    .work-card:hover .work-image-inner { transform: scale(1.04); }
-    .work-image-inner {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
-    }
-    .work-info {
-      padding: 28px 32px;
-      border-top: 0.5px solid var(--border);
-      display: flex; justify-content: space-between; align-items: flex-start;
-    }
-    .work-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px; font-weight: 400; color: var(--charcoal);
-    }
-    .work-cat {
-      font-size: 9px; font-weight: 600;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--accent-dark); margin-top: 4px;
-    }
-    .work-arrow {
-      font-size: 18px; color: var(--accent-dark);
-      transition: transform 0.2s;
-    }
-    .work-card:hover .work-arrow { transform: translate(4px, -4px); }
-
-    .work-sidebar { display: flex; flex-direction: column; gap: 2px; background: var(--border); }
-    .work-side-card {
-      flex: 1; background: var(--cream);
-      overflow: hidden; cursor: pointer;
-    }
-    .work-side-image {
-      width: 100%; aspect-ratio: 4/3;
-      background: var(--charcoal-mid);
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-    }
-    .work-side-image-inner {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
-    }
-    .work-side-card:hover .work-side-image-inner { transform: scale(1.05); }
-    .work-side-info {
-      padding: 20px 24px;
-      border-top: 0.5px solid var(--border);
-    }
-    .work-side-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 17px; font-weight: 400; color: var(--charcoal);
-    }
-    .work-side-cat {
-      font-size: 9px; font-weight: 600;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--accent-dark); margin-top: 3px;
-    }
-
-    /* ── CONTACT CTA ── */
-    .home-cta {
-      display: grid; grid-template-columns: 1fr 1fr;
-      border-top: 0.5px solid var(--border);
-      border-bottom: 0.5px solid var(--border);
-    }
-    .home-cta-left {
-      padding: 80px 48px;
-      background: var(--cream);
-      border-right: 0.5px solid var(--border);
-    }
-    .home-cta-right {
-      padding: 80px 56px;
-      background: var(--charcoal);
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .cta-label {
-      font-size: 9px; font-weight: 600;
-      letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 20px;
-    }
-    .cta-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(28px, 3vw, 44px);
-      font-weight: 300; color: var(--white);
-      line-height: 1.1; margin-bottom: 24px;
-    }
-    .cta-body {
-      font-size: 12px; line-height: 1.9;
-      color: rgba(253,252,250,0.5); margin-bottom: 40px;
-    }
-    .contact-list { display: flex; flex-direction: column; gap: 24px; }
-    .contact-item-label {
-      font-size: 9px; font-weight: 600;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--accent-dark); margin-bottom: 5px;
-    }
-    .contact-item-value {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 19px; font-weight: 400;
-      color: var(--charcoal);
-    }
-    .contact-item-value a {
-      color: inherit; text-decoration: none;
-      transition: color 0.2s;
-    }
-    .contact-item-value a:hover { color: var(--accent-dark); }
-  </style>
+  <title>Lake Effect Architects — Architecture &amp; Design, Lake Bluff IL</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/ask.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
 
-<!-- HERO -->
-<section class="hero">
+<section class="hero" id="thirty-years-of-building-on-the-north-sh">
   <div class="hero-left">
     <p class="hero-eyebrow fade-up">Architecture &amp; Design &nbsp;·&nbsp; Lake Bluff, Illinois</p>
     <h1 class="hero-title fade-up delay-1">
-      Architecture<br>shaped by<br><em>craft &amp; context</em>
+      Thirty years<br>of building on<br><em>the North Shore</em>
     </h1>
     <p class="hero-body fade-up delay-2">
-      Complete architectural services for high-end residential, custom homes, and commercial projects. We emphasize clear process, team approach, context, and the fundamentals of fine craft.
+      We design custom homes, renovations, clubhouses and commercial buildings, along with the furniture and millwork that go in them. Much of the work looks for a balance between old and new.
     </p>
     <div class="hero-actions fade-up delay-3">
       <a href="residential.html" class="hero-btn">View our work <span class="arrow">→</span></a>
@@ -365,112 +26,93 @@
     </div>
   </div>
   <div class="hero-right">
-    <div class="hero-placeholder">
-      <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="8" y="28" width="48" height="28" stroke="rgba(184,169,138,0.5)" stroke-width="0.75"/>
-        <polyline points="4,30 32,12 60,30" stroke="rgba(184,169,138,0.5)" stroke-width="0.75" fill="none"/>
-        <rect x="22" y="40" width="20" height="16" stroke="rgba(184,169,138,0.35)" stroke-width="0.5"/>
-        <line x1="32" y1="28" x2="32" y2="40" stroke="rgba(184,169,138,0.25)" stroke-width="0.5"/>
-        <line x1="14" y1="36" x2="14" y2="56" stroke="rgba(184,169,138,0.2)" stroke-width="0.5"/>
-        <line x1="50" y1="36" x2="50" y2="56" stroke="rgba(184,169,138,0.2)" stroke-width="0.5"/>
-      </svg>
-      <span class="hero-placeholder-text">Featured project photography</span>
-    </div>
+    <img class="hero-image" src="assets/pebble-beach-contemporary/living-room-2.jpg"
+         alt="A double-height living room with a vaulted timber ceiling, clerestory glazing and full-height windows out to pines and ocean.">
     <div class="hero-stats">
       <div class="hero-stat">
         <span class="hero-stat-num">30+</span>
-        <span class="hero-stat-label">Years of practice</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num">3</span>
-        <span class="hero-stat-label">Disciplines</span>
+        <span class="hero-stat-label">Years in practice</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRINCIPLES -->
 <section class="principles">
   <div class="principle">
     <div class="principle-num">01</div>
-    <div class="principle-title">Clear Design Process</div>
-    <p class="principle-body">Every project follows a disciplined arc—from programming through construction—with no surprises and full client clarity at each milestone.</p>
+    <div class="principle-title">A Clear Design Process</div>
+    <p class="principle-body">We explore a range of design alternatives early on. Those studies refine the program, clarify your priorities, and keep the design aligned with the budget you've set.</p>
+    <a href="philosophy.html" class="principle-more">Read more <span>→</span></a>
   </div>
   <div class="principle">
     <div class="principle-num">02</div>
-    <div class="principle-title">Team Approach</div>
-    <p class="principle-body">We collaborate with the best consultants and craftspeople, assembling the right expertise for each individual project.</p>
+    <div class="principle-title">A Collaborative Team Approach</div>
+    <p class="principle-body">The Owner and the full design and construction team stay involved through every phase of a project. Open communication and careful coordination are what make a project land well.</p>
+    <a href="philosophy.html" class="principle-more">Read more <span>→</span></a>
   </div>
   <div class="principle">
     <div class="principle-num">03</div>
-    <div class="principle-title">Context</div>
-    <p class="principle-body">Good architecture listens to its site, its neighbors, and its clients. We design for the specific—never the generic.</p>
-  </div>
-  <div class="principle">
-    <div class="principle-num">04</div>
-    <div class="principle-title">Craft &amp; Detail</div>
-    <p class="principle-body">Fine architecture lives in the details. Material selection, joinery, and proportion are taken as seriously as form.</p>
+    <div class="principle-title">Context, Craft &amp; Detail</div>
+    <p class="principle-body">Thirty years across traditional, contemporary and mid-century modern building types, working at every scale: site, region and climate through to materials, craftsmanship and detailing.</p>
+    <a href="philosophy.html" class="principle-more">Read more <span>→</span></a>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="services-section">
+<section class="services-section" id="what-we-do">
   <div class="section-header">
     <span class="section-eyebrow">Services</span>
     <div class="section-line"></div>
-    <h2 class="section-title">Three disciplines,<br>one practice</h2>
+    <h2 class="section-title">What we do</h2>
   </div>
   <div class="services-grid">
     <div class="service-card">
       <div class="service-num">01 &nbsp;/ &nbsp;Residential</div>
       <h3 class="service-title">Custom Homes &amp; Residences</h3>
-      <p class="service-body">From ground-up custom homes to careful renovations and additions—we bring precision and craft to every residential project, at every scale.</p>
+      <p class="service-body">New houses, renovations and additions. This is most of our work, and it's where the practice started.</p>
       <a href="residential.html" class="service-link">Explore residential <span>→</span></a>
     </div>
     <div class="service-card">
       <div class="service-num">02 &nbsp;/ &nbsp;Commercial</div>
       <h3 class="service-title">Commercial Architecture</h3>
-      <p class="service-body">Institutional, club, and commercial projects that serve their communities. We understand that public-facing buildings carry obligations beyond the private client.</p>
+      <p class="service-body">Clubhouses, civic buildings and retail. A building the public uses has to work for a lot of people at once.</p>
       <a href="commercial.html" class="service-link">Explore commercial <span>→</span></a>
     </div>
     <div class="service-card">
       <div class="service-num">03 &nbsp;/ &nbsp;Furniture</div>
       <h3 class="service-title">Furniture Design</h3>
-      <p class="service-body">Custom furniture and millwork designed as an extension of the architectural vision. When the right piece doesn't exist—we design it.</p>
+      <p class="service-body">Tables, casework and built-ins drawn for a specific room, usually because nothing off the shelf fits it.</p>
       <a href="furniture.html" class="service-link">Explore furniture <span>→</span></a>
     </div>
   </div>
 </section>
 
-<!-- APPROACH BAND -->
-<section class="approach-band">
+<section class="approach-band" id="how-a-project-actually-runs">
   <div class="approach-visual">
     <svg width="280" height="280" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="140" cy="140" r="128" stroke="rgba(184,169,138,0.1)" stroke-width="0.5"/>
-      <circle cx="140" cy="140" r="96" stroke="rgba(184,169,138,0.15)" stroke-width="0.5"/>
-      <circle cx="140" cy="140" r="64" stroke="rgba(184,169,138,0.2)" stroke-width="0.5"/>
-      <circle cx="140" cy="140" r="32" stroke="rgba(184,169,138,0.3)" stroke-width="0.5"/>
-      <circle cx="140" cy="140" r="8"  stroke="rgba(184,169,138,0.5)" stroke-width="0.5"/>
-      <line x1="12" y1="140" x2="268" y2="140" stroke="rgba(184,169,138,0.08)" stroke-width="0.5"/>
-      <line x1="140" y1="12" x2="140" y2="268" stroke="rgba(184,169,138,0.08)" stroke-width="0.5"/>
-      <line x1="49" y1="49" x2="231" y2="231" stroke="rgba(184,169,138,0.06)" stroke-width="0.5"/>
-      <line x1="231" y1="49" x2="49" y2="231" stroke="rgba(184,169,138,0.06)" stroke-width="0.5"/>
-      <!-- tick marks -->
-      <line x1="140" y1="12" x2="140" y2="20" stroke="rgba(184,169,138,0.3)" stroke-width="0.75"/>
-      <line x1="140" y1="260" x2="140" y2="268" stroke="rgba(184,169,138,0.3)" stroke-width="0.75"/>
-      <line x1="12" y1="140" x2="20" y2="140" stroke="rgba(184,169,138,0.3)" stroke-width="0.75"/>
-      <line x1="260" y1="140" x2="268" y2="140" stroke="rgba(184,169,138,0.3)" stroke-width="0.75"/>
-      <circle cx="140" cy="140" r="3" fill="rgba(184,169,138,0.8)"/>
-      <circle cx="140" cy="76" r="2.5" fill="rgba(184,169,138,0.45)"/>
-      <circle cx="204" cy="140" r="2.5" fill="rgba(184,169,138,0.45)"/>
-      <circle cx="140" cy="204" r="2.5" fill="rgba(184,169,138,0.45)"/>
-      <circle cx="76" cy="140" r="2.5" fill="rgba(184,169,138,0.45)"/>
+      <circle cx="140" cy="140" r="128" stroke="rgba(78,101,117,0.145)" stroke-width="0.5"/>
+      <circle cx="140" cy="140" r="96" stroke="rgba(78,101,117,0.217)" stroke-width="0.5"/>
+      <circle cx="140" cy="140" r="64" stroke="rgba(78,101,117,0.29)" stroke-width="0.5"/>
+      <circle cx="140" cy="140" r="32" stroke="rgba(78,101,117,0.435)" stroke-width="0.5"/>
+      <circle cx="140" cy="140" r="8"  stroke="rgba(78,101,117,0.6)" stroke-width="0.5"/>
+      <line x1="12" y1="140" x2="268" y2="140" stroke="rgba(78,101,117,0.116)" stroke-width="0.5"/>
+      <line x1="140" y1="12" x2="140" y2="268" stroke="rgba(78,101,117,0.116)" stroke-width="0.5"/>
+      <line x1="49" y1="49" x2="231" y2="231" stroke="rgba(78,101,117,0.087)" stroke-width="0.5"/>
+      <line x1="231" y1="49" x2="49" y2="231" stroke="rgba(78,101,117,0.087)" stroke-width="0.5"/>
+      <line x1="140" y1="12" x2="140" y2="20" stroke="rgba(78,101,117,0.435)" stroke-width="0.75"/>
+      <line x1="140" y1="260" x2="140" y2="268" stroke="rgba(78,101,117,0.435)" stroke-width="0.75"/>
+      <line x1="12" y1="140" x2="20" y2="140" stroke="rgba(78,101,117,0.435)" stroke-width="0.75"/>
+      <line x1="260" y1="140" x2="268" y2="140" stroke="rgba(78,101,117,0.435)" stroke-width="0.75"/>
+      <circle cx="140" cy="140" r="3" fill="rgba(78,101,117,0.6)"/>
+      <circle cx="140" cy="76" r="2.5" fill="rgba(78,101,117,0.6)"/>
+      <circle cx="204" cy="140" r="2.5" fill="rgba(78,101,117,0.6)"/>
+      <circle cx="140" cy="204" r="2.5" fill="rgba(78,101,117,0.6)"/>
+      <circle cx="76" cy="140" r="2.5" fill="rgba(78,101,117,0.6)"/>
     </svg>
   </div>
   <div class="approach-content">
     <p class="approach-eyebrow">Our approach</p>
-    <h2 class="approach-title">Architecture as a<br><em style="color:var(--accent);">collaborative act</em></h2>
-    <p class="approach-body">The best buildings emerge from trust—between architect and client, between design and construction, between building and place. We build those relationships as carefully as we build the work.</p>
+    <h2 class="approach-title">How a project<br>actually runs</h2>
+    <p class="approach-body">Most of what goes wrong on a building project is a communication problem rather than a design problem. We work in five clearly marked phases so everyone knows what has been decided, what hasn't, and what the next decision costs.</p>
     <div class="process-steps">
       <div class="process-step"><div class="process-dot"></div><span class="process-num">01</span>Programming &amp; Feasibility</div>
       <div class="process-step"><div class="process-dot"></div><span class="process-num">02</span>Schematic Design</div>
@@ -481,57 +123,57 @@
   </div>
 </section>
 
-<!-- RECENT WORK TEASER -->
-<section class="work-teaser">
+<section class="work-teaser" id="recent-projects">
   <div class="section-header">
     <span class="section-eyebrow">Selected Work</span>
     <div class="section-line"></div>
     <h2 class="section-title">Recent projects</h2>
   </div>
   <div class="work-teaser-grid">
-    <div class="work-card" onclick="window.location='residential.html'">
+    <a class="work-card" href="project-lake-bluff-mcm.html">
       <div class="work-image">
         <div class="work-image-inner">
-          <svg width="72" height="72" viewBox="0 0 72 72" fill="none"><rect x="9" y="32" width="54" height="32" stroke="rgba(184,169,138,0.35)" stroke-width="0.75"/><polyline points="4,34 36,14 68,34" stroke="rgba(184,169,138,0.35)" stroke-width="0.75" fill="none"/><rect x="27" y="46" width="18" height="18" stroke="rgba(184,169,138,0.25)" stroke-width="0.5"/></svg>
+          <img src="assets/lake-bluff-mcm/exterior-entry-drive.jpg" loading="lazy"
+               alt="A 1954 mid-century modern house in Lake Bluff, seen from the drive.">
         </div>
       </div>
       <div class="work-info">
         <div>
-          <div class="work-name">Lakefront Residence</div>
-          <div class="work-cat">Residential &nbsp;·&nbsp; Lake Forest, IL</div>
+          <div class="work-name">Mid-Century Modern Private Residence</div>
+          <div class="work-cat">Renovation &nbsp;·&nbsp; Lake Bluff, IL</div>
         </div>
         <span class="work-arrow">↗</span>
       </div>
-    </div>
+    </a>
     <div class="work-sidebar">
-      <div class="work-side-card" onclick="window.location='commercial.html'">
+      <a class="work-side-card" href="project-pebble-beach.html">
         <div class="work-side-image">
           <div class="work-side-image-inner">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="6" y="12" width="36" height="30" stroke="rgba(184,169,138,0.35)" stroke-width="0.75"/><line x1="6" y1="20" x2="42" y2="20" stroke="rgba(184,169,138,0.2)" stroke-width="0.5"/><line x1="6" y1="28" x2="42" y2="28" stroke="rgba(184,169,138,0.2)" stroke-width="0.5"/><rect x="19" y="34" width="10" height="8" stroke="rgba(184,169,138,0.25)" stroke-width="0.5"/><line x1="24" y1="8" x2="24" y2="12" stroke="rgba(184,169,138,0.3)" stroke-width="0.75"/></svg>
+            <img src="assets/pebble-beach-contemporary/exterior-deck-view.jpg" loading="lazy"
+                 alt="Deck under a slatted pergola looking out through pines to the sea.">
           </div>
         </div>
         <div class="work-side-info">
-          <div class="work-side-name">Clubhouse Renovation</div>
-          <div class="work-side-cat">Commercial</div>
+          <div class="work-side-name">Contemporary Private Residence</div>
+          <div class="work-side-cat">Pebble Beach, CA</div>
         </div>
-      </div>
-      <div class="work-side-card" onclick="window.location='furniture.html'">
+      </a>
+      <a class="work-side-card" href="furniture.html">
         <div class="work-side-image">
           <div class="work-side-image-inner">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="26" width="32" height="6" stroke="rgba(184,169,138,0.35)" stroke-width="0.75"/><rect x="12" y="18" width="24" height="8" stroke="rgba(184,169,138,0.3)" stroke-width="0.5"/><line x1="12" y1="32" x2="10" y2="42" stroke="rgba(184,169,138,0.25)" stroke-width="0.5"/><line x1="36" y1="32" x2="38" y2="42" stroke="rgba(184,169,138,0.25)" stroke-width="0.5"/></svg>
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="26" width="32" height="6" stroke="rgba(78,101,117,0.507)" stroke-width="0.75"/><rect x="12" y="18" width="24" height="8" stroke="rgba(78,101,117,0.435)" stroke-width="0.5"/><line x1="12" y1="32" x2="10" y2="42" stroke="rgba(78,101,117,0.362)" stroke-width="0.5"/><line x1="36" y1="32" x2="38" y2="42" stroke="rgba(78,101,117,0.362)" stroke-width="0.5"/></svg>
           </div>
         </div>
         <div class="work-side-info">
-          <div class="work-side-name">Custom Dining Suite</div>
-          <div class="work-side-cat">Furniture Design</div>
+          <div class="work-side-name">Furniture &amp; millwork</div>
+          <div class="work-side-cat">See the section</div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- CONTACT CTA -->
-<section class="home-cta">
+<section class="home-cta" id="tell-us-about-your-project">
   <div class="home-cta-left">
     <div class="contact-list">
       <div>
@@ -547,20 +189,21 @@
         <div class="contact-item-value"><a href="mailto:rob@leffect.com">rob@leffect.com</a></div>
       </div>
       <div>
-        <div class="contact-item-label">Address</div>
-        <div class="contact-item-value" style="font-size:16px;">P.O. Box 155<br>Lake Bluff, Illinois 60044</div>
+        <div class="contact-item-label">Studio</div>
+        <div class="contact-item-value contact-item-address">Lake Bluff, Illinois</div>
       </div>
     </div>
   </div>
-  <div class="home-cta-right">
+  <div class="home-cta-right" id="tell-us-about-your-project-2">
     <p class="cta-label">New Projects</p>
-    <h2 class="cta-title">Ready to begin a conversation?</h2>
-    <p class="cta-body">Every great project starts with an honest conversation about vision, site, and budget. We'd love to hear about yours.</p>
+    <h2 class="cta-title">Tell us about<br>your project</h2>
+    <p class="cta-body">If you're thinking about building or renovating, get in touch. A short call is usually enough to work out whether we're the right firm for it.</p>
     <a href="contact.html" class="btn-ghost">Get in touch <span>→</span></a>
   </div>
 </section>
 
+<script src="ask.js"></script>
 <script src="components.js"></script>
-<script>initPage(null);</script>
+<script>initPage();</script>
 </body>
 </html>

@@ -1,0 +1,143 @@
+.statement {
+  padding: 96px 48px;
+  display: grid; grid-template-columns: 200px 1fr;
+  gap: 72px; align-items: start;
+  border-bottom: 0.5px solid var(--border);
+}
+.statement-left { position: sticky; top: 100px; }
+.statement-body {
+  font-size: 14px; line-height: 2.0; color: var(--mid);
+  max-width: 660px;
+}
+.statement-body p + p { margin-top: 1.3em; }
+.statement-body .lead {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 2.4vw, 32px);
+  font-weight: 300; line-height: 1.4;
+  color: var(--charcoal);
+}
+.statement-body .lead em { font-style: italic; color: var(--accent-dark); }
+
+.principles-section { padding: 96px 48px; }
+.principle-entry {
+  display: grid; grid-template-columns: 140px 1fr 1fr;
+  gap: 56px;
+  padding: 56px 0;
+  border-top: 0.5px solid var(--border);
+}
+.principle-entry:last-of-type { border-bottom: 0.5px solid var(--border); }
+.principle-index {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 46px; font-weight: 300; line-height: 1;
+  color: var(--accent);
+}
+.principle-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(24px, 2.4vw, 34px);
+  font-weight: 400; line-height: 1.15;
+  color: var(--charcoal);
+}
+.principle-text { font-size: 13px; line-height: 2.0; color: var(--mid); }
+
+.scale-band {
+  background: var(--panel);
+  border-top: 0.5px solid var(--border);
+  border-bottom: 0.5px solid var(--border);
+  padding: 88px 48px;
+}
+.scale-rungs {
+  margin-top: 56px;
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 2px; background: var(--border);
+}
+.rung {
+  background: var(--cream);
+  padding: 40px 28px 44px;
+  transition: background 0.25s;
+}
+.rung:hover { background: var(--white); }
+.rung-rule {
+  height: 0.5px; background: var(--accent);
+  margin-bottom: 24px;
+}
+.rung:nth-child(1) .rung-rule { width: 100%; }
+.rung:nth-child(2) .rung-rule { width: 78%; }
+.rung:nth-child(3) .rung-rule { width: 58%; }
+.rung:nth-child(4) .rung-rule { width: 38%; }
+.rung:nth-child(5) .rung-rule { width: 20%; }
+.rung-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px; font-weight: 400;
+  color: var(--charcoal); margin-bottom: 10px;
+}
+.rung-note {
+  font-size: 11px; line-height: 1.9;
+  color: var(--muted);
+}
+
+.philosophy-cta {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-top: 0.5px solid var(--border);
+}
+.philosophy-cta-left {
+  padding: 80px 48px;
+  border-right: 0.5px solid var(--border);
+}
+.philosophy-cta-right {
+  padding: 80px 48px;
+  background: var(--cream-dark);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.cta-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 2.8vw, 38px);
+  font-weight: 300; color: var(--charcoal);
+  line-height: 1.15; margin-bottom: 20px;
+}
+.cta-text {
+  font-size: 12px; line-height: 1.95;
+  color: var(--mid); margin-bottom: 36px; max-width: 380px;
+}
+.cta-links { display: flex; flex-direction: column; }
+.cta-link {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 0;
+  border-bottom: 0.5px solid var(--border);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 400;
+  color: var(--charcoal); text-decoration: none;
+  transition: color 0.2s;
+}
+.cta-link:first-child { border-top: 0.5px solid var(--border); }
+.cta-link:hover { color: var(--accent-dark); }
+.cta-link span { font-size: 14px; color: var(--accent-dark); }
+
+@media (max-width: 1080px) {
+  .statement, .principles-section { padding: 72px 28px; }
+  .scale-band { padding: 64px 28px; }
+  .philosophy-cta-left, .philosophy-cta-right { padding: 64px 28px; }
+  .principle-entry { grid-template-columns: 110px 1fr 1fr; gap: 32px; }
+  .scale-rungs { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 860px) {
+  .statement { grid-template-columns: 1fr; gap: 24px; }
+  .statement-left { position: static; }
+  .principle-entry { grid-template-columns: 1fr; gap: 16px; padding: 40px 0; }
+  .principle-index { font-size: 32px; }
+  .principle-heading br { display: none; }
+  .scale-rungs { grid-template-columns: repeat(2, 1fr); }
+  .philosophy-cta { grid-template-columns: 1fr; }
+  .philosophy-cta-left { border-right: none; border-bottom: 0.5px solid var(--border); }
+  .cta-text { max-width: none; }
+}
+
+@media (max-width: 560px) {
+  .statement, .principles-section { padding: 56px 20px; }
+  .scale-band { padding: 56px 20px; }
+  .philosophy-cta-left, .philosophy-cta-right { padding: 56px 20px; }
+  .scale-rungs { grid-template-columns: 1fr; }
+  .rung { padding: 28px 20px 32px; }
+  .rung .rung-rule { width: 100%; }
+  .cta-link { font-size: 19px; }
+}
