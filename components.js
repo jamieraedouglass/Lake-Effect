@@ -1,14 +1,16 @@
-// Shared components for Lake Effect Architects
-
 const NAV_HTML = `
 <nav id="main-nav">
-  <a class="nav-logo" href="index.html">
+  <a class="nav-logo" href="./">
     <img src="logo.svg" alt="Lake Effect Architects" class="nav-logo-img">
   </a>
-  <ul class="nav-links">
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
     <li><a href="residential.html" data-page="residential">Residential</a></li>
     <li><a href="commercial.html" data-page="commercial">Commercial</a></li>
     <li><a href="furniture.html" data-page="furniture">Furniture</a></li>
+    <li><a href="philosophy.html" data-page="philosophy">Philosophy</a></li>
     <li><a href="about.html" data-page="about">About</a></li>
   </ul>
   <a class="nav-cta" href="contact.html">Inquire</a>
@@ -19,7 +21,7 @@ const FOOTER_HTML = `
   <div class="footer-top">
     <div>
       <div class="footer-brand-name">Lake Effect<br>Architects</div>
-      <p class="footer-tagline">Complete architectural services for high-end residential, custom homes, and commercial architecture. Lake Bluff, Illinois.</p>
+      <p class="footer-tagline">Architecture and furniture design for homes, clubs and commercial buildings on Chicago's North Shore. Lake Bluff, Illinois.</p>
     </div>
     <div>
       <div class="footer-col-title">Work</div>
@@ -33,7 +35,7 @@ const FOOTER_HTML = `
       <div class="footer-col-title">Studio</div>
       <ul class="footer-links">
         <li><a href="about.html">About Us</a></li>
-        <li><a href="about.html#mission">Mission</a></li>
+        <li><a href="philosophy.html">Design Philosophy</a></li>
         <li><a href="about.html#process">Process</a></li>
       </ul>
     </div>
@@ -47,7 +49,7 @@ const FOOTER_HTML = `
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2025 Lake Effect Architects, Inc. &nbsp;·&nbsp; P.O. Box 155, Lake Bluff, IL</p>
+    <p class="footer-copy">© 2025 Lake Effect Architects, Inc. &nbsp;·&nbsp; Lake Bluff, Illinois</p>
     <div class="footer-legal">
       <a href="#">Privacy</a>
       <a href="#">Terms</a>
@@ -55,31 +57,35 @@ const FOOTER_HTML = `
   </div>
 </footer>`;
 
-// Project placeholder SVG
-function projectSVG(size = 56) {
-  return `<svg width="${size}" height="${size}" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="7" y="24" width="42" height="25" stroke="rgba(184,169,138,0.5)" stroke-width="0.75"/>
-    <polyline points="3,26 28,10 53,26" stroke="rgba(184,169,138,0.5)" stroke-width="0.75" fill="none"/>
-    <rect x="20" y="35" width="16" height="14" stroke="rgba(184,169,138,0.35)" stroke-width="0.5"/>
-    <line x1="28" y1="24" x2="28" y2="35" stroke="rgba(184,169,138,0.25)" stroke-width="0.5"/>
-  </svg>`;
-}
-
 function initPage(activePage) {
-  // Inject favicon
   const favicon = document.createElement('link');
   favicon.rel = 'icon';
   favicon.type = 'image/svg+xml';
   favicon.href = 'logo.svg';
   document.head.appendChild(favicon);
-  // Inject nav
+
   document.body.insertAdjacentHTML('afterbegin', NAV_HTML);
-  // Inject footer
   document.body.insertAdjacentHTML('beforeend', FOOTER_HTML);
-  // Set active nav link
+
   if (activePage) {
     document.querySelectorAll('.nav-links a').forEach(a => {
       if (a.dataset.page === activePage) a.classList.add('active');
     });
   }
+
+  const nav = document.getElementById('main-nav');
+  const toggle = nav.querySelector('.nav-toggle');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+
+  if (typeof initAsk === 'function') initAsk();
+
+  window.matchMedia('(min-width: 861px)').addEventListener('change', e => {
+    if (e.matches) {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
 }

@@ -4,273 +4,110 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About — Lake Effect Architects</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* ── MISSION ── */
-    .mission-section {
-      padding: 96px 48px;
-      display: grid; grid-template-columns: 1fr 2fr;
-      gap: 80px; align-items: start;
-      border-bottom: 0.5px solid var(--border);
-    }
-    .mission-left { position: sticky; top: 100px; }
-    .mission-statement {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(24px, 2.8vw, 38px);
-      font-weight: 300; line-height: 1.4;
-      color: var(--charcoal);
-    }
-    .mission-statement em { font-style: italic; color: var(--accent-dark); }
-    .mission-body { font-size: 13px; line-height: 2.0; color: var(--mid); }
-    .mission-body p + p { margin-top: 1.3em; }
-
-    /* ── TEAM ── */
-    .team-section {
-      padding: 96px 48px;
-      border-bottom: 0.5px solid var(--border);
-    }
-    .team-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 2px; background: var(--border); margin-top: 56px;
-    }
-    .team-card {
-      background: var(--cream); padding: 48px 40px;
-      transition: background 0.2s;
-    }
-    .team-card:hover { background: var(--cream-dark); }
-    .team-portrait {
-      width: 80px; height: 80px;
-      background: var(--charcoal-mid);
-      border-radius: 50%;
-      margin-bottom: 28px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .team-portrait-initials {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px; font-weight: 400;
-      color: var(--accent-light);
-    }
-    .team-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px; font-weight: 400;
-      color: var(--charcoal); margin-bottom: 4px;
-    }
-    .team-role {
-      font-size: 10px; font-weight: 500;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--accent-dark); margin-bottom: 20px;
-    }
-    .team-bio { font-size: 11px; line-height: 1.9; color: var(--muted); }
-
-    /* ── PROCESS ── */
-    .process-section {
-      padding: 96px 48px;
-      background: var(--charcoal);
-    }
-    .process-timeline {
-      margin-top: 64px;
-      display: flex; flex-direction: column; gap: 0;
-    }
-    .phase {
-      display: grid; grid-template-columns: 120px 1fr 1fr;
-      gap: 48px;
-      padding: 40px 0;
-      border-bottom: 0.5px solid rgba(253,252,250,0.07);
-      transition: background 0.2s;
-    }
-    .phase:last-child { border-bottom: none; }
-    .phase:hover { background: rgba(253,252,250,0.02); }
-    .phase-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 15px; font-style: italic;
-      color: var(--accent); padding-top: 2px;
-    }
-    .phase-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px; font-weight: 400;
-      color: var(--white); line-height: 1.2;
-    }
-    .phase-desc { font-size: 11px; line-height: 1.9; color: rgba(253,252,250,0.45); }
-
-    /* ── VALUES ── */
-    .values-section {
-      padding: 96px 48px;
-      border-bottom: 0.5px solid var(--border);
-    }
-    .values-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 2px; background: var(--border); margin-top: 56px;
-    }
-    .value-card {
-      background: var(--cream); padding: 52px 44px;
-      border: none; transition: background 0.2s;
-    }
-    .value-card:hover { background: var(--cream-dark); }
-    .value-icon {
-      margin-bottom: 24px; opacity: 0.6;
-    }
-    .value-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 26px; font-weight: 400;
-      color: var(--charcoal); margin-bottom: 14px;
-    }
-    .value-body { font-size: 12px; line-height: 1.95; color: var(--mid); }
-
-    /* ── LOCATION ── */
-    .location-band {
-      display: grid; grid-template-columns: 1fr 1fr;
-    }
-    .location-left {
-      background: var(--charcoal);
-      padding: 80px 48px;
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .location-right {
-      background: var(--charcoal-mid);
-      min-height: 400px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .location-eyebrow {
-      font-size: 9px; font-weight: 600;
-      letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 20px;
-    }
-    .location-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(28px, 3vw, 42px);
-      font-weight: 300; color: var(--white);
-      line-height: 1.1; margin-bottom: 28px;
-    }
-    .location-body {
-      font-size: 12px; line-height: 1.9;
-      color: rgba(253,252,250,0.5); margin-bottom: 40px;
-    }
-    .location-details { display: flex; flex-direction: column; gap: 20px; }
-    .location-detail-label {
-      font-size: 9px; font-weight: 600;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 4px;
-    }
-    .location-detail-value {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 17px; font-weight: 400;
-      color: rgba(253,252,250,0.75);
-    }
-    .location-detail-value a {
-      color: inherit; text-decoration: none;
-      transition: color 0.2s;
-    }
-    .location-detail-value a:hover { color: var(--accent-light); }
-  </style>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/ask.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/about.css">
 </head>
 <body>
 
-<!-- PAGE HERO -->
-<div class="page-hero">
+<div class="page-hero" id="a-small-firm-on-the-north-shore">
   <p class="page-hero-eyebrow fade-up">About the Studio</p>
-  <h1 class="page-hero-title fade-up delay-1">Fine architecture<br>is a <em>discipline</em></h1>
-  <p class="page-hero-sub fade-up delay-2">Lake Effect Architects has been practicing on the North Shore of Chicago for over three decades, building a reputation for careful work, honest process, and buildings that last.</p>
+  <h1 class="page-hero-title fade-up delay-1">A small firm<br>on the North Shore</h1>
+  <p class="page-hero-sub fade-up delay-2">We've been practicing on the North Shore of Chicago for over three decades. Most of our work still arrives through past clients and the builders we've worked alongside.</p>
 </div>
 
-<!-- MISSION -->
 <section class="mission-section" id="mission">
   <div class="mission-left">
     <div class="section-eyebrow" style="margin-bottom:20px;">Mission Statement</div>
     <p class="mission-statement">
-      We build relationships as carefully as we build buildings—<em>and we build buildings to last</em>.
+      We'd rather do a small number of projects <em>properly</em> than a large number quickly.
     </p>
   </div>
   <div>
     <div class="mission-body">
-      <p>Lake Effect Architects offers complete services for high-end residential, custom homes, and commercial architecture. We emphasize four principles that we believe are the fundamentals of fine architecture: Clear Design Process, Team Approach, Context, and Craft &amp; Detail.</p>
-      <p>A clear design process means our clients always know where they are, what's coming, and what things will cost. There are no surprises—and when the unexpected happens (as it always does in construction), we face it together with honesty and a plan.</p>
-      <p>Our team approach means we don't attempt to be everything. We build collaborative relationships with structural engineers, mechanical consultants, landscape architects, and interior designers who share our standards. The client benefits from a coordinated team, not a solo practitioner working beyond their expertise.</p>
-      <p>Context means we listen to the site, the neighborhood, and the client before we draw a line. Every building belongs somewhere—and our job is to make it belong well. We don't have a signature style; we have a signature approach.</p>
-      <p>Craft and detail are where fine architecture actually lives. The proportion of a door, the way light enters a room, the material at the threshold—these are the things our clients notice every day, long after the project is complete. We give them the attention they deserve.</p>
+      <p>Lake Effect Architects offers full architectural services for houses, commercial buildings, and the furniture and millwork that go in them. Three principles shape how we work: a clear design process, a collaborative team approach, and close attention to context, craft and detail. They're set out in full on our <a href="philosophy.html">design philosophy</a> page.</p>
+      <p>In practice, a clear process means we put a range of alternatives on the table early, while changing direction is still cheap. Those studies are what sharpen the program and settle your priorities against the budget. You always know which phase you're in and what the next decision costs. Construction throws up surprises regardless, and when it does you hear about it from us early, with options attached.</p>
+      <p>The collaborative part mostly means we don't pretend to do everything in-house. We work with the same structural engineers, mechanical consultants, landscape architects and interior designers year after year, and we handle the coordination between them so you aren't chasing four separate offices for an answer. The Owner stays in the room for that, not just at the presentations.</p>
+      <p>Context and craft are harder to put on a fee proposal but they're what you live with. The site and the street get studied before anything gets drawn. Then it's the proportion of a door, where the light lands in the morning, what the floor does when it meets the wall. Those details take a disproportionate share of the drawing time, and they're the reason a building still feels considered ten years on.</p>
+      <p>We don't have a house style. Much of the work looks for a balance between old and new, and it comes out differently from project to project because the sites and the clients are different.</p>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
 <section class="process-section" id="process">
-  <div class="section-eyebrow" style="color:var(--accent);margin-bottom:16px;">How we work</div>
-  <h2 class="section-title" style="color:var(--white);">A clear process,<br>from start to finish</h2>
+  <div class="section-eyebrow" style="margin-bottom:16px;">How we work</div>
+  <h2 class="section-title">Five phases, start<br>to finish</h2>
   <div class="process-timeline">
     <div class="phase">
       <div class="phase-num">Phase One</div>
       <div>
         <div class="phase-title">Programming &amp; Feasibility</div>
       </div>
-      <div class="phase-desc">Before any design begins, we spend time understanding exactly what you need—how you live, what you love, what isn't working, and what budget you're working with. This phase protects against expensive surprises later.</div>
+      <div class="phase-desc">Before anything gets designed we work out what you actually need: how the place gets used, what isn't working now, and what the budget really is. Time spent here is what keeps the later phases from going sideways.</div>
     </div>
     <div class="phase">
       <div class="phase-num">Phase Two</div>
       <div>
         <div class="phase-title">Schematic Design</div>
       </div>
-      <div class="phase-desc">Initial concepts are developed and presented—plans, sections, and key elevations that communicate the fundamental moves of the design. Client feedback shapes the direction before work deepens.</div>
+      <div class="phase-desc">Plans, sections and the main elevations, enough to show the big moves and not much more. We want your reaction to these before anyone starts developing details.</div>
     </div>
     <div class="phase">
       <div class="phase-num">Phase Three</div>
       <div>
         <div class="phase-title">Design Development</div>
       </div>
-      <div class="phase-desc">The approved schematic is developed in detail: materials, systems, structural concepts, and full coordination with consultants. You leave this phase with a clear picture of what you're building and what it will cost.</div>
+      <div class="phase-desc">Materials, structure, mechanical systems, and coordination with the consultants. By the end of this phase you should be able to picture the finished building and have a realistic number attached to it.</div>
     </div>
     <div class="phase">
       <div class="phase-num">Phase Four</div>
       <div>
         <div class="phase-title">Construction Documents</div>
       </div>
-      <div class="phase-desc">Complete permit and construction documents are produced—drawings and specifications detailed enough for competitive bidding and clear enough to build from without constant interpretation.</div>
+      <div class="phase-desc">Permit and construction drawings plus specifications. Detailed enough to get comparable bids, and clear enough that the contractor isn't calling every other day for an interpretation.</div>
     </div>
     <div class="phase">
       <div class="phase-num">Phase Five</div>
       <div>
         <div class="phase-title">Construction Administration</div>
       </div>
-      <div class="phase-desc">We remain your representative throughout construction—reviewing submittals, answering contractor questions, conducting site visits, and protecting the design intent through every field decision.</div>
+      <div class="phase-desc">We stay on as your representative: submittal reviews, site visits, and answering what comes up in the field. Someone has to hold the line on the drawings once the building is going up.</div>
     </div>
   </div>
 </section>
 
-<!-- VALUES -->
-<section class="values-section">
+<section class="values-section" id="what-that-looks-like-on-a-project">
   <div class="section-header">
-    <span class="section-eyebrow">What we believe</span>
+    <span class="section-eyebrow">In practice</span>
     <div class="section-line"></div>
-    <h2 class="section-title">Four principles of<br>fine architecture</h2>
+    <h2 class="section-title">What that looks like<br>on a project</h2>
   </div>
   <div class="values-grid">
     <div class="value-card">
-      <div class="value-title">Clear Design Process</div>
-      <p class="value-body">Architecture is complex enough without opaque process. Every milestone is documented, every decision recorded, and every cost implication surfaced before it becomes a commitment. Our clients always know where they stand.</p>
+      <div class="value-title">A Clear Design Process</div>
+      <p class="value-body">Alternatives get drawn and priced early, while changing your mind is still cheap. Every phase ends with a set of drawings and a meeting, and you sign off before we move on. The cost of a decision gets raised while it is still a decision rather than a change order.</p>
     </div>
     <div class="value-card">
-      <div class="value-title">Team Approach</div>
-      <p class="value-body">The best buildings are produced by the best teams. We build relationships with engineers, consultants, and craftspeople who match our standards—and we coordinate them so the client experiences a single, coherent effort.</p>
+      <div class="value-title">A Collaborative Team Approach</div>
+      <p class="value-body">We've worked with most of our consultants for years. Fewer things fall through the gaps that way, and we can tell you early when something structural or mechanical is going to push back on the design. You're in those conversations, not briefed after them.</p>
     </div>
     <div class="value-card">
-      <div class="value-title">Context</div>
-      <p class="value-body">We believe every building should be a specific response to a specific place and client—not the application of a style or formula. Before we design, we listen. The site, the program, and the people all shape what follows.</p>
-    </div>
-    <div class="value-card">
-      <div class="value-title">Craft &amp; Detail</div>
-      <p class="value-body">Fine architecture is built in the details. Material selection, proportion, light, and the relationship of parts to whole—these are the things our clients notice every day long after completion. We treat them accordingly.</p>
+      <div class="value-title">Context, Craft &amp; Detail</div>
+      <p class="value-body">Before schematic design we'll have walked the site, looked at what sits either side of it, and checked what the village will permit. Then we draw the details at full size when they matter: window proportions, how trim resolves at a corner, where a stair meets the floor.</p>
     </div>
   </div>
 </section>
 
-<!-- LOCATION -->
-<div class="location-band">
+<div class="location-band" id="based-in-lake-bluff-illinois">
   <div class="location-left">
     <p class="location-eyebrow">Find us</p>
     <h2 class="location-title">Based in<br>Lake Bluff, Illinois</h2>
-    <p class="location-body">We work primarily on the North Shore of Chicago, from Evanston to Lake County—a region with a rich tradition of residential architecture that we're proud to be part of.</p>
+    <p class="location-body">We work mainly on the North Shore, from Evanston up through Lake County. It's an area with a long residential architecture tradition and a lot of housing stock worth keeping.</p>
     <div class="location-details">
       <div>
-        <div class="location-detail-label">Mailing Address</div>
-        <div class="location-detail-value">P.O. Box 155, Lake Bluff IL 60044</div>
+        <div class="location-detail-label">Studio</div>
+        <div class="location-detail-value">Lake Bluff, Illinois</div>
       </div>
       <div>
         <div class="location-detail-label">Phone</div>
@@ -283,25 +120,21 @@
     </div>
   </div>
   <div class="location-right">
-    <svg width="260" height="260" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Simplified Lake Michigan shoreline silhouette -->
-      <path d="M 130 20 Q 160 30 170 60 Q 190 80 200 100 Q 215 130 210 160 Q 205 190 190 210 Q 170 235 150 240 Q 130 248 110 240 Q 90 235 70 210 Q 55 190 50 160 Q 45 130 60 100 Q 70 80 90 60 Q 100 30 130 20 Z" stroke="rgba(184,169,138,0.15)" stroke-width="0.5" fill="none"/>
-      <path d="M 130 40 Q 155 50 162 75 Q 178 95 182 120 Q 190 148 185 170 Q 178 195 164 212 Q 148 230 130 236 Q 112 230 96 212 Q 82 195 75 170 Q 70 148 78 120 Q 82 95 98 75 Q 105 50 130 40 Z" stroke="rgba(184,169,138,0.2)" stroke-width="0.5" fill="none"/>
-      <!-- Lake Michigan fill suggestion -->
-      <path d="M 165 60 Q 185 90 195 130 Q 200 160 185 190" stroke="rgba(184,169,138,0.3)" stroke-width="0.5" fill="none"/>
-      <!-- North arrow -->
-      <line x1="130" y1="10" x2="130" y2="24" stroke="rgba(184,169,138,0.4)" stroke-width="0.75"/>
-      <polyline points="126,20 130,10 134,20" stroke="rgba(184,169,138,0.4)" stroke-width="0.75" fill="none"/>
-      <!-- Location pin -->
-      <circle cx="128" cy="128" r="4" fill="rgba(184,169,138,0.8)"/>
-      <circle cx="128" cy="128" r="10" stroke="rgba(184,169,138,0.3)" stroke-width="0.5" fill="none"/>
-      <circle cx="128" cy="128" r="18" stroke="rgba(184,169,138,0.15)" stroke-width="0.5" fill="none"/>
-      <!-- Label -->
-      <text x="140" y="132" font-family="'Montserrat', sans-serif" font-size="8" fill="rgba(184,169,138,0.55)" letter-spacing="1">Lake Bluff</text>
+    <svg width="260" height="260" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M 130 20 Q 160 30 170 60 Q 190 80 200 100 Q 215 130 210 160 Q 205 190 190 210 Q 170 235 150 240 Q 130 248 110 240 Q 90 235 70 210 Q 55 190 50 160 Q 45 130 60 100 Q 70 80 90 60 Q 100 30 130 20 Z" stroke="rgba(78,101,117,0.217)" stroke-width="0.5" fill="none"/>
+      <path d="M 130 40 Q 155 50 162 75 Q 178 95 182 120 Q 190 148 185 170 Q 178 195 164 212 Q 148 230 130 236 Q 112 230 96 212 Q 82 195 75 170 Q 70 148 78 120 Q 82 95 98 75 Q 105 50 130 40 Z" stroke="rgba(78,101,117,0.29)" stroke-width="0.5" fill="none"/>
+      <path d="M 165 60 Q 185 90 195 130 Q 200 160 185 190" stroke="rgba(78,101,117,0.435)" stroke-width="0.5" fill="none"/>
+      <line x1="130" y1="10" x2="130" y2="24" stroke="rgba(78,101,117,0.58)" stroke-width="0.75"/>
+      <polyline points="126,20 130,10 134,20" stroke="rgba(78,101,117,0.58)" stroke-width="0.75" fill="none"/>
+      <circle cx="128" cy="128" r="4" fill="rgba(78,101,117,0.6)"/>
+      <circle cx="128" cy="128" r="10" stroke="rgba(78,101,117,0.435)" stroke-width="0.5" fill="none"/>
+      <circle cx="128" cy="128" r="18" stroke="rgba(78,101,117,0.217)" stroke-width="0.5" fill="none"/>
+      <text x="140" y="132" font-family="'Montserrat', sans-serif" font-size="8" fill="rgba(78,101,117,0.6)" letter-spacing="1">Lake Bluff</text>
     </svg>
   </div>
 </div>
 
+<script src="ask.js"></script>
 <script src="components.js"></script>
 <script>initPage('about');</script>
 </body>

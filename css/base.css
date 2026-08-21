@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #F8F7F4;
+  --cream-dark: #F0EFEB;
+  --charcoal: #2E3033;
+  --charcoal-mid: #4C5054;
+  --mid: #53585D;
+  --muted: #8B9096;
+  --accent: #7E93A3;
+  --accent-dark: #4E6575;
+  --accent-light: #BFCED8;
+  --white: #FFFFFF;
+  --border: rgba(46,48,51,0.13);
+  --border-strong: rgba(46,48,51,0.22);
+  --panel: #F0EFEB;
+  --panel-soft: #F4F3F0;
+  --error: #8C3A2E;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
+  letter-spacing: 0.02em;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-hero {
+  padding: 80px 48px 64px;
+  min-height: 420px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  background: var(--panel);
+  border-bottom: 0.5px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(78,101,117,0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+.page-hero-eyebrow {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  margin-bottom: 20px;
+}
+.page-hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(44px, 5.5vw, 80px);
+  font-weight: 300;
+  line-height: 1.0;
+  color: var(--charcoal);
+}
+.page-hero-title em {
+  font-style: italic;
+  color: var(--accent-dark);
+}
+.page-hero-sub {
+  margin-top: 24px;
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--mid);
+  max-width: 520px;
+}
+
+.section-eyebrow {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 3.5vw, 48px);
+  font-weight: 300;
+  color: var(--charcoal);
+  line-height: 1.08;
+}
+.section-header {
+  display: flex; align-items: baseline; gap: 24px; margin-bottom: 60px;
+}
+.section-line {
+  flex: 1; max-width: 64px; height: 0.5px; background: var(--border-strong);
+}
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--charcoal); text-decoration: none;
+  padding: 14px 28px;
+  border: 0.5px solid var(--border-strong);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  width: fit-content;
+}
+.btn-ghost:hover {
+  background: rgba(46,48,51,0.05);
+  border-color: var(--accent-dark);
+  color: var(--accent-dark);
+}
+
+.btn-dark {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--white); text-decoration: none;
+  padding: 15px 32px;
+  background: var(--charcoal);
+  border: none; cursor: pointer;
+  transition: background 0.2s;
+  width: fit-content;
+}
+.btn-dark:hover { background: var(--accent-dark); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.8s ease backwards; }
+.delay-1 { animation-delay: 0.15s; }
+.delay-2 { animation-delay: 0.3s; }
+.delay-3 { animation-delay: 0.45s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .fade-up { animation: none; }
+}
+
+@media (max-width: 1080px) {
+  .page-hero { padding: 80px 28px 48px; min-height: 340px; }
+}
+
+@media (max-width: 860px) {
+  .section-header {
+    flex-direction: column; align-items: flex-start;
+    gap: 14px; margin-bottom: 40px;
+  }
+  .section-line { display: none; }
+}
+
+@media (max-width: 560px) {
+  .page-hero { padding: 80px 20px 40px; min-height: 300px; }
+  .btn-ghost, .btn-dark { padding: 14px 22px; }
+}
