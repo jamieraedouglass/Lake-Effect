@@ -15,11 +15,6 @@
   color: var(--mid); margin-bottom: 24px;
 }
 
-.piece-img {
-  width: 100%; aspect-ratio: 1;
-  background: var(--cream-dark); overflow: hidden;
-}
-
 .furniture-process {
   background: var(--panel);
   border-top: 0.5px solid var(--border);
@@ -93,3 +88,8 @@
   .process-card { padding: 32px 20px; }
   .material-card { padding: 28px 20px; }
 }
+
+.swatch-walnut { background: #5C4433; }
+.swatch-oak { background: #C8A96E; }
+.swatch-metal { background: #5A5A5A; }
+.swatch-stone { background: #E8E0D0; }

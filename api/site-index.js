@@ -13,7 +13,7 @@ export const sections = [
     "pageTitle": "About the Studio",
     "anchor": "mission",
     "href": "about.html#mission",
-    "eyebrow": "Mission Statement",
+    "eyebrow": "",
     "heading": "",
     "text": "Mission Statement We'd rather do a small number of projects properly than a large number quickly. Lake Effect Architects offers full architectural services for houses, commercial buildings, and the furniture and millwork that go in them. Three principles shape how we work: a clear design process, a collaborative team approach, and close attention to context, craft and detail. They're set out in full on our design philosophy page. In practice, a clear process means we put a range of alternatives on the table early, while changing direction is still cheap. Those studies are what sharpen the program and settle your priorities against the budget. You always know which phase you're in and what the next decision costs. Construction throws up surprises regardless, and when it does you hear about it from us early, with options attached. The collaborative part mostly means we don't pretend to do everything in-house. We work with the same structural engineers, mechanical consultants, landscape architects and interior designers year after year, and we handle the coordination between them so you aren't chasing four separate offices for an answer. The Owner stays in the room for that, not just at the presentations. Context and craft are harder to put on a fee proposal but they're what you live with. The site and the street get studied before anything gets drawn. Then it's the proportion of "
   },
@@ -22,7 +22,7 @@ export const sections = [
     "pageTitle": "About the Studio",
     "anchor": "process",
     "href": "about.html#process",
-    "eyebrow": "How we work",
+    "eyebrow": "",
     "heading": "Five phases, start to finish",
     "text": "How we work Five phases, start to finish Phase One Programming & Feasibility Before anything gets designed we work out what you actually need: how the place gets used, what isn't working now, and what the budget really is. Time spent here is what keeps the later phases from going sideways. Phase Two Schematic Design Plans, sections and the main elevations, enough to show the big moves and not much more. We want your reaction to these before anyone starts developing details. Phase Three Design Development Materials, structure, mechanical systems, and coordination with the consultants. By the end of this phase you should be able to picture the finished building and have a realistic number attached to it. Phase Four Construction Documents Permit and construction drawings plus specifications. Detailed enough to get comparable bids, and clear enough that the contractor isn't calling every other day for an interpretation. Phase Five Construction Administration We stay on as your representative: submittal reviews, site visits, and answering what comes up in the field. Someone has to hold the line on the drawings once the building is going up."
   },
@@ -58,7 +58,7 @@ export const sections = [
     "pageTitle": "Commercial",
     "anchor": "public-buildings-same-standards",
     "href": "commercial.html#public-buildings-same-standards",
-    "eyebrow": "Our commercial practice",
+    "eyebrow": "",
     "heading": "Public buildings, same standards",
     "text": "Our commercial practice Public buildings, same standards Clubhouses, community centers, retail fit-outs and institutional work. We run these the same way we run a house: the same drawing standard, the same coordination with consultants, the same presence on site once construction starts. Our commercial clients have mostly been private clubs, non-profits and small business owners around Chicagoland. Budgets tend to be tighter than on residential work, which makes the decisions in the first two phases matter a good deal more. Recent commercial projects are being photographed and written up, and will appear here. Discuss a project → Project types Private Clubs & Clubhouses → Institutional & Civic → Retail & Hospitality → Mixed-Use → Adaptive Reuse →"
   },
@@ -67,7 +67,7 @@ export const sections = [
     "pageTitle": "Contact",
     "anchor": "inquiry",
     "href": "contact.html#inquiry",
-    "eyebrow": "New Projects",
+    "eyebrow": "",
     "heading": "Start a conversation",
     "text": "New Projects Start a conversation Tell us a bit about what you're considering and we'll come back to you within one business day. If it's easier to talk it through, the number is on the right. Company First Name Last Name Email Address Phone (optional) Project Type Select a service area Residential — New Construction Residential — Renovation or Addition Commercial Architecture Furniture Design Not sure yet Project Location Approximate Budget (optional) Select a range Under $250,000 $250,000 – $500,000 $500,000 – $1,000,000 $1,000,000 – $2,500,000 Over $2,500,000 Not sure yet Tell us about your project Send inquiry → We respond to all inquiries within one business day."
   },
@@ -85,7 +85,7 @@ export const sections = [
     "pageTitle": "Contact",
     "anchor": "common-questions",
     "href": "contact.html#common-questions",
-    "eyebrow": "Common Questions",
+    "eyebrow": "",
     "heading": "",
     "text": "Common Questions Do you work outside the North Shore? + Our usual patch is the North Shore, Lake County down through Evanston. We do take work further afield, but it's decided case by case. Tell us where you are and we'll give you a straight answer. How do architectural fees work? + Full-service commissions are usually a percentage of construction cost. Consulting and partial services are hourly. Either way you'll have the fee structure in writing before you commit to anything. What's the first step? + Fill in the form on this page and we'll set up a short introductory call. We'll ask about the project, you can ask about how we work, and between us we'll work out whether it's a good fit. How long does a project take? + For a new house, figure 12 to 18 months from the first meeting to permit, with construction adding another 12 to 24 on top. Renovations and furniture move a good deal faster. We'll give you a realistic timeline at the first meeting rather than an optimistic one."
   },
@@ -94,7 +94,7 @@ export const sections = [
     "pageTitle": "Furniture Design",
     "anchor": "drawn-for-one-room-built-to-fit-it",
     "href": "furniture.html#drawn-for-one-room-built-to-fit-it",
-    "eyebrow": "Our philosophy",
+    "eyebrow": "",
     "heading": "Drawn for one room, built to fit it",
     "text": "Furniture Design Drawn for one room, built to fit it Custom furniture and millwork, usually drawn alongside the architecture for the room it's going into. Sometimes that's an entire kitchen, sometimes it's one table. Furniture is architecture at the scale of a room. Proportion and material do the same work here, there's just less of it to hide behind. Our philosophy The furniture work grew out of the architecture. Clients kept asking for pieces that would suit rooms we'd just drawn: a dining table at the right length for the space, a desk built into an awkward alcove. Eventually it made sense to offer it properly. We draw the pieces and hand them to fabricators in the Chicago area we've used for years. Wood, metal and upholstery, all built to our specifications and detailed so they can be repaired rather than replaced. Recent commissions are being photographed and will appear here. Commission a piece →"
   },
@@ -103,7 +103,7 @@ export const sections = [
     "pageTitle": "Furniture Design",
     "anchor": "from-brief-to-installation",
     "href": "furniture.html#from-brief-to-installation",
-    "eyebrow": "How we work",
+    "eyebrow": "",
     "heading": "From brief to installation",
     "text": "How we work From brief to installation 01 Brief We measure the room and work out what the piece has to do: how many people sit at it, what goes inside it, whether it ever needs to move. 02 Design Measured drawings, usually shown in the plan of the room so you can see the piece in context rather than floating on a page by itself. 03 Fabrication Our fabricators are all local. We choose the boards or the slab with them and check the work through to the final finish. 04 Installation Everything is installed and adjusted on site. Built-ins nearly always need scribing to walls that are less straight than the drawing assumed."
   },
@@ -175,7 +175,7 @@ export const sections = [
     "pageTitle": "Design Philosophy",
     "anchor": "a-thoughtful-balance-between-old-and-new",
     "href": "philosophy.html#a-thoughtful-balance-between-old-and-new",
-    "eyebrow": "Our approach",
+    "eyebrow": "",
     "heading": "A thoughtful balance between old and new",
     "text": "Design Philosophy A thoughtful balance between old and new Every project, regardless of scale, is shaped by its own distinct set of circumstances. Our job is to understand them before anything else gets decided. Our approach Much of our work seeks a thoughtful balance between old and new— respecting architectural tradition while embracing innovation . Every project, regardless of scale, is shaped by its own distinct set of circumstances. We approach each project through careful consideration of its site, context, and program, developing a design response tailored to the client's specific needs and aspirations. Our practice is guided by the three principles set out below."
   },
@@ -193,7 +193,7 @@ export const sections = [
     "pageTitle": "Design Philosophy",
     "anchor": "architecture-at-every-scale",
     "href": "philosophy.html#architecture-at-every-scale",
-    "eyebrow": "Context, Craft & Detail",
+    "eyebrow": "",
     "heading": "Architecture at every scale",
     "text": "Context, Craft & Detail Architecture at every scale Region Climate, prevailing weather, and the building traditions a place has already settled on. Site Orientation, grade, trees, what sits either side of it, and what the village will permit. Building Massing, circulation and the arrangement of rooms against the program we agreed. Material What the building is made of, how it will weather, and how it can be maintained. Detail Craftsmanship and the joints: where two materials meet and one has to give way."
   },
@@ -202,7 +202,7 @@ export const sections = [
     "pageTitle": "Design Philosophy",
     "anchor": "buildings-designed-to-stand-the-test-of",
     "href": "philosophy.html#buildings-designed-to-stand-the-test-of",
-    "eyebrow": "See it applied",
+    "eyebrow": "",
     "heading": "Buildings designed to stand the test of time",
     "text": "Buildings designed to stand the test of time The three principles hold whether the project is a new house, a clubhouse, or a single table for a room we've just finished drawing. Start a conversation → See it applied Residential → Commercial → Furniture Design → About the studio →"
   },
@@ -400,7 +400,7 @@ export const sections = [
     "pageTitle": "Residential",
     "anchor": "where-a-house-project-starts",
     "href": "residential.html#where-a-house-project-starts",
-    "eyebrow": "Our residential practice",
+    "eyebrow": "",
     "heading": "Where a house project starts",
     "text": "Our residential practice Where a house project starts We stay involved from the first conversation through the end of construction. The aim is a house that matches how you'll actually use it, which is not always the same as what looks best on a plan. Start a conversation → 01 Programming We write down how the house needs to work: who lives there, how you cook and eat, what has to be stored, and how much of the year you want to be outside. 02 Design & Development Sketch concepts turn into developed drawings, with materials and specifications settled and a cost estimate you can rely on before anyone breaks ground. 03 Construction Support We're on site regularly, answering the contractor's questions and making the calls that only come up once walls are open and you can see what's really there."
   },

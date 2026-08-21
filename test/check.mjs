@@ -192,8 +192,12 @@ console.log('\nLake Effect site checks\n');
   const files = readdirSync(join(root, 'css')).filter(f => f !== 'base.css');
   for (const f of files) {
     const css = stripComments(read(`css/${f}`));
-    for (const m of css.matchAll(/#[0-9a-fA-F]{3,8}\b/g)) {
-      problems.push(`css/${f}: hard-coded ${m[0]} — use a token from base.css`);
+    for (const rule of css.matchAll(/([^{}]+)\{([^}]*)\}/g)) {
+      const selector = rule[1].trim();
+      if (/^\.swatch-/.test(selector)) continue;
+      for (const m of rule[2].matchAll(/#[0-9a-fA-F]{3,8}\b/g)) {
+        problems.push(`css/${f}: ${selector} hard-codes ${m[0]} — use a token from base.css`);
+      }
     }
   }
   check('page stylesheets use palette tokens, not raw hex', problems);
@@ -266,6 +270,30 @@ console.log('\nLake Effect site checks\n');
     void rebuilt;
   }
   check('ask index is up to date with the pages', problems);
+}
+
+{
+  const inMarkup = new Set();
+  for (const f of [...pages, 'ask.js', 'components.js']) {
+    const src = read(f);
+    for (const m of src.matchAll(/class="([^"]*)"/g)) m[1].split(/\s+/).filter(Boolean).forEach(c => inMarkup.add(c));
+    for (const m of src.matchAll(/classList\.(?:add|remove|toggle)\('([\w-]+)'/g)) inMarkup.add(m[1]);
+    for (const m of src.matchAll(/className\s*=\s*[`'"]([^`'"]*)[`'"]/g)) {
+      m[1].replace(/\$\{[^}]*\}/g, ' ').split(/\s+/).filter(Boolean).forEach(c => inMarkup.add(c));
+    }
+  }
+  const STATE = new Set(['active', 'open', 'is-open', 'wide', 'full', 'tall', 'one',
+    'ask-pending', 'ask-msg-you', 'ask-msg-studio']);
+
+  const problems = [];
+  for (const f of readdirSync(join(root, 'css'))) {
+    const css = stripComments(read(`css/${f}`));
+    const defined = new Set([...css.matchAll(/\.([A-Za-z][\w-]*)/g)].map(m => m[1]));
+    for (const c of defined) {
+      if (!inMarkup.has(c) && !STATE.has(c)) problems.push(`css/${f}: .${c} matches no markup`);
+    }
+  }
+  check('no dead css rules', problems);
 }
 
 console.log(`\n${checks - failures}/${checks} checks passed\n`);

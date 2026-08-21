@@ -91,10 +91,12 @@ one-liner and a pointer to the contact page.
 
 A dependency-free Node script (`test/check.mjs`) that walks the built pages and
 fails on: broken internal links, missing images or stylesheets, a class used in
-markup with no matching rule, images without alt text, unbalanced tags, a page
-missing its doctype / lang / viewport / title / single h1, a project card whose
-`data-category` matches no filter button, raw hex outside `css/base.css`, and
-any street address appearing in content or filenames.
+markup with no matching rule, a CSS rule matching no markup, images without alt
+text, unbalanced tags, a page missing its doctype / lang / viewport / favicon /
+single h1, a title over 32 characters, nav or footer drifting out of sync, a
+project card whose `data-category` matches no filter button, raw hex outside
+`css/base.css` (except `.swatch-*`, which carry real material colours), a stale
+Ask index, and any street address appearing in content or filenames.
 
 It does not open a browser, so it cannot catch layout problems. For those,
 load each page in an iframe at 430, 768 and 1024px and compare

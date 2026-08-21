@@ -27,13 +27,6 @@
 .services-list-item:first-child { border-top: 0.5px solid var(--border); }
 .services-list-arrow { font-size: 14px; color: var(--accent-dark); }
 
-.rendering-card:not(:first-child) .rendering-img { aspect-ratio: 1; }
-
-.comm-img {
-  width: 100%; aspect-ratio: 3/2; overflow: hidden;
-  background: var(--panel);
-}
-
 @media (max-width: 1080px) {
   .commercial-intro-left, .commercial-intro-right { padding: 64px 28px; }
 }
@@ -41,7 +34,6 @@
 @media (max-width: 860px) {
   .commercial-intro { grid-template-columns: 1fr; }
   .commercial-intro-left { border-right: none; border-bottom: 0.5px solid var(--border); }
-  .rendering-card.full { grid-column: auto; }
 }
 
 @media (max-width: 560px) {
