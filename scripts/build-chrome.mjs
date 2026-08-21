@@ -119,7 +119,7 @@ export function build() {
     let s = original;
 
     const canonical = page === 'index.html' ? `${SITE_URL}/` : `${SITE_URL}/${page.replace(/\.html$/, '')}`;
-    const indexable = page !== '404.html';
+    const indexable = page !== '404.html' && !/\bTODO\b/.test(original);
 
     s = s.replace(/\n?  <link rel="icon"[^>]*>/g, '')
          .replace(/\n?  <link rel="apple-touch-icon"[^>]*>/g, '')

@@ -1,4 +1,4 @@
-import { writeFileSync, readdirSync } from 'node:fs';
+import { writeFileSync, readdirSync, readFileSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SITE_URL } from './build-chrome.mjs';
@@ -21,6 +21,7 @@ const today = process.env.SITEMAP_DATE ?? new Date().toISOString().slice(0, 10);
 
 const urls = readdirSync(root)
   .filter(f => f.endsWith('.html') && f !== '404.html')
+  .filter(f => !/\bTODO\b/.test(readFileSync(join(root, f), 'utf8')))
   .sort()
   .map(page => {
     const loc = page === 'index.html' ? `${SITE_URL}/` : `${SITE_URL}/${page.replace(/\.html$/, '')}`;

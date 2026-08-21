@@ -42,6 +42,7 @@ const sections = [];
 
 for (const page of readdirSync(root).filter(f => f.endsWith('.html') && f !== '404.html')) {
   const html = readFileSync(join(root, page), 'utf8');
+  if (/\bTODO\b/.test(html)) continue;
   const start = html.indexOf('<main');
   const end = html.indexOf('</main>');
   const body = start === -1 ? html.slice(html.indexOf('<body>')) : html.slice(start, end);

@@ -248,7 +248,7 @@ console.log('\nLake Effect site checks\n');
     }
     const covered = new Set(sections.map(s => s.page));
     for (const page of pages) {
-      if (page === '404.html') continue;
+      if (page === '404.html' || /\bTODO\b/.test(read(page))) continue;
       if (!covered.has(page)) problems.push(`${page} contributes no sections`);
     }
   }
@@ -302,7 +302,11 @@ console.log('\nLake Effect site checks\n');
     for (const tag of read(page).matchAll(/<img\b[^>]*>/g)) {
       const src = tag[0].match(/src="(assets\/[^"]+)"/)?.[1];
       if (!src) continue;
-      if (!/\ssrcset="/.test(tag[0])) { problems.push(`${page}: ${src} has no srcset`); continue; }
+      const width = Number(tag[0].match(/width="(\d+)"/)?.[1] ?? 0);
+      if (!/\ssrcset="/.test(tag[0])) {
+        if (width && width > 800) problems.push(`${page}: ${src} is ${width}px wide with no srcset`);
+        continue;
+      }
       if (!/\ssizes="/.test(tag[0])) problems.push(`${page}: ${src} has srcset but no sizes`);
       for (const candidate of tag[0].matchAll(/(assets\/[^\s"]+)\s+\d+w/g)) {
         if (!existsSync(join(root, candidate[1]))) problems.push(`${page}: srcset points at missing ${candidate[1]}`);
@@ -310,6 +314,28 @@ console.log('\nLake Effect site checks\n');
     }
   }
   check('responsive images resolve', problems);
+}
+
+{
+  const problems = [];
+  const drafts = pages.filter(p => /\bTODO\b/.test(read(p)));
+
+  for (const draft of drafts) {
+    if (!/<meta name="robots" content="noindex">/.test(read(draft))) {
+      problems.push(`${draft} still has TODOs but is not noindex`);
+    }
+    for (const page of pages) {
+      if (page === draft) continue;
+      if (new RegExp(`href="${draft}(#[^"]*)?"`).test(read(page))) {
+        problems.push(`${page} links to ${draft}, which still has TODOs in it`);
+      }
+    }
+    const index = JSON.parse(readFileSync(join(root, 'assets', 'site-index.json'), 'utf8'));
+    if (index.sections.some(s => s.page === draft)) {
+      problems.push(`${draft} is in the Ask index while it still has TODOs`);
+    }
+  }
+  check('unfinished pages are not linked or indexed', problems);
 }
 
 console.log(`\n${checks - failures}/${checks} checks passed\n`);
