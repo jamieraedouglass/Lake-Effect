@@ -191,9 +191,12 @@ async function send(question) {
       detail = (await res.json()).error ?? '';
     } catch {}
     console.warn(`ask: /api/ask returned ${res.status}${detail ? ` (${detail})` : ''} — answering from site search`);
-    setMode(detail === 'not_configured'
-      ? 'Answering from site search — the assistant is not switched on yet.'
-      : `Answering from site search — the assistant is unreachable (${res.status}).`);
+    const reason = {
+      not_configured: 'the assistant is not switched on yet',
+      bad_key: 'the API key was rejected',
+      forbidden: 'this origin is not allowed',
+    }[detail];
+    setMode(`Answering from site search — ${reason ?? `the assistant is unreachable (${res.status})`}.`);
     await fallback(question, pending);
   } catch (err) {
     console.warn('ask: could not reach /api/ask — answering from site search', err);

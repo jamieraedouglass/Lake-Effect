@@ -90,7 +90,7 @@ export default async function handler(request) {
     return json({ error: 'The last message must be from the visitor.' }, 400);
   }
 
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.LE_ANTHROPIC_API_KEY ?? process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     return json({ error: 'not_configured' }, 503);
   }
@@ -131,8 +131,12 @@ export default async function handler(request) {
     if (error instanceof Anthropic.RateLimitError) {
       return json({ error: 'busy' }, 429);
     }
-    console.error(error);
-    return json({ error: 'failed' }, 502);
+    if (error instanceof Anthropic.AuthenticationError) {
+      console.error('ask: the API key was rejected');
+      return json({ error: 'bad_key' }, 502);
+    }
+    console.error('ask:', error?.stack ?? error);
+    return json({ error: 'failed', detail: error?.message?.slice(0, 200) }, 502);
   }
 }
 

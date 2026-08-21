@@ -38,7 +38,7 @@ export default async function handler(request) {
   if (!first || !last) return json({ error: 'Name is required.' }, 400);
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: 'A valid email is required.' }, 400);
 
-  const apiKey = process.env.RESEND_API_KEY;
+  const apiKey = process.env.LE_RESEND_API_KEY ?? process.env.RESEND_API_KEY;
   if (!apiKey) return json({ error: 'not_configured' }, 503);
 
   recordHit(visitor, LIMIT);

@@ -19,6 +19,6 @@
   "type": "module",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.70.0",
-    "zod": "^3.25.0"
+    "zod": "^4.4.3"
   }
 }

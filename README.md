@@ -54,7 +54,7 @@ On Vercel, which is what this is set up for:
 1. Import the repo. `vercel.json` is already here; `api/ask.js` and
    `api/contact.js` are picked up automatically as `POST /api/ask` and
    `POST /api/contact`.
-2. Set `ANTHROPIC_API_KEY` and `RESEND_API_KEY` in Project Settings →
+2. Set `LE_ANTHROPIC_API_KEY` and `LE_RESEND_API_KEY` in Project Settings →
    Environment Variables, ticked
    for **Production** and **Preview** if you want it live on preview
    deployments too. Redeploy after adding it — existing builds do not pick up
@@ -68,6 +68,14 @@ The build regenerates images with `sips`, which only exists on macOS, so
 running it on Vercel's Linux builder would fail. Generated files are committed;
 the deploy just re-runs the checks. `npm run build` is a local step — run it
 after adding photos or changing page copy, then commit what it produces.
+
+The endpoints also accept the unprefixed `ANTHROPIC_API_KEY` and
+`RESEND_API_KEY`, so a local `.env.local` can use either name.
+
+`zod` must be v4. The SDK's `betaZodOutputFormat` calls `z.toJSONSchema()`,
+which only exists in zod 4 — on zod 3 the request throws at the point the
+output format is built, and the panel falls back to search. The SDK's peer
+range allows v3, so npm will not warn you.
 
 Locally, `npm start` is a plain static file server and does not run functions
 at all, so the panel falls back to keyword search. That is expected, and it is
