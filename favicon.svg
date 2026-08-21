@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" fill="#2E3033"/>
+  <text x="20" y="41"
+        font-family="'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif"
+        font-size="34" fill="#F8F7F4">l</text>
+  <text x="30" y="41"
+        font-family="'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif"
+        font-size="34" font-style="italic" fill="#B9C6D2">e</text>
+  <path d="M 13 48 Q 21 44 29 48 Q 37 52 45 48 Q 51 45 51 45"
+        fill="none" stroke="#B9C6D2" stroke-width="2.4" stroke-linecap="round"/>
+</svg>

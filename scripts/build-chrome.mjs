@@ -79,10 +79,29 @@ const footer = `<footer>
   </div>
 </footer>`;
 
-const HEAD_LINKS = `  <link rel="icon" type="image/svg+xml" href="logo.svg">
+const HEAD_LINKS = `  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap">`;
+
+
+const TITLES = {
+  'index.html': 'Lake Effect Architects',
+  'residential.html': 'Residential',
+  'commercial.html': 'Commercial',
+  'furniture.html': 'Furniture',
+  'philosophy.html': 'Philosophy',
+  'about.html': 'About',
+  'contact.html': 'Contact',
+  'privacy.html': 'Privacy',
+  'terms.html': 'Terms',
+  '404.html': 'Not found',
+  'project-lake-bluff-mcm.html': 'Mid-Century Modern, Lake Bluff',
+  'project-pebble-beach.html': 'Contemporary, Pebble Beach',
+  'project-lake-bluff-historic.html': 'Traditional, Lake Bluff',
+};
 
 const SKIP_LINK = '<a class="skip-link" href="#main">Skip to content</a>';
 
@@ -103,9 +122,14 @@ export function build() {
     const indexable = page !== '404.html';
 
     s = s.replace(/\n?  <link rel="icon"[^>]*>/g, '')
+         .replace(/\n?  <link rel="apple-touch-icon"[^>]*>/g, '')
          .replace(/\n?  <link rel="preconnect"[^>]*>/g, '')
          .replace(/\n?  <link rel="stylesheet" href="https:\/\/fonts[^>]*>/g, '')
          .replace(/\n?  <link rel="canonical"[^>]*>/g, '');
+
+    if (TITLES[page]) {
+      s = s.replace(/<title>[^<]*<\/title>/, `<title>${TITLES[page]}</title>`);
+    }
 
     s = s.replace('  <link rel="stylesheet" href="css/base.css">',
       `${indexable ? `  <link rel="canonical" href="${canonical}">\n` : ''}${HEAD_LINKS}\n  <link rel="stylesheet" href="css/base.css">`);

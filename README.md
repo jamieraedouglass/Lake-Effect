@@ -129,6 +129,10 @@ anything looks wrong.
     project-lake-bluff-historic.html individual project page
     components.js                 nav + footer, injected into every page
     404.html                      not-found page
+    favicon.svg                   square "le" mark for tabs
+    favicon-32.png                fallback, rendered from favicon.svg
+    apple-touch-icon.png          180px, rendered from favicon.svg
+    logo.svg                      the full wordmark, used in the nav
     robots.txt, sitemap.xml       generated; sitemap by npm run build:sitemap
     ask.js                        the Ask panel and its no-backend fallback
     api/ask.js                    serverless function behind the Ask panel
@@ -149,6 +153,19 @@ generated from one source in `scripts/build-chrome.mjs` — edit them there and
 run `npm run build:chrome`. `npm test` fails if any page's copy has drifted.
 
 `initPage()` is only behaviour now: the mobile menu toggle and the Ask panel.
+
+Page titles also live in `build-chrome.mjs`. They are deliberately short so
+browser tabs stay readable — "Residential", not "Residential — Lake Effect
+Architects". The trade-off is that `<title>` is also the headline Google shows
+in search results, so those results carry the page name without the practice
+name. If that matters more than tab legibility, add a suffix in the `TITLES`
+map and re-run `npm run build:chrome`. `npm test` fails any title over 32
+characters.
+
+`logo.svg` is a 680x230 wordmark and is unreadable at 16px, so the favicon is
+a separate square mark: an "le" in the same Palatino pairing over the wave
+motif. The two PNGs are rendered from `favicon.svg` and should be regenerated
+if it changes.
 
 Changing the domain means changing `SITE_URL` in `scripts/build-chrome.mjs`
 and re-running `npm run build`, which updates every canonical tag and the
