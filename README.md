@@ -181,9 +181,17 @@ map and re-run `npm run build:chrome`. `npm test` fails any title over 32
 characters.
 
 `logo.svg` is a 680x230 wordmark and is unreadable at 16px, so the favicon is
-a separate square mark: an "le" in the same Palatino pairing over the wave
-motif. The two PNGs are rendered from `favicon.svg` and should be regenerated
-if it changes.
+a separate square mark in `favicon.svg`.
+
+The two PNGs are rendered from it and must be regenerated whenever it changes:
+
+    favicon-32.png       32x32, transparency kept
+    apple-touch-icon.png 180x180, drawn on a solid background
+
+The Apple icon is deliberately opaque. `favicon.svg` has rounded corners, so
+its own corners are transparent, and iOS renders transparency as black behind
+the mask it applies. Render it over the mark's background colour rather than
+letting the corners through.
 
 Changing the domain means changing `SITE_URL` in `scripts/build-chrome.mjs`
 and re-running `npm run build`, which updates every canonical tag and the
