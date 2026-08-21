@@ -15,9 +15,13 @@ function hostOf(value) {
 
 export function sameSite(request) {
   const origin = request.headers.get('origin');
-  const host = origin ? hostOf(origin) : hostOf(request.headers.get('referer') ?? '');
+  const referer = request.headers.get('referer');
+  const host = hostOf(origin ?? '') ?? hostOf(referer ?? '');
 
-  if (!host) return false;
+  if (!host) return true;
+
+  const self = hostOf(request.url);
+  if (self && host === self) return true;
   if (host.startsWith('localhost') || host.startsWith('127.0.0.1')) return true;
   if (host.endsWith('.vercel.app')) return true;
   return ALLOWED_HOSTS.some(allowed => host === allowed);

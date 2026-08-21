@@ -27,6 +27,8 @@ const ASK_HTML = `
     </div>
   </div>
 
+  <p class="ask-mode" id="ask-mode" hidden></p>
+
   <form class="ask-form" id="ask-form">
     <input class="ask-input" id="ask-input" type="text" autocomplete="off" maxlength="400"
            placeholder="Ask a question" aria-label="Ask a question">
@@ -35,6 +37,7 @@ const ASK_HTML = `
 </div>`;
 
 const HISTORY_TURNS = 8;
+const LEGAL = new Set(['privacy.html', 'terms.html']);
 
 let index = null;
 let history = [];
@@ -45,13 +48,41 @@ async function loadIndex() {
   return index;
 }
 
-const STOP = new Set(['the','a','an','and','or','of','to','in','on','for','is','are','do','you',
-  'your','my','i','we','how','what','where','can','with','does','much','it','me','show','have',
-  'about','their','they','been','would','could','there']);
+const STOP = new Set(['the','a','an','and','or','of','to','in','on','for','is','are',
+  'my','we','with','it','me','have','their','they','been','would','could','there','that',
+  'this','from','was','were','has','had','will','would','can','could','any','some']);
+
+const SYNONYMS = {
+  cost: 'fee', costs: 'fee', price: 'fee', pricing: 'fee', charge: 'fee', rate: 'fee',
+  located: 'lake bluff', location: 'lake bluff', where: 'lake bluff', based: 'lake bluff',
+  start: 'first step', started: 'first step', begin: 'first step', beginning: 'first step',
+  timeline: 'long take', duration: 'long take', quick: 'long take',
+  house: 'home', houses: 'home', home: 'home', homes: 'home',
+  kitchen: 'kitchen', bathroom: 'bath', remodel: 'renovation', remodeling: 'renovation',
+  extension: 'addition', addon: 'addition',
+  hire: 'first step', consultation: 'first step', quote: 'fee',
+};
+
+const GREETINGS = /^(hi|hey|hello|yo|good (morning|afternoon|evening)|howdy)\b[\s!.?]*$/i;
+
+function stem(w) {
+  if (w.length > 4 && w.endsWith('ies')) return w.slice(0, -3) + 'y';
+  if (w.length > 4 && w.endsWith('ing')) return w.slice(0, -3);
+  if (w.length > 4 && w.endsWith('ed')) return w.slice(0, -2);
+  if (w.length > 3 && w.endsWith('es')) return w.slice(0, -2);
+  if (w.length > 3 && w.endsWith('s') && !w.endsWith('ss')) return w.slice(0, -1);
+  return w;
+}
 
 function tokenize(s) {
-  return s.toLowerCase().replace(/[^a-z0-9\s]/g, ' ').split(/\s+/)
-    .filter(w => w.length > 2 && !STOP.has(w));
+  const words = s.toLowerCase().replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(Boolean);
+  const out = new Set();
+  for (const w of words) {
+    if (SYNONYMS[w]) SYNONYMS[w].split(' ').forEach(t => out.add(stem(t)));
+    if (w.length < 3 || STOP.has(w)) continue;
+    out.add(stem(w));
+  }
+  return [...out];
 }
 
 function searchSections(question, sections) {
@@ -61,17 +92,19 @@ function searchSections(question, sections) {
     .map(s => {
       const title = s.pageTitle.toLowerCase();
       const label = `${s.heading} ${s.eyebrow}`.toLowerCase();
-      const hay = `${title} ${label} ${s.text}`.toLowerCase();
+      const words = new Set(`${title} ${label} ${s.text}`.toLowerCase()
+        .replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(Boolean).map(stem));
+      const labelWords = new Set(`${title} ${label}`.toLowerCase()
+        .replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(Boolean).map(stem));
+
       let score = 0, matched = 0;
       for (const t of terms) {
-        const hits = hay.split(t).length - 1;
-        if (!hits) continue;
+        if (!words.has(t)) continue;
         matched++;
-        if (title.includes(t)) score += 8;
-        if (label.includes(t)) score += 4;
-        score += Math.min(hits, 3);
+        score += labelWords.has(t) ? 6 : 2;
       }
       if (terms.length > 1 && matched < 2) score = 0;
+      if (LEGAL.has(s.page)) score -= 8;
       return { s, score };
     })
     .filter(r => r.score >= 3)
@@ -114,6 +147,12 @@ function addLinks(links) {
   scrollDown();
 }
 
+function setMode(text) {
+  const el = document.getElementById('ask-mode');
+  el.textContent = text ?? '';
+  el.hidden = !text;
+}
+
 async function send(question) {
   if (busy) return;
   busy = true;
@@ -137,6 +176,7 @@ async function send(question) {
       pending.textContent = data.answer;
       addLinks(data.links ?? []);
       history.push({ role: 'assistant', content: data.answer });
+      setMode(null);
       return;
     }
     if (res.status === 429) {
@@ -145,8 +185,19 @@ async function send(question) {
       history.pop();
       return;
     }
+
+    let detail = '';
+    try {
+      detail = (await res.json()).error ?? '';
+    } catch {}
+    console.warn(`ask: /api/ask returned ${res.status}${detail ? ` (${detail})` : ''} — answering from site search`);
+    setMode(detail === 'not_configured'
+      ? 'Answering from site search — the assistant is not switched on yet.'
+      : `Answering from site search — the assistant is unreachable (${res.status}).`);
     await fallback(question, pending);
-  } catch {
+  } catch (err) {
+    console.warn('ask: could not reach /api/ask — answering from site search', err);
+    setMode('Answering from site search — the assistant is unreachable.');
     await fallback(question, pending);
   } finally {
     busy = false;
@@ -156,9 +207,16 @@ async function send(question) {
 }
 
 async function fallback(question, pending) {
+  pending.classList.remove('ask-pending');
+
+  if (GREETINGS.test(question.trim())) {
+    pending.textContent = 'Hello. Ask me anything about the practice and I will point you to the part of the site that covers it.';
+    history.push({ role: 'assistant', content: pending.textContent });
+    return;
+  }
+
   const { sections } = await loadIndex();
   const hits = searchSections(question, sections);
-  pending.classList.remove('ask-pending');
 
   if (!hits.length) {
     pending.textContent =

@@ -22,6 +22,12 @@ It works in two modes and always degrades to the second:
 1. **With the function deployed** — `api/ask.js` sends the conversation (last 8
    turns) to Claude along with the whole site as context, and gets back an
    answer plus links.
+When the assistant cannot be reached the panel says so, in a line under the
+thread, with the HTTP status. The browser console carries the same detail. If
+you see "Answering from site search" on the live site, the function is not
+being reached — that line names the reason. Keyword search is the safety net,
+not the product; its answers are noticeably worse and always will be.
+
 2. **With no backend at all** — the panel falls back to keyword search over
    `assets/site-index.json`, entirely in the browser. Each message is answered
    independently, so follow-ups do not resolve, but it renders in the same

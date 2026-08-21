@@ -133,3 +133,12 @@
   .ask-thread { padding: 16px 18px; }
   .ask-form { padding: 12px 18px 14px; }
 }
+
+.ask-mode {
+  padding: 0 22px 10px;
+  font-size: 10px; line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+.ask-mode[hidden] { display: none; }
