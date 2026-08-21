@@ -165,3 +165,10 @@ select.form-input { appearance: none; cursor: pointer; }
   .form-submit { justify-content: space-between; }
   .form-note { max-width: none; }
 }
+
+.form-trap {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden; clip-path: inset(50%);
+  white-space: nowrap;
+}

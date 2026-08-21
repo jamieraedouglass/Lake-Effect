@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact — Lake Effect Architects</title>
+  <title>Contact</title>
+  <meta name="description" content="Start a conversation with Lake Effect Architects in Lake Bluff, Illinois. Call 847.234.4688, email, or send a note about your project.">
+  <link rel="canonical" href="https://leffect.com/contact">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/ask.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -11,29 +19,59 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to content</a>
+<nav id="main-nav">
+  <a class="nav-logo" href="./">
+    <img src="logo.svg" alt="Lake Effect Architects" class="nav-logo-img" width="180" height="52">
+  </a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="residential.html" data-page="residential">Residential</a></li>
+    <li><a href="commercial.html" data-page="commercial">Commercial</a></li>
+    <li><a href="furniture.html" data-page="furniture">Furniture</a></li>
+    <li><a href="philosophy.html" data-page="philosophy">Philosophy</a></li>
+    <li><a href="about.html" data-page="about">About</a></li>
+  </ul>
+  <a class="nav-cta" href="contact.html">Inquire</a>
+</nav>
+
+<main id="main" tabindex="-1">
+
+
+
+
+
+
+
+
+
 <div class="contact-main">
 
   <div class="contact-form-side" id="inquiry">
-    <div class="section-eyebrow" style="margin-bottom:20px;">New Projects</div>
+    <div class="section-eyebrow spaced">New Projects</div>
     <h1 class="contact-form-title">Start a<br>conversation</h1>
     <p class="contact-form-sub">Tell us a bit about what you're considering and we'll come back to you within one business day. If it's easier to talk it through, the number is on the right.</p>
 
     <form id="contact-form">
-      <input type="hidden" name="_subject" value="New project inquiry — Lake Effect Architects">
+      <div class="form-trap" aria-hidden="true">
+        <label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+      </div>
       <div class="form-two-col">
         <div class="form-row">
           <label class="form-label" for="first-name">First Name</label>
-          <input id="first-name" type="text" name="first_name" class="form-input" placeholder="Jane" required>
+          <input id="first-name" aria-required="true" type="text" name="first_name" class="form-input" placeholder="Jane" required>
         </div>
         <div class="form-row">
           <label class="form-label" for="last-name">Last Name</label>
-          <input id="last-name" type="text" name="last_name" class="form-input" placeholder="Smith" required>
+          <input id="last-name" aria-required="true" type="text" name="last_name" class="form-input" placeholder="Smith" required>
         </div>
       </div>
       <div class="form-two-col">
         <div class="form-row">
           <label class="form-label" for="email">Email Address</label>
-          <input id="email" type="email" name="email" class="form-input" placeholder="jane@email.com" required>
+          <input id="email" aria-required="true" type="email" name="email" class="form-input" placeholder="jane@email.com" required>
         </div>
         <div class="form-row">
           <label class="form-label" for="phone">Phone (optional)</label>
@@ -75,7 +113,7 @@
         <button type="submit" class="form-submit">Send inquiry <span>→</span></button>
         <p class="form-note">We respond to all inquiries within one business day.</p>
       </div>
-      <p class="form-error" id="form-error" role="alert" hidden></p>
+      <p class="form-error" id="form-error" role="alert" aria-live="assertive" tabindex="-1" hidden></p>
     </form>
 
     <div class="form-success" id="form-success" hidden>
@@ -109,7 +147,7 @@
     <div class="divider-thin"></div>
 
     <div class="faq-section" id="common-questions">
-      <div class="section-eyebrow" style="margin-bottom:24px;">Common Questions</div>
+      <div class="section-eyebrow spaced">Common Questions</div>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false">Do you work outside the North Shore? <span class="faq-q-toggle" aria-hidden="true">+</span></button>
         <p class="faq-a" hidden>Our usual patch is the North Shore, Lake County down through Evanston. We do take work further afield, but it's decided case by case. Tell us where you are and we'll give you a straight answer.</p>
@@ -130,11 +168,81 @@
   </div>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</main>
+
+<noscript>
+  <p class="noscript-note">This site works without JavaScript, but the project filter and the Ask panel need it.</p>
+</noscript>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">Lake Effect<br>Architects</div>
+      <p class="footer-tagline">Architecture and furniture design for homes, clubs and commercial buildings on Chicago's North Shore. Lake Bluff, Illinois.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Work</div>
+      <ul class="footer-links">
+        <li><a href="residential.html">Residential</a></li>
+        <li><a href="commercial.html">Commercial</a></li>
+        <li><a href="furniture.html">Furniture Design</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Studio</div>
+      <ul class="footer-links">
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="philosophy.html">Design Philosophy</a></li>
+        <li><a href="about.html#process">Process</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="tel:8472344688">847.234.4688</a></li>
+        <li><a href="mailto:rob@leffect.com">rob@leffect.com</a></li>
+        <li><a href="contact.html">Start a project</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Lake Effect Architects, Inc. &nbsp;·&nbsp; Lake Bluff, Illinois</p>
+    <div class="footer-legal">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+  </div>
+</footer>
+
 <script src="ask.js"></script>
 <script src="components.js"></script>
 <script>initPage();
-
-  const FORMSPREE_ID = '';
 
   const form = document.getElementById('contact-form');
   const errorMsg = document.getElementById('form-error');
@@ -145,33 +253,39 @@
     const submitBtn = form.querySelector('.form-submit');
     errorMsg.hidden = true;
 
-    if (!FORMSPREE_ID) {
-      errorMsg.textContent = 'This form isn’t connected yet. Please email rob@leffect.com or call 847.234.4688.';
-      errorMsg.hidden = false;
-      return;
-    }
-
     const original = submitBtn.innerHTML;
     submitBtn.textContent = 'Sending…';
     submitBtn.disabled = true;
 
     try {
-      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      const res = await fetch('api/contact', {
         method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
       });
 
-      if (!response.ok) throw new Error(`Formspree returned ${response.status}`);
+      if (res.ok) {
+        form.hidden = true;
+        document.getElementById('form-success').hidden = false;
+        return;
+      }
 
-      form.hidden = true;
-      document.getElementById('form-success').hidden = false;
+      const { error } = await res.json().catch(() => ({}));
+      const notWired = res.status === 404 || res.status === 503 || error === 'not_configured';
+      errorMsg.textContent = notWired
+        ? 'The form isn’t connected yet. Please email rob@leffect.com or call 847.234.4688.'
+        : 'That didn’t send. Try again, or email rob@leffect.com directly.';
+      errorMsg.hidden = false;
+      errorMsg.focus();
     } catch (err) {
       console.error(err);
       errorMsg.textContent = 'That didn’t send. Try again, or email rob@leffect.com directly.';
       errorMsg.hidden = false;
-      submitBtn.innerHTML = original;
-      submitBtn.disabled = false;
+    } finally {
+      if (!form.hidden) {
+        submitBtn.innerHTML = original;
+        submitBtn.disabled = false;
+      }
     }
   });
 

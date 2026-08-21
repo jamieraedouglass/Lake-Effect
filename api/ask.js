@@ -1,7 +1,8 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { z } from 'zod';
-import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod';
-import siteIndex from '../assets/site-index.json' with { type: 'json' };
+import { betaZodOutputFormat } from '@anthropic-ai/sdk/helpers/beta/zod';
+import { sections } from './site-index.js';
+import { sameSite, clientKey, atLimit, recordHit } from './guard.js';
 
 const MAX_QUESTION_CHARS = 400;
 const MAX_TURNS = 8;
@@ -24,7 +25,7 @@ const AnswerSchema = z.object({
     .describe('False when the site content does not answer the question.'),
 });
 
-const CORPUS = siteIndex.sections
+const CORPUS = sections
   .map(s => [
     `## ${s.pageTitle} · ${s.heading || s.eyebrow || s.anchor}`,
     `href: ${s.href}`,
@@ -56,6 +57,10 @@ export default async function handler(request) {
   if (request.method !== 'POST') {
     return json({ error: 'Use POST.' }, 405);
   }
+  if (!sameSite(request)) return json({ error: 'forbidden' }, 403);
+  const LIMIT = { max: 12, windowMs: 60_000 };
+  const visitor = clientKey(request);
+  if (atLimit(visitor, LIMIT)) return json({ error: 'busy' }, 429);
 
   let messages;
   try {
@@ -90,16 +95,18 @@ export default async function handler(request) {
     return json({ error: 'not_configured' }, 503);
   }
 
+  recordHit(visitor, LIMIT);
+
   try {
     const client = new Anthropic({ apiKey });
-    const response = await client.messages.parse({
+    const response = await client.beta.messages.parse({
       model: 'claude-opus-5',
       max_tokens: 1024,
       cache_control: { type: 'ephemeral' },
       system: SYSTEM,
       output_config: {
         effort: 'low',
-        format: zodOutputFormat(AnswerSchema),
+        format: betaZodOutputFormat(AnswerSchema),
       },
       messages: turns,
     });
@@ -112,7 +119,7 @@ export default async function handler(request) {
       });
     }
 
-    const known = new Set(siteIndex.sections.map(s => s.href));
+    const known = new Set(sections.map(s => s.href));
     known.add('contact.html');
     const result = response.parsed_output;
 

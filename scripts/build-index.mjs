@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(root, 'assets', 'site-index.json');
+const OUT_MODULE = join(root, 'api', 'site-index.js');
 
 const PAGE_TITLES = {
   'index.html': 'Home',
@@ -16,6 +17,8 @@ const PAGE_TITLES = {
   'project-lake-bluff-mcm.html': 'Project · Mid-Century Modern, Lake Bluff',
   'project-pebble-beach.html': 'Project · Contemporary, Pebble Beach',
   'project-lake-bluff-historic.html': 'Project · Traditional / Historic, Lake Bluff',
+  'privacy.html': 'Privacy',
+  'terms.html': 'Terms of Use',
 };
 
 const strip = html => html
@@ -37,11 +40,13 @@ const NOT_CONTENT = new Set([
 
 const sections = [];
 
-for (const page of readdirSync(root).filter(f => f.endsWith('.html'))) {
+for (const page of readdirSync(root).filter(f => f.endsWith('.html') && f !== '404.html')) {
   const html = readFileSync(join(root, page), 'utf8');
-  const body = html.slice(html.indexOf('<body>'));
+  const start = html.indexOf('<main');
+  const end = html.indexOf('</main>');
+  const body = start === -1 ? html.slice(html.indexOf('<body>')) : html.slice(start, end);
   const blocks = body.matchAll(
-    /<(section|div)\b[^>]*\bid="([^"]+)"[^>]*>([\s\S]*?)(?=<(?:section|div) [^>]*\bid="|<script src="ask)/g
+    /<(section|div)\b[^>]*\bid="([^"]+)"[^>]*>([\s\S]*?)(?=<(?:section|div) [^>]*\bid="|$)/g
   );
 
   for (const [, , id, inner] of blocks) {
@@ -69,6 +74,7 @@ const index = {
 };
 
 writeFileSync(OUT, JSON.stringify(index, null, 2) + '\n');
+writeFileSync(OUT_MODULE, `export const sections = ${JSON.stringify(sections, null, 2)};\n`);
 
 const words = sections.reduce((n, s) => n + s.text.split(' ').length, 0);
 console.log(`site-index.json · ${sections.length} sections, ~${words} words (~${Math.round(words * 1.4)} tokens)`);

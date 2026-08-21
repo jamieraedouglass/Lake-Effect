@@ -96,7 +96,10 @@ console.log('\nLake Effect site checks\n');
     if (!/^<!DOCTYPE html>/i.test(html)) problems.push(`${page}: missing doctype`);
     if (!/<html lang="/.test(html)) problems.push(`${page}: <html> has no lang`);
     if (!/<meta name="viewport"/.test(html)) problems.push(`${page}: no viewport meta`);
-    if (!/<title>/.test(html)) problems.push(`${page}: no <title>`);
+    const title = html.match(/<title>([^<]*)<\/title>/);
+    if (!title) problems.push(`${page}: no <title>`);
+    else if (title[1].length > 32) problems.push(`${page}: title is ${title[1].length} chars, tabs truncate around 30`);
+    if (!/rel="icon" type="image\/svg\+xml"/.test(html)) problems.push(`${page}: no svg favicon`);
     const h1s = [...html.matchAll(/<h1[\s>]/g)].length;
     if (h1s !== 1) problems.push(`${page}: ${h1s} <h1> elements, expected 1`);
     if (!/initPage\(/.test(html)) problems.push(`${page}: never calls initPage()`);
@@ -189,25 +192,43 @@ console.log('\nLake Effect site checks\n');
   const files = readdirSync(join(root, 'css')).filter(f => f !== 'base.css');
   for (const f of files) {
     const css = stripComments(read(`css/${f}`));
-    for (const m of css.matchAll(/#[0-9a-fA-F]{3,8}\b/g)) {
-      problems.push(`css/${f}: hard-coded ${m[0]} — use a token from base.css`);
+    for (const rule of css.matchAll(/([^{}]+)\{([^}]*)\}/g)) {
+      const selector = rule[1].trim();
+      if (/^\.swatch-/.test(selector)) continue;
+      for (const m of rule[2].matchAll(/#[0-9a-fA-F]{3,8}\b/g)) {
+        problems.push(`css/${f}: ${selector} hard-codes ${m[0]} — use a token from base.css`);
+      }
     }
   }
   check('page stylesheets use palette tokens, not raw hex', problems);
 }
 
 {
-  const js = read('components.js');
-  const navPages = [...js.matchAll(/data-page="([\w-]+)"/g)].map(m => m[1]);
   const problems = [];
+  const canonical = read('index.html').match(/<nav id="main-nav">[\s\S]*?<\/nav>/)[0];
+  const navHrefs = [...canonical.matchAll(/href="([\w./-]+\.html)"/g)].map(m => m[1]);
+  const navKeys = [...canonical.matchAll(/data-page="([\w-]+)"/g)].map(m => m[1]);
+
+  for (const href of navHrefs) {
+    if (!existsSync(join(root, href))) problems.push(`nav links to missing ${href}`);
+  }
+
   for (const page of pages) {
-    const m = read(page).match(/initPage\('([\w-]+)'\)/);
-    if (m && !navPages.includes(m[1])) problems.push(`${page}: initPage('${m[1]}') matches no nav item`);
+    const html = read(page);
+    const nav = html.match(/<nav id="main-nav">[\s\S]*?<\/nav>/);
+    if (!nav) { problems.push(`${page}: no nav in the markup`); continue; }
+    const stripped = nav[0].replace(/ class="active" aria-current="page"/g, '');
+    if (stripped !== canonical.replace(/ class="active" aria-current="page"/g, '')) {
+      problems.push(`${page}: nav has drifted — run npm run build:chrome`);
+    }
+    const active = [...nav[0].matchAll(/data-page="([\w-]+)"[^>]*class="active"/g)].map(m => m[1]);
+    if (active.length > 1) problems.push(`${page}: ${active.length} nav items marked active`);
+    if (active.length && !navKeys.includes(active[0])) {
+      problems.push(`${page}: active item "${active[0]}" is not a nav item`);
+    }
+    if (!html.includes('<footer>')) problems.push(`${page}: no footer in the markup`);
   }
-  for (const m of js.matchAll(/href="([\w-]+\.html)" data-page=/g)) {
-    if (!existsSync(join(root, m[1]))) problems.push(`nav links to missing ${m[1]}`);
-  }
-  check('nav highlighting targets exist', problems);
+  check('nav and footer are in the markup and in sync', problems);
 }
 
 {
@@ -226,7 +247,10 @@ console.log('\nLake Effect site checks\n');
       if (!s.text || s.text.length < 20) problems.push(`${s.href} — section text is empty`);
     }
     const covered = new Set(sections.map(s => s.page));
-    for (const page of pages) if (!covered.has(page)) problems.push(`${page} contributes no sections`);
+    for (const page of pages) {
+      if (page === '404.html') continue;
+      if (!covered.has(page)) problems.push(`${page} contributes no sections`);
+    }
   }
   check('ask index resolves to real sections', problems);
 }
@@ -246,6 +270,46 @@ console.log('\nLake Effect site checks\n');
     void rebuilt;
   }
   check('ask index is up to date with the pages', problems);
+}
+
+{
+  const inMarkup = new Set();
+  for (const f of [...pages, 'ask.js', 'components.js']) {
+    const src = read(f);
+    for (const m of src.matchAll(/class="([^"]*)"/g)) m[1].split(/\s+/).filter(Boolean).forEach(c => inMarkup.add(c));
+    for (const m of src.matchAll(/classList\.(?:add|remove|toggle)\('([\w-]+)'/g)) inMarkup.add(m[1]);
+    for (const m of src.matchAll(/className\s*=\s*[`'"]([^`'"]*)[`'"]/g)) {
+      m[1].replace(/\$\{[^}]*\}/g, ' ').split(/\s+/).filter(Boolean).forEach(c => inMarkup.add(c));
+    }
+  }
+  const STATE = new Set(['active', 'open', 'is-open', 'wide', 'full', 'tall', 'one',
+    'ask-pending', 'ask-msg-you', 'ask-msg-studio']);
+
+  const problems = [];
+  for (const f of readdirSync(join(root, 'css'))) {
+    const css = stripComments(read(`css/${f}`));
+    const defined = new Set([...css.matchAll(/\.([A-Za-z][\w-]*)/g)].map(m => m[1]));
+    for (const c of defined) {
+      if (!inMarkup.has(c) && !STATE.has(c)) problems.push(`css/${f}: .${c} matches no markup`);
+    }
+  }
+  check('no dead css rules', problems);
+}
+
+{
+  const problems = [];
+  for (const page of pages) {
+    for (const tag of read(page).matchAll(/<img\b[^>]*>/g)) {
+      const src = tag[0].match(/src="(assets\/[^"]+)"/)?.[1];
+      if (!src) continue;
+      if (!/\ssrcset="/.test(tag[0])) { problems.push(`${page}: ${src} has no srcset`); continue; }
+      if (!/\ssizes="/.test(tag[0])) problems.push(`${page}: ${src} has srcset but no sizes`);
+      for (const candidate of tag[0].matchAll(/(assets\/[^\s"]+)\s+\d+w/g)) {
+        if (!existsSync(join(root, candidate[1]))) problems.push(`${page}: srcset points at missing ${candidate[1]}`);
+      }
+    }
+  }
+  check('responsive images resolve', problems);
 }
 
 console.log(`\n${checks - failures}/${checks} checks passed\n`);

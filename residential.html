@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Residential — Lake Effect Architects</title>
+  <title>Residential</title>
+  <meta name="description" content="New houses, renovations and additions on the North Shore of Chicago and beyond, from a 1954 mid-century modern restoration to a contemporary house in the Del Monte Forest.">
+  <link rel="canonical" href="https://leffect.com/residential">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/ask.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -11,17 +19,45 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to content</a>
+<nav id="main-nav">
+  <a class="nav-logo" href="./">
+    <img src="logo.svg" alt="Lake Effect Architects" class="nav-logo-img" width="180" height="52">
+  </a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="residential.html" data-page="residential" class="active" aria-current="page">Residential</a></li>
+    <li><a href="commercial.html" data-page="commercial">Commercial</a></li>
+    <li><a href="furniture.html" data-page="furniture">Furniture</a></li>
+    <li><a href="philosophy.html" data-page="philosophy">Philosophy</a></li>
+    <li><a href="about.html" data-page="about">About</a></li>
+  </ul>
+  <a class="nav-cta" href="contact.html">Inquire</a>
+</nav>
+
+<main id="main" tabindex="-1">
+
+
+
+
+
+
+
+
+
 <div class="page-hero" id="homes-built-around-how-you-live">
   <p class="page-hero-eyebrow fade-up">Residential Architecture</p>
   <h1 class="page-hero-title fade-up delay-1">Homes built around<br>how you <em>live</em></h1>
   <p class="page-hero-sub fade-up delay-2">New construction, renovations and additions, from lakefront houses down to a kitchen that has never quite worked. The first conversation is always about how you use the place now and what you'd change about it.</p>
 </div>
 
-<div class="filter-bar">
-  <button class="filter-btn active" data-filter="all">All Projects</button>
-  <button class="filter-btn" data-filter="new">New Construction</button>
-  <button class="filter-btn" data-filter="renovation">Renovation</button>
-  <button class="filter-btn" data-filter="addition">Additions</button>
+<div class="filter-bar" role="group" aria-label="Filter projects by type">
+  <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All Projects</button>
+  <button class="filter-btn" type="button" data-filter="new" aria-pressed="false">New Construction</button>
+  <button class="filter-btn" type="button" data-filter="renovation" aria-pressed="false">Renovation</button>
+  <button class="filter-btn" type="button" data-filter="addition" aria-pressed="false">Additions</button>
 </div>
 
 <section class="projects-section">
@@ -31,7 +67,10 @@
       <div class="proj-img">
         <div class="proj-img-inner">
           <img src="assets/pebble-beach-contemporary/exterior-front.jpg" loading="lazy"
-               alt="The front of a contemporary house in Pebble Beach: a colonnaded walk along the glazed face, with a timber garage door to the right.">
+               alt="The front of a contemporary house in Pebble Beach: a colonnaded walk along the glazed face, with a timber garage door to the right."
+           width="1900" height="1270"
+           srcset="assets/pebble-beach-contemporary/exterior-front-800.jpg 800w, assets/pebble-beach-contemporary/exterior-front.jpg 1900w"
+           sizes="(max-width: 860px) 100vw, 50vw">
         </div>
       </div>
       <div class="proj-meta">
@@ -48,7 +87,10 @@
       <div class="proj-img">
         <div class="proj-img-inner">
           <img src="assets/lake-bluff-mcm/exterior-entry-court.jpg" loading="lazy"
-               alt="A 1954 mid-century modern house in Lake Bluff seen from the parking court.">
+               alt="A 1954 mid-century modern house in Lake Bluff seen from the parking court."
+           width="1600" height="1096"
+           srcset="assets/lake-bluff-mcm/exterior-entry-court-800.jpg 800w, assets/lake-bluff-mcm/exterior-entry-court.jpg 1600w"
+           sizes="(max-width: 860px) 100vw, 50vw">
         </div>
       </div>
       <div class="proj-meta">
@@ -65,7 +107,10 @@
       <div class="proj-img">
         <div class="proj-img-inner">
           <img src="assets/lake-bluff-historic/exterior-front.jpg" loading="lazy"
-               alt="A circa 1902 white clapboard house in Lake Bluff behind a deep front porch.">
+               alt="A circa 1902 white clapboard house in Lake Bluff behind a deep front porch."
+           width="1800" height="1408"
+           srcset="assets/lake-bluff-historic/exterior-front-800.jpg 800w, assets/lake-bluff-historic/exterior-front.jpg 1800w"
+           sizes="(max-width: 860px) 100vw, 50vw">
         </div>
       </div>
       <div class="proj-meta">
@@ -79,12 +124,13 @@
     </a>
 
     <p class="projects-empty" id="projects-empty" hidden>Nothing in this category yet.</p>
+    <p class="visually-hidden" id="filter-status" role="status" aria-live="polite"></p>
   </div>
 </section>
 
 <section class="residential-approach" id="where-a-house-project-starts">
   <div>
-    <div class="section-eyebrow" style="margin-bottom:16px;">Our residential practice</div>
+    <div class="section-eyebrow spaced">Our residential practice</div>
     <h2 class="section-title">Where a house<br>project starts</h2>
     <p class="approach-intro">We stay involved from the first conversation through the end of construction. The aim is a house that matches how you'll actually use it, which is not always the same as what looks best on a plan.</p>
     <a href="contact.html" class="btn-dark">Start a conversation <span>→</span></a>
@@ -116,17 +162,95 @@
   </div>
 </section>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</main>
+
+<noscript>
+  <p class="noscript-note">This site works without JavaScript, but the project filter and the Ask panel need it.</p>
+</noscript>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">Lake Effect<br>Architects</div>
+      <p class="footer-tagline">Architecture and furniture design for homes, clubs and commercial buildings on Chicago's North Shore. Lake Bluff, Illinois.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Work</div>
+      <ul class="footer-links">
+        <li><a href="residential.html">Residential</a></li>
+        <li><a href="commercial.html">Commercial</a></li>
+        <li><a href="furniture.html">Furniture Design</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Studio</div>
+      <ul class="footer-links">
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="philosophy.html">Design Philosophy</a></li>
+        <li><a href="about.html#process">Process</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="tel:8472344688">847.234.4688</a></li>
+        <li><a href="mailto:rob@leffect.com">rob@leffect.com</a></li>
+        <li><a href="contact.html">Start a project</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Lake Effect Architects, Inc. &nbsp;·&nbsp; Lake Bluff, Illinois</p>
+    <div class="footer-legal">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+  </div>
+</footer>
+
 <script src="ask.js"></script>
 <script src="components.js"></script>
 <script>initPage('residential');
 
   const projects = document.querySelectorAll('#projects .project-item');
   const emptyMsg = document.getElementById('projects-empty');
+  const status = document.getElementById('filter-status');
+  const buttons = document.querySelectorAll('.filter-btn');
 
-  document.querySelectorAll('.filter-btn').forEach(btn => {
+  buttons.forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      buttons.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
 
       const filter = btn.dataset.filter;
       let shown = 0;
@@ -136,6 +260,9 @@
         if (match) shown++;
       });
       emptyMsg.hidden = shown > 0;
+      status.textContent = shown === 1
+        ? `1 project matches ${btn.textContent.trim()}.`
+        : `${shown} projects match ${btn.textContent.trim()}.`;
     });
   });
 </script>
