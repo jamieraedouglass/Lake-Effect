@@ -1,8 +1,8 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { z } from 'zod';
-import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod';
+import { betaZodOutputFormat } from '@anthropic-ai/sdk/helpers/beta/zod';
 import { sections } from './site-index.js';
-import { sameSite, clientKey, overLimit } from './guard.js';
+import { sameSite, clientKey, atLimit, recordHit } from './guard.js';
 
 const MAX_QUESTION_CHARS = 400;
 const MAX_TURNS = 8;
@@ -58,7 +58,9 @@ export default async function handler(request) {
     return json({ error: 'Use POST.' }, 405);
   }
   if (!sameSite(request)) return json({ error: 'forbidden' }, 403);
-  if (overLimit(clientKey(request), { max: 12, windowMs: 60_000 })) return json({ error: 'busy' }, 429);
+  const LIMIT = { max: 12, windowMs: 60_000 };
+  const visitor = clientKey(request);
+  if (atLimit(visitor, LIMIT)) return json({ error: 'busy' }, 429);
 
   let messages;
   try {
@@ -93,16 +95,18 @@ export default async function handler(request) {
     return json({ error: 'not_configured' }, 503);
   }
 
+  recordHit(visitor, LIMIT);
+
   try {
     const client = new Anthropic({ apiKey });
-    const response = await client.messages.parse({
+    const response = await client.beta.messages.parse({
       model: 'claude-opus-5',
       max_tokens: 1024,
       cache_control: { type: 'ephemeral' },
       system: SYSTEM,
       output_config: {
         effort: 'low',
-        format: zodOutputFormat(AnswerSchema),
+        format: betaZodOutputFormat(AnswerSchema),
       },
       messages: turns,
     });

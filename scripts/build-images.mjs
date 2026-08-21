@@ -12,6 +12,15 @@ const MIN_SOURCE_WIDTH = 900;
 export const smallName = src =>
   src.replace(/(\.[a-z]+)$/i, `-${SMALL_WIDTH}$1`);
 
+function haveSips() {
+  try {
+    execFileSync('sips', ['--help'], { stdio: 'ignore' });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 function widthOf(file) {
   const out = execFileSync('sips', ['-g', 'pixelWidth', file], { encoding: 'utf8' });
   return Number(out.match(/pixelWidth: (\d+)/)?.[1] ?? 0);
@@ -32,6 +41,11 @@ export function listOriginals() {
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
+  if (!haveSips()) {
+    console.log('sips not available on this platform; leaving the committed image set alone');
+    process.exit(0);
+  }
+
   let made = 0, skipped = 0;
   let before = 0, after = 0;
 

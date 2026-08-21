@@ -1,4 +1,4 @@
-import { sameSite, clientKey, overLimit } from './guard.js';
+import { sameSite, clientKey, atLimit, recordHit } from './guard.js';
 
 const TO = 'rob@leffect.com';
 const FROM = 'Lake Effect Site <inquiries@leffect.com>';
@@ -11,7 +11,9 @@ const escapeHtml = v => String(v).replace(/[&<>"']/g,
 export default async function handler(request) {
   if (request.method !== 'POST') return json({ error: 'Use POST.' }, 405);
   if (!sameSite(request)) return json({ error: 'forbidden' }, 403);
-  if (overLimit(clientKey(request), { max: 4, windowMs: 600_000 })) return json({ error: 'busy' }, 429);
+  const LIMIT = { max: 4, windowMs: 600_000 };
+  const visitor = clientKey(request);
+  if (atLimit(visitor, LIMIT)) return json({ error: 'busy' }, 429);
 
   let body;
   try {
@@ -38,6 +40,8 @@ export default async function handler(request) {
 
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return json({ error: 'not_configured' }, 503);
+
+  recordHit(visitor, LIMIT);
 
   const rows = [
     ['Name', `${first} ${last}`],

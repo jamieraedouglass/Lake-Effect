@@ -28,19 +28,23 @@ export function clientKey(request) {
   return forwarded.split(',')[0].trim() || request.headers.get('x-real-ip') || 'unknown';
 }
 
-export function overLimit(key, { max, windowMs }) {
+function prune(windowMs) {
   const now = Date.now();
-
   for (const [k, hits] of buckets) {
     const live = hits.filter(t => now - t < windowMs);
     if (live.length) buckets.set(k, live);
     else buckets.delete(k);
   }
+}
 
-  const hits = (buckets.get(key) ?? []).filter(t => now - t < windowMs);
-  if (hits.length >= max) return true;
+export function atLimit(key, { max, windowMs }) {
+  prune(windowMs);
+  const hits = (buckets.get(key) ?? []).filter(t => Date.now() - t < windowMs);
+  return hits.length >= max;
+}
 
-  hits.push(now);
+export function recordHit(key, { windowMs }) {
+  const hits = (buckets.get(key) ?? []).filter(t => Date.now() - t < windowMs);
+  hits.push(Date.now());
   buckets.set(key, hits);
-  return false;
 }

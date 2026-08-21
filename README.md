@@ -45,15 +45,23 @@ reads it.
 
 On Vercel, which is what this is set up for:
 
-1. Import the repo. `vercel.json` is already here; `api/ask.js` is picked up
-   automatically as `POST /api/ask`.
+1. Import the repo. `vercel.json` is already here; `api/ask.js` and
+   `api/contact.js` are picked up automatically as `POST /api/ask` and
+   `POST /api/contact`.
 2. Set `ANTHROPIC_API_KEY` and `RESEND_API_KEY` in Project Settings →
    Environment Variables, ticked
    for **Production** and **Preview** if you want it live on preview
    deployments too. Redeploy after adding it — existing builds do not pick up
    new variables.
-3. Nothing else. `api/package.json` declares the dependencies and Vercel
-   installs them.
+3. Nothing else. The dependencies live in the root `package.json`, which is
+   the only one Vercel installs from, and the root is `"type": "module"` so the
+   `api/` files load as ESM.
+
+`vercel.json` sets `buildCommand` to `npm run verify`, not `npm run build`.
+The build regenerates images with `sips`, which only exists on macOS, so
+running it on Vercel's Linux builder would fail. Generated files are committed;
+the deploy just re-runs the checks. `npm run build` is a local step — run it
+after adding photos or changing page copy, then commit what it produces.
 
 Locally, `npm start` is a plain static file server and does not run functions
 at all, so the panel falls back to keyword search. That is expected, and it is

@@ -11,8 +11,14 @@
     "build:chrome": "node scripts/build-chrome.mjs",
     "build:index": "node scripts/build-index.mjs",
     "build:sitemap": "node scripts/build-sitemap.mjs",
+    "verify": "node test/check.mjs",
     "test": "node test/check.mjs"
   },
   "author": "Jamie Douglass",
-  "license": "MIT"
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.70.0",
+    "zod": "^3.25.0"
+  }
 }
