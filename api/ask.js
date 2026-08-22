@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { betaZodOutputFormat } from '@anthropic-ai/sdk/helpers/beta/zod';
 import { sections } from './site-index.js';
 import { sameSite, clientKey, atLimit, recordHit } from './guard.js';
+import { handleRequest } from './_adapter.js';
 
 const ZOD_VERSION = typeof z.toJSONSchema === 'function' ? '4.x' : '3.x';
 
@@ -55,7 +56,7 @@ Site content:
 
 ${CORPUS}`;
 
-export default async function handler(request) {
+async function ask(request) {
   if (request.method === 'GET') {
     return json({
       ok: true,
@@ -161,3 +162,5 @@ function json(body, status = 200) {
     headers: { 'content-type': 'application/json' },
   });
 }
+
+export default handleRequest(ask);

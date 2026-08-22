@@ -1,4 +1,5 @@
 import { sameSite, clientKey, atLimit, recordHit } from './guard.js';
+import { handleRequest } from './_adapter.js';
 
 const TO = 'rob@leffect.com';
 const FROM = 'Lake Effect Site <inquiries@leffect.com>';
@@ -8,7 +9,7 @@ const LIMITS = { first_name: 80, last_name: 80, email: 160, phone: 40,
 const escapeHtml = v => String(v).replace(/[&<>"']/g,
   c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-export default async function handler(request) {
+async function contact(request) {
   if (request.method === 'GET') {
     return json({
       ok: true,
@@ -115,3 +116,5 @@ function json(body, status = 200) {
     headers: { 'content-type': 'application/json' },
   });
 }
+
+export default handleRequest(contact);
