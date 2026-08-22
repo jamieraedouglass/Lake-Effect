@@ -235,9 +235,15 @@ its own corners are transparent, and iOS renders transparency as black behind
 the mask it applies. Render it over the mark's background colour rather than
 letting the corners through.
 
-Changing the domain means changing `SITE_URL` in `scripts/build-chrome.mjs`
-and re-running `npm run build`, which updates every canonical tag and the
-sitemap. `robots.txt` names the sitemap and needs the same edit by hand.
+`SITE_URL` in `scripts/build-chrome.mjs` must match where the site is actually
+served. It feeds every canonical tag and the sitemap, and a canonical pointing
+at a domain that does not host these pages tells search engines to ignore the
+real ones.
+
+It is currently the Vercel URL, because `leffect.com` still serves the old
+Squarespace site. **At cutover**, set it to `https://leffect.com`, run
+`npm run build`, and change the `Sitemap:` line in `robots.txt` to match.
+`SITE_URL=https://example.com npm run build` works for a one-off.
 
 ## Before this goes live
 

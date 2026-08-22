@@ -3,7 +3,7 @@ import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-export const SITE_URL = 'https://leffect.com';
+export const SITE_URL = process.env.SITE_URL ?? 'https://lake-effect-brown.vercel.app';
 
 const NAV_ITEMS = [
   ['residential.html', 'residential', 'Residential'],
