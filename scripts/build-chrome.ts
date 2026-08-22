@@ -25,6 +25,7 @@ export const PAGE_KEYS: Record<string, string> = {
   'projects/havenwood-house.html': 'residential',
   'projects/meadow-house.html': 'residential',
   'projects/del-monte-forest-house.html': 'residential',
+  'projects/ivy-cottage.html': 'residential',
   'projects/village-market-building.html': 'commercial',
 };
 
@@ -105,25 +106,27 @@ const TITLES: Record<string, string> = {
   'projects/corner-house.html': 'Corner House',
   'projects/havenwood-house.html': 'Havenwood House',
   'projects/meadow-house.html': 'Meadow House',
+  'projects/ivy-cottage.html': 'Ivy Cottage',
   'projects/village-market-building.html': 'Village Market Building',
 };
 
 const SHARE_IMAGES: Record<string, string> = {
-  'index.html': 'assets/pebble-beach-contemporary/exterior-approach.jpg',
-  'residential.html': 'assets/lake-bluff-mcm/exterior-entry-drive.jpg',
-  'commercial.html': 'assets/village-market/share.jpg',
-  'philosophy.html': 'assets/lake-bluff-mcm/living-dining-kitchen.jpg',
-  'about.html': 'assets/lake-bluff-historic/exterior-front.jpg',
-  'contact.html': 'assets/pebble-beach-contemporary/living-room-2.jpg',
-  'privacy.html': 'assets/lake-bluff-mcm/exterior-entry-drive.jpg',
-  'terms.html': 'assets/lake-bluff-mcm/exterior-entry-drive.jpg',
-  '404.html': 'assets/lake-bluff-mcm/exterior-entry-drive.jpg',
-  'projects/ravine-house.html': 'assets/lake-bluff-mcm/exterior-entry-drive.jpg',
-  'projects/del-monte-forest-house.html': 'assets/pebble-beach-contemporary/exterior-approach.jpg',
-  'projects/corner-house.html': 'assets/lake-bluff-historic/exterior-front.jpg',
-  'projects/village-market-building.html': 'assets/village-market/share.jpg',
-  'projects/havenwood-house.html': 'assets/lake-forest-traditional/exterior-southeast.jpg',
-  'projects/meadow-house.html': 'assets/lake-forest-contemporary/exterior-front.jpg',
+  'index.html': 'assets/del-monte-forest-house/exterior-approach.jpg',
+  'residential.html': 'assets/ravine-house/exterior-entry-drive.jpg',
+  'commercial.html': 'assets/village-market-building/share.jpg',
+  'philosophy.html': 'assets/ravine-house/living-dining-kitchen.jpg',
+  'about.html': 'assets/corner-house/exterior-front.jpg',
+  'contact.html': 'assets/del-monte-forest-house/living-room-2.jpg',
+  'privacy.html': 'assets/ravine-house/exterior-entry-drive.jpg',
+  'terms.html': 'assets/ravine-house/exterior-entry-drive.jpg',
+  '404.html': 'assets/ravine-house/exterior-entry-drive.jpg',
+  'projects/ravine-house.html': 'assets/ravine-house/exterior-entry-drive.jpg',
+  'projects/del-monte-forest-house.html': 'assets/del-monte-forest-house/exterior-approach.jpg',
+  'projects/corner-house.html': 'assets/corner-house/exterior-front.jpg',
+  'projects/village-market-building.html': 'assets/village-market-building/share.jpg',
+  'projects/havenwood-house.html': 'assets/havenwood-house/exterior-southeast.jpg',
+  'projects/meadow-house.html': 'assets/meadow-house/exterior-front.jpg',
+  'projects/ivy-cottage.html': 'assets/ivy-cottage/exterior-front.jpg',
 };
 
 const SHARE_NAMES: Record<string, string> = {
@@ -142,6 +145,7 @@ const SHARE_NAMES: Record<string, string> = {
   'projects/village-market-building.html': 'Village Market Building — Lake Effect Architects',
   'projects/havenwood-house.html': 'Havenwood House, Lake Forest — Lake Effect Architects',
   'projects/meadow-house.html': 'Meadow House, Lake Forest — Lake Effect Architects',
+  'projects/ivy-cottage.html': 'Ivy Cottage, Lake Bluff — Lake Effect Architects',
 };
 
 const escapeAttr = (v: string): string => v.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
