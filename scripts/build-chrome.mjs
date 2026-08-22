@@ -20,6 +20,7 @@ export const PAGE_KEYS = {
   'project-lake-bluff-mcm.html': 'residential',
   'project-pebble-beach.html': 'residential',
   'project-lake-bluff-historic.html': 'residential',
+  'project-lake-forest-traditional.html': 'residential',
 };
 
 const nav = active => `<nav id="main-nav">
@@ -113,6 +114,7 @@ const SHARE_IMAGES = {
   'project-pebble-beach.html': 'assets/pebble-beach-contemporary/exterior-approach.jpg',
   'project-lake-bluff-historic.html': 'assets/lake-bluff-historic/exterior-front.jpg',
   'project-village-market.html': 'assets/village-market/share.jpg',
+  'project-lake-forest-traditional.html': 'assets/lake-forest-traditional/exterior-southeast.jpg',
 };
 
 const SHARE_NAMES = {
@@ -129,6 +131,7 @@ const SHARE_NAMES = {
   'project-pebble-beach.html': 'Contemporary Residence, Pebble Beach — Lake Effect Architects',
   'project-lake-bluff-historic.html': 'Traditional Residence, Lake Bluff — Lake Effect Architects',
   'project-village-market.html': 'Village Market Building — Lake Effect Architects',
+  'project-lake-forest-traditional.html': 'Traditional Residence, Lake Forest — Lake Effect Architects',
 };
 
 const escapeAttr = v => v.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');

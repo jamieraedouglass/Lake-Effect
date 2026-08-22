@@ -16,6 +16,7 @@ const PAGE_TITLES = {
   'project-lake-bluff-mcm.html': 'Project · Mid-Century Modern, Lake Bluff',
   'project-pebble-beach.html': 'Project · Contemporary, Pebble Beach',
   'project-lake-bluff-historic.html': 'Project · Traditional / Historic, Lake Bluff',
+  'project-lake-forest-traditional.html': 'Project · Traditional, Lake Forest',
   'privacy.html': 'Privacy',
   'terms.html': 'Terms of Use',
 };
