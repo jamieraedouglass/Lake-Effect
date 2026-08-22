@@ -342,6 +342,10 @@ Mayflower and Clubhouse Renderings. They currently redirect to the listings.
 - Interior photographs on two projects carry a photographer's watermark
   (Meadow House, Ivy Cottage). Whether they can be published at all is a
   licensing question, not a retouching one.
+- Three residential cards have no floor area: Corner House, Fairway House and
+  Havenwood House. The markup is commented where each one goes. Havenwood's
+  page mentions "approximately 32-acres", which is the size of the original
+  estate and not the house, so do not use it.
 - Nothing on the site answers "who is Rob". There is no bio.
 - The Village Market page is a stub pending Rob's write-up.
 - Fairway House has no floor plans, and its site plan exists only as a 450px

@@ -45,7 +45,6 @@
 .project-item[hidden] { display: none; }
 .project-item:hover { background: var(--cream-dark); }
 .project-item:hover .proj-img-inner { transform: scale(1.04); }
-.project-item:hover .proj-arrow { transform: translate(4px,-4px); }
 
 .proj-img {
   width: 100%; overflow: hidden;
@@ -72,7 +71,9 @@
 .proj-category {
   font-size: 9px; font-weight: 600;
   letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--accent-dark); margin-bottom: 6px;
+  /* Muted, not accent: this line was the brightest thing on the card, so the
+     eye reached the category before the name of the house. */
+  color: var(--muted); margin-bottom: 6px;
 }
 .proj-name {
   font-family: 'Cormorant Garamond', serif;
@@ -80,10 +81,6 @@
   color: var(--charcoal); line-height: 1.15;
 }
 .proj-location { font-size: 11px; color: var(--muted); margin-top: 4px; }
-.proj-arrow {
-  font-size: 18px; color: var(--accent-dark);
-  flex-shrink: 0; transition: transform 0.2s;
-}
 .projects-empty {
   grid-column: 1 / -1;
   background: var(--cream);
