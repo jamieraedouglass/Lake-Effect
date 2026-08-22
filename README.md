@@ -342,6 +342,11 @@ Mayflower and Clubhouse Renderings. They currently redirect to the listings.
 - Interior photographs on two projects carry a photographer's watermark
   (Meadow House, Ivy Cottage). Whether they can be published at all is a
   licensing question, not a retouching one.
+- Only Corner House and Ravine House state their scope. The `data-category`
+  on the other five cards, which drives the residential filter, was inferred
+  rather than told to us and five were guessed as new construction. Rob says he
+  does minimal new construction, so those need confirming before the filter can
+  be trusted, and before the words go back on the cards.
 - Three residential cards have no floor area: Corner House, Fairway House and
   Havenwood House. The markup is commented where each one goes. Havenwood's
   page mentions "approximately 32-acres", which is the size of the original
