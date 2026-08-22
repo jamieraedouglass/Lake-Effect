@@ -77,7 +77,7 @@ const footer = `<footer>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 Lake Effect Architects, Inc. &nbsp;·&nbsp; Lake Bluff, Illinois</p>
+    <p class="footer-copy">© 2026 Lake Effect Architects, Inc. &nbsp;·&nbsp; Lake Bluff, Illinois<br>Licensed Architect, State of Illinois &nbsp;·&nbsp; License No. 001-014968</p>
     <div class="footer-legal">
       <a href="/privacy.html">Privacy</a>
       <a href="/terms.html">Terms</a>
@@ -153,7 +153,7 @@ const SHARE_NAMES: Record<string, string> = {
   'projects/woodland-meadow-residence.html': 'The Woodland Meadow Residence, Lake Forest · Lake Effect Architects',
   'projects/cottage-residence.html': 'The Cottage Residence, Lake Bluff · Lake Effect Architects',
   'projects/links-residence.html': 'The Links Residence, Lake Forest · Lake Effect Architects',
-  'projects/forest-cove-residence.html': 'The Forest Cove Residence · Lake Effect Architects',
+  'projects/forest-cove-residence.html': 'The Forest Cove Residence, Lake Bluff · Lake Effect Architects',
 };
 
 // Hand-written structured data goes stale silently: it kept naming a logo at

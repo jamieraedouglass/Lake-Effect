@@ -44,7 +44,7 @@ export const sections: Section[] = [
     "href": "/about.html#based-in-lake-bluff-illinois",
     "eyebrow": "",
     "heading": "Based in Lake Bluff, Illinois",
-    "text": "Find us Based in Lake Bluff, Illinois We work mainly on the North Shore, from Evanston up through Lake County. It's an area with a long residential architecture tradition and a lot of housing stock worth keeping. Studio Lake Bluff, Illinois Phone 847.234.4688 Email rob@leffect.com"
+    "text": "Find us Based in Lake Bluff, Illinois We work mainly on the North Shore, from Evanston up through Lake County. It's an area with a long residential architecture tradition and a lot of housing stock worth keeping. Studio Lake Bluff, Illinois Phone 847.234.4688 Email rob@leffect.com Licence Licensed Architect, State of Illinois No. 001-014968"
   },
   {
     "page": "commercial.html",
@@ -368,7 +368,7 @@ export const sections: Section[] = [
     "href": "/projects/forest-cove-residence.html#forest-cove-residence",
     "eyebrow": "",
     "heading": "The Forest Cove Residence",
-    "text": "Residential · Traditional The Forest Cove Residence A new brick house of six bedrooms, set in mature woodland, with three floors of rooms gathered around a stair that runs the full height of it. Area ≈ 5,635 sq ft Accommodation 6 bed, 5½ bath Scope New Construction Setting Mature woodland, above the lake"
+    "text": "Residential · Traditional / Arts & Crafts The Forest Cove Residence Lake Bluff, Illinois. A six-bedroom house on a wooded site, drawn from turn-of-the-century Arts and Crafts principles, with the plan reaching out to make terraces and gardens. Area ≈ 5,635 sq ft Accommodation 6 bed, 5½ bath Scope New Construction Terraces Bluestone, with gardens"
   },
   {
     "page": "projects/forest-cove-residence.html",
@@ -377,7 +377,7 @@ export const sections: Section[] = [
     "href": "/projects/forest-cove-residence.html#the-project",
     "eyebrow": "The project",
     "heading": "",
-    "text": "The project A new house of three floors, planned around a stair that runs from the entrance hall right up to the top landing. The rooms on the ground floor step out from the main block rather than sitting inside it, so the living room, the dining room and the breakfast area each keep windows on more than one side. Rob's own account of the project follows."
+    "text": "The project Nestled on a beautifully wooded site in East Lake Bluff, this six-bedroom home showcases the timeless design principles of the turn-of-the-century Arts & Crafts movement. The architecture intentionally pairs an abundance of natural light with a deep sense of tradition and history. Beyond creating visually striking interior spaces, the home's unique layout extends outward to form dynamic outdoor rooms complete with elegant bluestone terraces and lush gardens."
   },
   {
     "page": "projects/forest-cove-residence.html",
