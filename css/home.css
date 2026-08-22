@@ -167,7 +167,26 @@
   background: var(--cream);
   min-height: 500px;
   display: flex; align-items: center; justify-content: center;
+  padding: 64px 56px;
   overflow: hidden;
+}
+.approach-drawing {
+  margin: 0;
+  width: 100%;
+  max-width: 560px;
+}
+.approach-drawing img {
+  display: block;
+  width: 100%; height: auto;
+  /* The drawing is inked on white; multiply drops the paper into the cream
+     so it reads as a drawing in the space rather than a pasted rectangle. */
+  mix-blend-mode: multiply;
+}
+.approach-drawing figcaption {
+  margin-top: 20px;
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
 }
 .approach-content {
   padding: 84px 64px;
@@ -351,8 +370,7 @@
 
   .services-grid { grid-template-columns: 1fr; }
   .approach-band { grid-template-columns: 1fr; }
-  .approach-visual { min-height: 320px; order: 2; }
-  .approach-visual svg { width: 220px; height: 220px; }
+  .approach-visual { min-height: auto; order: 2; padding: 48px 32px; }
 
   .work-teaser-grid { grid-template-columns: 1fr; }
   .home-cta { grid-template-columns: 1fr; }

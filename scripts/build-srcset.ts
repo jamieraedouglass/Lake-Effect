@@ -16,6 +16,8 @@ const SIZES: Array<[RegExp, string]> = [
   [/class="work-image-inner"/, '(max-width: 860px) 100vw, 66vw'],
   [/class="work-side-image-inner"/, '(max-width: 860px) 100vw, 33vw'],
   [/class="hero-image"/, '(max-width: 860px) 100vw, 50vw'],
+  // Half the band, and capped at 560px by .approach-drawing.
+  [/class="approach-drawing"/, '(max-width: 860px) 100vw, 560px'],
 ];
 
 function sizesFor(html: string, imgStart: number, tag: string, planSizes: string): string | null {
