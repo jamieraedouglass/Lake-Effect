@@ -247,6 +247,15 @@
 }
 .work-image { aspect-ratio: 16/10; }
 .work-side-image { aspect-ratio: 3/2; }
+
+/* Side by side, the two columns have to end level. The sidebar sets the height
+   from its two cards and the big photograph grows to meet it, rather than one
+   column running out of content and leaving a tail of empty cream. */
+@media (min-width: 861px) {
+  .work-card { display: flex; flex-direction: column; }
+  .work-image { flex: 1; aspect-ratio: auto; min-height: 0; }
+  .work-side-image { aspect-ratio: 16/9; }
+}
 .work-image-inner, .work-side-image-inner {
   width: 100%; height: 100%;
   display: flex; align-items: center; justify-content: center;
