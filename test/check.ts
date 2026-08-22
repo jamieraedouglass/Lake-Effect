@@ -34,6 +34,7 @@ const FORBIDDEN = [
   'stable lane', 'stable ln', '550 stable',
   '216 e washington', '216 east washington', 'washington ave', 'washington avenue',
   '335 meadow lake', 'meadow lake lane', 'meadow lake', 'caldwell', 'conway farms',
+  '520 forest cove',
   'p.o. box', 'po box 155',
 ];
 

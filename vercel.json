@@ -101,7 +101,7 @@
     },
     {
       "source": "/forest-cove",
-      "destination": "/residential",
+      "destination": "/projects/forest-cove-residence",
       "permanent": true
     },
     {

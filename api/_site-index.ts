@@ -362,6 +362,51 @@ export const sections: Section[] = [
     "text": "Planning something on a difficult site? Slopes, trees and view corridors tend to set the plan before anything else does. Get in touch and we'll walk it with you. Start a conversation →"
   },
   {
+    "page": "projects/forest-cove-residence.html",
+    "pageTitle": "projects/forest-cove-residence.html",
+    "anchor": "forest-cove-residence",
+    "href": "/projects/forest-cove-residence.html#forest-cove-residence",
+    "eyebrow": "",
+    "heading": "The Forest Cove Residence",
+    "text": "Residential · Traditional The Forest Cove Residence A new brick house of six bedrooms, set in mature woodland, with three floors of rooms gathered around a stair that runs the full height of it. Area ≈ 5,635 sq ft Accommodation 6 bed, 5½ bath Scope New Construction Setting Mature woodland, above the lake"
+  },
+  {
+    "page": "projects/forest-cove-residence.html",
+    "pageTitle": "projects/forest-cove-residence.html",
+    "anchor": "the-project",
+    "href": "/projects/forest-cove-residence.html#the-project",
+    "eyebrow": "The project",
+    "heading": "",
+    "text": "The project A new house of three floors, planned around a stair that runs from the entrance hall right up to the top landing. The rooms on the ground floor step out from the main block rather than sitting inside it, so the living room, the dining room and the breakfast area each keep windows on more than one side. Rob's own account of the project follows."
+  },
+  {
+    "page": "projects/forest-cove-residence.html",
+    "pageTitle": "projects/forest-cove-residence.html",
+    "anchor": "plans",
+    "href": "/projects/forest-cove-residence.html#plans",
+    "eyebrow": "Plans",
+    "heading": "Three floors, one stair",
+    "text": "Plans Three floors, one stair First floor The living room steps out from the main block on its own, so it keeps three sides of window. Click to enlarge. Second floor Bedrooms to one side of the stair, the primary suite to the other. Click to enlarge. Third floor The stair keeps going, and the landing it arrives at is open to the floor beneath. Click to enlarge."
+  },
+  {
+    "page": "projects/forest-cove-residence.html",
+    "pageTitle": "projects/forest-cove-residence.html",
+    "anchor": "inside",
+    "href": "/projects/forest-cove-residence.html#inside",
+    "eyebrow": "Interior",
+    "heading": "Around the stair",
+    "text": "Interior Around the stair The living room takes windows on three sides because the plan pushes it clear of the rest of the house. The stair at the bottom. And at the top, two floors later, still lit from the side. The kitchen runs into the breakfast area through an arch rather than a doorway. A window seat on one side, doors to the terrace on the other. The dining room keeps two walls of window and no fixed light over the table. The primary bedroom looks straight into the trees on two sides."
+  },
+  {
+    "page": "projects/forest-cove-residence.html",
+    "pageTitle": "projects/forest-cove-residence.html",
+    "anchor": "outside",
+    "href": "/projects/forest-cove-residence.html#outside",
+    "eyebrow": "Exterior",
+    "heading": "Set into the trees",
+    "text": "Exterior Set into the trees From above the house is nearly lost in the trees, which is the point of where it sits. The garden front, with the low wing running out along the terrace. Brick walls hold the terrace up out of the lawn rather than fencing it off. The sheltered corner of the terrace, which faces the woods rather than the lawn. The entrance bay, gathered into one vertical piece of the elevation. More residential work New houses, renovations and additions across the North Shore. All residential → Building on a wooded site? Which trees stay decides most of the plan, and it is worth settling before anything is drawn. Get in touch and we'll walk it. Start a conversation →"
+  },
+  {
     "page": "projects/havenwood-residence.html",
     "pageTitle": "Project · The Havenwood Residence",
     "anchor": "havenwood-residence",

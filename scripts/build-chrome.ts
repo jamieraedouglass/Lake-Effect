@@ -27,6 +27,7 @@ export const PAGE_KEYS: Record<string, string> = {
   'projects/del-monte-forest-residence.html': 'residential',
   'projects/cottage-residence.html': 'residential',
   'projects/links-residence.html': 'residential',
+  'projects/forest-cove-residence.html': 'residential',
   'projects/village-market-building.html': 'commercial',
 };
 
@@ -109,6 +110,7 @@ const TITLES: Record<string, string> = {
   'projects/woodland-meadow-residence.html': 'The Woodland Meadow Residence',
   'projects/cottage-residence.html': 'The Cottage Residence',
   'projects/links-residence.html': 'The Links Residence',
+  'projects/forest-cove-residence.html': 'The Forest Cove Residence',
   'projects/village-market-building.html': 'Village Market Building',
 };
 
@@ -130,6 +132,7 @@ const SHARE_IMAGES: Record<string, string> = {
   'projects/woodland-meadow-residence.html': 'assets/woodland-meadow-residence/exterior-front.jpg',
   'projects/cottage-residence.html': 'assets/cottage-residence/exterior-front.jpg',
   'projects/links-residence.html': 'assets/links-residence/exterior-south.jpg',
+  'projects/forest-cove-residence.html': 'assets/forest-cove-residence/exterior-front.jpg',
 };
 
 const SHARE_NAMES: Record<string, string> = {
@@ -150,6 +153,7 @@ const SHARE_NAMES: Record<string, string> = {
   'projects/woodland-meadow-residence.html': 'The Woodland Meadow Residence, Lake Forest · Lake Effect Architects',
   'projects/cottage-residence.html': 'The Cottage Residence, Lake Bluff · Lake Effect Architects',
   'projects/links-residence.html': 'The Links Residence, Lake Forest · Lake Effect Architects',
+  'projects/forest-cove-residence.html': 'The Forest Cove Residence · Lake Effect Architects',
 };
 
 // Hand-written structured data goes stale silently: it kept naming a logo at
