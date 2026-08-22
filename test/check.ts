@@ -3,9 +3,10 @@ import { writeFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { pages as sitePages } from '../scripts/pages.ts';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const pages = readdirSync(root).filter(f => f.endsWith('.html'));
+const pages = sitePages();
 
 let failures = 0;
 let checks = 0;
@@ -51,10 +52,10 @@ console.log('\nLake Effect site checks\n');
   const problems = [];
   for (const page of pages) {
     const html = read(page);
-    for (const m of html.matchAll(/(?:src|href)="((?:assets|css)\/[^"]+)"/g)) {
+    for (const m of html.matchAll(/(?:src|href)="\/?((?:assets|css|js|brand)\/[^"]+)"/g)) {
       if (!existsSync(join(root, m[1]))) problems.push(`${page} -> ${m[1]}`);
     }
-    for (const m of html.matchAll(/src="(js\/[\w.-]+|logo\.svg)"/g)) {
+    for (const m of html.matchAll(/src="\/?(js\/[\w.-]+|brand\/[\w.-]+)"/g)) {
       if (!existsSync(join(root, m[1]))) problems.push(`${page} -> ${m[1]}`);
     }
   }
@@ -75,7 +76,7 @@ console.log('\nLake Effect site checks\n');
   const problems = [];
   for (const page of pages) {
     const html = read(page);
-    const sheets = [...html.matchAll(/href="(css\/[^"]+\.css)"/g)].map(m => m[1]);
+    const sheets = [...html.matchAll(/href="\/?(css\/[^"]+\.css)"/g)].map(m => m[1]);
     const defined = new Set([...fromJs]);
     for (const s of sheets) for (const c of selectorsIn(s)) defined.add(c);
 
@@ -176,7 +177,7 @@ console.log('\nLake Effect site checks\n');
       problems.push(`${page}: has one of .project-body / .project-facts but not the other`);
     }
     if (!/<meta name="description"/.test(html)) problems.push(`${page}: no meta description`);
-    const linked = [...html.matchAll(/href="(css\/[^"]+\.css)"/g)].map(m => m[1]);
+    const linked = [...html.matchAll(/href="\/?(css\/[^"]+\.css)"/g)].map(m => m[1]);
     if (!linked.includes('css/project.css')) problems.push(`${page}: does not link css/project.css`);
   }
   check('project pages have the expected sections', problems);
@@ -307,7 +308,7 @@ console.log('\nLake Effect site checks\n');
   const problems = [];
   for (const page of pages) {
     for (const tag of read(page).matchAll(/<img\b[^>]*>/g)) {
-      const src = tag[0].match(/src="(assets\/[^"]+)"/)?.[1];
+      const src = tag[0].match(/src="\/?(assets\/[^"]+)"/)?.[1];
       if (!src) continue;
       const width = Number(tag[0].match(/width="(\d+)"/)?.[1] ?? 0);
       if (!/\ssrcset="/.test(tag[0])) {
@@ -315,7 +316,7 @@ console.log('\nLake Effect site checks\n');
         continue;
       }
       if (!/\ssizes="/.test(tag[0])) problems.push(`${page}: ${src} has srcset but no sizes`);
-      for (const candidate of tag[0].matchAll(/(assets\/[^\s"]+)\s+\d+w/g)) {
+      for (const candidate of tag[0].matchAll(/\/?(assets\/[^\s"]+)\s+\d+w/g)) {
         if (!existsSync(join(root, candidate[1]))) problems.push(`${page}: srcset points at missing ${candidate[1]}`);
       }
     }

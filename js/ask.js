@@ -43,7 +43,7 @@ let index = null;
 const turns = [];
 let busy = false;
 async function loadIndex() {
-    index ??= (await (await fetch('assets/site-index.json')).json());
+    index ??= (await (await fetch('/assets/site-index.json')).json());
     return index;
 }
 const STOP = new Set(['the', 'a', 'an', 'and', 'or', 'of', 'to', 'in', 'on', 'for', 'is', 'are',
@@ -180,7 +180,7 @@ async function send(question) {
     const pending = addBubble('studio', 'Looking…');
     pending.classList.add('ask-pending');
     try {
-        const response = await fetch('api/ask', {
+        const response = await fetch('/api/ask', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ messages: turns.slice(-MAX_TURNS) }),
@@ -235,7 +235,7 @@ async function fallback(question, pending) {
     if (!first) {
         pending.textContent =
             'I could not find that on the site. Rob answers inquiries himself, so the contact page is the surest route to an answer.';
-        addLinks([{ label: 'Contact the studio', href: 'contact.html#inquiry' }]);
+        addLinks([{ label: 'Contact the studio', href: '/contact.html#inquiry' }]);
     }
     else {
         const pageOf = (section) => section.pageTitle.replace(/^Project · /, '');

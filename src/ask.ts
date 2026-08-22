@@ -75,7 +75,7 @@ const turns: Turn[] = [];
 let busy = false;
 
 async function loadIndex(): Promise<SiteIndex> {
-  index ??= (await (await fetch('assets/site-index.json')).json()) as SiteIndex;
+  index ??= (await (await fetch('/assets/site-index.json')).json()) as SiteIndex;
   return index;
 }
 
@@ -216,7 +216,7 @@ async function send(question: string): Promise<void> {
   pending.classList.add('ask-pending');
 
   try {
-    const response = await fetch('api/ask', {
+    const response = await fetch('/api/ask', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ messages: turns.slice(-MAX_TURNS) }),
@@ -275,7 +275,7 @@ async function fallback(question: string, pending: HTMLDivElement): Promise<void
   if (!first) {
     pending.textContent =
       'I could not find that on the site. Rob answers inquiries himself, so the contact page is the surest route to an answer.';
-    addLinks([{ label: 'Contact the studio', href: 'contact.html#inquiry' }]);
+    addLinks([{ label: 'Contact the studio', href: '/contact.html#inquiry' }]);
   } else {
     const pageOf = (section: Section) => section.pageTitle.replace(/^Project · /, '');
     const samePage = hits.every(hit => pageOf(hit) === pageOf(first));

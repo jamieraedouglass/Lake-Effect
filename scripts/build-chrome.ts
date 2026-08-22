@@ -1,4 +1,5 @@
-import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { pages as sitePages } from './pages.ts';
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -17,17 +18,17 @@ export const PAGE_KEYS: Record<string, string> = {
   'commercial.html': 'commercial',
   'philosophy.html': 'philosophy',
   'about.html': 'about',
-  'project-lake-bluff-mcm.html': 'residential',
-  'project-lake-bluff-historic.html': 'residential',
-  'project-lake-forest-traditional.html': 'residential',
-  'project-lake-forest-contemporary.html': 'residential',
-  'project-pebble-beach.html': 'residential',
-  'project-village-market.html': 'commercial',
+  'projects/ravine-house.html': 'residential',
+  'projects/corner-house.html': 'residential',
+  'projects/havenwood-house.html': 'residential',
+  'projects/meadow-house.html': 'residential',
+  'projects/del-monte-forest-house.html': 'residential',
+  'projects/village-market-building.html': 'commercial',
 };
 
 const nav = (active: string | null): string => `<nav id="main-nav">
-  <a class="nav-logo" href="./">
-    <img src="logo.svg" alt="Lake Effect Architects" class="nav-logo-img" width="180" height="52">
+  <a class="nav-logo" href="/">
+    <img src="/brand/logo.svg" alt="Lake Effect Architects" class="nav-logo-img" width="180" height="52">
   </a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -37,7 +38,7 @@ ${NAV_ITEMS.map(([href, key, label]) =>
   `    <li><a href="${href}" data-page="${key}"${key === active ? ' class="active" aria-current="page"' : ''}>${label}</a></li>`
 ).join('\n')}
   </ul>
-  <a class="nav-cta" href="contact.html">Inquire</a>
+  <a class="nav-cta" href="/contact.html">Inquire</a>
 </nav>`;
 
 const footer = `<footer>
@@ -49,15 +50,15 @@ const footer = `<footer>
     <div>
       <div class="footer-col-title">Work</div>
       <ul class="footer-links">
-        <li><a href="residential.html">Residential</a></li>
-        <li><a href="commercial.html">Commercial</a></li>
+        <li><a href="/residential.html">Residential</a></li>
+        <li><a href="/commercial.html">Commercial</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title">Studio</div>
       <ul class="footer-links">
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="philosophy.html">Design Philosophy</a></li>
+        <li><a href="/about.html">About Us</a></li>
+        <li><a href="/philosophy.html">Design Philosophy</a></li>
         <li><a href="about.html#process">Process</a></li>
       </ul>
     </div>
@@ -66,22 +67,22 @@ const footer = `<footer>
       <ul class="footer-links">
         <li><a href="tel:8472344688">847.234.4688</a></li>
         <li><a href="mailto:rob@leffect.com">rob@leffect.com</a></li>
-        <li><a href="contact.html">Start a project</a></li>
+        <li><a href="/contact.html">Start a project</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <p class="footer-copy">© 2026 Lake Effect Architects, Inc. &nbsp;·&nbsp; Lake Bluff, Illinois</p>
     <div class="footer-legal">
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
     </div>
   </div>
 </footer>`;
 
-const HEAD_LINKS = `  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+const HEAD_LINKS = `  <link rel="icon" type="image/svg+xml" href="/brand/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png">
+  <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap">`;
@@ -97,12 +98,12 @@ const TITLES: Record<string, string> = {
   'privacy.html': 'Privacy',
   'terms.html': 'Terms',
   '404.html': 'Not found',
-  'project-lake-bluff-mcm.html': 'Ravine House',
-  'project-pebble-beach.html': 'Del Monte Forest House',
-  'project-lake-bluff-historic.html': 'Corner House',
-  'project-lake-forest-traditional.html': 'Havenwood House',
-  'project-lake-forest-contemporary.html': 'Meadow House',
-  'project-village-market.html': 'Village Market Building',
+  'projects/ravine-house.html': 'Ravine House',
+  'projects/del-monte-forest-house.html': 'Del Monte Forest House',
+  'projects/corner-house.html': 'Corner House',
+  'projects/havenwood-house.html': 'Havenwood House',
+  'projects/meadow-house.html': 'Meadow House',
+  'projects/village-market-building.html': 'Village Market Building',
 };
 
 const SHARE_IMAGES: Record<string, string> = {
@@ -115,12 +116,12 @@ const SHARE_IMAGES: Record<string, string> = {
   'privacy.html': 'assets/lake-bluff-mcm/exterior-entry-drive.jpg',
   'terms.html': 'assets/lake-bluff-mcm/exterior-entry-drive.jpg',
   '404.html': 'assets/lake-bluff-mcm/exterior-entry-drive.jpg',
-  'project-lake-bluff-mcm.html': 'assets/lake-bluff-mcm/exterior-entry-drive.jpg',
-  'project-pebble-beach.html': 'assets/pebble-beach-contemporary/exterior-approach.jpg',
-  'project-lake-bluff-historic.html': 'assets/lake-bluff-historic/exterior-front.jpg',
-  'project-village-market.html': 'assets/village-market/share.jpg',
-  'project-lake-forest-traditional.html': 'assets/lake-forest-traditional/exterior-southeast.jpg',
-  'project-lake-forest-contemporary.html': 'assets/lake-forest-contemporary/exterior-front.jpg',
+  'projects/ravine-house.html': 'assets/lake-bluff-mcm/exterior-entry-drive.jpg',
+  'projects/del-monte-forest-house.html': 'assets/pebble-beach-contemporary/exterior-approach.jpg',
+  'projects/corner-house.html': 'assets/lake-bluff-historic/exterior-front.jpg',
+  'projects/village-market-building.html': 'assets/village-market/share.jpg',
+  'projects/havenwood-house.html': 'assets/lake-forest-traditional/exterior-southeast.jpg',
+  'projects/meadow-house.html': 'assets/lake-forest-contemporary/exterior-front.jpg',
 };
 
 const SHARE_NAMES: Record<string, string> = {
@@ -133,12 +134,12 @@ const SHARE_NAMES: Record<string, string> = {
   'contact.html': 'Contact — Lake Effect Architects',
   'privacy.html': 'Privacy — Lake Effect Architects',
   'terms.html': 'Terms — Lake Effect Architects',
-  'project-lake-bluff-mcm.html': 'Ravine House, Lake Bluff — Lake Effect Architects',
-  'project-pebble-beach.html': 'Del Monte Forest House, Pebble Beach — Lake Effect Architects',
-  'project-lake-bluff-historic.html': 'Corner House, Lake Bluff — Lake Effect Architects',
-  'project-village-market.html': 'Village Market Building — Lake Effect Architects',
-  'project-lake-forest-traditional.html': 'Havenwood House, Lake Forest — Lake Effect Architects',
-  'project-lake-forest-contemporary.html': 'Meadow House, Lake Forest — Lake Effect Architects',
+  'projects/ravine-house.html': 'Ravine House, Lake Bluff — Lake Effect Architects',
+  'projects/del-monte-forest-house.html': 'Del Monte Forest House, Pebble Beach — Lake Effect Architects',
+  'projects/corner-house.html': 'Corner House, Lake Bluff — Lake Effect Architects',
+  'projects/village-market-building.html': 'Village Market Building — Lake Effect Architects',
+  'projects/havenwood-house.html': 'Havenwood House, Lake Forest — Lake Effect Architects',
+  'projects/meadow-house.html': 'Meadow House, Lake Forest — Lake Effect Architects',
 };
 
 const escapeAttr = (v: string): string => v.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
@@ -169,7 +170,7 @@ const NOSCRIPT = `<noscript>
 </noscript>`;
 
 export function build(): { pages: number; changed: number } {
-  const pages = readdirSync(root).filter(f => f.endsWith('.html'));
+  const pages = sitePages();
   let changed = 0;
 
   for (const page of pages) {
@@ -195,8 +196,8 @@ export function build(): { pages: number; changed: number } {
     const description = s.match(/<meta name="description" content="([^"]*)"/)?.[1] ?? '';
     const share = shareTags(page, canonical, description);
 
-    s = s.replace('  <link rel="stylesheet" href="css/base.css">',
-      `${indexable ? `  <link rel="canonical" href="${canonical}">\n` : ''}${share ? share + '\n' : ''}${HEAD_LINKS}\n  <link rel="stylesheet" href="css/base.css">`);
+    s = s.replace('  <link rel="stylesheet" href="/css/base.css">',
+      `${indexable ? `  <link rel="canonical" href="${canonical}">\n` : ''}${share ? share + '\n' : ''}${HEAD_LINKS}\n  <link rel="stylesheet" href="/css/base.css">`);
 
     s = s.replace(/<nav id="main-nav">[\s\S]*?<\/nav>\n?/, '');
     s = s.replace(/<footer>[\s\S]*?<\/footer>\n?/, '');
@@ -206,15 +207,15 @@ export function build(): { pages: number; changed: number } {
 
     s = s.replace('<body>\n\n',
       `<body>\n\n${SKIP_LINK}\n${nav(PAGE_KEYS[page] ?? null)}\n\n<main id="main" tabindex="-1">\n`);
-    s = s.replace('<script src="js/ask.js"></script>',
-      `</main>\n\n${NOSCRIPT}\n\n${footer}\n\n<script src="js/ask.js"></script>`);
-    if (!s.includes('js/lightbox.js')) {
-      s = s.replace('<script src="js/components.js"></script>',
-        '<script src="js/lightbox.js"></script>\n<script src="js/components.js"></script>');
+    s = s.replace('<script src="/js/ask.js"></script>',
+      `</main>\n\n${NOSCRIPT}\n\n${footer}\n\n<script src="/js/ask.js"></script>`);
+    if (!s.includes('/js/lightbox.js')) {
+      s = s.replace('<script src="/js/components.js"></script>',
+        '<script src="/js/lightbox.js"></script>\n<script src="/js/components.js"></script>');
     }
-    if (!s.includes('css/lightbox.css')) {
-      s = s.replace('  <link rel="stylesheet" href="css/base.css">',
-        '  <link rel="stylesheet" href="css/base.css">\n  <link rel="stylesheet" href="css/lightbox.css">');
+    if (!s.includes('/css/lightbox.css')) {
+      s = s.replace('  <link rel="stylesheet" href="/css/base.css">',
+        '  <link rel="stylesheet" href="/css/base.css">\n  <link rel="stylesheet" href="/css/lightbox.css">');
     }
 
     if (s !== original) {

@@ -1,7 +1,8 @@
-import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import type { Section } from '../api/types.ts';
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { pages as sitePages } from './pages.ts';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(root, 'assets', 'site-index.json');
@@ -14,11 +15,11 @@ const PAGE_TITLES: Record<string, string> = {
   'philosophy.html': 'Design Philosophy',
   'about.html': 'About the Studio',
   'contact.html': 'Contact',
-  'project-lake-bluff-mcm.html': 'Project · Ravine House',
-  'project-pebble-beach.html': 'Project · Del Monte Forest House',
-  'project-lake-bluff-historic.html': 'Project · Corner House',
-  'project-lake-forest-traditional.html': 'Project · Havenwood House',
-  'project-lake-forest-contemporary.html': 'Project · Meadow House',
+  'projects/ravine-house.html': 'Project · Ravine House',
+  'projects/del-monte-forest-house.html': 'Project · Del Monte Forest House',
+  'projects/corner-house.html': 'Project · Corner House',
+  'projects/havenwood-house.html': 'Project · Havenwood House',
+  'projects/meadow-house.html': 'Project · Meadow House',
   'privacy.html': 'Privacy',
   'terms.html': 'Terms of Use',
 };
@@ -42,7 +43,7 @@ const NOT_CONTENT = new Set([
 
 const sections: Section[] = [];
 
-for (const page of readdirSync(root).filter(f => f.endsWith('.html') && f !== '404.html')) {
+for (const page of sitePages().filter(f => f !== '404.html')) {
   const html = readFileSync(join(root, page), 'utf8');
   if (/\bTODO\b/.test(html)) continue;
   const start = html.indexOf('<main');
@@ -64,7 +65,7 @@ for (const page of readdirSync(root).filter(f => f.endsWith('.html') && f !== '4
       page,
       pageTitle: PAGE_TITLES[page] ?? page,
       anchor: id,
-      href: page === 'index.html' ? `./#${id}` : `${page}#${id}`,
+      href: page === 'index.html' ? `/#${id}` : `/${page}#${id}`,
       eyebrow: strip(eyebrowMatch?.[1] ?? ''),
       heading: strip(headingMatch?.[1] ?? ''),
       text: text.slice(0, 1400),

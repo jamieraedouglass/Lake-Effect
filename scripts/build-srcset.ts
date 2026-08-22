@@ -1,6 +1,7 @@
-import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { pages as sitePages } from './pages.ts';
 import { SMALL_WIDTH, smallName } from './build-images.ts';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -38,7 +39,7 @@ function sizesFor(html: string, imgStart: number, tag: string, planSizes: string
   return best;
 }
 
-const pages = readdirSync(root).filter(f => f.endsWith('.html'));
+const pages = sitePages();
 let touched = 0;
 let tagged = 0;
 const missing: string[] = [];
@@ -54,7 +55,7 @@ for (const page of pages) {
   s = s.replace(/\n?\s*srcset="[^"]*"/g, '').replace(/\n?\s*sizes="[^"]*"/g, '');
 
   s = s.replace(/<img\b[^>]*>/g, (tag, offset) => {
-    const src = tag.match(/src="(assets\/[^"]+)"/)?.[1];
+    const src = tag.match(/src="\/?(assets\/[^"]+)"/)?.[1];
     if (!src) return tag;
 
     const small = smallName(src);
@@ -71,7 +72,7 @@ for (const page of pages) {
 
     tagged++;
     return tag.replace(/>$/,
-      `\n           srcset="${small} ${SMALL_WIDTH}w, ${src} ${width}w"\n           sizes="${sizes}">`);
+      `\n           srcset="/${small} ${SMALL_WIDTH}w, /${src} ${width}w"\n           sizes="${sizes}">`);
   });
 
   if (s !== original) {

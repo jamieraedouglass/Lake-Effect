@@ -198,37 +198,34 @@ anything looks wrong.
 ## Layout
 
     index.html                    home
-    philosophy.html               the three guiding principles
     residential.html              houses, with a category filter
-    commercial.html               clubs, civic, retail
+    commercial.html               clubs, clubhouses and retail
+    philosophy.html               the three guiding principles
     about.html                    studio, process, location
     contact.html                  inquiry form + FAQ
-    privacy.html                  what the site collects
-    terms.html                    terms of use
-    project-lake-bluff-mcm.html      individual project page
-    project-pebble-beach.html        individual project page
-    project-lake-bluff-historic.html individual project page
-    components.js                 nav + footer, injected into every page
+    privacy.html  terms.html      what the site collects, terms of use
     404.html                      not-found page
-    favicon.svg                   square "le" mark for tabs
-    favicon-32.png                fallback, rendered from favicon.svg
-    apple-touch-icon.png          180px, rendered from favicon.svg
-    logo.svg                      the full wordmark, used in the nav
-    robots.txt, sitemap.xml       generated; sitemap by npm run build:sitemap
-    ask.js                        the Ask panel and its no-backend fallback
-    api/ask.js                    serverless function behind the Ask panel
-    api/contact.js                inquiry form, delivered by Resend
-    api/guard.js                  origin check and rate limiting for both
-    scripts/build-chrome.mjs      syncs nav, footer, titles and head links
-    scripts/build-images.mjs      writes the 800px variant of every photo
-    scripts/build-srcset.mjs      puts srcset and sizes on every <img>
-    scripts/build-index.mjs       rebuilds assets/site-index.json
-    test/check.mjs                the checks behind `npm test`
-    css/base.css                  tokens, reset, page hero, buttons
-    css/layout.css                nav (incl. the mobile menu) and footer
-    css/project.css               shared layout for every project page
-    css/<page>.css                one file per page, its own media queries
-    assets/<project-slug>/        photos and plans for one project
+
+    projects/                     one page per project, named for the house
+    brand/                        logo, favicons, touch icon
+    assets/<project-slug>/        photos and plans, plus their 800px variants
+    css/                          base, layout, project, legal, one per page
+    src/                          page scripts in TypeScript
+    js/                           compiled output, committed
+    api/                          serverless endpoints
+    scripts/                      the build steps
+    test/check.ts                 the checks behind `npm test`
+
+    robots.txt  sitemap.xml       generated; sitemap by npm run build:sitemap
+
+Pages live at two depths, so **every path in the markup is root-relative** —
+`/css/base.css`, `/assets/…`, `/api/ask`. A relative path works at the root and
+breaks inside `projects/`, silently, which is exactly the sort of thing that
+looks fine until someone opens a project page.
+
+`scripts/pages.ts` is the single place that knows where pages are. Every build
+step and the test suite read from it, so adding another directory of pages is
+one edit.
 
 The nav and footer are **in the HTML of every page**, not injected by
 JavaScript, so crawlers and no-JS visitors see the whole link graph. They are
