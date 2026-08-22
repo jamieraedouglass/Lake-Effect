@@ -82,7 +82,9 @@
   background: var(--cream);
   min-height: 400px;
   display: flex; align-items: center; justify-content: center;
+  padding: 56px 32px;
 }
+.location-right svg { max-width: 100%; height: auto; }
 .location-eyebrow {
   font-size: 9px; font-weight: 600;
   letter-spacing: 0.28em; text-transform: uppercase;
@@ -132,7 +134,7 @@
   .values-grid { grid-template-columns: 1fr; }
   .location-band { grid-template-columns: 1fr; }
   .location-right { min-height: 300px; order: 2; }
-  .location-right svg { width: 210px; height: 210px; }
+  .location-right svg { width: 200px; height: auto; }
 }
 
 @media (max-width: 560px) {
