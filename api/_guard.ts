@@ -1,4 +1,4 @@
-import type { RateLimit } from './types.ts';
+import type { RateLimit } from './_types.ts';
 
 const ALLOWED_HOSTS = (process.env['ALLOWED_ORIGINS'] ?? 'leffect.com,www.leffect.com')
   .split(',')

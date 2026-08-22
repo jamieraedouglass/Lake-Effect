@@ -1,8 +1,8 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { z } from 'zod';
 import { betaZodOutputFormat } from '@anthropic-ai/sdk/helpers/beta/zod';
-import { sections } from './site-index.ts';
-import { sameSite, clientKey, atLimit, recordHit } from './guard.ts';
+import { sections } from './_site-index.ts';
+import { sameSite, clientKey, atLimit, recordHit } from './_guard.ts';
 import { handleRequest } from './_adapter.ts';
 
 const ZOD_VERSION = typeof z.toJSONSchema === 'function' ? '4.x' : '3.x';

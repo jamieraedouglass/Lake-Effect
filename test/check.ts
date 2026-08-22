@@ -107,7 +107,24 @@ console.log('\nLake Effect site checks\n');
       if (!existsSync(join(root, resolved))) problems.push(`${page}: ${raw} -> /${resolved}`);
     }
   }
-  check('links resolve from the page that carries them', problems);
+  {
+  // A script whose stylesheet is missing still runs, so nothing errors — the
+  // feature just renders as unstyled fragments. Pair them explicitly.
+  const problems: string[] = [];
+  for (const page of pages) {
+    const html = read(page);
+    for (const m of html.matchAll(/src="\/js\/([\w-]+)\.js"/g)) {
+      const name = m[1] ?? '';
+      if (!existsSync(join(root, `css/${name}.css`))) continue;
+      if (!html.includes(`/css/${name}.css`)) {
+        problems.push(`${page}: loads js/${name}.js but not css/${name}.css`);
+      }
+    }
+  }
+  check('scripts ship with their stylesheets', problems);
+}
+
+check('links resolve from the page that carries them', problems);
 }
 
 check('every class used has a matching rule', problems);

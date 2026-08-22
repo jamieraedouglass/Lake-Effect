@@ -1,12 +1,12 @@
 import { readFileSync, writeFileSync } from 'node:fs';
-import type { Section } from '../api/types.ts';
+import type { Section } from '../api/_types.ts';
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { pages as sitePages } from './pages.ts';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(root, 'assets', 'site-index.json');
-const OUT_MODULE = join(root, 'api', 'site-index.ts');
+const OUT_MODULE = join(root, 'api', '_site-index.ts');
 
 const PAGE_TITLES: Record<string, string> = {
   'index.html': 'Home',
@@ -79,7 +79,7 @@ const index = {
 };
 
 writeFileSync(OUT, JSON.stringify(index, null, 2) + '\n');
-writeFileSync(OUT_MODULE, `import type { Section } from './types.ts';\n\nexport const sections: Section[] = ${JSON.stringify(sections, null, 2)};\n`);
+writeFileSync(OUT_MODULE, `import type { Section } from './_types.ts';\n\nexport const sections: Section[] = ${JSON.stringify(sections, null, 2)};\n`);
 
 const words = sections.reduce((n, s) => n + s.text.split(' ').length, 0);
 console.log(`site-index.json · ${sections.length} sections, ~${words} words (~${Math.round(words * 1.4)} tokens)`);

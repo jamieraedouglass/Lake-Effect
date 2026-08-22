@@ -1,4 +1,4 @@
-import { sameSite, clientKey, atLimit, recordHit } from './guard.ts';
+import { sameSite, clientKey, atLimit, recordHit } from './_guard.ts';
 import { handleRequest } from './_adapter.ts';
 
 const TO = 'rob@leffect.com';

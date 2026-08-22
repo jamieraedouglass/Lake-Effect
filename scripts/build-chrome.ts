@@ -152,6 +152,48 @@ const SHARE_NAMES: Record<string, string> = {
   'projects/fairway-house.html': 'Fairway House, Lake Forest — Lake Effect Architects',
 };
 
+// Hand-written structured data goes stale silently: it kept naming a logo at
+// a path that no longer exists, on a domain that still serves the old site.
+// Generated here so it moves with SITE_URL.
+function structuredData(): string {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    additionalType: 'https://schema.org/ArchitecturalService',
+    name: 'Lake Effect Architects, Inc.',
+    url: `${SITE_URL}/`,
+    logo: `${SITE_URL}/brand/logo.svg`,
+    image: `${SITE_URL}/assets/del-monte-forest-house/exterior-approach.jpg`,
+    email: 'rob@leffect.com',
+    telephone: '+1-847-234-4688',
+    faxNumber: '+1-847-234-8911',
+    description: "Architecture for homes, clubs and commercial buildings on Chicago's North Shore.",
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Lake Bluff',
+      addressRegion: 'IL',
+      addressCountry: 'US',
+    },
+    areaServed: [
+      { '@type': 'AdministrativeArea', name: 'North Shore, Chicago' },
+      { '@type': 'AdministrativeArea', name: 'Lake County, Illinois' },
+    ],
+    knowsAbout: [
+      'Residential architecture',
+      'Historic renovation',
+      'Commercial architecture',
+      'Clubhouse architecture',
+    ],
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '17:00',
+    },
+  };
+  return `<script type="application/ld+json">\n${JSON.stringify(data, null, 2)}\n</script>`;
+}
+
 const escapeAttr = (v: string): string => v.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
 function shareTags(page: string, canonical: string, description: string): string {
@@ -197,7 +239,8 @@ export function build(): { pages: number; changed: number } {
          .replace(/\n?  <link rel="apple-touch-icon"[^>]*>/g, '')
          .replace(/\n?  <link rel="preconnect"[^>]*>/g, '')
          .replace(/\n?  <link rel="stylesheet" href="https:\/\/fonts[^>]*>/g, '')
-         .replace(/\n?  <link rel="canonical"[^>]*>/g, '');
+         .replace(/\n?  <link rel="canonical"[^>]*>/g, '')
+         .replace(/\n?<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '');
 
     if (TITLES[page]) {
       s = s.replace(/<title>[^<]*<\/title>/, `<title>${TITLES[page]}</title>`);
@@ -208,6 +251,10 @@ export function build(): { pages: number; changed: number } {
 
     s = s.replace('  <link rel="stylesheet" href="/css/base.css">',
       `${indexable ? `  <link rel="canonical" href="${canonical}">\n` : ''}${share ? share + '\n' : ''}${HEAD_LINKS}\n  <link rel="stylesheet" href="/css/base.css">`);
+
+    if (page === 'index.html') {
+      s = s.replace('</head>', `${structuredData()}\n</head>`);
+    }
 
     s = s.replace(/<nav id="main-nav">[\s\S]*?<\/nav>\n?/, '');
     s = s.replace(/<footer>[\s\S]*?<\/footer>\n?/, '');
@@ -223,6 +270,13 @@ export function build(): { pages: number; changed: number } {
       s = s.replace('<script src="/js/components.js"></script>',
         '<script src="/js/lightbox.js"></script>\n<script src="/js/components.js"></script>');
     }
+    // ask.js ships on every page; without its stylesheet the launcher collapses
+    // to a few static pixels at the foot of the document and cannot be reached.
+    if (s.includes('/js/ask.js') && !s.includes('/css/ask.css')) {
+      s = s.replace('  <link rel="stylesheet" href="/css/base.css">',
+        '  <link rel="stylesheet" href="/css/base.css">\n  <link rel="stylesheet" href="/css/ask.css">');
+    }
+
     if (!s.includes('/css/lightbox.css')) {
       s = s.replace('  <link rel="stylesheet" href="/css/base.css">',
         '  <link rel="stylesheet" href="/css/base.css">\n  <link rel="stylesheet" href="/css/lightbox.css">');
