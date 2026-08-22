@@ -215,7 +215,7 @@ export const sections: Section[] = [
     "href": "/projects/corner-house.html#corner-house",
     "eyebrow": "The project",
     "heading": "Corner House",
-    "text": "Residential · Traditional Corner House Lake Bluff, Illinois. A house from around 1902 on a prominent corner, extended without letting the additions announce themselves. Built c. 1902 Scope Addition & renovation Added Living, kitchen, family, mudroom Porch Carried around the corner The project Originally constructed circa 1902 on Center Avenue in Lake Bluff, this historic residence was expanded to accommodate a new living room, kitchen, pantry, family room, and mudroom/laundry area. The additions were carefully designed to integrate seamlessly with the original architecture while introducing the conveniences of contemporary living. The front porch was extended around the corner of the house to connect with the new family room and strengthen the home's relationship to its prominent location at Center and Evanston Avenues."
+    "text": "Residential · Traditional · Addition Corner House Lake Bluff, Illinois. A house from around 1902 on a prominent corner, extended without letting the additions announce themselves. Built c. 1902 Scope Addition & renovation Added Living, kitchen, family, mudroom Porch Carried around the corner The project Originally constructed circa 1902 on Center Avenue in Lake Bluff, this historic residence was expanded to accommodate a new living room, kitchen, pantry, family room, and mudroom/laundry area. The additions were carefully designed to integrate seamlessly with the original architecture while introducing the conveniences of contemporary living. The front porch was extended around the corner of the house to connect with the new family room and strengthen the home's relationship to its prominent location at Center and Evanston Avenues."
   },
   {
     "page": "projects/corner-house.html",
@@ -269,7 +269,7 @@ export const sections: Section[] = [
     "href": "/projects/del-monte-forest-house.html#del-monte-forest-house",
     "eyebrow": "The project",
     "heading": "Del Monte Forest House",
-    "text": "Residential · Contemporary Del Monte Forest House Pebble Beach, California. A house in the Del Monte Forest, set above the golf links and turned toward the water. Location Del Monte Forest Outlook Carmel Beach & Point Lobos Accommodation 4 bed, 4½ bath Area ≈ 2,500 sq ft The project Situated above Pebble Beach Golf Links, this contemporary residence is nestled within the Del Monte Forest, offering distant views of Carmel Beach and Point Lobos. The open floor plan provides generous living spaces that extend onto outdoor decks, while efficiently accommodating four bedrooms and four-and-one-half bathrooms within approximately 2,500 square feet."
+    "text": "Residential · Contemporary · New Construction Del Monte Forest House Pebble Beach, California. A house in the Del Monte Forest, set above the golf links and turned toward the water. Location Del Monte Forest Outlook Carmel Beach & Point Lobos Accommodation 4 bed, 4½ bath Area ≈ 2,500 sq ft The project Situated above Pebble Beach Golf Links, this contemporary residence is nestled within the Del Monte Forest, offering distant views of Carmel Beach and Point Lobos. The open floor plan provides generous living spaces that extend onto outdoor decks, while efficiently accommodating four bedrooms and four-and-one-half bathrooms within approximately 2,500 square feet."
   },
   {
     "page": "projects/del-monte-forest-house.html",
@@ -323,7 +323,7 @@ export const sections: Section[] = [
     "href": "/projects/fairway-house.html#fairway-house",
     "eyebrow": "",
     "heading": "Fairway House",
-    "text": "Residential · Contemporary Fairway House Lake Forest, Illinois. Three volumes ordered by how private each one is, with a sheltered terrace held in the space they leave behind. Location Lake Forest, Illinois Setting A private golf course community Massing Three distinct volumes Ordered by Public through to private"
+    "text": "Residential · Contemporary · New Construction Fairway House Lake Forest, Illinois. Three volumes ordered by how private each one is, with a sheltered terrace held in the space they leave behind. Location Lake Forest, Illinois Setting A private golf course community Massing Three distinct volumes Ordered by Public through to private"
   },
   {
     "page": "projects/fairway-house.html",
@@ -368,7 +368,7 @@ export const sections: Section[] = [
     "href": "/projects/havenwood-house.html#havenwood-house",
     "eyebrow": "",
     "heading": "Havenwood House",
-    "text": "Residential · Traditional Havenwood House Lake Forest, Illinois. A house designed to look as though it had always stood on the remains of a 1913 Howard Van Doren Shaw estate. Setting East Lake Forest Formerly The Havenwood estate Estate architect Howard Van Doren Shaw Landscape Associated with Jens Jensen"
+    "text": "Residential · Traditional · New Construction Havenwood House Lake Forest, Illinois. A house designed to look as though it had always stood on the remains of a 1913 Howard Van Doren Shaw estate. Setting East Lake Forest Formerly The Havenwood estate Estate architect Howard Van Doren Shaw Landscape Associated with Jens Jensen"
   },
   {
     "page": "projects/havenwood-house.html",
@@ -404,7 +404,7 @@ export const sections: Section[] = [
     "href": "/projects/ivy-cottage.html#ivy-cottage",
     "eyebrow": "",
     "heading": "Ivy Cottage",
-    "text": "Residential · Traditional Ivy Cottage Lake Bluff, Illinois. A brick English cottage in the manner of Stanley Anderson, who trained in Howard Van Doren Shaw's office before opening his own. Area ≈ 3,250 sq ft Accommodation 5 bed, 3½ bath Lower level Finished, nine- foot ceilings Precedent Stanley Anderson, 1924–1960"
+    "text": "Residential · Traditional · New Construction Ivy Cottage Lake Bluff, Illinois. A brick English cottage in the manner of Stanley Anderson, who trained in Howard Van Doren Shaw's office before opening his own. Area ≈ 3,250 sq ft Accommodation 5 bed, 3½ bath Lower level Finished, nine- foot ceilings Precedent Stanley Anderson, 1924–1960"
   },
   {
     "page": "projects/ivy-cottage.html",
@@ -449,7 +449,7 @@ export const sections: Section[] = [
     "href": "/projects/meadow-house.html#meadow-house",
     "eyebrow": "",
     "heading": "Meadow House",
-    "text": "Residential · Contemporary Meadow House Lake Forest, Illinois. Three volumes set beside a meadow, arranged so the terraces between them face the preserve. Area ≈ 5,400 sq ft Accommodation 4 bed, 3½ bath Massing Three distinct volumes Outlook Lake Forest Open Lands"
+    "text": "Residential · Contemporary · New Construction Meadow House Lake Forest, Illinois. Three volumes set beside a meadow, arranged so the terraces between them face the preserve. Area ≈ 5,400 sq ft Accommodation 4 bed, 3½ bath Massing Three distinct volumes Outlook Lake Forest Open Lands"
   },
   {
     "page": "projects/meadow-house.html",
@@ -494,7 +494,7 @@ export const sections: Section[] = [
     "href": "/projects/ravine-house.html#ravine-house",
     "eyebrow": "The project",
     "heading": "Ravine House",
-    "text": "Residential · Mid-Century Modern Ravine House Lake Bluff, Illinois. A 1954 house on a site bordered by three ravines, renovated in two phases and completed in 2024. Built 1954 Renovated 2017 & 2024 Accommodation 4 bed, 4½ bath Area ≈ 2,500 sq ft The project Originally constructed in 1954, this mid-century modern residence occupies a distinctive site bordered by three ravines, with seasonal views of Lake Michigan. Additions completed by the home's second owner during the 1970s departed from the clarity and character of the original architecture. Following our purchase of the property in 2017, the first phase of renovation focused on the lower level, creating three bedrooms, three bathrooms, a family room, and a laundry room. A second phase, completed in 2024, addressed the main level and exterior, restoring the home's mid-century modern character while adapting it for contemporary living. Although the exterior reflected its mid-century origins, the interior was divided into a series of small, compartmentalized rooms. Removing most of the interior partitions revealed the original timber ceiling beams and established an open, light-filled floor plan. Generous living spaces now extend naturally into a screened porch and adjoining outdoor patios, strengthening the connection between the house and its wooded setting. The renovated residence efficiently accommodates four bedrooms and "
+    "text": "Residential · Mid-Century Modern · Renovation Ravine House Lake Bluff, Illinois. A 1954 house on a site bordered by three ravines, renovated in two phases and completed in 2024. Built 1954 Renovated 2017 & 2024 Accommodation 4 bed, 4½ bath Area ≈ 2,500 sq ft The project Originally constructed in 1954, this mid-century modern residence occupies a distinctive site bordered by three ravines, with seasonal views of Lake Michigan. Additions completed by the home's second owner during the 1970s departed from the clarity and character of the original architecture. Following our purchase of the property in 2017, the first phase of renovation focused on the lower level, creating three bedrooms, three bathrooms, a family room, and a laundry room. A second phase, completed in 2024, addressed the main level and exterior, restoring the home's mid-century modern character while adapting it for contemporary living. Although the exterior reflected its mid-century origins, the interior was divided into a series of small, compartmentalized rooms. Removing most of the interior partitions revealed the original timber ceiling beams and established an open, light-filled floor plan. Generous living spaces now extend naturally into a screened porch and adjoining outdoor patios, strengthening the connection between the house and its wooded setting. The renovated residence efficiently accommodates four "
   },
   {
     "page": "projects/ravine-house.html",
