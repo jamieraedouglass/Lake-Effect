@@ -89,7 +89,26 @@ console.log('\nLake Effect site checks\n');
 
     for (const c of used) if (!defined.has(c)) problems.push(`${page}: .${c} has no rule`);
   }
-  check('every class used has a matching rule', problems);
+  {
+  // A relative href works at the root and quietly 404s one directory down,
+  // which is how the whole nav died when the project pages moved.
+  const problems: string[] = [];
+  for (const page of pages) {
+    const html = read(page);
+    const dir = dirname(page);
+    for (const m of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
+      const raw = m[1] ?? '';
+      if (/^(https?:|mailto:|tel:|data:|#|\/\/)/.test(raw)) continue;
+      const target = (raw.split('#')[0] ?? '').trim();
+      if (!target || target.startsWith('/api/')) continue;
+      const resolved = target.startsWith('/') ? target.slice(1) : join(dir, target);
+      if (!existsSync(join(root, resolved))) problems.push(`${page}: ${raw} -> /${resolved}`);
+    }
+  }
+  check('links resolve from the page that carries them', problems);
+}
+
+check('every class used has a matching rule', problems);
 }
 
 {

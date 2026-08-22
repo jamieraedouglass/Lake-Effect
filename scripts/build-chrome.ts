@@ -6,11 +6,13 @@ import { fileURLToPath } from 'node:url';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 export const SITE_URL = process.env.SITE_URL ?? 'https://lake-effect-brown.vercel.app';
 
+// Root-relative: project pages sit a directory down, and a bare
+// 'residential.html' resolves to /projects/residential.html from there.
 const NAV_ITEMS: Array<[string, string, string]> = [
-  ['residential.html', 'residential', 'Residential'],
-  ['commercial.html', 'commercial', 'Commercial'],
-  ['philosophy.html', 'philosophy', 'Philosophy'],
-  ['about.html', 'about', 'About'],
+  ['/residential.html', 'residential', 'Residential'],
+  ['/commercial.html', 'commercial', 'Commercial'],
+  ['/philosophy.html', 'philosophy', 'Philosophy'],
+  ['/about.html', 'about', 'About'],
 ];
 
 export const PAGE_KEYS: Record<string, string> = {
@@ -59,7 +61,7 @@ const footer = `<footer>
       <ul class="footer-links">
         <li><a href="/about.html">About Us</a></li>
         <li><a href="/philosophy.html">Design Philosophy</a></li>
-        <li><a href="about.html#process">Process</a></li>
+        <li><a href="/about.html#process">Process</a></li>
       </ul>
     </div>
     <div>
