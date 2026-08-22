@@ -47,5 +47,82 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/who-we-are",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/residential-gallery",
+      "destination": "/residential",
+      "permanent": true
+    },
+    {
+      "source": "/residential-old-version",
+      "destination": "/residential",
+      "permanent": true
+    },
+    {
+      "source": "/new-projects",
+      "destination": "/residential",
+      "permanent": true
+    },
+    {
+      "source": "/village-market",
+      "destination": "/projects/village-market-building",
+      "permanent": true
+    },
+    {
+      "source": "/pebble-beach",
+      "destination": "/projects/del-monte-forest-house",
+      "permanent": true
+    },
+    {
+      "source": "/conway-farms",
+      "destination": "/projects/fairway-house",
+      "permanent": true
+    },
+    {
+      "source": "/center-ave",
+      "destination": "/projects/corner-house",
+      "permanent": true
+    },
+    {
+      "source": "/stable-lane",
+      "destination": "/projects/meadow-house",
+      "permanent": true
+    },
+    {
+      "source": "/forest-cove",
+      "destination": "/residential",
+      "permanent": true
+    },
+    {
+      "source": "/catskills-mtns",
+      "destination": "/residential",
+      "permanent": true
+    },
+    {
+      "source": "/mayflower",
+      "destination": "/residential",
+      "permanent": true
+    },
+    {
+      "source": "/furniture",
+      "destination": "/residential",
+      "permanent": true
+    },
+    {
+      "source": "/club-house-renderings",
+      "destination": "/commercial",
+      "permanent": true
+    }
   ]
 }

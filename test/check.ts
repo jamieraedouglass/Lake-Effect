@@ -108,6 +108,105 @@ console.log('\nLake Effect site checks\n');
     }
   }
   {
+  // Every path Squarespace has indexed today. When the domain moves these stop
+  // being served by Squarespace, so each one needs somewhere to land or the
+  // inbound links and the search results all break at once.
+  const LEGACY = [
+    '/home', '/about', '/who-we-are', '/residential', '/residential-gallery',
+    '/residential-old-version', '/new-projects', '/commercial', '/village-market',
+    '/pebble-beach', '/conway-farms', '/center-ave', '/stable-lane', '/forest-cove',
+    '/catskills-mtns', '/mayflower', '/furniture', '/club-house-renderings',
+  ];
+  const cfg = JSON.parse(read('vercel.json')) as {
+    redirects?: Array<{ source: string; destination: string }>;
+  };
+  const redirects = new Map((cfg.redirects ?? []).map(r => [r.source, r.destination]));
+  const problems: string[] = [];
+  for (const path of LEGACY) {
+    const dest = redirects.get(path);
+    if (dest === undefined) {
+      // No redirect is fine only if the path is a real page on the new site.
+      if (!existsSync(join(root, `${path.replace(/^\//, '')}.html`))) {
+        problems.push(`${path} has no redirect and no page of its own`);
+      }
+      continue;
+    }
+    const target = dest === '/' ? 'index.html' : `${dest.replace(/^\//, '')}.html`;
+    if (!existsSync(join(root, target))) {
+      problems.push(`${path} redirects to ${dest}, which does not exist`);
+    }
+  }
+  check('every url the old site published still lands somewhere', problems);
+}
+
+{
+  // Vercel publishes every file in api/ as a function unless it starts with an
+  // underscore, so a helper module there becomes an endpoint that 500s.
+  const problems: string[] = [];
+  for (const name of readdirSync(join(root, 'api')).filter(f => f.endsWith('.ts'))) {
+    if (name.startsWith('_')) continue;
+    if (!readFileSync(join(root, 'api', name), 'utf8').includes('export default')) {
+      problems.push(`api/${name} has no default export but would be served at /api/${name.replace(/\.ts$/, '')}`);
+    }
+  }
+  check('every published api file has a handler', problems);
+}
+
+{
+  // Canonicals, the sitemap, robots and the structured data have to name the
+  // same host, or they tell search engines the site lives in several places.
+  const hosts = new Map<string, Set<string>>();
+  const note = (kind: string, url: string): void => {
+    const host = url.match(/^https?:\/\/([^/]+)/)?.[1];
+    if (host) hosts.set(host, (hosts.get(host) ?? new Set()).add(kind));
+  };
+  for (const page of pages) {
+    const html = read(page);
+    for (const m of html.matchAll(/rel="canonical" href="([^"]+)"/g)) note('canonical', m[1] ?? '');
+    for (const m of html.matchAll(/"(?:url|logo|image)":\s*"(https?:[^"]+)"/g)) note('structured data', m[1] ?? '');
+  }
+  for (const m of read('sitemap.xml').matchAll(/<loc>([^<]+)<\/loc>/g)) note('sitemap', m[1] ?? '');
+  for (const m of read('robots.txt').matchAll(/Sitemap:\s*(\S+)/g)) note('robots.txt', m[1] ?? '');
+  const problems = hosts.size <= 1 ? [] :
+    [...hosts].map(([h, k]) => `${h} — used by ${[...k].sort().join(', ')}`);
+  check('one host across canonicals, sitemap, robots and structured data', problems);
+}
+
+{
+  // A fragment that points at nothing scrolls nowhere, and the Ask panel sends
+  // people to fragments.
+  const problems: string[] = [];
+  const idsOf = (page: string): Set<string> =>
+    new Set([...read(page).matchAll(/\bid="([^"]+)"/g)].map(m => m[1] ?? ''));
+  const check1 = (from: string, href: string): void => {
+    const [path, frag] = href.split('#');
+    if (!frag) return;
+    const bare = (path ?? '').replace(/^\//, '');
+    // '' means this page; '/' means the home page.
+    const target = !path ? from : bare === '' ? 'index.html' : bare;
+    if (!existsSync(join(root, target))) { problems.push(`${from}: ${href} -> no such page`); return; }
+    if (!idsOf(target).has(frag)) problems.push(`${from}: ${href} -> #${frag} is not on that page`);
+  };
+  for (const page of pages) {
+    for (const m of read(page).matchAll(/href="((?:\/[^"#]*)?#[^"]+)"/g)) check1(page, m[1] ?? '');
+  }
+  for (const s of JSON.parse(read('assets/site-index.json')).sections as Array<{ href: string }>) {
+    check1('site-index.json', s.href);
+  }
+  check('every #fragment lands on a real id', problems);
+}
+
+{
+  // A project page nothing links to is a page nobody finds.
+  const problems: string[] = [];
+  const listings = ['index.html', 'residential.html', 'commercial.html'].map(read).join('');
+  for (const page of pages.filter(p => p.startsWith('projects/'))) {
+    if (!listings.includes(`href="/${page}"`)) problems.push(`${page} is not linked from any listing page`);
+  }
+  check('every project is reachable from a listing page', problems);
+}
+
+{
   // A script whose stylesheet is missing still runs, so nothing errors — the
   // feature just renders as unstyled fragments. Pair them explicitly.
   const problems: string[] = [];
@@ -206,7 +305,7 @@ check('every class used has a matching rule', problems);
 
 {
   const problems = [];
-  for (const page of pages.filter(p => p.startsWith('project-'))) {
+  for (const page of pages.filter(p => p.startsWith('projects/'))) {
     const html = read(page);
     for (const cls of ['project-hero-image', 'project-footer']) {
       if (!html.includes(`class="${cls}"`)) problems.push(`${page}: no .${cls} section`);
@@ -416,7 +515,7 @@ check('every class used has a matching rule', problems);
     'first project on the new site',
     'is the only project',
   ];
-  const projectCount = pages.filter(p => p.startsWith('project-')).length;
+  const projectCount = pages.filter(p => p.startsWith('projects/')).length;
   for (const page of pages) {
     const html = read(page);
     for (const claim of stale) {
