@@ -84,14 +84,32 @@
   display: grid; grid-template-columns: repeat(2, 1fr);
   gap: 2px; background: var(--border);
 }
-.gallery figure { background: var(--cream); overflow: hidden; }
+.gallery figure {
+  background: var(--cream); overflow: hidden;
+  /* Subgrid puts every image on one shared row and every caption on another,
+     so photographs side by side are the same size even when one caption runs
+     to an extra line, and no caption floats above empty cream. */
+  display: grid; grid-template-rows: subgrid; grid-row: span 2;
+}
 .gallery figure.full { grid-column: 1 / -1; }
 .gallery .shot {
   width: 100%; aspect-ratio: 4/3;
   background: var(--panel); overflow: hidden;
+  /* The aspect-ratio sizes the row; min-height lets a shorter image grow into
+     a row set by a taller one beside it, rather than sitting at the top of it. */
+  min-height: 100%;
 }
 .gallery figure.full .shot { aspect-ratio: 16/9; }
 .gallery figure.tall .shot { aspect-ratio: 3/4; }
+/* A single photograph should not leave half a row showing the grid behind it.
+   A portrait one keeps its own proportions rather than being cropped to a
+   panoramic box. */
+.gallery figure:only-child { grid-column: 1 / -1; }
+.gallery figure.tall:only-child .shot {
+  align-self: start; aspect-ratio: auto; min-height: 0;
+  max-width: 620px; margin: 0 auto;
+}
+.gallery figure.tall:only-child .shot img { height: auto; }
 .gallery .shot img {
   width: 100%; height: 100%;
   object-fit: cover; display: block;

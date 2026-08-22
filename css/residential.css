@@ -30,6 +30,18 @@
   transition: background 0.2s;
 }
 .project-item.wide { grid-column: span 2; }
+/* With an odd number showing, the last card would sit in one column with the
+   grid's own colour filling the space beside it. Spanning the row lets the
+   card's cream cover that, and the contents stay card-width and centred so
+   the row still reads as part of the grid. */
+.project-item.is-alone { grid-column: 1 / -1; }
+@media (min-width: 861px) {
+  .project-item.is-alone .proj-img,
+  .project-item.is-alone .proj-meta {
+    max-width: calc(50% - 1px);
+    margin-left: auto; margin-right: auto;
+  }
+}
 .project-item[hidden] { display: none; }
 .project-item:hover { background: var(--cream-dark); }
 .project-item:hover .proj-img-inner { transform: scale(1.04); }

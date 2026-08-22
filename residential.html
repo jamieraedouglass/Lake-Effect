@@ -117,6 +117,12 @@
 
 
 
+
+
+
+
+
+
 <div class="page-hero" id="homes-built-around-how-you-live">
   <p class="page-hero-eyebrow fade-up">Residential Architecture</p>
   <h1 class="page-hero-title fade-up delay-1">Homes built around<br>how you <em>live</em></h1>
@@ -512,6 +518,24 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </main>
 
 <noscript>
@@ -563,6 +587,16 @@
 <script>initPage('residential');
 
   const projects = document.querySelectorAll('#projects .project-item');
+
+  // An odd number of visible cards leaves the last one beside an empty half
+  // row. Mark it so the stylesheet can give it the whole width instead.
+  function markLastAlone() {
+    const showing = [...projects].filter(card => !card.hidden);
+    projects.forEach(card => card.classList.remove('is-alone'));
+    if (showing.length % 2 === 1) {
+      showing[showing.length - 1].classList.add('is-alone');
+    }
+  }
   const emptyMsg = document.getElementById('projects-empty');
   const status = document.getElementById('filter-status');
   const buttons = document.querySelectorAll('.filter-btn');
@@ -584,11 +618,14 @@
         if (match) shown++;
       });
       emptyMsg.hidden = shown > 0;
+      markLastAlone();
       status.textContent = shown === 1
         ? `1 project matches ${btn.textContent.trim()}.`
         : `${shown} projects match ${btn.textContent.trim()}.`;
     });
   });
+
+  markLastAlone();
 </script>
 </body>
 </html>
