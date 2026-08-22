@@ -18,10 +18,11 @@ export const PAGE_KEYS: Record<string, string> = {
   'philosophy.html': 'philosophy',
   'about.html': 'about',
   'project-lake-bluff-mcm.html': 'residential',
-  'project-pebble-beach.html': 'residential',
   'project-lake-bluff-historic.html': 'residential',
   'project-lake-forest-traditional.html': 'residential',
   'project-lake-forest-contemporary.html': 'residential',
+  'project-pebble-beach.html': 'residential',
+  'project-village-market.html': 'commercial',
 };
 
 const nav = (active: string | null): string => `<nav id="main-nav">
@@ -96,9 +97,12 @@ const TITLES: Record<string, string> = {
   'privacy.html': 'Privacy',
   'terms.html': 'Terms',
   '404.html': 'Not found',
-  'project-lake-bluff-mcm.html': 'Mid-Century Modern, Lake Bluff',
-  'project-pebble-beach.html': 'Contemporary, Pebble Beach',
-  'project-lake-bluff-historic.html': 'Traditional, Lake Bluff',
+  'project-lake-bluff-mcm.html': 'Ravine House',
+  'project-pebble-beach.html': 'Del Monte Forest House',
+  'project-lake-bluff-historic.html': 'Corner House',
+  'project-lake-forest-traditional.html': 'Havenwood House',
+  'project-lake-forest-contemporary.html': 'Meadow House',
+  'project-village-market.html': 'Village Market Building',
 };
 
 const SHARE_IMAGES: Record<string, string> = {
@@ -129,12 +133,12 @@ const SHARE_NAMES: Record<string, string> = {
   'contact.html': 'Contact — Lake Effect Architects',
   'privacy.html': 'Privacy — Lake Effect Architects',
   'terms.html': 'Terms — Lake Effect Architects',
-  'project-lake-bluff-mcm.html': 'Mid-Century Modern Residence, Lake Bluff — Lake Effect Architects',
-  'project-pebble-beach.html': 'Contemporary Residence, Pebble Beach — Lake Effect Architects',
-  'project-lake-bluff-historic.html': 'Traditional Residence, Lake Bluff — Lake Effect Architects',
+  'project-lake-bluff-mcm.html': 'Ravine House, Lake Bluff — Lake Effect Architects',
+  'project-pebble-beach.html': 'Del Monte Forest House, Pebble Beach — Lake Effect Architects',
+  'project-lake-bluff-historic.html': 'Corner House, Lake Bluff — Lake Effect Architects',
   'project-village-market.html': 'Village Market Building — Lake Effect Architects',
-  'project-lake-forest-traditional.html': 'Traditional Residence, Lake Forest — Lake Effect Architects',
-  'project-lake-forest-contemporary.html': 'Contemporary Residence, Lake Forest — Lake Effect Architects',
+  'project-lake-forest-traditional.html': 'Havenwood House, Lake Forest — Lake Effect Architects',
+  'project-lake-forest-contemporary.html': 'Meadow House, Lake Forest — Lake Effect Architects',
 };
 
 const escapeAttr = (v: string): string => v.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
