@@ -337,20 +337,20 @@ export const sections: Section[] = [
   {
     "page": "projects/havenwood-house.html",
     "pageTitle": "Project · Havenwood House",
-    "anchor": "the-house",
-    "href": "/projects/havenwood-house.html#the-house",
-    "eyebrow": "The House",
-    "heading": "Shaw's vocabulary, a new house",
-    "text": "The House Shaw's vocabulary, a new house The elevation. Massing, roof pitch and the placing of the chimneys are where a house of this kind either sits in its setting or does not. The south elevation, across what was once estate grounds."
-  },
-  {
-    "page": "projects/havenwood-house.html",
-    "pageTitle": "Project · Havenwood House",
     "anchor": "plans",
     "href": "/projects/havenwood-house.html#plans",
     "eyebrow": "Plans",
     "heading": "Traditional outside, current within",
-    "text": "Plans Traditional outside, current within First floor The rooms a traditional elevation implies, laid out for how a house is actually used now. Second floor Both plans are drawn at the same scale. Click either to enlarge. More residential work New houses, renovations and additions across the North Shore. All residential → Building on a historic site? A new house among old ones has to earn its place. Get in touch and we'll walk the site with you. Start a conversation →"
+    "text": "Plans Traditional outside, current within First floor The rooms a traditional elevation implies, laid out for how a house is actually used now. Second floor Both plans are drawn at the same scale. Click either to enlarge."
+  },
+  {
+    "page": "projects/havenwood-house.html",
+    "pageTitle": "Project · Havenwood House",
+    "anchor": "the-house",
+    "href": "/projects/havenwood-house.html#the-house",
+    "eyebrow": "The House",
+    "heading": "Shaw's vocabulary, a new house",
+    "text": "The House Shaw's vocabulary, a new house The elevation. Massing, roof pitch and the placing of the chimneys are where a house of this kind either sits in its setting or does not. The south elevation, across what was once estate grounds. More residential work New houses, renovations and additions across the North Shore. All residential → Building on a historic site? A new house among old ones has to earn its place. Get in touch and we'll walk the site with you. Start a conversation →"
   },
   {
     "page": "projects/ivy-cottage.html",
@@ -373,6 +373,15 @@ export const sections: Section[] = [
   {
     "page": "projects/ivy-cottage.html",
     "pageTitle": "projects/ivy-cottage.html",
+    "anchor": "plans",
+    "href": "/projects/ivy-cottage.html#plans",
+    "eyebrow": "Plans",
+    "heading": "How it is arranged",
+    "text": "Plans How it is arranged First floor The hall lands between the kitchen and the dining room, so neither is a corridor to the other. Click to enlarge. Second floor Three bedrooms and a shared bath on one side, the primary suite and its deck on the other. Click to enlarge."
+  },
+  {
+    "page": "projects/ivy-cottage.html",
+    "pageTitle": "projects/ivy-cottage.html",
     "anchor": "inside",
     "href": "/projects/ivy-cottage.html#inside",
     "eyebrow": "Interior",
@@ -386,16 +395,7 @@ export const sections: Section[] = [
     "href": "/projects/ivy-cottage.html#outside",
     "eyebrow": "Exterior",
     "heading": "Gables to the street",
-    "text": "Exterior Gables to the street Two gables to the street rather than one long face, which is what keeps a house of this size from reading as a large one."
-  },
-  {
-    "page": "projects/ivy-cottage.html",
-    "pageTitle": "projects/ivy-cottage.html",
-    "anchor": "plans",
-    "href": "/projects/ivy-cottage.html#plans",
-    "eyebrow": "Plans",
-    "heading": "How it is arranged",
-    "text": "Plans How it is arranged First floor The hall lands between the kitchen and the dining room, so neither is a corridor to the other. Click to enlarge. Second floor Three bedrooms and a shared bath on one side, the primary suite and its deck on the other. Click to enlarge. More residential work New houses, renovations and additions across the North Shore. All residential → Building in an older village? A new house on an established street has neighbours to answer to. Get in touch and we'll walk the block first. Start a conversation →"
+    "text": "Exterior Gables to the street Two gables to the street rather than one long face, which is what keeps a house of this size from reading as a large one. More residential work New houses, renovations and additions across the North Shore. All residential → Building in an older village? A new house on an established street has neighbours to answer to. Get in touch and we'll walk the block first. Start a conversation →"
   },
   {
     "page": "projects/meadow-house.html",
@@ -418,6 +418,15 @@ export const sections: Section[] = [
   {
     "page": "projects/meadow-house.html",
     "pageTitle": "Project · Meadow House",
+    "anchor": "site",
+    "href": "/projects/meadow-house.html#site",
+    "eyebrow": "Site",
+    "heading": "Set against the meadow",
+    "text": "Site Set against the meadow Site plan Where the house sits relative to the meadow and the preserve beyond it. Click to enlarge."
+  },
+  {
+    "page": "projects/meadow-house.html",
+    "pageTitle": "Project · Meadow House",
     "anchor": "inside",
     "href": "/projects/meadow-house.html#inside",
     "eyebrow": "Interior",
@@ -431,16 +440,7 @@ export const sections: Section[] = [
     "href": "/projects/meadow-house.html#outside",
     "eyebrow": "Exterior",
     "heading": "Volumes and the spaces between",
-    "text": "Exterior Volumes and the spaces between From the south-west, the three volumes read separately. The terraces sit in the gaps the massing leaves. Sheltered on more than one side, which is the point of breaking the plan up. The kitchen garden, off the room that uses it. The stair tower, the tallest of the three volumes. The entrance."
-  },
-  {
-    "page": "projects/meadow-house.html",
-    "pageTitle": "Project · Meadow House",
-    "anchor": "site",
-    "href": "/projects/meadow-house.html#site",
-    "eyebrow": "Site",
-    "heading": "Set against the meadow",
-    "text": "Site Set against the meadow Site plan Where the house sits relative to the meadow and the preserve beyond it. Click to enlarge. More residential work New houses, renovations and additions across the North Shore. All residential → Building beside open land? What a house looks out on usually decides how it should be arranged. Get in touch and we'll walk the site. Start a conversation →"
+    "text": "Exterior Volumes and the spaces between From the south-west, the three volumes read separately. The terraces sit in the gaps the massing leaves. Sheltered on more than one side, which is the point of breaking the plan up. The kitchen garden, off the room that uses it. The stair tower, the tallest of the three volumes. The entrance. More residential work New houses, renovations and additions across the North Shore. All residential → Building beside open land? What a house looks out on usually decides how it should be arranged. Get in touch and we'll walk the site. Start a conversation →"
   },
   {
     "page": "projects/ravine-house.html",
