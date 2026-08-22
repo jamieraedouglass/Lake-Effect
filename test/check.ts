@@ -371,5 +371,23 @@ console.log('\nLake Effect site checks\n');
   check('shared links carry a picture and a title', problems);
 }
 
+{
+  const problems = [];
+  const stale = [
+    'first project on the new site',
+    'is the only project',
+  ];
+  const projectCount = pages.filter(p => p.startsWith('project-')).length;
+  for (const page of pages) {
+    const html = read(page);
+    for (const claim of stale) {
+      if (html.toLowerCase().includes(claim)) {
+        problems.push(`${page} still says "${claim}" but there are ${projectCount} project pages`);
+      }
+    }
+  }
+  check('no copy that outlived what it described', problems);
+}
+
 console.log(`\n${checks - failures}/${checks} checks passed\n`);
 process.exit(failures ? 1 : 0);
