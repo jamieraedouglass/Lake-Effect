@@ -98,11 +98,8 @@
 }
 .principle:last-child { border-right: none; }
 .principle:hover { background: rgba(46,48,51,0.035); }
-.principle-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 13px; color: var(--accent-dark); margin-bottom: 20px;
-}
 .principle-title {
+  margin-top: 4px;
   font-family: 'Cormorant Garamond', serif;
   font-size: 20px; font-weight: 400;
   color: var(--charcoal); margin-bottom: 12px; line-height: 1.2;
@@ -120,7 +117,7 @@
 
 .services-section { padding: 100px 48px; }
 .services-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
+  display: grid; grid-template-columns: repeat(2, 1fr);
   gap: 2px; background: var(--border);
 }
 .service-card {
@@ -140,11 +137,6 @@
 .service-card:hover::after { width: 100%; }
 .service-card:hover .service-link { color: var(--accent-dark); }
 
-.service-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 13px; color: var(--accent-dark); margin-bottom: 36px;
-}
-.service-card:hover .service-num { color: var(--accent-dark); }
 .service-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 28px; font-weight: 400;
@@ -219,7 +211,7 @@
 
 .work-teaser { padding: 100px 48px; }
 .work-teaser-grid {
-  display: grid; grid-template-columns: 2fr 1fr;
+  display: grid; grid-template-columns: 3fr 2fr;
   gap: 2px; background: var(--border);
 }
 .work-card, .work-side-card {
@@ -235,7 +227,7 @@
   overflow: hidden;
 }
 .work-image { aspect-ratio: 16/10; }
-.work-side-image { aspect-ratio: 4/3; }
+.work-side-image { aspect-ratio: 3/2; }
 .work-image-inner, .work-side-image-inner {
   width: 100%; height: 100%;
   display: flex; align-items: center; justify-content: center;

@@ -9,7 +9,6 @@ const PRIORITY = {
   'index.html': '1.0',
   'residential.html': '0.9',
   'commercial.html': '0.8',
-  'furniture.html': '0.8',
   'philosophy.html': '0.7',
   'about.html': '0.7',
   'contact.html': '0.7',

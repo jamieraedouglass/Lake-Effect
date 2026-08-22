@@ -8,7 +8,6 @@ export const SITE_URL = 'https://leffect.com';
 const NAV_ITEMS = [
   ['residential.html', 'residential', 'Residential'],
   ['commercial.html', 'commercial', 'Commercial'],
-  ['furniture.html', 'furniture', 'Furniture'],
   ['philosophy.html', 'philosophy', 'Philosophy'],
   ['about.html', 'about', 'About'],
 ];
@@ -16,7 +15,6 @@ const NAV_ITEMS = [
 export const PAGE_KEYS = {
   'residential.html': 'residential',
   'commercial.html': 'commercial',
-  'furniture.html': 'furniture',
   'philosophy.html': 'philosophy',
   'about.html': 'about',
   'project-lake-bluff-mcm.html': 'residential',
@@ -43,14 +41,13 @@ const footer = `<footer>
   <div class="footer-top">
     <div>
       <div class="footer-brand-name">Lake Effect<br>Architects</div>
-      <p class="footer-tagline">Architecture and furniture design for homes, clubs and commercial buildings on Chicago's North Shore. Lake Bluff, Illinois.</p>
+      <p class="footer-tagline">Architecture for homes, clubs and commercial buildings on Chicago's North Shore. Lake Bluff, Illinois.</p>
     </div>
     <div>
       <div class="footer-col-title">Work</div>
       <ul class="footer-links">
         <li><a href="residential.html">Residential</a></li>
         <li><a href="commercial.html">Commercial</a></li>
-        <li><a href="furniture.html">Furniture Design</a></li>
       </ul>
     </div>
     <div>
@@ -91,7 +88,6 @@ const TITLES = {
   'index.html': 'Lake Effect Architects',
   'residential.html': 'Residential',
   'commercial.html': 'Commercial',
-  'furniture.html': 'Furniture',
   'philosophy.html': 'Philosophy',
   'about.html': 'About',
   'contact.html': 'Contact',
@@ -144,6 +140,14 @@ export function build() {
       `<body>\n\n${SKIP_LINK}\n${nav(PAGE_KEYS[page] ?? null)}\n\n<main id="main" tabindex="-1">\n`);
     s = s.replace('<script src="ask.js"></script>',
       `</main>\n\n${NOSCRIPT}\n\n${footer}\n\n<script src="ask.js"></script>`);
+    if (!s.includes('lightbox.js')) {
+      s = s.replace('<script src="components.js"></script>',
+        '<script src="lightbox.js"></script>\n<script src="components.js"></script>');
+    }
+    if (!s.includes('css/lightbox.css')) {
+      s = s.replace('  <link rel="stylesheet" href="css/base.css">',
+        '  <link rel="stylesheet" href="css/base.css">\n  <link rel="stylesheet" href="css/lightbox.css">');
+    }
 
     if (s !== original) {
       writeFileSync(path, s);

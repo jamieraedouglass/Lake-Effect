@@ -15,4 +15,5 @@ function initPage() {
   });
 
   if (typeof initAsk === 'function') initAsk();
+  if (typeof initLightbox === 'function') initLightbox();
 }

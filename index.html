@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lake Effect Architects</title>
-  <meta name="description" content="Lake Effect Architects design custom homes, renovations, additions and commercial buildings on Chicago's North Shore, along with the furniture and millwork that go in them.">
+  <meta name="description" content="Lake Effect Architects design custom homes, renovations, additions and commercial buildings on Chicago's North Shore.">
   <link rel="canonical" href="https://leffect.com/">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap">
   <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/lightbox.css">
   <link rel="stylesheet" href="css/ask.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/home.css">
@@ -27,7 +28,7 @@
   "email": "rob@leffect.com",
   "telephone": "+1-847-234-4688",
   "faxNumber": "+1-847-234-8911",
-  "description": "Architecture and furniture design for homes, clubs and commercial buildings on Chicago's North Shore.",
+  "description": "Architecture for homes, clubs and commercial buildings on Chicago's North Shore.",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Lake Bluff",
@@ -48,8 +49,7 @@
     "Residential architecture",
     "Historic renovation",
     "Commercial architecture",
-    "Furniture design",
-    "Millwork"
+    "Historic renovation"
   ],
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
@@ -79,7 +79,6 @@
   <ul class="nav-links" id="nav-links">
     <li><a href="residential.html" data-page="residential">Residential</a></li>
     <li><a href="commercial.html" data-page="commercial">Commercial</a></li>
-    <li><a href="furniture.html" data-page="furniture">Furniture</a></li>
     <li><a href="philosophy.html" data-page="philosophy">Philosophy</a></li>
     <li><a href="about.html" data-page="about">About</a></li>
   </ul>
@@ -98,6 +97,11 @@
 
 
 
+
+
+
+
+
 <section class="hero" id="thirty-years-of-building-on-the-north-sh">
   <div class="hero-left">
     <p class="hero-eyebrow fade-up">Architecture &amp; Design &nbsp;·&nbsp; Lake Bluff, Illinois</p>
@@ -105,7 +109,7 @@
       Thirty years<br>of building on<br><em>the North Shore</em>
     </h1>
     <p class="hero-body fade-up delay-2">
-      We design custom homes, renovations, clubhouses and commercial buildings, along with the furniture and millwork that go in them. Much of the work looks for a balance between old and new.
+      We design custom homes, renovations, clubhouses and commercial buildings. Much of the work looks for a balance between old and new.
     </p>
     <div class="hero-actions fade-up delay-3">
       <a href="residential.html" class="hero-btn">View our work <span class="arrow">→</span></a>
@@ -129,19 +133,16 @@
 
 <section class="principles">
   <div class="principle">
-    <div class="principle-num">01</div>
     <div class="principle-title">A Clear Design Process</div>
     <p class="principle-body">We explore a range of design alternatives early on. Those studies refine the program, clarify your priorities, and keep the design aligned with the budget you've set.</p>
     <a href="philosophy.html" class="principle-more">Read more <span>→</span></a>
   </div>
   <div class="principle">
-    <div class="principle-num">02</div>
     <div class="principle-title">A Collaborative Team Approach</div>
     <p class="principle-body">The Owner and the full design and construction team stay involved through every phase of a project. Open communication and careful coordination are what make a project land well.</p>
     <a href="philosophy.html" class="principle-more">Read more <span>→</span></a>
   </div>
   <div class="principle">
-    <div class="principle-num">03</div>
     <div class="principle-title">Context, Craft &amp; Detail</div>
     <p class="principle-body">Thirty years across traditional, contemporary and mid-century modern building types, working at every scale: site, region and climate through to materials, craftsmanship and detailing.</p>
     <a href="philosophy.html" class="principle-more">Read more <span>→</span></a>
@@ -156,22 +157,14 @@
   </div>
   <div class="services-grid">
     <div class="service-card">
-      <div class="service-num">01 &nbsp;/ &nbsp;Residential</div>
       <h3 class="service-title">Custom Homes &amp; Residences</h3>
       <p class="service-body">New houses, renovations and additions. This is most of our work, and it's where the practice started.</p>
       <a href="residential.html" class="service-link">Explore residential <span>→</span></a>
     </div>
     <div class="service-card">
-      <div class="service-num">02 &nbsp;/ &nbsp;Commercial</div>
       <h3 class="service-title">Commercial Architecture</h3>
       <p class="service-body">Clubhouses, civic buildings and retail. A building the public uses has to work for a lot of people at once.</p>
       <a href="commercial.html" class="service-link">Explore commercial <span>→</span></a>
-    </div>
-    <div class="service-card">
-      <div class="service-num">03 &nbsp;/ &nbsp;Furniture</div>
-      <h3 class="service-title">Furniture Design</h3>
-      <p class="service-body">Tables, casework and built-ins drawn for a specific room, usually because nothing off the shelf fits it.</p>
-      <a href="furniture.html" class="service-link">Explore furniture <span>→</span></a>
     </div>
   </div>
 </section>
@@ -254,17 +247,6 @@
           <div class="work-side-cat">Pebble Beach, CA</div>
         </div>
       </a>
-      <a class="work-side-card" href="furniture.html">
-        <div class="work-side-image">
-          <div class="work-side-image-inner">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="26" width="32" height="6" stroke="rgba(78,101,117,0.507)" stroke-width="0.75"/><rect x="12" y="18" width="24" height="8" stroke="rgba(78,101,117,0.435)" stroke-width="0.5"/><line x1="12" y1="32" x2="10" y2="42" stroke="rgba(78,101,117,0.362)" stroke-width="0.5"/><line x1="36" y1="32" x2="38" y2="42" stroke="rgba(78,101,117,0.362)" stroke-width="0.5"/></svg>
-          </div>
-        </div>
-        <div class="work-side-info">
-          <div class="work-side-name">Furniture &amp; millwork</div>
-          <div class="work-side-cat">See the section</div>
-        </div>
-      </a>
     </div>
   </div>
 </section>
@@ -330,6 +312,21 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </main>
 
 <noscript>
@@ -340,14 +337,13 @@
   <div class="footer-top">
     <div>
       <div class="footer-brand-name">Lake Effect<br>Architects</div>
-      <p class="footer-tagline">Architecture and furniture design for homes, clubs and commercial buildings on Chicago's North Shore. Lake Bluff, Illinois.</p>
+      <p class="footer-tagline">Architecture for homes, clubs and commercial buildings on Chicago's North Shore. Lake Bluff, Illinois.</p>
     </div>
     <div>
       <div class="footer-col-title">Work</div>
       <ul class="footer-links">
         <li><a href="residential.html">Residential</a></li>
         <li><a href="commercial.html">Commercial</a></li>
-        <li><a href="furniture.html">Furniture Design</a></li>
       </ul>
     </div>
     <div>
@@ -377,6 +373,7 @@
 </footer>
 
 <script src="ask.js"></script>
+<script src="lightbox.js"></script>
 <script src="components.js"></script>
 <script>initPage();</script>
 </body>

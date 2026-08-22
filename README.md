@@ -159,7 +159,6 @@ anything looks wrong.
     philosophy.html               the three guiding principles
     residential.html              houses, with a category filter
     commercial.html               clubs, civic, retail
-    furniture.html                furniture and millwork
     about.html                    studio, process, location
     contact.html                  inquiry form + FAQ
     privacy.html                  what the site collects

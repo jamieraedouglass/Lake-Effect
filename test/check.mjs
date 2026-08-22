@@ -274,7 +274,7 @@ console.log('\nLake Effect site checks\n');
 
 {
   const inMarkup = new Set();
-  for (const f of [...pages, 'ask.js', 'components.js']) {
+  for (const f of [...pages, 'ask.js', 'lightbox.js', 'components.js']) {
     const src = read(f);
     for (const m of src.matchAll(/class="([^"]*)"/g)) m[1].split(/\s+/).filter(Boolean).forEach(c => inMarkup.add(c));
     for (const m of src.matchAll(/classList\.(?:add|remove|toggle)\('([\w-]+)'/g)) inMarkup.add(m[1]);

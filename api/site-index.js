@@ -15,7 +15,7 @@ export const sections = [
     "href": "about.html#mission",
     "eyebrow": "",
     "heading": "",
-    "text": "Mission Statement We'd rather do a small number of projects properly than a large number quickly. Lake Effect Architects offers full architectural services for houses, commercial buildings, and the furniture and millwork that go in them. Three principles shape how we work: a clear design process, a collaborative team approach, and close attention to context, craft and detail. They're set out in full on our design philosophy page. In practice, a clear process means we put a range of alternatives on the table early, while changing direction is still cheap. Those studies are what sharpen the program and settle your priorities against the budget. You always know which phase you're in and what the next decision costs. Construction throws up surprises regardless, and when it does you hear about it from us early, with options attached. The collaborative part mostly means we don't pretend to do everything in-house. We work with the same structural engineers, mechanical consultants, landscape architects and interior designers year after year, and we handle the coordination between them so you aren't chasing four separate offices for an answer. The Owner stays in the room for that, not just at the presentations. Context and craft are harder to put on a fee proposal but they're what you live with. The site and the street get studied before anything gets drawn. Then it's the proportion of "
+    "text": "Mission Statement We'd rather do a small number of projects properly than a large number quickly. Lake Effect Architects offers full architectural services for houses and commercial buildings. Three principles shape how we work: a clear design process, a collaborative team approach, and close attention to context, craft and detail. They're set out in full on our design philosophy page. In practice, a clear process means we put a range of alternatives on the table early, while changing direction is still cheap. Those studies are what sharpen the program and settle your priorities against the budget. You always know which phase you're in and what the next decision costs. Construction throws up surprises regardless, and when it does you hear about it from us early, with options attached. The collaborative part mostly means we don't pretend to do everything in-house. We work with the same structural engineers, mechanical consultants, landscape architects and interior designers year after year, and we handle the coordination between them so you aren't chasing four separate offices for an answer. The Owner stays in the room for that, not just at the presentations. Context and craft are harder to put on a fee proposal but they're what you live with. The site and the street get studied before anything gets drawn. Then it's the proportion of a door, where the light lands in the morning,"
   },
   {
     "page": "about.html",
@@ -69,7 +69,7 @@ export const sections = [
     "href": "contact.html#inquiry",
     "eyebrow": "",
     "heading": "Start a conversation",
-    "text": "New Projects Start a conversation Tell us a bit about what you're considering and we'll come back to you within one business day. If it's easier to talk it through, the number is on the right. Company First Name Last Name Email Address Phone (optional) Project Type Select a service area Residential — New Construction Residential — Renovation or Addition Commercial Architecture Furniture Design Not sure yet Project Location Approximate Budget (optional) Select a range Under $250,000 $250,000 – $500,000 $500,000 – $1,000,000 $1,000,000 – $2,500,000 Over $2,500,000 Not sure yet Tell us about your project Send inquiry → We respond to all inquiries within one business day."
+    "text": "New Projects Start a conversation Tell us a bit about what you're considering and we'll come back to you within one business day. If it's easier to talk it through, the number is on the right. Company First Name Last Name Email Address Phone (optional) Project Type Select a service area Residential — New Construction Residential — Renovation or Addition Commercial Architecture Not sure yet Project Location Approximate Budget (optional) Select a range Under $250,000 $250,000 – $500,000 $500,000 – $1,000,000 $1,000,000 – $2,500,000 Over $2,500,000 Not sure yet Tell us about your project Send inquiry → We respond to all inquiries within one business day."
   },
   {
     "page": "contact.html",
@@ -87,34 +87,7 @@ export const sections = [
     "href": "contact.html#common-questions",
     "eyebrow": "",
     "heading": "",
-    "text": "Common Questions Do you work outside the North Shore? + Our usual patch is the North Shore, Lake County down through Evanston. We do take work further afield, but it's decided case by case. Tell us where you are and we'll give you a straight answer. How do architectural fees work? + Full-service commissions are usually a percentage of construction cost. Consulting and partial services are hourly. Either way you'll have the fee structure in writing before you commit to anything. What's the first step? + Fill in the form on this page and we'll set up a short introductory call. We'll ask about the project, you can ask about how we work, and between us we'll work out whether it's a good fit. How long does a project take? + For a new house, figure 12 to 18 months from the first meeting to permit, with construction adding another 12 to 24 on top. Renovations and furniture move a good deal faster. We'll give you a realistic timeline at the first meeting rather than an optimistic one."
-  },
-  {
-    "page": "furniture.html",
-    "pageTitle": "Furniture Design",
-    "anchor": "drawn-for-one-room-built-to-fit-it",
-    "href": "furniture.html#drawn-for-one-room-built-to-fit-it",
-    "eyebrow": "",
-    "heading": "Drawn for one room, built to fit it",
-    "text": "Furniture Design Drawn for one room, built to fit it Custom furniture and millwork, usually drawn alongside the architecture for the room it's going into. Sometimes that's an entire kitchen, sometimes it's one table. Furniture is architecture at the scale of a room. Proportion and material do the same work here, there's just less of it to hide behind. Our philosophy The furniture work grew out of the architecture. Clients kept asking for pieces that would suit rooms we'd just drawn: a dining table at the right length for the space, a desk built into an awkward alcove. Eventually it made sense to offer it properly. We draw the pieces and hand them to fabricators in the Chicago area we've used for years. Wood, metal and upholstery, all built to our specifications and detailed so they can be repaired rather than replaced. Recent commissions are being photographed and will appear here. Commission a piece →"
-  },
-  {
-    "page": "furniture.html",
-    "pageTitle": "Furniture Design",
-    "anchor": "from-brief-to-installation",
-    "href": "furniture.html#from-brief-to-installation",
-    "eyebrow": "",
-    "heading": "From brief to installation",
-    "text": "How we work From brief to installation 01 Brief We measure the room and work out what the piece has to do: how many people sit at it, what goes inside it, whether it ever needs to move. 02 Design Measured drawings, usually shown in the plan of the room so you can see the piece in context rather than floating on a page by itself. 03 Fabrication Our fabricators are all local. We choose the boards or the slab with them and check the work through to the final finish. 04 Installation Everything is installed and adjusted on site. Built-ins nearly always need scribing to walls that are less straight than the drawing assumed."
-  },
-  {
-    "page": "furniture.html",
-    "pageTitle": "Furniture Design",
-    "anchor": "what-we-work-with",
-    "href": "furniture.html#what-we-work-with",
-    "eyebrow": "Materials",
-    "heading": "What we work with",
-    "text": "Materials What we work with Walnut American black walnut for tables and case goods. It lightens and evens out over the first few years rather than darkening. White Oak Our most-specified timber. Takes stain well, stays put when it's quartersawn, and stands up to a family using it daily. Steel & Brass Blackened steel for bases where a timber leg would have to be too heavy, and unlacquered brass hardware left to go dark on its own. Natural Stone Marble, limestone and soapstone for kitchen and bath tops. We go to the yard with clients and tag the actual slab."
+    "text": "Common Questions Do you work outside the North Shore? + Our usual patch is the North Shore, Lake County down through Evanston. We do take work further afield, but it's decided case by case. Tell us where you are and we'll give you a straight answer. How do architectural fees work? + Full-service commissions are usually a percentage of construction cost. Consulting and partial services are hourly. Either way you'll have the fee structure in writing before you commit to anything. What's the first step? + Fill in the form on this page and we'll set up a short introductory call. We'll ask about the project, you can ask about how we work, and between us we'll work out whether it's a good fit. How long does a project take? + For a new house, figure 12 to 18 months from the first meeting to permit, with construction adding another 12 to 24 on top. Renovations move a good deal faster. We'll give you a realistic timeline at the first meeting rather than an optimistic one."
   },
   {
     "page": "index.html",
@@ -123,7 +96,7 @@ export const sections = [
     "href": "./#thirty-years-of-building-on-the-north-sh",
     "eyebrow": "",
     "heading": "Thirty years of building on the North Shore",
-    "text": "Architecture & Design · Lake Bluff, Illinois Thirty years of building on the North Shore We design custom homes, renovations, clubhouses and commercial buildings, along with the furniture and millwork that go in them. Much of the work looks for a balance between old and new. View our work → About the studio 30+ Years in practice 01 A Clear Design Process We explore a range of design alternatives early on. Those studies refine the program, clarify your priorities, and keep the design aligned with the budget you've set. Read more → 02 A Collaborative Team Approach The Owner and the full design and construction team stay involved through every phase of a project. Open communication and careful coordination are what make a project land well. Read more → 03 Context, Craft & Detail Thirty years across traditional, contemporary and mid-century modern building types, working at every scale: site, region and climate through to materials, craftsmanship and detailing. Read more →"
+    "text": "Architecture & Design · Lake Bluff, Illinois Thirty years of building on the North Shore We design custom homes, renovations, clubhouses and commercial buildings. Much of the work looks for a balance between old and new. View our work → About the studio 30+ Years in practice A Clear Design Process We explore a range of design alternatives early on. Those studies refine the program, clarify your priorities, and keep the design aligned with the budget you've set. Read more → A Collaborative Team Approach The Owner and the full design and construction team stay involved through every phase of a project. Open communication and careful coordination are what make a project land well. Read more → Context, Craft & Detail Thirty years across traditional, contemporary and mid-century modern building types, working at every scale: site, region and climate through to materials, craftsmanship and detailing. Read more →"
   },
   {
     "page": "index.html",
@@ -132,7 +105,7 @@ export const sections = [
     "href": "./#what-we-do",
     "eyebrow": "Services",
     "heading": "What we do",
-    "text": "Services What we do 01 / Residential Custom Homes & Residences New houses, renovations and additions. This is most of our work, and it's where the practice started. Explore residential → 02 / Commercial Commercial Architecture Clubhouses, civic buildings and retail. A building the public uses has to work for a lot of people at once. Explore commercial → 03 / Furniture Furniture Design Tables, casework and built-ins drawn for a specific room, usually because nothing off the shelf fits it. Explore furniture →"
+    "text": "Services What we do Custom Homes & Residences New houses, renovations and additions. This is most of our work, and it's where the practice started. Explore residential → Commercial Architecture Clubhouses, civic buildings and retail. A building the public uses has to work for a lot of people at once. Explore commercial →"
   },
   {
     "page": "index.html",
@@ -150,7 +123,7 @@ export const sections = [
     "href": "./#recent-projects",
     "eyebrow": "Selected Work",
     "heading": "Recent projects",
-    "text": "Selected Work Recent projects Mid-Century Modern Private Residence Renovation · Lake Bluff, IL ↗ Contemporary Private Residence Pebble Beach, CA Furniture & millwork See the section"
+    "text": "Selected Work Recent projects Mid-Century Modern Private Residence Renovation · Lake Bluff, IL ↗ Contemporary Private Residence Pebble Beach, CA"
   },
   {
     "page": "index.html",
@@ -204,7 +177,7 @@ export const sections = [
     "href": "philosophy.html#buildings-designed-to-stand-the-test-of",
     "eyebrow": "",
     "heading": "Buildings designed to stand the test of time",
-    "text": "Buildings designed to stand the test of time The three principles hold whether the project is a new house, a clubhouse, or a single table for a room we've just finished drawing. Start a conversation → See it applied Residential → Commercial → Furniture Design → About the studio →"
+    "text": "Buildings designed to stand the test of time The three principles hold whether the project is a new house, an addition to a hundred-year-old one, or a clubhouse. Start a conversation → See it applied Residential → Commercial → About the studio →"
   },
   {
     "page": "privacy.html",

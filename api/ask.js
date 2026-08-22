@@ -120,18 +120,24 @@ async function ask(request) {
       max_tokens: 1024,
       cache_control: { type: 'ephemeral' },
       system: SYSTEM,
-      output_config: {
-        effort: 'low',
-        format: betaZodOutputFormat(AnswerSchema),
-      },
+      output_format: betaZodOutputFormat(AnswerSchema),
+      output_config: { effort: 'low' },
       messages: turns,
     });
+
+    if (!response.parsed_output) {
+      console.error('ask: no parsed_output', JSON.stringify({
+        stop_reason: response.stop_reason,
+        text: response.content?.find(b => b.type === 'text')?.text?.slice(0, 300),
+      }));
+    }
 
     if (response.stop_reason === 'refusal' || !response.parsed_output) {
       return json({
         answer: 'Sorry, I could not answer that one. The contact page is the best route.',
         links: [{ label: 'Contact', href: 'contact.html' }],
         covered: false,
+        unparsed: !response.parsed_output,
       });
     }
 

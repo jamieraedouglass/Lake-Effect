@@ -22,7 +22,7 @@ const ASK_HTML = `
         <button type="button">How do your fees work?</button>
         <button type="button">What are the phases of a project?</button>
         <button type="button">Show me a renovation</button>
-        <button type="button">Do you design furniture?</button>
+        <button type="button">Do you work outside the North Shore?</button>
       </div>
     </div>
   </div>

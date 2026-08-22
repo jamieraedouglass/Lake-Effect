@@ -10,7 +10,6 @@ const PAGE_TITLES = {
   'index.html': 'Home',
   'residential.html': 'Residential',
   'commercial.html': 'Commercial',
-  'furniture.html': 'Furniture Design',
   'philosophy.html': 'Design Philosophy',
   'about.html': 'About the Studio',
   'contact.html': 'Contact',

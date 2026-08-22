@@ -1,0 +1,81 @@
+.is-zoomable { cursor: zoom-in; }
+.is-zoomable:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 3px; }
+
+.lightbox {
+  position: fixed; inset: 0; z-index: 500;
+  display: flex; flex-direction: column;
+  background: rgba(46,48,51,0.94);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.lightbox[hidden] { display: none; }
+
+.lightbox-bar {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 24px;
+  padding: 16px 20px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.14);
+  flex-shrink: 0;
+}
+.lightbox-caption {
+  font-size: 11px; line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.72);
+  margin: 0;
+}
+.lightbox-tools { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.lightbox-btn {
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px; line-height: 1;
+  color: var(--white);
+  background: none;
+  border: 0.5px solid rgba(255,255,255,0.28);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.lightbox-btn:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.6); }
+.lightbox-btn:focus-visible { outline: 2px solid var(--white); outline-offset: 2px; }
+.lightbox-close { margin-left: 8px; }
+.lightbox-level {
+  font-size: 10px; letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.6);
+  min-width: 44px; text-align: center;
+}
+
+.lightbox-stage {
+  flex: 1;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  cursor: zoom-out;
+  touch-action: none;
+}
+.lightbox-stage.is-zoomed { cursor: grab; }
+.lightbox-stage.is-zoomed:active { cursor: grabbing; }
+.lightbox-stage img {
+  max-width: 94%; max-height: 100%;
+  object-fit: contain;
+  transform-origin: center center;
+  transition: transform 0.12s ease-out;
+  user-select: none; -webkit-user-drag: none;
+  background: var(--white);
+}
+
+.lightbox-hint {
+  flex-shrink: 0;
+  padding: 10px 20px 16px;
+  margin: 0;
+  text-align: center;
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+
+@media (max-width: 560px) {
+  .lightbox-bar { padding: 12px 14px; gap: 12px; }
+  .lightbox-caption { font-size: 10px; }
+  .lightbox-btn { width: 30px; height: 30px; font-size: 15px; }
+  .lightbox-level { min-width: 38px; }
+  .lightbox-stage img { max-width: 98%; }
+  .lightbox-hint { font-size: 9px; padding: 8px 14px 12px; }
+}
