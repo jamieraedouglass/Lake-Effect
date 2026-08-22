@@ -60,7 +60,16 @@ export const sections = [
     "href": "commercial.html#public-buildings-same-standards",
     "eyebrow": "",
     "heading": "Public buildings, same standards",
-    "text": "Our commercial practice Public buildings, same standards Clubhouses, community centers, retail fit-outs and institutional work. We run these the same way we run a house: the same drawing standard, the same coordination with consultants, the same presence on site once construction starts. Our commercial clients have mostly been private clubs, non-profits and small business owners around Chicagoland. Budgets tend to be tighter than on residential work, which makes the decisions in the first two phases matter a good deal more. Recent commercial projects are being photographed and written up, and will appear here. Discuss a project → Project types Private Clubs & Clubhouses → Institutional & Civic → Retail & Hospitality → Mixed-Use → Adaptive Reuse →"
+    "text": "Our commercial practice Public buildings, same standards Clubhouses, community centers, retail fit-outs and institutional work. We run these the same way we run a house: the same drawing standard, the same coordination with consultants, the same presence on site once construction starts. Our commercial clients have mostly been private clubs, non-profits and small business owners around Chicagoland. Budgets tend to be tighter than on residential work, which makes the decisions in the first two phases matter a good deal more. Further commercial projects are being photographed and written up. Discuss a project → Project types Private Clubs & Clubhouses → Institutional & Civic → Retail & Hospitality → Mixed-Use → Adaptive Reuse →"
+  },
+  {
+    "page": "commercial.html",
+    "pageTitle": "Commercial",
+    "anchor": "commercial-work",
+    "href": "commercial.html#commercial-work",
+    "eyebrow": "Selected Projects",
+    "heading": "Commercial work",
+    "text": "Selected Projects Commercial work Commercial Village Market Building Write-up to follow"
   },
   {
     "page": "contact.html",
@@ -358,6 +367,24 @@ export const sections = [
     "eyebrow": "",
     "heading": "Planning something on a difficult site?",
     "text": "Planning something on a difficult site? Slopes, trees and view corridors tend to set the plan before anything else does. Get in touch and we'll walk it with you. Start a conversation →"
+  },
+  {
+    "page": "project-village-market.html",
+    "pageTitle": "project-village-market.html",
+    "anchor": "village-market",
+    "href": "project-village-market.html#village-market",
+    "eyebrow": "",
+    "heading": "Village Market Building",
+    "text": "Commercial Village Market Building A commercial building, photographed on completion. A fuller account of the project is being written and will appear here."
+  },
+  {
+    "page": "project-village-market.html",
+    "pageTitle": "project-village-market.html",
+    "anchor": "the-building",
+    "href": "project-village-market.html#the-building",
+    "eyebrow": "The Building",
+    "heading": "From the street",
+    "text": "The Building From the street Photographs only for now. The description of the work follows. More commercial work Clubhouses, civic buildings and retail, run to the same standard as the residential work. All commercial → Planning a commercial project? A building the public uses answers to a lot of people at once. Get in touch and we'll talk it through. Start a conversation →"
   },
   {
     "page": "residential.html",

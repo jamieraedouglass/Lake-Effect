@@ -32,7 +32,7 @@ export function listOriginals() {
     const full = join(assets, dir);
     if (!statSync(full).isDirectory()) continue;
     for (const name of readdirSync(full)) {
-      if (name.includes(`-${SMALL_WIDTH}.`)) continue;
+      if (name.includes(`-${SMALL_WIDTH}.`) || name === 'share.jpg') continue;
       if (!/\.(jpg|jpeg|png)$/i.test(name)) continue;
       files.push(`assets/${dir}/${name}`);
     }

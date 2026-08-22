@@ -11,6 +11,7 @@ const SIZES = [
   [/<figure class="[^"]*\btall\b[^"]*">/, '(max-width: 860px) 100vw, 50vw'],
   [/<figure>/, '(max-width: 860px) 100vw, 50vw'],
   [/class="proj-img-inner"/, '(max-width: 860px) 100vw, 50vw'],
+  [/class="comm-img-inner"/, '(max-width: 860px) 100vw, 33vw'],
   [/class="work-image-inner"/, '(max-width: 860px) 100vw, 66vw'],
   [/class="work-side-image-inner"/, '(max-width: 860px) 100vw, 33vw'],
   [/class="hero-image"/, '(max-width: 860px) 100vw, 50vw'],

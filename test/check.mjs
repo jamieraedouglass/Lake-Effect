@@ -167,8 +167,11 @@ console.log('\nLake Effect site checks\n');
   const problems = [];
   for (const page of pages.filter(p => p.startsWith('project-'))) {
     const html = read(page);
-    for (const cls of ['project-hero-image', 'project-facts', 'project-body', 'project-footer']) {
+    for (const cls of ['project-hero-image', 'project-footer']) {
       if (!html.includes(`class="${cls}"`)) problems.push(`${page}: no .${cls} section`);
+    }
+    if (html.includes('class="project-body"') !== html.includes('class="project-facts"')) {
+      problems.push(`${page}: has one of .project-body / .project-facts but not the other`);
     }
     if (!/<meta name="description"/.test(html)) problems.push(`${page}: no meta description`);
     const linked = [...html.matchAll(/href="(css\/[^"]+\.css)"/g)].map(m => m[1]);
@@ -336,6 +339,32 @@ console.log('\nLake Effect site checks\n');
     }
   }
   check('unfinished pages are not linked or indexed', problems);
+}
+
+{
+  const problems = [];
+  for (const page of pages) {
+    const html = read(page);
+    if (/\bTODO\b/.test(html)) continue;
+
+    const image = html.match(/<meta property="og:image" content="([^"]*)"/)?.[1];
+    if (!image) { problems.push(`${page}: no og:image, so a shared link shows no picture`); continue; }
+
+    if (!image.startsWith('http')) problems.push(`${page}: og:image is not an absolute URL`);
+    if (/share\.jpg$/.test(image) === false && /-800\./.test(image)) {
+      problems.push(`${page}: og:image uses the small variant`);
+    }
+    const local = image.replace(/^https?:\/\/[^/]+\//, '');
+    if (!existsSync(join(root, local))) problems.push(`${page}: og:image points at missing ${local}`);
+
+    for (const tag of ['og:title', 'og:description', 'og:url', 'twitter:card']) {
+      const attr = tag.startsWith('og:') ? 'property' : 'name';
+      if (!new RegExp(`<meta ${attr}="${tag}" content="[^"]+"`).test(html)) {
+        problems.push(`${page}: missing ${tag}`);
+      }
+    }
+  }
+  check('shared links carry a picture and a title', problems);
 }
 
 console.log(`\n${checks - failures}/${checks} checks passed\n`);

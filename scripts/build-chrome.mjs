@@ -99,6 +99,59 @@ const TITLES = {
   'project-lake-bluff-historic.html': 'Traditional, Lake Bluff',
 };
 
+const SHARE_IMAGES = {
+  'index.html': 'assets/pebble-beach-contemporary/exterior-approach.jpg',
+  'residential.html': 'assets/lake-bluff-mcm/exterior-entry-drive.jpg',
+  'commercial.html': 'assets/village-market/share.jpg',
+  'philosophy.html': 'assets/lake-bluff-mcm/living-dining-kitchen.jpg',
+  'about.html': 'assets/lake-bluff-historic/exterior-front.jpg',
+  'contact.html': 'assets/pebble-beach-contemporary/living-room-2.jpg',
+  'privacy.html': 'assets/lake-bluff-mcm/exterior-entry-drive.jpg',
+  'terms.html': 'assets/lake-bluff-mcm/exterior-entry-drive.jpg',
+  '404.html': 'assets/lake-bluff-mcm/exterior-entry-drive.jpg',
+  'project-lake-bluff-mcm.html': 'assets/lake-bluff-mcm/exterior-entry-drive.jpg',
+  'project-pebble-beach.html': 'assets/pebble-beach-contemporary/exterior-approach.jpg',
+  'project-lake-bluff-historic.html': 'assets/lake-bluff-historic/exterior-front.jpg',
+  'project-village-market.html': 'assets/village-market/share.jpg',
+};
+
+const SHARE_NAMES = {
+  'index.html': 'Lake Effect Architects',
+  '404.html': 'Page not found',
+  'residential.html': 'Residential — Lake Effect Architects',
+  'commercial.html': 'Commercial — Lake Effect Architects',
+  'philosophy.html': 'Design Philosophy — Lake Effect Architects',
+  'about.html': 'About the Studio — Lake Effect Architects',
+  'contact.html': 'Contact — Lake Effect Architects',
+  'privacy.html': 'Privacy — Lake Effect Architects',
+  'terms.html': 'Terms — Lake Effect Architects',
+  'project-lake-bluff-mcm.html': 'Mid-Century Modern Residence, Lake Bluff — Lake Effect Architects',
+  'project-pebble-beach.html': 'Contemporary Residence, Pebble Beach — Lake Effect Architects',
+  'project-lake-bluff-historic.html': 'Traditional Residence, Lake Bluff — Lake Effect Architects',
+  'project-village-market.html': 'Village Market Building — Lake Effect Architects',
+};
+
+const escapeAttr = v => v.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+
+function shareTags(page, canonical, description) {
+  const image = SHARE_IMAGES[page];
+  if (!image) return '';
+  const title = SHARE_NAMES[page] ?? 'Lake Effect Architects';
+  const absolute = `${SITE_URL}/${image}`;
+  return [
+    `  <meta property="og:type" content="${page === 'index.html' ? 'website' : 'article'}">`,
+    `  <meta property="og:site_name" content="Lake Effect Architects">`,
+    `  <meta property="og:title" content="${escapeAttr(title)}">`,
+    `  <meta property="og:description" content="${escapeAttr(description)}">`,
+    `  <meta property="og:url" content="${canonical}">`,
+    `  <meta property="og:image" content="${absolute}">`,
+    `  <meta name="twitter:card" content="summary_large_image">`,
+    `  <meta name="twitter:title" content="${escapeAttr(title)}">`,
+    `  <meta name="twitter:description" content="${escapeAttr(description)}">`,
+    `  <meta name="twitter:image" content="${absolute}">`,
+  ].join('\n');
+}
+
 const SKIP_LINK = '<a class="skip-link" href="#main">Skip to content</a>';
 
 const NOSCRIPT = `<noscript>
@@ -117,7 +170,9 @@ export function build() {
     const canonical = page === 'index.html' ? `${SITE_URL}/` : `${SITE_URL}/${page.replace(/\.html$/, '')}`;
     const indexable = page !== '404.html' && !/\bTODO\b/.test(original);
 
-    s = s.replace(/\n?  <link rel="icon"[^>]*>/g, '')
+    s = s.replace(/\n?  <meta property="og:[^>]*>/g, '')
+         .replace(/\n?  <meta name="twitter:[^>]*>/g, '')
+         .replace(/\n?  <link rel="icon"[^>]*>/g, '')
          .replace(/\n?  <link rel="apple-touch-icon"[^>]*>/g, '')
          .replace(/\n?  <link rel="preconnect"[^>]*>/g, '')
          .replace(/\n?  <link rel="stylesheet" href="https:\/\/fonts[^>]*>/g, '')
@@ -127,8 +182,11 @@ export function build() {
       s = s.replace(/<title>[^<]*<\/title>/, `<title>${TITLES[page]}</title>`);
     }
 
+    const description = s.match(/<meta name="description" content="([^"]*)"/)?.[1] ?? '';
+    const share = shareTags(page, canonical, description);
+
     s = s.replace('  <link rel="stylesheet" href="css/base.css">',
-      `${indexable ? `  <link rel="canonical" href="${canonical}">\n` : ''}${HEAD_LINKS}\n  <link rel="stylesheet" href="css/base.css">`);
+      `${indexable ? `  <link rel="canonical" href="${canonical}">\n` : ''}${share ? share + '\n' : ''}${HEAD_LINKS}\n  <link rel="stylesheet" href="css/base.css">`);
 
     s = s.replace(/<nav id="main-nav">[\s\S]*?<\/nav>\n?/, '');
     s = s.replace(/<footer>[\s\S]*?<\/footer>\n?/, '');
