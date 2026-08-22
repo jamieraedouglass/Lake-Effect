@@ -251,7 +251,7 @@ you an unstyled page.
     robots.txt  sitemap.xml       generated; sitemap by npm run build:sitemap
 
 Asset folders are named for the project page they belong to, so
-`projects/ravine-house.html` draws on `assets/ravine-house/`.
+`projects/ravine-residence.html` draws on `assets/ravine-residence/`.
 
 Pages live at two depths, so **every path in the markup is root-relative**:
 `/css/base.css`, `/assets/…`, `/api/ask`. A relative path works at the root and

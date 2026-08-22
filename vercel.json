@@ -81,22 +81,22 @@
     },
     {
       "source": "/pebble-beach",
-      "destination": "/projects/del-monte-forest-house",
+      "destination": "/projects/del-monte-forest-residence",
       "permanent": true
     },
     {
       "source": "/conway-farms",
-      "destination": "/projects/fairway-house",
+      "destination": "/projects/links-residence",
       "permanent": true
     },
     {
       "source": "/center-ave",
-      "destination": "/projects/corner-house",
+      "destination": "/projects/center-avenue-house",
       "permanent": true
     },
     {
       "source": "/stable-lane",
-      "destination": "/projects/meadow-house",
+      "destination": "/projects/woodland-meadow-residence",
       "permanent": true
     },
     {

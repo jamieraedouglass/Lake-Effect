@@ -125,7 +125,7 @@ export const sections: Section[] = [
     "href": "/#how-a-project-actually-runs",
     "eyebrow": "",
     "heading": "How a project actually runs",
-    "text": "Front elevation, Havenwood House Our approach How a project actually runs Most of what goes wrong on a building project is a communication problem rather than a design problem. We work in five clearly marked phases so everyone knows what has been decided, what hasn't, and what the next decision costs. 01 Programming & Feasibility 02 Schematic Design 03 Design Development 04 Construction Documents 05 Construction Administration"
+    "text": "Front elevation, The Havenwood Residence Our approach How a project actually runs Most of what goes wrong on a building project is a communication problem rather than a design problem. We work in five clearly marked phases so everyone knows what has been decided, what hasn't, and what the next decision costs. 01 Programming & Feasibility 02 Schematic Design 03 Design Development 04 Construction Documents 05 Construction Administration"
   },
   {
     "page": "index.html",
@@ -134,7 +134,7 @@ export const sections: Section[] = [
     "href": "/#recent-projects",
     "eyebrow": "Selected Work",
     "heading": "Recent projects",
-    "text": "Selected Work Recent projects Ravine House Mid-Century Modern · Lake Bluff, IL ↗ Del Monte Forest House Pebble Beach, CA Ivy Cottage Lake Bluff, IL"
+    "text": "Selected Work Recent projects The Ravine Residence Mid-Century Modern · Lake Bluff, IL ↗ The Del Monte Forest Residence Pebble Beach, CA The Cottage Residence Lake Bluff, IL"
   },
   {
     "page": "index.html",
@@ -209,334 +209,289 @@ export const sections: Section[] = [
     "text": "Last updated 21 August 2026 Who we are Lake Effect Architects, Inc., an architecture practice based in Lake Bluff, Illinois. If you want to reach us about anything on this page, email rob@leffect.com or call 847.234.4688. What we collect Only what you type into the inquiry form on the contact page: Your name and email address Your phone number, if you give one The project type, location and budget range you select Whatever you write in the message field We use it to answer you and, if the project goes ahead, to run it. We do not sell it, rent it, or send you marketing you did not ask for. What we do not collect This site sets no cookies and stores nothing in your browser. There is no analytics, no advertising or tracking pixels, and no account to create. We do not know who visits, only that the site was served. Third parties Three services see something when you use this site: Our host serves the pages and keeps standard server logs, which include IP addresses. Google Fonts serves the two typefaces. Your browser requests them from Google, which means Google receives your IP address. Nothing else is sent. Anthropic receives the text of any question you type into the Ask panel, in order to answer it. Do not put personal or confidential information into that box; use the inquiry form or email instead. Inquiries submitted through the form are delivered to us by email through our em"
   },
   {
-    "page": "projects/corner-house.html",
-    "pageTitle": "Project · Corner House",
-    "anchor": "corner-house",
-    "href": "/projects/corner-house.html#corner-house",
+    "page": "projects/center-avenue-house.html",
+    "pageTitle": "Project · The Center Avenue House",
+    "anchor": "center-avenue-house",
+    "href": "/projects/center-avenue-house.html#center-avenue-house",
     "eyebrow": "The project",
-    "heading": "Corner House",
-    "text": "Residential · Traditional Corner House Lake Bluff, Illinois. A house from around 1902 on a prominent corner, extended without letting the additions announce themselves. Built c. 1902 Scope Addition & renovation Added Living, kitchen, family, mudroom Porch Carried around the corner The project Originally constructed circa 1902 on Center Avenue in Lake Bluff, this historic residence was expanded to accommodate a new living room, kitchen, pantry, family room, and mudroom/laundry area. The additions were carefully designed to integrate seamlessly with the original architecture while introducing the conveniences of contemporary living. The front porch was extended around the corner of the house to connect with the new family room and strengthen the home's relationship to its prominent location at Center and Evanston Avenues."
+    "heading": "The Center Avenue House",
+    "text": "Residential · Traditional The Center Avenue House Lake Bluff, Illinois. A house from around 1902 on a prominent corner, extended without letting the additions announce themselves. Area ≈ 4,660 sq ft Accommodation 5 bed, 4½ bath Scope Addition & Restoration Built c. 1902 The project Originally constructed circa 1902 on Center Avenue in Lake Bluff, this historic residence was expanded to accommodate a new living room, kitchen, pantry, family room, and mudroom/laundry area. The additions were carefully designed to integrate seamlessly with the original architecture while introducing the conveniences of contemporary living. The front porch was extended around the corner of the house to connect with the new family room and strengthen the home's relationship to its prominent location at Center and Evanston Avenues."
   },
   {
-    "page": "projects/corner-house.html",
-    "pageTitle": "Project · Corner House",
+    "page": "projects/center-avenue-house.html",
+    "pageTitle": "Project · The Center Avenue House",
     "anchor": "where-the-addition-picks-up",
-    "href": "/projects/corner-house.html#where-the-addition-picks-up",
+    "href": "/projects/center-avenue-house.html#where-the-addition-picks-up",
     "eyebrow": "First Floor",
     "heading": "Where the addition picks up",
     "text": "First Floor Where the addition picks up First floor as built The original rooms (study, living, foyer, dining) hold the street front. Kitchen, breakfast, family room, pantry and mudroom run back from them toward the garage, so the new work sits behind the historic elevation rather than beside it. Porch decking wraps from the front around to the family room."
   },
   {
-    "page": "projects/corner-house.html",
-    "pageTitle": "Project · Corner House",
+    "page": "projects/center-avenue-house.html",
+    "pageTitle": "Project · The Center Avenue House",
     "anchor": "before-and-the-proposal",
-    "href": "/projects/corner-house.html#before-and-the-proposal",
+    "href": "/projects/center-avenue-house.html#before-and-the-proposal",
     "eyebrow": "The Corner",
     "heading": "Before, and the proposal",
     "text": "The Corner Before, and the proposal Before. The porch stopped at the front of the house, leaving the corner, which is the side most of the neighborhood actually sees, doing nothing. The study for the addition, drawn over the same view: porch carried around to meet the new family room, so the corner gets a front of its own."
   },
   {
-    "page": "projects/corner-house.html",
-    "pageTitle": "Project · Corner House",
+    "page": "projects/center-avenue-house.html",
+    "pageTitle": "Project · The Center Avenue House",
     "anchor": "new-rooms-old-proportions",
-    "href": "/projects/corner-house.html#new-rooms-old-proportions",
+    "href": "/projects/center-avenue-house.html#new-rooms-old-proportions",
     "eyebrow": "Interior",
     "heading": "New rooms, old proportions",
     "text": "Interior New rooms, old proportions The new kitchen. Painted frame-and-panel cabinetry and a plate rail keep it in period, while the island and the working layout are entirely current. Looking through to the breakfast bay, which sits in the new work. The foyer and stair, original to the house and left alone. The new living room, with the mantel and sconce spacing set to the older rooms. A cased arch and flanking built-ins carry the opening through, the way the original plan handles its own doorways."
   },
   {
-    "page": "projects/corner-house.html",
-    "pageTitle": "Project · Corner House",
+    "page": "projects/center-avenue-house.html",
+    "pageTitle": "Project · The Center Avenue House",
     "anchor": "more-residential-work",
-    "href": "/projects/corner-house.html#more-residential-work",
+    "href": "/projects/center-avenue-house.html#more-residential-work",
     "eyebrow": "",
     "heading": "More residential work",
     "text": "More residential work New houses, renovations and additions across the North Shore. All residential →"
   },
   {
-    "page": "projects/corner-house.html",
-    "pageTitle": "Project · Corner House",
+    "page": "projects/center-avenue-house.html",
+    "pageTitle": "Project · The Center Avenue House",
     "anchor": "adding-to-an-older-house",
-    "href": "/projects/corner-house.html#adding-to-an-older-house",
+    "href": "/projects/center-avenue-house.html#adding-to-an-older-house",
     "eyebrow": "",
     "heading": "Adding to an older house?",
     "text": "Adding to an older house? The hard part is usually not the new rooms but the join. Get in touch and we'll look at what the existing house can carry. Start a conversation →"
   },
   {
-    "page": "projects/del-monte-forest-house.html",
-    "pageTitle": "Project · Del Monte Forest House",
-    "anchor": "del-monte-forest-house",
-    "href": "/projects/del-monte-forest-house.html#del-monte-forest-house",
-    "eyebrow": "The project",
-    "heading": "Del Monte Forest House",
-    "text": "Residential · Contemporary Del Monte Forest House Pebble Beach, California. A house in the Del Monte Forest, set above the golf links and turned toward the water. Location Del Monte Forest Outlook Carmel Beach & Point Lobos Accommodation 4 bed, 4½ bath Area ≈ 2,500 sq ft The project Situated above Pebble Beach Golf Links, this contemporary residence is nestled within the Del Monte Forest, offering distant views of Carmel Beach and Point Lobos. The open floor plan provides generous living spaces that extend onto outdoor decks, while efficiently accommodating four bedrooms and four-and-one-half bathrooms within approximately 2,500 square feet."
-  },
-  {
-    "page": "projects/del-monte-forest-house.html",
-    "pageTitle": "Project · Del Monte Forest House",
-    "anchor": "two-levels-into-the-slope",
-    "href": "/projects/del-monte-forest-house.html#two-levels-into-the-slope",
-    "eyebrow": "Plans",
-    "heading": "Two levels into the slope",
-    "text": "Plans Two levels into the slope First floor Kitchen, dining and living run together along the view side, with the primary suite at the far end and the garage and foyer set back. Deck wraps the whole outer edge. Lower level Three more bedrooms tuck into the slope below, each with its own bathroom and its own door onto the lower deck. Both plans are drawn at the same scale."
-  },
-  {
-    "page": "projects/del-monte-forest-house.html",
-    "pageTitle": "Project · Del Monte Forest House",
-    "anchor": "open-to-the-tree-line",
-    "href": "/projects/del-monte-forest-house.html#open-to-the-tree-line",
-    "eyebrow": "Interior",
-    "heading": "Open to the tree line",
-    "text": "Interior Open to the tree line The living room runs full height, with clerestory glazing above the fireplace carrying light deep into the plan. Glazing turns both corners, so the room reads as open on three sides. Looking back toward dining, and out to the deck past it. The kitchen sits under the same vaulted timber ceiling, glazed on two sides. Built-in shelving and low cabinets keep the dining wall flush. The primary suite keeps the vaulted ceiling and picks up windows on two corners. Lower level bedroom, with its own window onto the forest floor. Each of the lower bedrooms opens straight onto the deck. The sliders line up with the rail so the deck reads as part of the room."
-  },
-  {
-    "page": "projects/del-monte-forest-house.html",
-    "pageTitle": "Project · Del Monte Forest House",
-    "anchor": "decks-under-the-pines",
-    "href": "/projects/del-monte-forest-house.html#decks-under-the-pines",
-    "eyebrow": "Exterior",
-    "heading": "Decks under the pines",
-    "text": "Exterior Decks under the pines From the drive the house is one long low bay, the colonnade holding a consistent line across the glazing and the garage. An open trellis runs the length of the entry walk, throwing a moving pattern across the boards through the day. The deck sits at canopy height. Cable rail keeps the view uninterrupted."
-  },
-  {
-    "page": "projects/del-monte-forest-house.html",
-    "pageTitle": "Project · Del Monte Forest House",
-    "anchor": "more-residential-work",
-    "href": "/projects/del-monte-forest-house.html#more-residential-work",
+    "page": "projects/cottage-residence.html",
+    "pageTitle": "projects/cottage-residence.html",
+    "anchor": "cottage-residence",
+    "href": "/projects/cottage-residence.html#cottage-residence",
     "eyebrow": "",
-    "heading": "More residential work",
-    "text": "More residential work New houses, renovations and additions across the North Shore. All residential →"
+    "heading": "The Cottage Residence",
+    "text": "Residential · Traditional The Cottage Residence Lake Bluff, Illinois. A brick English cottage in the manner of Stanley Anderson, who trained in Howard Van Doren Shaw's office before opening his own. Area ≈ 3,250 sq ft Accommodation 5 bed, 3½ bath Scope New Construction Precedent Stanley Anderson, 1924–1960"
   },
   {
-    "page": "projects/del-monte-forest-house.html",
-    "pageTitle": "Project · Del Monte Forest House",
-    "anchor": "planning-something-on-a-difficult-site",
-    "href": "/projects/del-monte-forest-house.html#planning-something-on-a-difficult-site",
-    "eyebrow": "",
-    "heading": "Planning something on a difficult site?",
-    "text": "Planning something on a difficult site? Slopes, trees and view corridors tend to set the plan before anything else does. Get in touch and we'll walk it with you. Start a conversation →"
-  },
-  {
-    "page": "projects/fairway-house.html",
-    "pageTitle": "projects/fairway-house.html",
-    "anchor": "fairway-house",
-    "href": "/projects/fairway-house.html#fairway-house",
-    "eyebrow": "",
-    "heading": "Fairway House",
-    "text": "Residential · Contemporary Fairway House Lake Forest, Illinois. Three volumes ordered by how private each one is, with a sheltered terrace held in the space they leave behind. Location Lake Forest, Illinois Setting A private golf course community Massing Three distinct volumes Ordered by Public through to private"
-  },
-  {
-    "page": "projects/fairway-house.html",
-    "pageTitle": "projects/fairway-house.html",
+    "page": "projects/cottage-residence.html",
+    "pageTitle": "projects/cottage-residence.html",
     "anchor": "the-project",
-    "href": "/projects/fairway-house.html#the-project",
-    "eyebrow": "The project",
-    "heading": "",
-    "text": "The project Located within a private golf course community in Lake Forest, this residence was designed to support a relaxed lifestyle centered on entertaining family and guests. The house is organized into three distinct volumes, each corresponding to a different level of privacy. The entry foyer and living room form the central, most public volume, with the more private areas extending to either side. This composition creates a protected terrace at the rear of the house while maximizing natural light throughout the interior."
-  },
-  {
-    "page": "projects/fairway-house.html",
-    "pageTitle": "projects/fairway-house.html",
-    "anchor": "site",
-    "href": "/projects/fairway-house.html#site",
-    "eyebrow": "Site",
-    "heading": "Turned away from the fairway",
-    "text": "Site Turned away from the fairway Site plan The three volumes read as a stepped footprint, set back from the course and screened along both boundaries. Click to enlarge."
-  },
-  {
-    "page": "projects/fairway-house.html",
-    "pageTitle": "projects/fairway-house.html",
-    "anchor": "inside",
-    "href": "/projects/fairway-house.html#inside",
-    "eyebrow": "Interior",
-    "heading": "Light from above the roofline",
-    "text": "Interior Light from above the roofline The central volume is taller than the two beside it, which leaves room for a clerestory on all four sides. The light arrives from above the rooms next door rather than through them. The upper hall is open to the room below on one side and glazed on the other two."
-  },
-  {
-    "page": "projects/fairway-house.html",
-    "pageTitle": "projects/fairway-house.html",
-    "anchor": "outside",
-    "href": "/projects/fairway-house.html#outside",
-    "eyebrow": "Exterior",
-    "heading": "The terrace the plan leaves behind",
-    "text": "Exterior The terrace the plan leaves behind Splitting the house into three volumes is what makes this corner. The terrace is sheltered on two sides by rooms rather than by anything built for the purpose. The entry side is the quiet one, with the pergola marking the door. From the course at the end of the day, which is the view most people have of it. More residential work New houses, renovations and additions across the North Shore. All residential → Building where everyone can see? A house on a course or a lake is on show from one side and wants privacy on the other. Get in touch and we'll work out which side is which. Start a conversation →"
-  },
-  {
-    "page": "projects/havenwood-house.html",
-    "pageTitle": "Project · Havenwood House",
-    "anchor": "havenwood-house",
-    "href": "/projects/havenwood-house.html#havenwood-house",
-    "eyebrow": "",
-    "heading": "Havenwood House",
-    "text": "Residential · Traditional Havenwood House Lake Forest, Illinois. A house designed to look as though it had always stood on the remains of a 1913 Howard Van Doren Shaw estate. Setting East Lake Forest Formerly The Havenwood estate Estate architect Howard Van Doren Shaw Landscape Associated with Jens Jensen"
-  },
-  {
-    "page": "projects/havenwood-house.html",
-    "pageTitle": "Project · Havenwood House",
-    "anchor": "the-project",
-    "href": "/projects/havenwood-house.html#the-project",
-    "eyebrow": "The project",
-    "heading": "",
-    "text": "The project The house is located in East Lake Forest, an area distinguished by its rich architectural heritage. The property was originally part of the estate named Havenwood, approximately 32-acres of Edward and Mary Ryerson, members of Chicago's prominent Ryerson steel family. Completed around 1913–1914, the estate's buildings were designed by Howard Van Doren Shaw, with gardens and landscape elements associated with Jens Jensen. Most of the estate was later demolished and the property subdivided, leaving only the original gatehouse. The design of this residence draws upon Shaw's architectural vocabulary, with the intention of creating a house that appears to have always belonged to its historic setting. While traditionally inspired, the interior is planned to accommodate the needs and patterns of contemporary life."
-  },
-  {
-    "page": "projects/havenwood-house.html",
-    "pageTitle": "Project · Havenwood House",
-    "anchor": "plans",
-    "href": "/projects/havenwood-house.html#plans",
-    "eyebrow": "Plans",
-    "heading": "Traditional outside, current within",
-    "text": "Plans Traditional outside, current within First floor The rooms a traditional elevation implies, laid out for how a house is actually used now. Second floor Both plans are drawn at the same scale. Click either to enlarge."
-  },
-  {
-    "page": "projects/havenwood-house.html",
-    "pageTitle": "Project · Havenwood House",
-    "anchor": "the-house",
-    "href": "/projects/havenwood-house.html#the-house",
-    "eyebrow": "The House",
-    "heading": "Shaw's vocabulary, a new house",
-    "text": "The House Shaw's vocabulary, a new house The elevation. Massing, roof pitch and the placing of the chimneys are where a house of this kind either sits in its setting or does not. The south elevation, across what was once estate grounds. More residential work New houses, renovations and additions across the North Shore. All residential → Building on a historic site? A new house among old ones has to earn its place. Get in touch and we'll walk the site with you. Start a conversation →"
-  },
-  {
-    "page": "projects/ivy-cottage.html",
-    "pageTitle": "projects/ivy-cottage.html",
-    "anchor": "ivy-cottage",
-    "href": "/projects/ivy-cottage.html#ivy-cottage",
-    "eyebrow": "",
-    "heading": "Ivy Cottage",
-    "text": "Residential · Traditional Ivy Cottage Lake Bluff, Illinois. A brick English cottage in the manner of Stanley Anderson, who trained in Howard Van Doren Shaw's office before opening his own. Area ≈ 3,250 sq ft Accommodation 5 bed, 3½ bath Lower level Finished, nine- foot ceilings Precedent Stanley Anderson, 1924–1960"
-  },
-  {
-    "page": "projects/ivy-cottage.html",
-    "pageTitle": "projects/ivy-cottage.html",
-    "anchor": "the-project",
-    "href": "/projects/ivy-cottage.html#the-project",
+    "href": "/projects/cottage-residence.html#the-project",
     "eyebrow": "The project",
     "heading": "",
     "text": "The project This brick English cottage style home was inspired by the architect Stanley Anderson who interned for six years in the office of Howard Van Doren Shaw, the prominent Chicago architect responsible for Lake Forest's Market Square and numerous North Shore estates. He started his own practice in 1924 and continued until his unexpected death in 1960. Located in Lake Bluff, approximately 3,250 square feet, this cottage style home has generous ground floor living with a gourmet kitchen, laundry, living, dining and sun room. The second floor has three bedrooms with a shared bath and a primary suite with a walkout sun deck. The basement has finished nine foot ceilings encompassing an additional bedroom, bathroom, recreation room and home theater."
   },
   {
-    "page": "projects/ivy-cottage.html",
-    "pageTitle": "projects/ivy-cottage.html",
+    "page": "projects/cottage-residence.html",
+    "pageTitle": "projects/cottage-residence.html",
     "anchor": "plans",
-    "href": "/projects/ivy-cottage.html#plans",
+    "href": "/projects/cottage-residence.html#plans",
     "eyebrow": "Plans",
     "heading": "How it is arranged",
     "text": "Plans How it is arranged First floor The hall lands between the kitchen and the dining room, so neither is a corridor to the other. Click to enlarge. Second floor Three bedrooms and a shared bath on one side, the primary suite and its deck on the other. Click to enlarge."
   },
   {
-    "page": "projects/ivy-cottage.html",
-    "pageTitle": "projects/ivy-cottage.html",
+    "page": "projects/cottage-residence.html",
+    "pageTitle": "projects/cottage-residence.html",
     "anchor": "inside",
-    "href": "/projects/ivy-cottage.html#inside",
+    "href": "/projects/cottage-residence.html#inside",
     "eyebrow": "Interior",
     "heading": "One room leading to the next",
     "text": "Interior One room leading to the next The living room opens to the kitchen through a single wide opening, so the two rooms borrow light from each other without becoming one room. The fireplace wall, with cupboards below and shelves above on both sides. The range sits between the two windows, with the arch to the living room on the right. The stair turns as it rises, lit by a window on the landing. Ovens to one side, sink to the other, and the island between them. The doors at the back lead through to the pantry, laundry and mud room. The sun room is glazed on three sides. It faces the street, which in a village is a reason to sit in it rather than a reason not to."
   },
   {
-    "page": "projects/ivy-cottage.html",
-    "pageTitle": "projects/ivy-cottage.html",
+    "page": "projects/cottage-residence.html",
+    "pageTitle": "projects/cottage-residence.html",
     "anchor": "outside",
-    "href": "/projects/ivy-cottage.html#outside",
+    "href": "/projects/cottage-residence.html#outside",
     "eyebrow": "Exterior",
     "heading": "Gables to the street",
     "text": "Exterior Gables to the street Two gables to the street rather than one long face, which is what keeps a house of this size from reading as a large one. More residential work New houses, renovations and additions across the North Shore. All residential → Building in an older village? A new house on an established street has neighbours to answer to. Get in touch and we'll walk the block first. Start a conversation →"
   },
   {
-    "page": "projects/meadow-house.html",
-    "pageTitle": "Project · Meadow House",
-    "anchor": "meadow-house",
-    "href": "/projects/meadow-house.html#meadow-house",
-    "eyebrow": "",
-    "heading": "Meadow House",
-    "text": "Residential · Contemporary Meadow House Lake Forest, Illinois. Three volumes set beside a meadow, arranged so the terraces between them face the preserve. Area ≈ 5,400 sq ft Accommodation 4 bed, 3½ bath Massing Three distinct volumes Outlook Lake Forest Open Lands"
-  },
-  {
-    "page": "projects/meadow-house.html",
-    "pageTitle": "Project · Meadow House",
-    "anchor": "the-project",
-    "href": "/projects/meadow-house.html#the-project",
+    "page": "projects/del-monte-forest-residence.html",
+    "pageTitle": "Project · The Del Monte Forest Residence",
+    "anchor": "del-monte-forest-residence",
+    "href": "/projects/del-monte-forest-residence.html#del-monte-forest-residence",
     "eyebrow": "The project",
-    "heading": "",
-    "text": "The project Situated adjacent to a meadow and nestled among mature trees, the residence is carefully positioned to capture expansive views of the nature preserve maintained by the Lake Forest Open Lands Association. The building's massing is composed of three distinct volumes, maximizing natural light and creating a series of protected terraces that strengthen the connection between the residence and its wooded setting. The approximately 5,400-square-foot home includes four bedrooms and three-and-one-half bathrooms."
+    "heading": "The Del Monte Forest Residence",
+    "text": "Residential · Contemporary The Del Monte Forest Residence Pebble Beach, California. A house in the Del Monte Forest, set above the golf links and turned toward the water. Area ≈ 2,730 sq ft Accommodation 4 bed, 4½ bath Scope New Construction Outlook Carmel Beach & Point Lobos The project Situated above Pebble Beach Golf Links, this contemporary residence is nestled within the Del Monte Forest, offering distant views of Carmel Beach and Point Lobos. The open floor plan provides generous living spaces that extend onto outdoor decks, while efficiently accommodating four bedrooms and four-and-one-half bathrooms within approximately 2,730 square feet."
   },
   {
-    "page": "projects/meadow-house.html",
-    "pageTitle": "Project · Meadow House",
-    "anchor": "site",
-    "href": "/projects/meadow-house.html#site",
-    "eyebrow": "Site",
-    "heading": "Set against the meadow",
-    "text": "Site Set against the meadow Site plan Where the house sits relative to the meadow and the preserve beyond it. Click to enlarge."
+    "page": "projects/del-monte-forest-residence.html",
+    "pageTitle": "Project · The Del Monte Forest Residence",
+    "anchor": "two-levels-into-the-slope",
+    "href": "/projects/del-monte-forest-residence.html#two-levels-into-the-slope",
+    "eyebrow": "Plans",
+    "heading": "Two levels into the slope",
+    "text": "Plans Two levels into the slope First floor Kitchen, dining and living run together along the view side, with the primary suite at the far end and the garage and foyer set back. Deck wraps the whole outer edge. Lower level Three more bedrooms tuck into the slope below, each with its own bathroom and its own door onto the lower deck. Both plans are drawn at the same scale."
   },
   {
-    "page": "projects/meadow-house.html",
-    "pageTitle": "Project · Meadow House",
-    "anchor": "inside",
-    "href": "/projects/meadow-house.html#inside",
+    "page": "projects/del-monte-forest-residence.html",
+    "pageTitle": "Project · The Del Monte Forest Residence",
+    "anchor": "open-to-the-tree-line",
+    "href": "/projects/del-monte-forest-residence.html#open-to-the-tree-line",
     "eyebrow": "Interior",
-    "heading": "Light from three sides",
-    "text": "Interior Light from three sides The living room carries its roof on exposed trusses, left white against the grey walls. Doors and transoms run the full length of both sides, so the meadow is in the room from either seat. Looking back to the fireplace, with the vault carrying through overhead. From the loft, the height of the volume reads at once. The kitchen island runs the length of the room, with the loft open above it. Eating and cooking share one room, which is how the house is used."
+    "heading": "Open to the tree line",
+    "text": "Interior Open to the tree line The living room runs full height, with clerestory glazing above the fireplace carrying light deep into the plan. Glazing turns both corners, so the room reads as open on three sides. Looking back toward dining, and out to the deck past it. The kitchen sits under the same vaulted timber ceiling, glazed on two sides. Built-in shelving and low cabinets keep the dining wall flush. The primary suite keeps the vaulted ceiling and picks up windows on two corners. Lower level bedroom, with its own window onto the forest floor. Each of the lower bedrooms opens straight onto the deck. The sliders line up with the rail so the deck reads as part of the room."
   },
   {
-    "page": "projects/meadow-house.html",
-    "pageTitle": "Project · Meadow House",
-    "anchor": "outside",
-    "href": "/projects/meadow-house.html#outside",
+    "page": "projects/del-monte-forest-residence.html",
+    "pageTitle": "Project · The Del Monte Forest Residence",
+    "anchor": "decks-under-the-pines",
+    "href": "/projects/del-monte-forest-residence.html#decks-under-the-pines",
     "eyebrow": "Exterior",
-    "heading": "Volumes and the spaces between",
-    "text": "Exterior Volumes and the spaces between From the south-west, the three volumes read separately. The terraces sit in the gaps the massing leaves. Sheltered on more than one side, which is the point of breaking the plan up. The kitchen garden, off the room that uses it. The stair tower, the tallest of the three volumes. The entrance. More residential work New houses, renovations and additions across the North Shore. All residential → Building beside open land? What a house looks out on usually decides how it should be arranged. Get in touch and we'll walk the site. Start a conversation →"
+    "heading": "Decks under the pines",
+    "text": "Exterior Decks under the pines From the drive the house is one long low bay, the colonnade holding a consistent line across the glazing and the garage. An open trellis runs the length of the entry walk, throwing a moving pattern across the boards through the day. The deck sits at canopy height. Cable rail keeps the view uninterrupted."
   },
   {
-    "page": "projects/ravine-house.html",
-    "pageTitle": "Project · Ravine House",
-    "anchor": "ravine-house",
-    "href": "/projects/ravine-house.html#ravine-house",
-    "eyebrow": "The project",
-    "heading": "Ravine House",
-    "text": "Residential · Mid-Century Modern Ravine House Lake Bluff, Illinois. A 1954 house on a site bordered by three ravines, renovated in two phases and completed in 2024. Built 1954 Renovated 2017 & 2024 Accommodation 4 bed, 4½ bath Area ≈ 2,500 sq ft The project Originally constructed in 1954, this mid-century modern residence occupies a distinctive site bordered by three ravines, with seasonal views of Lake Michigan. Additions completed by the home's second owner during the 1970s departed from the clarity and character of the original architecture. Following our purchase of the property in 2017, the first phase of renovation focused on the lower level, creating three bedrooms, three bathrooms, a family room, and a laundry room. A second phase, completed in 2024, addressed the main level and exterior, restoring the home's mid-century modern character while adapting it for contemporary living. Although the exterior reflected its mid-century origins, the interior was divided into a series of small, compartmentalized rooms. Removing most of the interior partitions revealed the original timber ceiling beams and established an open, light-filled floor plan. Generous living spaces now extend naturally into a screened porch and adjoining outdoor patios, strengthening the connection between the house and its wooded setting. The renovated residence efficiently accommodates four bedrooms and "
-  },
-  {
-    "page": "projects/ravine-house.html",
-    "pageTitle": "Project · Ravine House",
-    "anchor": "before-and-after",
-    "href": "/projects/ravine-house.html#before-and-after",
-    "eyebrow": "Main Level",
-    "heading": "Before and after",
-    "text": "Main Level Before and after As found Three bedrooms and a bathroom core occupied the west half of the main level. Living, dining and kitchen were separate rooms, and the porch sat off the dining room behind a solid wall. As rebuilt, 2024 With bedrooms moved to the lower level in the first phase, the main level opens into a single living, dining and kitchen space. The west end became a primary suite and dressing room, with an office off the foyer and the porch now opening directly from the living area."
-  },
-  {
-    "page": "projects/ravine-house.html",
-    "pageTitle": "Project · Ravine House",
-    "anchor": "one-room-end-to-end",
-    "href": "/projects/ravine-house.html#one-room-end-to-end",
-    "eyebrow": "Interior",
-    "heading": "One room, end to end",
-    "text": "Interior One room, end to end Living, dining and kitchen read as one room. The painted beams are the original 1954 structure, uncovered when the partitions came out. Looking east from the living room toward the kitchen. Dining, with glazing turning the corner to the ravine. The island faces the garden. Sliding doors open to the patio. The living room keeps the original brick fireplace and looks the full length of the house."
-  },
-  {
-    "page": "projects/ravine-house.html",
-    "pageTitle": "Project · Ravine House",
-    "anchor": "approach-and-entry-court",
-    "href": "/projects/ravine-house.html#approach-and-entry-court",
-    "eyebrow": "Exterior",
-    "heading": "Approach and entry court",
-    "text": "Exterior Approach and entry court The walk from the drive, with a rain chain off the low-slope roof. The court between the garage and the main volume. Brick piers, clerestory glazing and a deep eave carry the original language. The cedar garage door and the planting are new."
-  },
-  {
-    "page": "projects/ravine-house.html",
-    "pageTitle": "Project · Ravine House",
+    "page": "projects/del-monte-forest-residence.html",
+    "pageTitle": "Project · The Del Monte Forest Residence",
     "anchor": "more-residential-work",
-    "href": "/projects/ravine-house.html#more-residential-work",
+    "href": "/projects/del-monte-forest-residence.html#more-residential-work",
     "eyebrow": "",
     "heading": "More residential work",
     "text": "More residential work New houses, renovations and additions across the North Shore. All residential →"
   },
   {
-    "page": "projects/ravine-house.html",
-    "pageTitle": "Project · Ravine House",
+    "page": "projects/del-monte-forest-residence.html",
+    "pageTitle": "Project · The Del Monte Forest Residence",
+    "anchor": "planning-something-on-a-difficult-site",
+    "href": "/projects/del-monte-forest-residence.html#planning-something-on-a-difficult-site",
+    "eyebrow": "",
+    "heading": "Planning something on a difficult site?",
+    "text": "Planning something on a difficult site? Slopes, trees and view corridors tend to set the plan before anything else does. Get in touch and we'll walk it with you. Start a conversation →"
+  },
+  {
+    "page": "projects/havenwood-residence.html",
+    "pageTitle": "Project · The Havenwood Residence",
+    "anchor": "havenwood-residence",
+    "href": "/projects/havenwood-residence.html#havenwood-residence",
+    "eyebrow": "",
+    "heading": "The Havenwood Residence",
+    "text": "Residential · Traditional The Havenwood Residence Lake Forest, Illinois. A house designed to look as though it had always stood on the remains of a 1913 Howard Van Doren Shaw estate. Area ≈ 5,047 sq ft Accommodation 5 bed, 5½ bath Scope New Construction Landscape Associated with Jens Jensen"
+  },
+  {
+    "page": "projects/havenwood-residence.html",
+    "pageTitle": "Project · The Havenwood Residence",
+    "anchor": "the-project",
+    "href": "/projects/havenwood-residence.html#the-project",
+    "eyebrow": "The project",
+    "heading": "",
+    "text": "The project The house is located in East Lake Forest, an area distinguished by its rich architectural heritage. The property was originally part of the estate named Havenwood, approximately 32-acres of Edward and Mary Ryerson, members of Chicago's prominent Ryerson steel family. Completed around 1913–1914, the estate's buildings were designed by Howard Van Doren Shaw, with gardens and landscape elements associated with Jens Jensen. Most of the estate was later demolished and the property subdivided, leaving only the original gatehouse. The design of this residence draws upon Shaw's architectural vocabulary, with the intention of creating a house that appears to have always belonged to its historic setting. While traditionally inspired, the interior is planned to accommodate the needs and patterns of contemporary life."
+  },
+  {
+    "page": "projects/havenwood-residence.html",
+    "pageTitle": "Project · The Havenwood Residence",
+    "anchor": "plans",
+    "href": "/projects/havenwood-residence.html#plans",
+    "eyebrow": "Plans",
+    "heading": "Traditional outside, current within",
+    "text": "Plans Traditional outside, current within First floor The rooms a traditional elevation implies, laid out for how a house is actually used now. Second floor Both plans are drawn at the same scale. Click either to enlarge."
+  },
+  {
+    "page": "projects/havenwood-residence.html",
+    "pageTitle": "Project · The Havenwood Residence",
+    "anchor": "the-house",
+    "href": "/projects/havenwood-residence.html#the-house",
+    "eyebrow": "The House",
+    "heading": "Shaw's vocabulary, a new house",
+    "text": "The House Shaw's vocabulary, a new house The elevation. Massing, roof pitch and the placing of the chimneys are where a house of this kind either sits in its setting or does not. The south elevation, across what was once estate grounds. More residential work New houses, renovations and additions across the North Shore. All residential → Building on a historic site? A new house among old ones has to earn its place. Get in touch and we'll walk the site with you. Start a conversation →"
+  },
+  {
+    "page": "projects/links-residence.html",
+    "pageTitle": "projects/links-residence.html",
+    "anchor": "links-residence",
+    "href": "/projects/links-residence.html#links-residence",
+    "eyebrow": "",
+    "heading": "The Links Residence",
+    "text": "Residential · Contemporary The Links Residence Lake Forest, Illinois. Three volumes ordered by how private each one is, with a sheltered terrace held in the space they leave behind. Area ≈ 3,735 sq ft Accommodation 3 bed, 3½ bath Scope New Construction Massing Three distinct volumes"
+  },
+  {
+    "page": "projects/links-residence.html",
+    "pageTitle": "projects/links-residence.html",
+    "anchor": "the-project",
+    "href": "/projects/links-residence.html#the-project",
+    "eyebrow": "The project",
+    "heading": "",
+    "text": "The project Located within a private golf course community in Lake Forest, this residence was designed to support a relaxed lifestyle centered on entertaining family and guests. The house is organized into three distinct volumes, each corresponding to a different level of privacy. The entry foyer and living room form the central, most public volume, with the more private areas extending to either side. This composition creates a protected terrace at the rear of the house while maximizing natural light throughout the interior."
+  },
+  {
+    "page": "projects/links-residence.html",
+    "pageTitle": "projects/links-residence.html",
+    "anchor": "site",
+    "href": "/projects/links-residence.html#site",
+    "eyebrow": "Site",
+    "heading": "Turned away from the fairway",
+    "text": "Site Turned away from the fairway Site plan The three volumes read as a stepped footprint, set back from the course and screened along both boundaries. Click to enlarge."
+  },
+  {
+    "page": "projects/links-residence.html",
+    "pageTitle": "projects/links-residence.html",
+    "anchor": "inside",
+    "href": "/projects/links-residence.html#inside",
+    "eyebrow": "Interior",
+    "heading": "Light from above the roofline",
+    "text": "Interior Light from above the roofline The central volume is taller than the two beside it, which leaves room for a clerestory on all four sides. The light arrives from above the rooms next door rather than through them. The upper hall is open to the room below on one side and glazed on the other two."
+  },
+  {
+    "page": "projects/links-residence.html",
+    "pageTitle": "projects/links-residence.html",
+    "anchor": "outside",
+    "href": "/projects/links-residence.html#outside",
+    "eyebrow": "Exterior",
+    "heading": "The terrace the plan leaves behind",
+    "text": "Exterior The terrace the plan leaves behind Splitting the house into three volumes is what makes this corner. The terrace is sheltered on two sides by rooms rather than by anything built for the purpose. The entry side is the quiet one, with the pergola marking the door. From the course at the end of the day, which is the view most people have of it. More residential work New houses, renovations and additions across the North Shore. All residential → Building where everyone can see? A house on a course or a lake is on show from one side and wants privacy on the other. Get in touch and we'll work out which side is which. Start a conversation →"
+  },
+  {
+    "page": "projects/ravine-residence.html",
+    "pageTitle": "Project · The Ravine Residence",
+    "anchor": "ravine-residence",
+    "href": "/projects/ravine-residence.html#ravine-residence",
+    "eyebrow": "The project",
+    "heading": "The Ravine Residence",
+    "text": "Residential · Mid-Century Modern The Ravine Residence Lake Bluff, Illinois. A 1954 house on a site bordered by three ravines, renovated in two phases and completed in 2024. Area ≈ 2,450 sq ft Accommodation 4 bed, 5½ bath Scope Addition & Restoration Renovated 2017 & 2024 The project Originally constructed in 1954, this mid-century modern residence occupies a distinctive site bordered by three ravines, with seasonal views of Lake Michigan. Additions completed by the home's second owner during the 1970s departed from the clarity and character of the original architecture. Following our purchase of the property in 2017, the first phase of renovation focused on the lower level, creating three bedrooms, three bathrooms, a family room, and a laundry room. A second phase, completed in 2024, addressed the main level and exterior, restoring the home's mid-century modern character while adapting it for contemporary living. Although the exterior reflected its mid-century origins, the interior was divided into a series of small, compartmentalized rooms. Removing most of the interior partitions revealed the original timber ceiling beams and established an open, light-filled floor plan. Generous living spaces now extend naturally into a screened porch and adjoining outdoor patios, strengthening the connection between the house and its wooded setting. The renovated residence efficiently accom"
+  },
+  {
+    "page": "projects/ravine-residence.html",
+    "pageTitle": "Project · The Ravine Residence",
+    "anchor": "before-and-after",
+    "href": "/projects/ravine-residence.html#before-and-after",
+    "eyebrow": "Main Level",
+    "heading": "Before and after",
+    "text": "Main Level Before and after As found Three bedrooms and a bathroom core occupied the west half of the main level. Living, dining and kitchen were separate rooms, and the porch sat off the dining room behind a solid wall. As rebuilt, 2024 With bedrooms moved to the lower level in the first phase, the main level opens into a single living, dining and kitchen space. The west end became a primary suite and dressing room, with an office off the foyer and the porch now opening directly from the living area."
+  },
+  {
+    "page": "projects/ravine-residence.html",
+    "pageTitle": "Project · The Ravine Residence",
+    "anchor": "one-room-end-to-end",
+    "href": "/projects/ravine-residence.html#one-room-end-to-end",
+    "eyebrow": "Interior",
+    "heading": "One room, end to end",
+    "text": "Interior One room, end to end Living, dining and kitchen read as one room. The painted beams are the original 1954 structure, uncovered when the partitions came out. Looking east from the living room toward the kitchen. Dining, with glazing turning the corner to the ravine. The island faces the garden. Sliding doors open to the patio. The living room keeps the original brick fireplace and looks the full length of the house."
+  },
+  {
+    "page": "projects/ravine-residence.html",
+    "pageTitle": "Project · The Ravine Residence",
+    "anchor": "approach-and-entry-court",
+    "href": "/projects/ravine-residence.html#approach-and-entry-court",
+    "eyebrow": "Exterior",
+    "heading": "Approach and entry court",
+    "text": "Exterior Approach and entry court The walk from the drive, with a rain chain off the low-slope roof. The court between the garage and the main volume. Brick piers, clerestory glazing and a deep eave carry the original language. The cedar garage door and the planting are new."
+  },
+  {
+    "page": "projects/ravine-residence.html",
+    "pageTitle": "Project · The Ravine Residence",
+    "anchor": "more-residential-work",
+    "href": "/projects/ravine-residence.html#more-residential-work",
+    "eyebrow": "",
+    "heading": "More residential work",
+    "text": "More residential work New houses, renovations and additions across the North Shore. All residential →"
+  },
+  {
+    "page": "projects/ravine-residence.html",
+    "pageTitle": "Project · The Ravine Residence",
     "anchor": "thinking-about-a-renovation",
-    "href": "/projects/ravine-house.html#thinking-about-a-renovation",
+    "href": "/projects/ravine-residence.html#thinking-about-a-renovation",
     "eyebrow": "",
     "heading": "Thinking about a renovation?",
     "text": "Thinking about a renovation? Older houses usually have more in them than the current floor plan suggests. Get in touch and we'll take a look. Start a conversation →"
@@ -560,13 +515,58 @@ export const sections: Section[] = [
     "text": "The Building From the street Photographs only for now. The description of the work follows. More commercial work Private clubs, clubhouses and retail, run to the same standard as the residential work. All commercial → Planning a commercial project? A building the public uses answers to a lot of people at once. Get in touch and we'll talk it through. Start a conversation →"
   },
   {
+    "page": "projects/woodland-meadow-residence.html",
+    "pageTitle": "Project · The Woodland Meadow Residence",
+    "anchor": "woodland-meadow-residence",
+    "href": "/projects/woodland-meadow-residence.html#woodland-meadow-residence",
+    "eyebrow": "",
+    "heading": "The Woodland Meadow Residence",
+    "text": "Residential · Contemporary The Woodland Meadow Residence Lake Forest, Illinois. Three volumes set beside a meadow, arranged so the terraces between them face the preserve. Area ≈ 5,435 sq ft Accommodation 4 bed, 4½ bath Scope New Construction Outlook Lake Forest Open Lands"
+  },
+  {
+    "page": "projects/woodland-meadow-residence.html",
+    "pageTitle": "Project · The Woodland Meadow Residence",
+    "anchor": "the-project",
+    "href": "/projects/woodland-meadow-residence.html#the-project",
+    "eyebrow": "The project",
+    "heading": "",
+    "text": "The project Situated adjacent to a meadow and nestled among mature trees, the residence is carefully positioned to capture expansive views of the nature preserve maintained by the Lake Forest Open Lands Association. The building's massing is composed of three distinct volumes, maximizing natural light and creating a series of protected terraces that strengthen the connection between the residence and its wooded setting. The approximately 5,435-square-foot home includes four bedrooms and four-and-one-half bathrooms."
+  },
+  {
+    "page": "projects/woodland-meadow-residence.html",
+    "pageTitle": "Project · The Woodland Meadow Residence",
+    "anchor": "site",
+    "href": "/projects/woodland-meadow-residence.html#site",
+    "eyebrow": "Site",
+    "heading": "Set against the meadow",
+    "text": "Site Set against the meadow Site plan Where the house sits relative to the meadow and the preserve beyond it. Click to enlarge."
+  },
+  {
+    "page": "projects/woodland-meadow-residence.html",
+    "pageTitle": "Project · The Woodland Meadow Residence",
+    "anchor": "inside",
+    "href": "/projects/woodland-meadow-residence.html#inside",
+    "eyebrow": "Interior",
+    "heading": "Light from three sides",
+    "text": "Interior Light from three sides The living room carries its roof on exposed trusses, left white against the grey walls. Doors and transoms run the full length of both sides, so the meadow is in the room from either seat. Looking back to the fireplace, with the vault carrying through overhead. From the loft, the height of the volume reads at once. The kitchen island runs the length of the room, with the loft open above it. Eating and cooking share one room, which is how the house is used."
+  },
+  {
+    "page": "projects/woodland-meadow-residence.html",
+    "pageTitle": "Project · The Woodland Meadow Residence",
+    "anchor": "outside",
+    "href": "/projects/woodland-meadow-residence.html#outside",
+    "eyebrow": "Exterior",
+    "heading": "Volumes and the spaces between",
+    "text": "Exterior Volumes and the spaces between From the south-west, the three volumes read separately. The terraces sit in the gaps the massing leaves. Sheltered on more than one side, which is the point of breaking the plan up. The kitchen garden, off the room that uses it. The stair tower, the tallest of the three volumes. The entrance. More residential work New houses, renovations and additions across the North Shore. All residential → Building beside open land? What a house looks out on usually decides how it should be arranged. Get in touch and we'll walk the site. Start a conversation →"
+  },
+  {
     "page": "residential.html",
     "pageTitle": "Residential",
     "anchor": "homes-built-around-how-you-live",
     "href": "/residential.html#homes-built-around-how-you-live",
     "eyebrow": "",
     "heading": "Homes built around how you live",
-    "text": "Residential Architecture Homes built around how you live New construction, renovations and additions, from lakefront houses down to a kitchen that has never quite worked. The first conversation is always about how you use the place now and what you'd change about it. All Projects New Construction Renovation Additions"
+    "text": "Residential Architecture Homes built around how you live New construction, renovations and additions, from lakefront houses down to a kitchen that has never quite worked. The first conversation is always about how you use the place now and what you'd change about it. All Projects New Construction Addition & Restoration"
   },
   {
     "page": "residential.html",
