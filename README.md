@@ -115,6 +115,25 @@ rather than global — enough to stop a casual script, not a determined attacker
 Set `ALLOWED_ORIGINS` if the site is served from another domain. If this ever
 needs to be strict, move the counter to Vercel KV.
 
+### Voice
+
+Out-of-scope questions are answered in Rob's register: deadpan, understated,
+the absurd request taken completely literally and treated with mock-
+professional seriousness. The prompt gives the technique rather than the
+references, and explicitly forbids quoting anything — borrowed lines read as
+borrowed. It never acknowledges that a joke was made, which is the whole
+trick.
+
+Two guards sit around it. A fair question an architect might get, which the
+site simply does not cover, is answered straight, because someone asking about
+their house deserves a straight reply. And the humour is dropped entirely when
+a question touches illness, bereavement, money trouble, legal disputes or
+building safety.
+
+The four suggested questions in the panel stay practical on purpose. The
+humour is for people who go off-script; advertising it would undercut the
+first impression a real client gets.
+
 ### What it will and will not say
 
 The system prompt in `api/ask.js` holds the guardrails: answer only from the
