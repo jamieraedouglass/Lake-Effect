@@ -7,6 +7,9 @@ const ALLOWED_HOSTS = (process.env['ALLOWED_ORIGINS'] ?? 'leffect.com,www.leffec
 
 const buckets = new Map<string, number[]>();
 
+// Keep timestamps for as long as the longest window any caller uses.
+const LONGEST_WINDOW_MS = 86_400_000;
+
 function hostOf(value: string): string | null {
   try {
     return new URL(value).host.toLowerCase();
@@ -43,14 +46,33 @@ function prune(windowMs: number): void {
   }
 }
 
+/** True if any of the given windows is full. */
+export function atAnyLimit(key: string, limits: RateLimit[]): boolean {
+  return limits.some(limit => atLimit(key, limit));
+}
+
+/**
+ * Record one hit. Every window reads the same bucket and counts the slice it
+ * cares about, so this pushes a single timestamp however many windows there
+ * are. Pushing per window would count each submission twice.
+ */
+export function recordHits(key: string, _limits: RateLimit[]): void {
+  const hits = (buckets.get(key) ?? []).filter(at => Date.now() - at < LONGEST_WINDOW_MS);
+  hits.push(Date.now());
+  buckets.set(key, hits);
+}
+
 export function atLimit(key: string, { max, windowMs }: RateLimit): boolean {
-  prune(windowMs);
+  prune(LONGEST_WINDOW_MS);
   const hits = (buckets.get(key) ?? []).filter(at => Date.now() - at < windowMs);
   return hits.length >= max;
 }
 
 export function recordHit(key: string, { windowMs }: RateLimit): void {
-  const hits = (buckets.get(key) ?? []).filter(at => Date.now() - at < windowMs);
+  // One bucket per visitor holds every timestamp; each window counts the slice
+  // it cares about. Recording once per window would double count.
+  const hits = (buckets.get(key) ?? []).filter(at => Date.now() - at < LONGEST_WINDOW_MS);
   hits.push(Date.now());
   buckets.set(key, hits);
+  void windowMs;
 }

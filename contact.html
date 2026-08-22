@@ -155,6 +155,9 @@
 
 
 
+
+
+
 <div class="contact-main">
 
   <div class="contact-form-side" id="inquiry">
@@ -188,7 +191,7 @@
       </div>
       <div class="form-row">
         <label class="form-label" for="project-type">Project Type</label>
-        <select id="project-type" name="project_type" class="form-input">
+        <select id="project-type" aria-required="true" name="project_type" class="form-input" required>
           <option value="" disabled selected>Select a service area</option>
           <option>Residential: New Construction</option>
           <option>Residential: Renovation or Addition</option>
@@ -198,7 +201,7 @@
       </div>
       <div class="form-row">
         <label class="form-label" for="location">Project Location</label>
-        <input id="location" type="text" name="location" class="form-input" placeholder="City, State">
+        <input id="location" aria-required="true" type="text" name="location" class="form-input" required placeholder="City, State">
       </div>
       <div class="form-row">
         <label class="form-label" for="budget">Approximate Budget (optional)</label>
@@ -214,7 +217,7 @@
       </div>
       <div class="form-row">
         <label class="form-label" for="message">Tell us about your project</label>
-        <textarea id="message" name="message" class="form-input form-textarea" placeholder="A brief description of what you're considering..."></textarea>
+        <textarea id="message" name="message" class="form-input form-textarea" placeholder="A brief description of what you're considering..." aria-required="true" required></textarea>
       </div>
       <div class="form-submit-row">
         <button type="submit" class="form-submit">Send inquiry <span>→</span></button>
@@ -274,6 +277,15 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
 
 
 

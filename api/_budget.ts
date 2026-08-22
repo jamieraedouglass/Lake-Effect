@@ -1,6 +1,11 @@
 /**
  * A spend ceiling for the Ask endpoint.
  *
+ * Sized against a $5 monthly budget: at roughly $0.046 a question that is
+ * about 108 questions a month, or four a day. Half a dollar an hour is around
+ * eleven questions, well above anything a real visitor asks in one sitting and
+ * low enough that a script cannot spend the month before anyone notices.
+ *
  * This is a backstop, not a guarantee. The window lives in memory, and Vercel
  * runs however many instances it likes and recycles them, so the real ceiling
  * is this figure times some number nobody controls. The only limit that holds
@@ -9,7 +14,7 @@
  */
 
 const WINDOW_MS = 3_600_000;
-const CEILING_USD = Number(process.env['LE_ASK_HOURLY_USD'] ?? 2);
+const CEILING_USD = Number(process.env['LE_ASK_HOURLY_USD'] ?? 0.5);
 
 // Opus 5, dollars per million tokens.
 const PRICE = { input: 10, output: 50, cacheRead: 1, cacheWrite: 12.5 };

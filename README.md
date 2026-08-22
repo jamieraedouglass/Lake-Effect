@@ -116,16 +116,32 @@ Open `/api/ask` in a browser. A GET returns what is actually running:
 
 ### Cost
 
-Output tokens are most of the cost of a cached call, so `max_tokens` is 500: a
-short answer with a couple of links needs nowhere near more. Beyond that,
-`api/_budget.ts` refuses before spending once an instance has spent
-`LE_ASK_HOURLY_USD` (default 2) in a rolling hour, billed from the usage the
-API reports rather than an estimate.
+At roughly 12,900 tokens of site in a cached prompt and 500 tokens back, a
+question costs about **$0.046** on Opus 5. So a **$5 monthly cap is about 108
+questions, four a day**. Worth knowing before setting it: if the site gets any
+real traffic that runs out.
+
+The same question on cheaper models, same prompt and same answer length:
+
+    Opus 5      $0.046     108 questions for $5
+    Sonnet 5    $0.014     363 questions for $5
+    Haiku 4.5   $0.005   1,089 questions for $5
+
+The model is set in `api/ask.ts`. Opus is there for the deadpan; the retrieval
+half of the job is well within the cheaper two.
+
+Output tokens are most of the cost, so `max_tokens` is 500: a short answer with
+a couple of links needs nowhere near more. Beyond that, `api/_budget.ts`
+refuses before spending once an instance has spent `LE_ASK_HOURLY_USD`
+(default 0.5, about eleven questions) in a rolling hour, billed from the usage
+the API reports rather than an estimate.
 
 That ceiling is a backstop. The window lives in memory and Vercel runs as many
 instances as it likes and recycles them, so the real figure is the ceiling
 times a number nobody controls. **The limit that holds everywhere is the
-monthly cap set in the Anthropic Console.** Set it.
+monthly cap in the Anthropic Console**, under Billing, Usage limits. When it is
+reached the API returns errors and the panel falls back to keyword search,
+which is the degradation it was built for: the site keeps working.
 
 ### Abuse
 

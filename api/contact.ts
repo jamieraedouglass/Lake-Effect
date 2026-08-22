@@ -1,4 +1,4 @@
-import { sameSite, clientKey, atLimit, recordHit } from './_guard.ts';
+import { sameSite, clientKey, atAnyLimit, recordHits } from './_guard.ts';
 import { handleRequest } from './_adapter.ts';
 
 const TO = 'rob@leffect.com';
@@ -33,9 +33,14 @@ async function contact(request: Request): Promise<Response> {
 
   if (request.method !== 'POST') return json({ error: 'Use POST.' }, 405);
   if (!sameSite(request)) return json({ error: 'forbidden' }, 403);
-  const LIMIT = { max: 4, windowMs: 600_000 };
+  // A burst limit and a slow-drip limit: four in ten minutes stops a script,
+  // twelve in a day stops someone patient.
+  const LIMITS_BY_IP = [
+    { max: 4, windowMs: 600_000 },
+    { max: 12, windowMs: 86_400_000 },
+  ];
   const visitor = clientKey(request);
-  if (atLimit(visitor, LIMIT)) return json({ error: 'busy' }, 429);
+  if (atAnyLimit(visitor, LIMITS_BY_IP)) return json({ error: 'busy' }, 429);
 
   let body: Record<string, unknown>;
   try {
@@ -62,22 +67,28 @@ async function contact(request: Request): Promise<Response> {
 
   if (!first || !last) return json({ error: 'Name is required.' }, 400);
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: 'A valid email is required.' }, 400);
+  // The browser enforces these too, but a scripted POST does not use a browser.
+  const projectType = field('project_type');
+  const location = field('location');
+  const message = field('message');
+  if (!projectType) return json({ error: 'A project type is required.' }, 400);
+  if (!location) return json({ error: 'A project location is required.' }, 400);
+  if (message.length < 10) return json({ error: 'Tell us a little about the project.' }, 400);
 
   const apiKey = process.env['LE_RESEND_API_KEY'] ?? process.env['RESEND_API_KEY'];
   if (!apiKey) return json({ error: 'not_configured' }, 503);
 
-  recordHit(visitor, LIMIT);
+  recordHits(visitor, LIMITS_BY_IP);
 
   const rows: Array<[string, string]> = [
     ['Name', `${first} ${last}`],
     ['Email', email],
     ['Phone', field('phone')],
-    ['Project type', field('project_type')],
-    ['Location', field('location')],
+    ['Project type', projectType],
+    ['Location', location],
     ['Budget', field('budget')],
   ].filter((entry): entry is [string, string] => Boolean(entry[1]));
 
-  const message = field('message');
 
   const text = [
     ...rows.map(([k, v]) => `${k}: ${v}`),
