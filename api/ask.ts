@@ -4,6 +4,7 @@ import { betaZodOutputFormat } from '@anthropic-ai/sdk/helpers/beta/zod';
 import { sections } from './_site-index.ts';
 import { sameSite, clientKey, atLimit, recordHit } from './_guard.ts';
 import { handleRequest } from './_adapter.ts';
+import { overBudget, record, costOf, spentThisHour, ceiling } from './_budget.ts';
 
 const ZOD_VERSION = typeof z.toJSONSchema === 'function' ? '4.x' : '3.x';
 
@@ -101,6 +102,8 @@ async function ask(request: Request): Promise<Response> {
       zod: ZOD_VERSION,
       structuredOutputs: typeof z.toJSONSchema === 'function',
       sections: sections.length,
+      hourlyCeilingUsd: ceiling,
+      spentThisHour: Number(spentThisHour().toFixed(4)),
       commit: process.env['VERCEL_GIT_COMMIT_SHA']?.slice(0, 7) ?? null,
     });
   }
@@ -109,7 +112,7 @@ async function ask(request: Request): Promise<Response> {
     return json({ error: 'Use POST.' }, 405);
   }
   if (!sameSite(request)) return json({ error: 'forbidden' }, 403);
-  const LIMIT = { max: 12, windowMs: 60_000 };
+  const LIMIT = { max: 6, windowMs: 60_000 };
   const visitor = clientKey(request);
   if (atLimit(visitor, LIMIT)) return json({ error: 'busy' }, 429);
 
@@ -141,6 +144,12 @@ async function ask(request: Request): Promise<Response> {
     return json({ error: 'The last message must be from the visitor.' }, 400);
   }
 
+  // Refuse before spending rather than after.
+  if (overBudget()) {
+    console.warn(`ask: hourly ceiling of $${ceiling} reached on this instance`);
+    return json({ error: 'busy' }, 429);
+  }
+
   const apiKey = process.env['LE_ANTHROPIC_API_KEY'] ?? process.env['ANTHROPIC_API_KEY'];
   if (!apiKey) {
     return json({ error: 'not_configured' }, 503);
@@ -152,13 +161,15 @@ async function ask(request: Request): Promise<Response> {
     const client = new Anthropic({ apiKey });
     const response = await client.beta.messages.parse({
       model: 'claude-opus-5',
-      max_tokens: 1024,
+      max_tokens: 500,
       cache_control: { type: 'ephemeral' },
       system: SYSTEM,
       output_format: betaZodOutputFormat(AnswerSchema),
       output_config: { effort: 'low' },
       messages: turns,
     });
+
+    record(costOf(response.usage as Parameters<typeof costOf>[0]));
 
     if (!response.parsed_output) {
       console.error('ask: no parsed_output', JSON.stringify({
