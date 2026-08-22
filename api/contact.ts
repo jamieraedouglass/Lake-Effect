@@ -102,7 +102,7 @@ async function contact(request: Request): Promise<Response> {
         from: FROM,
         to: [TO],
         reply_to: email,
-        subject: `New project inquiry — ${first} ${last}`,
+        subject: `New project inquiry from ${first} ${last}`,
         text,
         html,
       }),

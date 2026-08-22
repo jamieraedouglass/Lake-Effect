@@ -122,7 +122,7 @@ function initLightbox() {
         img.classList.add('is-zoomable');
         img.tabIndex = 0;
         img.setAttribute('role', 'button');
-        img.setAttribute('aria-label', `${img.alt || 'Image'} — enlarge`);
+        img.setAttribute('aria-label', `${img.alt || 'Image'} (enlarge)`);
         const caption = img.closest('figure')?.querySelector('figcaption')?.textContent ??
             img.closest('.plan')?.querySelector('.plan-title')?.textContent;
         if (caption)

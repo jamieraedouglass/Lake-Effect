@@ -80,7 +80,7 @@ export const sections: Section[] = [
     "href": "/contact.html#inquiry",
     "eyebrow": "",
     "heading": "Start a conversation",
-    "text": "New Projects Start a conversation Tell us a bit about what you're considering and we'll come back to you within one business day. If it's easier to talk it through, the number is on the right. Company First Name Last Name Email Address Phone (optional) Project Type Select a service area Residential — New Construction Residential — Renovation or Addition Commercial Architecture Not sure yet Project Location Approximate Budget (optional) Select a range Under $250,000 $250,000 – $500,000 $500,000 – $1,000,000 $1,000,000 – $2,500,000 Over $2,500,000 Not sure yet Tell us about your project Send inquiry → We respond to all inquiries within one business day."
+    "text": "New Projects Start a conversation Tell us a bit about what you're considering and we'll come back to you within one business day. If it's easier to talk it through, the number is on the right. Company First Name Last Name Email Address Phone (optional) Project Type Select a service area Residential: New Construction Residential: Renovation or Addition Commercial Architecture Not sure yet Project Location Approximate Budget (optional) Select a range Under $250,000 $250,000 – $500,000 $500,000 – $1,000,000 $1,000,000 – $2,500,000 Over $2,500,000 Not sure yet Tell us about your project Send inquiry → We respond to all inquiries within one business day."
   },
   {
     "page": "contact.html",
@@ -161,7 +161,7 @@ export const sections: Section[] = [
     "href": "/philosophy.html#a-thoughtful-balance-between-old-and-new",
     "eyebrow": "",
     "heading": "A thoughtful balance between old and new",
-    "text": "Design Philosophy A thoughtful balance between old and new Every project, regardless of scale, is shaped by its own distinct set of circumstances. Our job is to understand them before anything else gets decided. Our approach Much of our work seeks a thoughtful balance between old and new— respecting architectural tradition while embracing innovation . Every project, regardless of scale, is shaped by its own distinct set of circumstances. We approach each project through careful consideration of its site, context, and program, developing a design response tailored to the client's specific needs and aspirations. Our practice is guided by the three principles set out below."
+    "text": "Design Philosophy A thoughtful balance between old and new Every project, regardless of scale, is shaped by its own distinct set of circumstances. Our job is to understand them before anything else gets decided. Our approach Much of our work seeks a thoughtful balance between old and new, respecting architectural tradition while embracing innovation . Every project, regardless of scale, is shaped by its own distinct set of circumstances. We approach each project through careful consideration of its site, context, and program, developing a design response tailored to the client's specific needs and aspirations. Our practice is guided by the three principles set out below."
   },
   {
     "page": "philosophy.html",
@@ -170,7 +170,7 @@ export const sections: Section[] = [
     "href": "/philosophy.html#how-the-work-gets-made",
     "eyebrow": "Guiding Principles",
     "heading": "How the work gets made",
-    "text": "Guiding Principles How the work gets made 01 A Clear Design Process We begin by exploring a range of design alternatives early in the process. These studies provide a framework for refining the program, clarifying the client's priorities, and aligning the design with established budget parameters. 02 A Collaborative Team Approach We encourage the active involvement of the Owner and the design and construction team throughout every phase of a project. Open communication, thoughtful coordination, and a comprehensive approach to project management are essential to achieving a successful outcome. 03 Context, Craft, and Detail With more than 30 years of experience across a broad range of traditional, contemporary and mid-century modern building types, we consider architecture at every scale—from a building's relationship to its site, region, and climate to the quality of its materials, craftsmanship, and detailing. Careful attention to these elements results in buildings that are enduring, functional, and designed to stand the test of time."
+    "text": "Guiding Principles How the work gets made 01 A Clear Design Process We begin by exploring a range of design alternatives early in the process. These studies provide a framework for refining the program, clarifying the client's priorities, and aligning the design with established budget parameters. 02 A Collaborative Team Approach We encourage the active involvement of the Owner and the design and construction team throughout every phase of a project. Open communication, thoughtful coordination, and a comprehensive approach to project management are essential to achieving a successful outcome. 03 Context, Craft, and Detail With more than 30 years of experience across a broad range of traditional, contemporary and mid-century modern building types, we consider architecture at every scale, from a building's relationship to its site, region, and climate to the quality of its materials, craftsmanship, and detailing. Careful attention to these elements results in buildings that are enduring, functional, and designed to stand the test of time."
   },
   {
     "page": "philosophy.html",
@@ -224,7 +224,7 @@ export const sections: Section[] = [
     "href": "/projects/corner-house.html#where-the-addition-picks-up",
     "eyebrow": "First Floor",
     "heading": "Where the addition picks up",
-    "text": "First Floor Where the addition picks up First floor as built The original rooms — study, living, foyer, dining — hold the street front. Kitchen, breakfast, family room, pantry and mudroom run back from them toward the garage, so the new work sits behind the historic elevation rather than beside it. Porch decking wraps from the front around to the family room."
+    "text": "First Floor Where the addition picks up First floor as built The original rooms (study, living, foyer, dining) hold the street front. Kitchen, breakfast, family room, pantry and mudroom run back from them toward the garage, so the new work sits behind the historic elevation rather than beside it. Porch decking wraps from the front around to the family room."
   },
   {
     "page": "projects/corner-house.html",

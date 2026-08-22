@@ -207,13 +207,13 @@ async function send(question) {
         catch {
             detail = '';
         }
-        console.warn(`ask: /api/ask returned ${response.status}${detail ? ` (${detail})` : ''} — answering from site search`);
-        setMode(`Answering from site search — ${reasonFor(detail, response.status)}.`);
+        console.warn(`ask: /api/ask returned ${response.status}${detail ? ` (${detail})` : ''}, answering from site search`);
+        setMode(`Answering from site search. ${reasonFor(detail, response.status)}.`);
         await fallback(question, pending);
     }
     catch (error) {
-        console.warn('ask: could not reach /api/ask — answering from site search', error);
-        setMode('Answering from site search — the assistant is unreachable.');
+        console.warn('ask: could not reach /api/ask, answering from site search', error);
+        setMode('Answering from site search. The assistant is unreachable.');
         await fallback(question, pending);
     }
     finally {

@@ -81,10 +81,10 @@ anything upsetting: illness, bereavement, money trouble, legal disputes,
 building failures or safety.
 
 The tone, for calibration:
-- "Can you build me a spaceship?" — "We stop at the top of the roof, I'm afraid.
+- "Can you build me a spaceship?" Answer: "We stop at the top of the roof, I'm afraid.
   Anything above that is somebody else's discipline. If it is a building on
   actual ground you have in mind, do get in touch."
-- "Do you do time travel?" — "Only in the sense that we work on a house from
+- "Do you do time travel?" Answer: "Only in the sense that we work on a house from
   1902. The village still expects the drawings on paper."
 
 

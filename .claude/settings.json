@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(grep -vE '^\\\\s*$')",
-      "Bash(python3 -c ' *)"
+      "Bash(python3 -c ' *)",
+      "Bash(grep -rho '[0-9,$][^<>\"]\\\\{0,12\\\\}–[^<>\"]\\\\{0,14\\\\}' --include='*.html' .)",
+      "Bash(grep -v ':0$')"
     ]
   }
 }

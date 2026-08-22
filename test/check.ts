@@ -168,7 +168,7 @@ console.log('\nLake Effect site checks\n');
   for (const m of read('sitemap.xml').matchAll(/<loc>([^<]+)<\/loc>/g)) note('sitemap', m[1] ?? '');
   for (const m of read('robots.txt').matchAll(/Sitemap:\s*(\S+)/g)) note('robots.txt', m[1] ?? '');
   const problems = hosts.size <= 1 ? [] :
-    [...hosts].map(([h, k]) => `${h} — used by ${[...k].sort().join(', ')}`);
+    [...hosts].map(([h, k]) => `${h}: used by ${[...k].sort().join(', ')}`);
   check('one host across canonicals, sitemap, robots and structured data', problems);
 }
 
@@ -207,7 +207,7 @@ console.log('\nLake Effect site checks\n');
 }
 
 {
-  // A script whose stylesheet is missing still runs, so nothing errors — the
+  // A script whose stylesheet is missing still runs, so nothing errors: the
   // feature just renders as unstyled fragments. Pair them explicitly.
   const problems: string[] = [];
   for (const page of pages) {
@@ -253,8 +253,8 @@ check('every class used has a matching rule', problems);
   for (const page of pages) {
     for (const m of read(page).matchAll(/<img\b[^>]*>/g)) {
       const tag = m[0];
-      if (!/\salt="/.test(tag)) problems.push(`${page}: <img> without alt — ${tag.slice(0, 70)}…`);
-      else if (/\salt=""/.test(tag)) problems.push(`${page}: <img> with empty alt — ${tag.slice(0, 70)}…`);
+      if (!/\salt="/.test(tag)) problems.push(`${page}: <img> without alt: ${tag.slice(0, 70)}…`);
+      else if (/\salt=""/.test(tag)) problems.push(`${page}: <img> with empty alt: ${tag.slice(0, 70)}…`);
     }
   }
   check('every image has alt text', problems);
@@ -339,7 +339,7 @@ check('every class used has a matching rule', problems);
       const selector = rule[1].trim();
       if (/^\.swatch-/.test(selector)) continue;
       for (const m of rule[2].matchAll(/#[0-9a-fA-F]{3,8}\b/g)) {
-        problems.push(`css/${f}: ${selector} hard-codes ${m[0]} — use a token from base.css`);
+        problems.push(`css/${f}: ${selector} hard-codes ${m[0]}: use a token from base.css`);
       }
     }
   }
@@ -364,7 +364,7 @@ check('every class used has a matching rule', problems);
     if (!nav) { problems.push(`${page}: no nav in the markup`); continue; }
     const stripped = nav[0].replace(/ class="active" aria-current="page"/g, '');
     if (stripped !== canonical.replace(/ class="active" aria-current="page"/g, '')) {
-      problems.push(`${page}: nav has drifted — run npm run build:chrome`);
+      problems.push(`${page}: nav has drifted: run npm run build:chrome`);
     }
     const active = [...nav[0].matchAll(/data-page="([\w-]+)"[^>]*class="active"/g)].map(m => m[1]);
     if (active.length > 1) problems.push(`${page}: ${active.length} nav items marked active`);
@@ -380,16 +380,16 @@ check('every class used has a matching rule', problems);
   const problems = [];
   const indexPath = join(root, 'assets', 'site-index.json');
   if (!existsSync(indexPath)) {
-    problems.push('assets/site-index.json missing — run `npm run build:index`');
+    problems.push('assets/site-index.json missing: run `npm run build:index`');
   } else {
     const { sections } = JSON.parse(readFileSync(indexPath, 'utf8'));
     const pageSet = new Set(pages);
     for (const s of sections as Array<Record<string, string>>) {
       if (!pageSet.has(s.page)) { problems.push(`index references missing page ${s.page}`); continue; }
       if (!read(s.page).includes(`id="${s.anchor}"`)) {
-        problems.push(`${s.href} — no element with that id`);
+        problems.push(`${s.href}: no element with that id`);
       }
-      if (!s.text || s.text.length < 20) problems.push(`${s.href} — section text is empty`);
+      if (!s.text || s.text.length < 20) problems.push(`${s.href}: section text is empty`);
     }
     const covered = new Set(sections.map((s: { page: string }) => s.page));
     for (const page of pages) {
@@ -409,7 +409,7 @@ check('every class used has a matching rule', problems);
       cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'],
     });
     if (readFileSync(indexPath, 'utf8') !== current) {
-      problems.push('site-index.json is stale — the pages changed since it was built');
+      problems.push('site-index.json is stale: the pages changed since it was built');
       writeFileSync(indexPath, current);
     }
     void rebuilt;

@@ -136,7 +136,7 @@ function initLightbox(): void {
     img.classList.add('is-zoomable');
     img.tabIndex = 0;
     img.setAttribute('role', 'button');
-    img.setAttribute('aria-label', `${img.alt || 'Image'} — enlarge`);
+    img.setAttribute('aria-label', `${img.alt || 'Image'} (enlarge)`);
 
     const caption =
       img.closest('figure')?.querySelector('figcaption')?.textContent ??
