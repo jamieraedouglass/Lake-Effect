@@ -58,7 +58,17 @@
      With one column there is no gap, only leftover width either side. */
   background: none;
 }
-.plan { background: var(--white); }
+.plan {
+  background: var(--white);
+  /* Share one row for the drawings and another for the captions, so two plans
+     side by side line up however long their notes run. */
+  display: grid; grid-template-rows: subgrid; grid-row: span 2;
+}
+/* An odd number of plans leaves one alone beside the grid. The ground floor is
+   the one people read hardest, so it takes the full width and the upper floors
+   pair off underneath. */
+.plan.wide { grid-column: 1 / -1; }
+.plan.wide .plan-image img { max-width: 1000px; margin: 0 auto; }
 .plan-image {
   padding: 32px;
   display: flex; align-items: center; justify-content: center;
