@@ -47,11 +47,11 @@ export const sections = [
   {
     "page": "commercial.html",
     "pageTitle": "Commercial",
-    "anchor": "clubhouses-civic-buildings-and-retail",
-    "href": "commercial.html#clubhouses-civic-buildings-and-retail",
+    "anchor": "clubs-clubhouses-and-retail",
+    "href": "commercial.html#clubs-clubhouses-and-retail",
     "eyebrow": "",
-    "heading": "Clubhouses, civic buildings and retail",
-    "text": "Commercial Architecture Clubhouses, civic buildings and retail A building the public uses answers to a lot more people than a house does. The detailing standard stays the same; the constraints around it get considerably more complicated."
+    "heading": "Clubs, clubhouses and retail",
+    "text": "Commercial Architecture Clubs, clubhouses and retail A building the public uses answers to a lot more people than a house does. The detailing standard stays the same; the constraints around it get considerably more complicated."
   },
   {
     "page": "commercial.html",
@@ -60,7 +60,7 @@ export const sections = [
     "href": "commercial.html#public-buildings-same-standards",
     "eyebrow": "",
     "heading": "Public buildings, same standards",
-    "text": "Our commercial practice Public buildings, same standards Clubhouses, community centers, retail fit-outs and institutional work. We run these the same way we run a house: the same drawing standard, the same coordination with consultants, the same presence on site once construction starts. Our commercial clients have mostly been private clubs, non-profits and small business owners around Chicagoland. Budgets tend to be tighter than on residential work, which makes the decisions in the first two phases matter a good deal more. Further commercial projects are being photographed and written up. Discuss a project → Project types Private Clubs & Clubhouses → Institutional & Civic → Retail & Hospitality → Mixed-Use → Adaptive Reuse →"
+    "text": "Our commercial practice Public buildings, same standards Private clubs, clubhouses and retail fit-outs. We run these the same way we run a house: the same drawing standard, the same coordination with consultants, the same presence on site once construction starts. Our commercial clients have mostly been private clubs, non-profits and small business owners around Chicagoland. Budgets tend to be tighter than on residential work, which makes the decisions in the first two phases matter a good deal more. Further commercial projects are being photographed and written up. Discuss a project → Project types Private Clubs & Clubhouses Retail & Hospitality"
   },
   {
     "page": "commercial.html",
@@ -114,7 +114,7 @@ export const sections = [
     "href": "./#what-we-do",
     "eyebrow": "Services",
     "heading": "What we do",
-    "text": "Services What we do Custom Homes & Residences New houses, renovations and additions. This is most of our work, and it's where the practice started. Explore residential → Commercial Architecture Clubhouses, civic buildings and retail. A building the public uses has to work for a lot of people at once. Explore commercial →"
+    "text": "Services What we do Custom Homes & Residences New houses, renovations and additions. This is most of our work, and it's where the practice started. Explore residential → Commercial Architecture Private clubs, clubhouses and retail. A building the public uses has to work for a lot of people at once. Explore commercial →"
   },
   {
     "page": "index.html",
@@ -420,7 +420,7 @@ export const sections = [
     "href": "project-village-market.html#the-building",
     "eyebrow": "The Building",
     "heading": "From the street",
-    "text": "The Building From the street Photographs only for now. The description of the work follows. More commercial work Clubhouses, civic buildings and retail, run to the same standard as the residential work. All commercial → Planning a commercial project? A building the public uses answers to a lot of people at once. Get in touch and we'll talk it through. Start a conversation →"
+    "text": "The Building From the street Photographs only for now. The description of the work follows. More commercial work Private clubs, clubhouses and retail, run to the same standard as the residential work. All commercial → Planning a commercial project? A building the public uses answers to a lot of people at once. Get in touch and we'll talk it through. Start a conversation →"
   },
   {
     "page": "residential.html",

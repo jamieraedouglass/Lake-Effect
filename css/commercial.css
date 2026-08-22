@@ -25,7 +25,6 @@
   display: flex; justify-content: space-between; align-items: center;
 }
 .services-list-item:first-child { border-top: 0.5px solid var(--border); }
-.services-list-arrow { font-size: 14px; color: var(--accent-dark); }
 
 @media (max-width: 1080px) {
   .commercial-intro-left, .commercial-intro-right { padding: 64px 28px; }
