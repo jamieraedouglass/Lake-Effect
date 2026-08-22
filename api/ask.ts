@@ -1,14 +1,19 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { z } from 'zod';
 import { betaZodOutputFormat } from '@anthropic-ai/sdk/helpers/beta/zod';
-import { sections } from './site-index.js';
-import { sameSite, clientKey, atLimit, recordHit } from './guard.js';
-import { handleRequest } from './_adapter.js';
+import { sections } from './site-index.ts';
+import { sameSite, clientKey, atLimit, recordHit } from './guard.ts';
+import { handleRequest } from './_adapter.ts';
 
 const ZOD_VERSION = typeof z.toJSONSchema === 'function' ? '4.x' : '3.x';
 
 const MAX_QUESTION_CHARS = 400;
 const MAX_TURNS = 8;
+
+interface Turn {
+  role: 'user' | 'assistant';
+  content: string;
+}
 
 const AnswerSchema = z.object({
   answer: z
@@ -86,17 +91,17 @@ Site content:
 
 ${CORPUS}`;
 
-async function ask(request) {
+async function ask(request: Request): Promise<Response> {
   if (request.method === 'GET') {
     return json({
       ok: true,
-      keyConfigured: Boolean(process.env.LE_ANTHROPIC_API_KEY ?? process.env.ANTHROPIC_API_KEY),
-      keyName: process.env.LE_ANTHROPIC_API_KEY ? 'LE_ANTHROPIC_API_KEY'
-        : process.env.ANTHROPIC_API_KEY ? 'ANTHROPIC_API_KEY' : null,
+      keyConfigured: Boolean(process.env['LE_ANTHROPIC_API_KEY'] ?? process.env['ANTHROPIC_API_KEY']),
+      keyName: process.env['LE_ANTHROPIC_API_KEY'] ? 'LE_ANTHROPIC_API_KEY'
+        : process.env['ANTHROPIC_API_KEY'] ? 'ANTHROPIC_API_KEY' : null,
       zod: ZOD_VERSION,
       structuredOutputs: typeof z.toJSONSchema === 'function',
       sections: sections.length,
-      commit: process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? null,
+      commit: process.env['VERCEL_GIT_COMMIT_SHA']?.slice(0, 7) ?? null,
     });
   }
 
@@ -108,9 +113,9 @@ async function ask(request) {
   const visitor = clientKey(request);
   if (atLimit(visitor, LIMIT)) return json({ error: 'busy' }, 429);
 
-  let messages;
+  let messages: unknown;
   try {
-    ({ messages } = await request.json());
+    ({ messages } = (await request.json()) as { messages?: unknown });
   } catch {
     return json({ error: 'Expected a JSON body.' }, 400);
   }
@@ -118,25 +123,25 @@ async function ask(request) {
   if (!Array.isArray(messages) || messages.length === 0) {
     return json({ error: 'Send a messages array.' }, 400);
   }
-  if (messages.length > MAX_TURNS) {
-    messages = messages.slice(-MAX_TURNS);
-  }
+  const incoming = (messages as unknown[]).slice(-MAX_TURNS);
+  const turns: Turn[] = [];
 
-  const turns = [];
-  for (const m of messages) {
-    if (!m || (m.role !== 'user' && m.role !== 'assistant')) {
+  for (const entry of incoming) {
+    const message = entry as Partial<Turn> | null;
+    if (!message || (message.role !== 'user' && message.role !== 'assistant')) {
       return json({ error: 'Each message needs a role of user or assistant.' }, 400);
     }
-    if (typeof m.content !== 'string' || !m.content.trim()) {
+    if (typeof message.content !== 'string' || !message.content.trim()) {
       return json({ error: 'Each message needs content.' }, 400);
     }
-    turns.push({ role: m.role, content: m.content.trim().slice(0, MAX_QUESTION_CHARS) });
+    turns.push({ role: message.role, content: message.content.trim().slice(0, MAX_QUESTION_CHARS) });
   }
-  if (turns.at(-1).role !== 'user') {
+
+  if (turns.at(-1)?.role !== 'user') {
     return json({ error: 'The last message must be from the visitor.' }, 400);
   }
 
-  const apiKey = process.env.LE_ANTHROPIC_API_KEY ?? process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env['LE_ANTHROPIC_API_KEY'] ?? process.env['ANTHROPIC_API_KEY'];
   if (!apiKey) {
     return json({ error: 'not_configured' }, 503);
   }
@@ -177,7 +182,7 @@ async function ask(request) {
 
     return json({
       ...result,
-      links: result.links.filter(l => known.has(l.href)),
+      links: result.links.filter(link => known.has(link.href)),
     });
   } catch (error) {
     if (error instanceof Anthropic.RateLimitError) {
@@ -187,12 +192,13 @@ async function ask(request) {
       console.error('ask: the API key was rejected');
       return json({ error: 'bad_key' }, 502);
     }
-    console.error('ask:', error?.stack ?? error);
-    return json({ error: 'failed', detail: error?.message?.slice(0, 200) }, 502);
+    const failure = error instanceof Error ? error : new Error(String(error));
+    console.error('ask:', failure.stack ?? failure.message);
+    return json({ error: 'failed', detail: failure.message.slice(0, 200) }, 502);
   }
 }
 
-function json(body, status = 200) {
+function json(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), {
     status,
     headers: { 'content-type': 'application/json' },

@@ -5,14 +5,14 @@ import { fileURLToPath } from 'node:url';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 export const SITE_URL = process.env.SITE_URL ?? 'https://lake-effect-brown.vercel.app';
 
-const NAV_ITEMS = [
+const NAV_ITEMS: Array<[string, string, string]> = [
   ['residential.html', 'residential', 'Residential'],
   ['commercial.html', 'commercial', 'Commercial'],
   ['philosophy.html', 'philosophy', 'Philosophy'],
   ['about.html', 'about', 'About'],
 ];
 
-export const PAGE_KEYS = {
+export const PAGE_KEYS: Record<string, string> = {
   'residential.html': 'residential',
   'commercial.html': 'commercial',
   'philosophy.html': 'philosophy',
@@ -23,7 +23,7 @@ export const PAGE_KEYS = {
   'project-lake-forest-traditional.html': 'residential',
 };
 
-const nav = active => `<nav id="main-nav">
+const nav = (active: string | null): string => `<nav id="main-nav">
   <a class="nav-logo" href="./">
     <img src="logo.svg" alt="Lake Effect Architects" class="nav-logo-img" width="180" height="52">
   </a>
@@ -85,7 +85,7 @@ const HEAD_LINKS = `  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap">`;
 
 
-const TITLES = {
+const TITLES: Record<string, string> = {
   'index.html': 'Lake Effect Architects',
   'residential.html': 'Residential',
   'commercial.html': 'Commercial',
@@ -100,7 +100,7 @@ const TITLES = {
   'project-lake-bluff-historic.html': 'Traditional, Lake Bluff',
 };
 
-const SHARE_IMAGES = {
+const SHARE_IMAGES: Record<string, string> = {
   'index.html': 'assets/pebble-beach-contemporary/exterior-approach.jpg',
   'residential.html': 'assets/lake-bluff-mcm/exterior-entry-drive.jpg',
   'commercial.html': 'assets/village-market/share.jpg',
@@ -117,7 +117,7 @@ const SHARE_IMAGES = {
   'project-lake-forest-traditional.html': 'assets/lake-forest-traditional/exterior-southeast.jpg',
 };
 
-const SHARE_NAMES = {
+const SHARE_NAMES: Record<string, string> = {
   'index.html': 'Lake Effect Architects',
   '404.html': 'Page not found',
   'residential.html': 'Residential — Lake Effect Architects',
@@ -134,9 +134,9 @@ const SHARE_NAMES = {
   'project-lake-forest-traditional.html': 'Traditional Residence, Lake Forest — Lake Effect Architects',
 };
 
-const escapeAttr = v => v.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+const escapeAttr = (v: string): string => v.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
-function shareTags(page, canonical, description) {
+function shareTags(page: string, canonical: string, description: string): string {
   const image = SHARE_IMAGES[page];
   if (!image) return '';
   const title = SHARE_NAMES[page] ?? 'Lake Effect Architects';
@@ -161,7 +161,7 @@ const NOSCRIPT = `<noscript>
   <p class="noscript-note">This site works without JavaScript, but the project filter and the Ask panel need it.</p>
 </noscript>`;
 
-export function build() {
+export function build(): { pages: number; changed: number } {
   const pages = readdirSync(root).filter(f => f.endsWith('.html'));
   let changed = 0;
 
@@ -199,11 +199,11 @@ export function build() {
 
     s = s.replace('<body>\n\n',
       `<body>\n\n${SKIP_LINK}\n${nav(PAGE_KEYS[page] ?? null)}\n\n<main id="main" tabindex="-1">\n`);
-    s = s.replace('<script src="ask.js"></script>',
-      `</main>\n\n${NOSCRIPT}\n\n${footer}\n\n<script src="ask.js"></script>`);
-    if (!s.includes('lightbox.js')) {
-      s = s.replace('<script src="components.js"></script>',
-        '<script src="lightbox.js"></script>\n<script src="components.js"></script>');
+    s = s.replace('<script src="js/ask.js"></script>',
+      `</main>\n\n${NOSCRIPT}\n\n${footer}\n\n<script src="js/ask.js"></script>`);
+    if (!s.includes('js/lightbox.js')) {
+      s = s.replace('<script src="js/components.js"></script>',
+        '<script src="js/lightbox.js"></script>\n<script src="js/components.js"></script>');
     }
     if (!s.includes('css/lightbox.css')) {
       s = s.replace('  <link rel="stylesheet" href="css/base.css">',

@@ -10,7 +10,7 @@ const pages = readdirSync(root).filter(f => f.endsWith('.html'));
 let failures = 0;
 let checks = 0;
 
-function check(label, problems) {
+function check(label: string, problems: string[]): void {
   checks++;
   if (problems.length === 0) {
     console.log(`  ok   ${label}`);
@@ -22,8 +22,8 @@ function check(label, problems) {
   }
 }
 
-const read = f => readFileSync(join(root, f), 'utf8');
-const stripComments = css => css.replace(/\/\*[\s\S]*?\*\//g, '');
+const read = (f: string): string => readFileSync(join(root, f), 'utf8');
+const stripComments = (css: string): string => css.replace(/\/\*[\s\S]*?\*\//g, '');
 
 const FORBIDDEN = [
   'del ciervo', '3183',
@@ -53,7 +53,7 @@ console.log('\nLake Effect site checks\n');
     for (const m of html.matchAll(/(?:src|href)="((?:assets|css)\/[^"]+)"/g)) {
       if (!existsSync(join(root, m[1]))) problems.push(`${page} -> ${m[1]}`);
     }
-    for (const m of html.matchAll(/src="(components\.js|logo\.svg)"/g)) {
+    for (const m of html.matchAll(/src="(js\/[\w.-]+|logo\.svg)"/g)) {
       if (!existsSync(join(root, m[1]))) problems.push(`${page} -> ${m[1]}`);
     }
   }
@@ -61,12 +61,12 @@ console.log('\nLake Effect site checks\n');
 }
 
 {
-  const js = read('components.js');
+  const js = read('js/components.js');
   const fromJs = new Set();
   for (const m of js.matchAll(/class="([^"]*)"/g)) m[1].split(/\s+/).forEach(c => fromJs.add(c));
 
-  const selectorsIn = file => {
-    const set = new Set();
+  const selectorsIn = (file: string): Set<string> => {
+    const set = new Set<string>();
     for (const m of stripComments(read(file)).matchAll(/\.([A-Za-z][\w-]*)/g)) set.add(m[1]);
     return set;
   };
@@ -144,7 +144,7 @@ console.log('\nLake Effect site checks\n');
 
 {
   const problems = [];
-  const files = [...pages, 'components.js', 'README.md',
+  const files = [...pages, 'js/components.js', 'src/components.ts', 'README.md',
     ...readdirSync(join(root, 'css')).map(f => `css/${f}`)];
   for (const f of files) {
     const lower = read(f).toLowerCase();
@@ -209,7 +209,9 @@ console.log('\nLake Effect site checks\n');
 
 {
   const problems = [];
-  const canonical = read('index.html').match(/<nav id="main-nav">[\s\S]*?<\/nav>/)[0];
+  const canonicalNav = read('index.html').match(/<nav id="main-nav">[\s\S]*?<\/nav>/);
+  if (!canonicalNav) throw new Error('index.html has no nav to compare against');
+  const canonical = canonicalNav[0];
   const navHrefs = [...canonical.matchAll(/href="([\w./-]+\.html)"/g)].map(m => m[1]);
   const navKeys = [...canonical.matchAll(/data-page="([\w-]+)"/g)].map(m => m[1]);
 
@@ -243,14 +245,14 @@ console.log('\nLake Effect site checks\n');
   } else {
     const { sections } = JSON.parse(readFileSync(indexPath, 'utf8'));
     const pageSet = new Set(pages);
-    for (const s of sections) {
+    for (const s of sections as Array<Record<string, string>>) {
       if (!pageSet.has(s.page)) { problems.push(`index references missing page ${s.page}`); continue; }
       if (!read(s.page).includes(`id="${s.anchor}"`)) {
         problems.push(`${s.href} — no element with that id`);
       }
       if (!s.text || s.text.length < 20) problems.push(`${s.href} — section text is empty`);
     }
-    const covered = new Set(sections.map(s => s.page));
+    const covered = new Set(sections.map((s: { page: string }) => s.page));
     for (const page of pages) {
       if (page === '404.html' || /\bTODO\b/.test(read(page))) continue;
       if (!covered.has(page)) problems.push(`${page} contributes no sections`);
@@ -264,7 +266,7 @@ console.log('\nLake Effect site checks\n');
   const indexPath = join(root, 'assets', 'site-index.json');
   if (existsSync(indexPath)) {
     const current = readFileSync(indexPath, 'utf8');
-    const rebuilt = execFileSync(process.execPath, [join(root, 'scripts', 'build-index.mjs')], {
+    const rebuilt = execFileSync(process.execPath, [join(root, 'scripts', 'build-index.ts')], {
       cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'],
     });
     if (readFileSync(indexPath, 'utf8') !== current) {
@@ -278,7 +280,7 @@ console.log('\nLake Effect site checks\n');
 
 {
   const inMarkup = new Set();
-  for (const f of [...pages, 'ask.js', 'lightbox.js', 'components.js']) {
+  for (const f of [...pages, 'js/ask.js', 'js/lightbox.js', 'js/components.js']) {
     const src = read(f);
     for (const m of src.matchAll(/class="([^"]*)"/g)) m[1].split(/\s+/).filter(Boolean).forEach(c => inMarkup.add(c));
     for (const m of src.matchAll(/classList\.(?:add|remove|toggle)\('([\w-]+)'/g)) inMarkup.add(m[1]);
@@ -335,7 +337,7 @@ console.log('\nLake Effect site checks\n');
       }
     }
     const index = JSON.parse(readFileSync(join(root, 'assets', 'site-index.json'), 'utf8'));
-    if (index.sections.some(s => s.page === draft)) {
+    if (index.sections.some((s: { page: string }) => s.page === draft)) {
       problems.push(`${draft} is in the Ask index while it still has TODOs`);
     }
   }

@@ -142,6 +142,28 @@ Returned links are also filtered against the real index server-side, so a
 hallucinated href cannot reach the page. Out-of-scope questions get a dry
 one-liner and a pointer to the contact page.
 
+## TypeScript
+
+Everything is TypeScript. Nothing is transpiled at deploy time.
+
+- `src/*.ts` are the page scripts. They are classic browser scripts sharing one
+  global scope, not modules, and `npm run build:js` compiles them to `js/`,
+  **which is committed**. Vercel serves them as static files and never builds
+  them. If you edit `src/`, run the build and commit what comes out.
+- `api/*.ts` are compiled by Vercel itself, so there is nothing to commit.
+- `scripts/` and `test/` run straight from source: Node strips the types.
+  `erasableSyntaxOnly` is on so they stay runnable that way — no enums, no
+  parameter properties.
+
+Two configs, because the bar differs:
+
+    tsconfig.json        src + api, including noUncheckedIndexedAccess
+    tsconfig.tools.json  scripts + test, that one rule relaxed
+
+The relaxed rule is deliberate. Build scripts index regex match groups
+constantly, where the strict rule adds noise without catching anything a
+crashing build would not. Shipped code keeps it.
+
 ## Checks
 
     npm test
@@ -165,8 +187,9 @@ horizontal overflow.
 Anything that serves the folder over HTTP will do:
 
     npm start        # python3 -m http.server 8000
-    npm run build    # sync chrome, rebuild the Ask index and the sitemap
-    npm test         # 13 checks
+    npm run build    # compile src/, resize images, sync chrome, rebuild index
+    npm run typecheck
+    npm test         # typecheck, then the checks below
 
 Then open http://localhost:8000. Opening `index.html` off the filesystem mostly
 works too, but the nav and footer are injected by JavaScript, so use a server if

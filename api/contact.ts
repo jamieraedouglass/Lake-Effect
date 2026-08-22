@@ -1,24 +1,33 @@
-import { sameSite, clientKey, atLimit, recordHit } from './guard.js';
-import { handleRequest } from './_adapter.js';
+import { sameSite, clientKey, atLimit, recordHit } from './guard.ts';
+import { handleRequest } from './_adapter.ts';
 
 const TO = 'rob@leffect.com';
 const FROM = 'Lake Effect Site <inquiries@leffect.com>';
-const LIMITS = { first_name: 80, last_name: 80, email: 160, phone: 40,
-  project_type: 80, location: 120, budget: 60, message: 4000 };
+type FieldName = 'first_name' | 'last_name' | 'email' | 'phone'
+  | 'project_type' | 'location' | 'budget' | 'message';
 
-const escapeHtml = v => String(v).replace(/[&<>"']/g,
-  c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const LIMITS: Record<FieldName, number> = {
+  first_name: 80, last_name: 80, email: 160, phone: 40,
+  project_type: 80, location: 120, budget: 60, message: 4000,
+};
 
-async function contact(request) {
+const HTML_ESCAPES: Record<string, string> = {
+  '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+};
+
+const escapeHtml = (value: string): string =>
+  String(value).replace(/[&<>"']/g, character => HTML_ESCAPES[character] ?? character);
+
+async function contact(request: Request): Promise<Response> {
   if (request.method === 'GET') {
     return json({
       ok: true,
-      keyConfigured: Boolean(process.env.LE_RESEND_API_KEY ?? process.env.RESEND_API_KEY),
-      keyName: process.env.LE_RESEND_API_KEY ? 'LE_RESEND_API_KEY'
-        : process.env.RESEND_API_KEY ? 'RESEND_API_KEY' : null,
+      keyConfigured: Boolean(process.env['LE_RESEND_API_KEY'] ?? process.env['RESEND_API_KEY']),
+      keyName: process.env['LE_RESEND_API_KEY'] ? 'LE_RESEND_API_KEY'
+        : process.env['RESEND_API_KEY'] ? 'RESEND_API_KEY' : null,
       from: FROM,
       to: TO,
-      commit: process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? null,
+      commit: process.env['VERCEL_GIT_COMMIT_SHA']?.slice(0, 7) ?? null,
     });
   }
 
@@ -28,9 +37,9 @@ async function contact(request) {
   const visitor = clientKey(request);
   if (atLimit(visitor, LIMIT)) return json({ error: 'busy' }, 429);
 
-  let body;
+  let body: Record<string, unknown>;
   try {
-    body = await request.json();
+    body = (await request.json()) as Record<string, unknown>;
   } catch {
     return json({ error: 'Expected a JSON body.' }, 400);
   }
@@ -39,9 +48,9 @@ async function contact(request) {
     return json({ ok: true });
   }
 
-  const field = name => {
-    const v = body[name];
-    return typeof v === 'string' ? v.trim().slice(0, LIMITS[name]) : '';
+  const field = (name: FieldName): string => {
+    const value = body[name];
+    return typeof value === 'string' ? value.trim().slice(0, LIMITS[name]) : '';
   };
 
   const first = field('first_name');
@@ -51,19 +60,19 @@ async function contact(request) {
   if (!first || !last) return json({ error: 'Name is required.' }, 400);
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: 'A valid email is required.' }, 400);
 
-  const apiKey = process.env.LE_RESEND_API_KEY ?? process.env.RESEND_API_KEY;
+  const apiKey = process.env['LE_RESEND_API_KEY'] ?? process.env['RESEND_API_KEY'];
   if (!apiKey) return json({ error: 'not_configured' }, 503);
 
   recordHit(visitor, LIMIT);
 
-  const rows = [
+  const rows: Array<[string, string]> = [
     ['Name', `${first} ${last}`],
     ['Email', email],
     ['Phone', field('phone')],
     ['Project type', field('project_type')],
     ['Location', field('location')],
     ['Budget', field('budget')],
-  ].filter(([, v]) => v);
+  ].filter((entry): entry is [string, string] => Boolean(entry[1]));
 
   const message = field('message');
 
@@ -105,12 +114,12 @@ async function contact(request) {
     }
     return json({ ok: true });
   } catch (error) {
-    console.error(error);
+    console.error('contact:', error);
     return json({ error: 'failed' }, 502);
   }
 }
 
-function json(body, status = 200) {
+function json(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), {
     status,
     headers: { 'content-type': 'application/json' },

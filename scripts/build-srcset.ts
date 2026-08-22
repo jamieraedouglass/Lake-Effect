@@ -1,11 +1,11 @@
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { SMALL_WIDTH, smallName } from './build-images.mjs';
+import { SMALL_WIDTH, smallName } from './build-images.ts';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
-const SIZES = [
+const SIZES: Array<[RegExp, string]> = [
   [/class="project-hero-image"/, '100vw'],
   [/<figure class="[^"]*\bfull\b[^"]*">/, '100vw'],
   [/<figure class="[^"]*\btall\b[^"]*">/, '(max-width: 860px) 100vw, 50vw'],
@@ -17,18 +17,19 @@ const SIZES = [
   [/class="hero-image"/, '(max-width: 860px) 100vw, 50vw'],
 ];
 
-function sizesFor(html, imgStart, tag, planSizes) {
+function sizesFor(html: string, imgStart: number, tag: string, planSizes: string): string | null {
   const own = tag.match(/class="([^"]*)"/)?.[1] ?? '';
   if (/\bhero-image\b/.test(own)) return '(max-width: 860px) 100vw, 50vw';
   if (/plan-image/.test(html.slice(Math.max(0, imgStart - 120), imgStart))) return planSizes;
 
   const before = html.slice(Math.max(0, imgStart - 600), imgStart);
-  let best = null;
+  let best: string | null = null;
   let bestAt = -1;
   for (const [pattern, value] of SIZES) {
     const matches = [...before.matchAll(new RegExp(pattern.source, 'g'))];
-    if (!matches.length) continue;
-    const at = matches[matches.length - 1].index;
+    const final = matches[matches.length - 1];
+    if (!final) continue;
+    const at = final.index;
     if (at > bestAt) {
       bestAt = at;
       best = value;
@@ -40,7 +41,7 @@ function sizesFor(html, imgStart, tag, planSizes) {
 const pages = readdirSync(root).filter(f => f.endsWith('.html'));
 let touched = 0;
 let tagged = 0;
-const missing = [];
+const missing: string[] = [];
 
 for (const page of pages) {
   const path = join(root, page);

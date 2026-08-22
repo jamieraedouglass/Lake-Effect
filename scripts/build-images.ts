@@ -1,6 +1,6 @@
 import { readdirSync, statSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
-import { join, dirname, resolve, extname, basename } from 'node:path';
+import { join, dirname, resolve, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -9,10 +9,10 @@ const assets = join(root, 'assets');
 export const SMALL_WIDTH = 800;
 const MIN_SOURCE_WIDTH = 900;
 
-export const smallName = src =>
+export const smallName = (src: string): string =>
   src.replace(/(\.[a-z]+)$/i, `-${SMALL_WIDTH}$1`);
 
-function haveSips() {
+function haveSips(): boolean {
   try {
     execFileSync('sips', ['--help'], { stdio: 'ignore' });
     return true;
@@ -21,13 +21,13 @@ function haveSips() {
   }
 }
 
-function widthOf(file) {
+function widthOf(file: string): number {
   const out = execFileSync('sips', ['-g', 'pixelWidth', file], { encoding: 'utf8' });
   return Number(out.match(/pixelWidth: (\d+)/)?.[1] ?? 0);
 }
 
-export function listOriginals() {
-  const files = [];
+export function listOriginals(): string[] {
+  const files: string[] = [];
   for (const dir of readdirSync(assets)) {
     const full = join(assets, dir);
     if (!statSync(full).isDirectory()) continue;
@@ -71,7 +71,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     after += statSync(out).size;
   }
 
-  const mb = n => (n / 1048576).toFixed(1);
+  const mb = (n: number): string => (n / 1048576).toFixed(1);
   console.log(`${made} small variants written, ${skipped} originals already small enough`);
   console.log(`originals ${mb(before)} MB · ${SMALL_WIDTH}px versions ${mb(after)} MB`);
 }

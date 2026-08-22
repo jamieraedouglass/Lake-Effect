@@ -1,4 +1,6 @@
-export const sections = [
+import type { Section } from './types.ts';
+
+export const sections: Section[] = [
   {
     "page": "about.html",
     "pageTitle": "About the Studio",
@@ -47,11 +49,11 @@ export const sections = [
   {
     "page": "commercial.html",
     "pageTitle": "Commercial",
-    "anchor": "clubs-clubhouses-and-retail",
-    "href": "commercial.html#clubs-clubhouses-and-retail",
+    "anchor": "commercial-work-intro",
+    "href": "commercial.html#commercial-work-intro",
     "eyebrow": "",
-    "heading": "Clubs, clubhouses and retail",
-    "text": "Commercial Architecture Clubs, clubhouses and retail A building the public uses answers to a lot more people than a house does. The detailing standard stays the same; the constraints around it get considerably more complicated."
+    "heading": "Commercial work",
+    "text": "Commercial Architecture Commercial work A building the public uses answers to a lot more people than a house does. The detailing standard stays the same; the constraints around it get considerably more complicated."
   },
   {
     "page": "commercial.html",

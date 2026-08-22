@@ -5,14 +5,16 @@
   "description": "Marketing site for Lake Effect Architects, Lake Bluff IL",
   "scripts": {
     "start": "python3 -m http.server 8000",
-    "build": "npm run build:images && npm run build:srcset && npm run build:chrome && npm run build:index && npm run build:sitemap",
-    "build:images": "node scripts/build-images.mjs",
-    "build:srcset": "node scripts/build-srcset.mjs",
-    "build:chrome": "node scripts/build-chrome.mjs",
-    "build:index": "node scripts/build-index.mjs",
-    "build:sitemap": "node scripts/build-sitemap.mjs",
-    "verify": "node test/check.mjs",
-    "test": "node test/check.mjs"
+    "build": "npm run build:js && npm run build:images && npm run build:srcset && npm run build:chrome && npm run build:index && npm run build:sitemap",
+    "build:js": "tsc -p tsconfig.browser.json",
+    "build:images": "node scripts/build-images.ts",
+    "build:srcset": "node scripts/build-srcset.ts",
+    "build:chrome": "node scripts/build-chrome.ts",
+    "build:index": "node scripts/build-index.ts",
+    "build:sitemap": "node scripts/build-sitemap.ts",
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.tools.json",
+    "verify": "npm run typecheck && node test/check.ts",
+    "test": "npm run verify"
   },
   "author": "Jamie Douglass",
   "license": "MIT",
@@ -20,5 +22,9 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.70.0",
     "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "typescript": "^7.0.2"
   }
 }

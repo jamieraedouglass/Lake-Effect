@@ -1,14 +1,18 @@
-function initPage() {
+declare function initAsk(): void;
+declare function initLightbox(): void;
+
+function initPage(): void {
   const nav = document.getElementById('main-nav');
-  const toggle = nav.querySelector('.nav-toggle');
+  const toggle = nav?.querySelector<HTMLButtonElement>('.nav-toggle');
+  if (!nav || !toggle) return;
 
   toggle.addEventListener('click', () => {
     const open = nav.classList.toggle('open');
     toggle.setAttribute('aria-expanded', String(open));
   });
 
-  window.matchMedia('(min-width: 861px)').addEventListener('change', e => {
-    if (e.matches) {
+  window.matchMedia('(min-width: 861px)').addEventListener('change', event => {
+    if (event.matches) {
       nav.classList.remove('open');
       toggle.setAttribute('aria-expanded', 'false');
     }
