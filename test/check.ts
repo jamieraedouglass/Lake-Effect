@@ -30,6 +30,7 @@ const FORBIDDEN = [
   '673 maple', 'maple ave',
   '134 east center', '134 e. center', '134 e center', '134 center',
   'havenwood ln', 'havenwood lane', '950 havenwood', 'cunningham',
+  'stable lane', 'stable ln', '550 stable',
   'p.o. box', 'po box 155',
 ];
 

@@ -18,6 +18,7 @@ const PAGE_TITLES: Record<string, string> = {
   'project-pebble-beach.html': 'Project · Contemporary, Pebble Beach',
   'project-lake-bluff-historic.html': 'Project · Traditional / Historic, Lake Bluff',
   'project-lake-forest-traditional.html': 'Project · Traditional, Lake Forest',
+  'project-lake-forest-contemporary.html': 'Project · Contemporary, Lake Forest',
   'privacy.html': 'Privacy',
   'terms.html': 'Terms of Use',
 };

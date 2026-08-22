@@ -1,5 +1,5 @@
 {
-  "builtFrom": "12 pages",
+  "builtFrom": "13 pages",
   "sections": [
     {
       "page": "about.html",
@@ -315,6 +315,51 @@
       "eyebrow": "",
       "heading": "Thinking about a renovation?",
       "text": "Thinking about a renovation? Older houses usually have more in them than the current floor plan suggests. Get in touch and we'll take a look. Start a conversation →"
+    },
+    {
+      "page": "project-lake-forest-contemporary.html",
+      "pageTitle": "Project · Contemporary, Lake Forest",
+      "anchor": "lake-forest-contemporary",
+      "href": "project-lake-forest-contemporary.html#lake-forest-contemporary",
+      "eyebrow": "",
+      "heading": "Contemporary Private Residence",
+      "text": "Residential · Contemporary Contemporary Private Residence Lake Forest, Illinois. Three volumes set beside a meadow, arranged so the terraces between them face the preserve. Area ≈ 5,400 sq ft Accommodation 4 bed, 3½ bath Massing Three distinct volumes Outlook Lake Forest Open Lands"
+    },
+    {
+      "page": "project-lake-forest-contemporary.html",
+      "pageTitle": "Project · Contemporary, Lake Forest",
+      "anchor": "the-project",
+      "href": "project-lake-forest-contemporary.html#the-project",
+      "eyebrow": "The project",
+      "heading": "",
+      "text": "The project Situated adjacent to a meadow and nestled among mature trees, the residence is carefully positioned to capture expansive views of the nature preserve maintained by the Lake Forest Open Lands Association. The building's massing is composed of three distinct volumes, maximizing natural light and creating a series of protected terraces that strengthen the connection between the residence and its wooded setting. The approximately 5,400-square-foot home includes four bedrooms and three-and-one-half bathrooms."
+    },
+    {
+      "page": "project-lake-forest-contemporary.html",
+      "pageTitle": "Project · Contemporary, Lake Forest",
+      "anchor": "inside",
+      "href": "project-lake-forest-contemporary.html#inside",
+      "eyebrow": "Interior",
+      "heading": "Light from three sides",
+      "text": "Interior Light from three sides The living room carries its roof on exposed trusses, left white against the grey walls. Doors and transoms run the full length of both sides, so the meadow is in the room from either seat. Looking back to the fireplace, with the vault carrying through overhead. From the loft, the height of the volume reads at once. The kitchen island runs the length of the room, with the loft open above it. Eating and cooking share one room, which is how the house is used."
+    },
+    {
+      "page": "project-lake-forest-contemporary.html",
+      "pageTitle": "Project · Contemporary, Lake Forest",
+      "anchor": "outside",
+      "href": "project-lake-forest-contemporary.html#outside",
+      "eyebrow": "Exterior",
+      "heading": "Volumes and the spaces between",
+      "text": "Exterior Volumes and the spaces between From the south-west, the three volumes read separately. The terraces sit in the gaps the massing leaves. Sheltered on more than one side, which is the point of breaking the plan up. The kitchen garden, off the room that uses it. The stair tower, the tallest of the three volumes. The entrance."
+    },
+    {
+      "page": "project-lake-forest-contemporary.html",
+      "pageTitle": "Project · Contemporary, Lake Forest",
+      "anchor": "site",
+      "href": "project-lake-forest-contemporary.html#site",
+      "eyebrow": "Site",
+      "heading": "Set against the meadow",
+      "text": "Site Set against the meadow Site plan Where the house sits relative to the meadow and the preserve beyond it. Click to enlarge. More residential work New houses, renovations and additions across the North Shore. All residential → Building beside open land? What a house looks out on usually decides how it should be arranged. Get in touch and we'll walk the site. Start a conversation →"
     },
     {
       "page": "project-lake-forest-traditional.html",

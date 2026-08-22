@@ -21,6 +21,7 @@ export const PAGE_KEYS: Record<string, string> = {
   'project-pebble-beach.html': 'residential',
   'project-lake-bluff-historic.html': 'residential',
   'project-lake-forest-traditional.html': 'residential',
+  'project-lake-forest-contemporary.html': 'residential',
 };
 
 const nav = (active: string | null): string => `<nav id="main-nav">
@@ -115,6 +116,7 @@ const SHARE_IMAGES: Record<string, string> = {
   'project-lake-bluff-historic.html': 'assets/lake-bluff-historic/exterior-front.jpg',
   'project-village-market.html': 'assets/village-market/share.jpg',
   'project-lake-forest-traditional.html': 'assets/lake-forest-traditional/exterior-southeast.jpg',
+  'project-lake-forest-contemporary.html': 'assets/lake-forest-contemporary/exterior-front.jpg',
 };
 
 const SHARE_NAMES: Record<string, string> = {
@@ -132,6 +134,7 @@ const SHARE_NAMES: Record<string, string> = {
   'project-lake-bluff-historic.html': 'Traditional Residence, Lake Bluff — Lake Effect Architects',
   'project-village-market.html': 'Village Market Building — Lake Effect Architects',
   'project-lake-forest-traditional.html': 'Traditional Residence, Lake Forest — Lake Effect Architects',
+  'project-lake-forest-contemporary.html': 'Contemporary Residence, Lake Forest — Lake Effect Architects',
 };
 
 const escapeAttr = (v: string): string => v.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
