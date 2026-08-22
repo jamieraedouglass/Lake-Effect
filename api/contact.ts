@@ -50,7 +50,10 @@ async function contact(request: Request): Promise<Response> {
 
   const field = (name: FieldName): string => {
     const value = body[name];
-    return typeof value === 'string' ? value.trim().slice(0, LIMITS[name]) : '';
+    if (typeof value !== 'string') return '';
+    // Strip control characters: these values reach a subject line and an
+    // email body, and a newline in the middle survives trim().
+    return value.replace(/[\u0000-\u001f\u007f]/g, ' ').trim().slice(0, LIMITS[name]);
   };
 
   const first = field('first_name');

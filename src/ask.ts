@@ -175,6 +175,9 @@ function addLinks(links: AskLink[]): void {
   wrap.className = 'ask-links';
   for (const link of links) {
     const anchor = document.createElement('a');
+    // The endpoint already filters these against the site index. This is the
+    // second lock: only a same-site path ever becomes a clickable href.
+    if (!/^\/[\w./#-]*$/.test(link.href)) continue;
     anchor.href = link.href;
     anchor.textContent = link.label;
     wrap.appendChild(anchor);

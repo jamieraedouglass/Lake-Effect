@@ -144,6 +144,8 @@ function addLinks(links) {
     wrap.className = 'ask-links';
     for (const link of links) {
         const anchor = document.createElement('a');
+        if (!/^\/[\w./#-]*$/.test(link.href))
+            continue;
         anchor.href = link.href;
         anchor.textContent = link.label;
         wrap.appendChild(anchor);

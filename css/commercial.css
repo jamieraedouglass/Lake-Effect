@@ -42,8 +42,21 @@
 
 .commercial-projects { padding: 80px 48px; }
 .comm-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
+  /* Two columns, like the residential grid, so the site has one rhythm and so
+     an odd last card has a rule that already works. Three columns left a third
+     or two thirds of a row showing the grid behind it at every count that was
+     not a multiple of three. */
+  display: grid; grid-template-columns: repeat(2, 1fr);
   gap: 2px; background: var(--border);
+}
+/* No filter on this page, so the last-of-an-odd-number case is pure CSS. */
+.comm-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+@media (min-width: 861px) {
+  .comm-card:last-child:nth-child(odd) .comm-img,
+  .comm-card:last-child:nth-child(odd) .comm-meta {
+    max-width: calc(50% - 1px);
+    margin-left: auto; margin-right: auto;
+  }
 }
 .comm-card {
   background: var(--cream); overflow: hidden;
@@ -82,7 +95,6 @@
 
 @media (max-width: 1080px) {
   .commercial-projects { padding: 64px 28px; }
-  .comm-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 860px) {

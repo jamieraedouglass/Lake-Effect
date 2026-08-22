@@ -101,6 +101,9 @@
   color: var(--mid); margin-bottom: 40px;
 }
 .location-details { display: flex; flex-direction: column; gap: 20px; }
+/* Someone who has read the whole About page is the readiest visitor there is,
+   and the page only gave them a phone number. */
+.location-cta { margin-top: 36px; align-self: flex-start; }
 .location-detail-label {
   font-size: 9px; font-weight: 600;
   letter-spacing: 0.22em; text-transform: uppercase;
