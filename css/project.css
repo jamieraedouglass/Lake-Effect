@@ -54,6 +54,9 @@
 .plans.one {
   grid-template-columns: minmax(0, 900px);
   justify-content: center;
+  /* The parent paints the border colour so it shows through the 2px grid gap.
+     With one column there is no gap, only leftover width either side. */
+  background: none;
 }
 .plan { background: var(--white); }
 .plan-image {
@@ -61,6 +64,9 @@
   display: flex; align-items: center; justify-content: center;
 }
 .plan-image img { width: 100%; height: auto; display: block; }
+/* Some drawings only exist as small scans. Stretching one to fill the panel
+   just shows the reader how few pixels it has. */
+.plan-image.native img { width: auto; max-width: 100%; }
 .plan-caption {
   padding: 20px 28px 26px;
   border-top: 0.5px solid var(--border);

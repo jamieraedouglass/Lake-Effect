@@ -26,6 +26,7 @@ export const PAGE_KEYS: Record<string, string> = {
   'projects/meadow-house.html': 'residential',
   'projects/del-monte-forest-house.html': 'residential',
   'projects/ivy-cottage.html': 'residential',
+  'projects/fairway-house.html': 'residential',
   'projects/village-market-building.html': 'commercial',
 };
 
@@ -107,6 +108,7 @@ const TITLES: Record<string, string> = {
   'projects/havenwood-house.html': 'Havenwood House',
   'projects/meadow-house.html': 'Meadow House',
   'projects/ivy-cottage.html': 'Ivy Cottage',
+  'projects/fairway-house.html': 'Fairway House',
   'projects/village-market-building.html': 'Village Market Building',
 };
 
@@ -127,6 +129,7 @@ const SHARE_IMAGES: Record<string, string> = {
   'projects/havenwood-house.html': 'assets/havenwood-house/exterior-southeast.jpg',
   'projects/meadow-house.html': 'assets/meadow-house/exterior-front.jpg',
   'projects/ivy-cottage.html': 'assets/ivy-cottage/exterior-front.jpg',
+  'projects/fairway-house.html': 'assets/fairway-house/exterior-south.jpg',
 };
 
 const SHARE_NAMES: Record<string, string> = {
@@ -146,6 +149,7 @@ const SHARE_NAMES: Record<string, string> = {
   'projects/havenwood-house.html': 'Havenwood House, Lake Forest — Lake Effect Architects',
   'projects/meadow-house.html': 'Meadow House, Lake Forest — Lake Effect Architects',
   'projects/ivy-cottage.html': 'Ivy Cottage, Lake Bluff — Lake Effect Architects',
+  'projects/fairway-house.html': 'Fairway House, Lake Forest — Lake Effect Architects',
 };
 
 const escapeAttr = (v: string): string => v.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');

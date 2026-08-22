@@ -317,6 +317,51 @@ export const sections: Section[] = [
     "text": "Planning something on a difficult site? Slopes, trees and view corridors tend to set the plan before anything else does. Get in touch and we'll walk it with you. Start a conversation →"
   },
   {
+    "page": "projects/fairway-house.html",
+    "pageTitle": "projects/fairway-house.html",
+    "anchor": "fairway-house",
+    "href": "/projects/fairway-house.html#fairway-house",
+    "eyebrow": "",
+    "heading": "Fairway House",
+    "text": "Residential · Contemporary Fairway House Lake Forest, Illinois. Three volumes ordered by how private each one is, with a sheltered terrace held in the space they leave behind. Location Lake Forest, Illinois Setting A private golf course community Massing Three distinct volumes Ordered by Public through to private"
+  },
+  {
+    "page": "projects/fairway-house.html",
+    "pageTitle": "projects/fairway-house.html",
+    "anchor": "the-project",
+    "href": "/projects/fairway-house.html#the-project",
+    "eyebrow": "The project",
+    "heading": "",
+    "text": "The project Located within a private golf course community in Lake Forest, this residence was designed to support a relaxed lifestyle centered on entertaining family and guests. The house is organized into three distinct volumes, each corresponding to a different level of privacy. The entry foyer and living room form the central, most public volume, with the more private areas extending to either side. This composition creates a protected terrace at the rear of the house while maximizing natural light throughout the interior."
+  },
+  {
+    "page": "projects/fairway-house.html",
+    "pageTitle": "projects/fairway-house.html",
+    "anchor": "site",
+    "href": "/projects/fairway-house.html#site",
+    "eyebrow": "Site",
+    "heading": "Turned away from the fairway",
+    "text": "Site Turned away from the fairway Site plan The three volumes read as a stepped footprint, set back from the course and screened along both boundaries. Click to enlarge."
+  },
+  {
+    "page": "projects/fairway-house.html",
+    "pageTitle": "projects/fairway-house.html",
+    "anchor": "inside",
+    "href": "/projects/fairway-house.html#inside",
+    "eyebrow": "Interior",
+    "heading": "Light from above the roofline",
+    "text": "Interior Light from above the roofline The central volume is taller than the two beside it, which leaves room for a clerestory on all four sides. The light arrives from above the rooms next door rather than through them. The upper hall is open to the room below on one side and glazed on the other two."
+  },
+  {
+    "page": "projects/fairway-house.html",
+    "pageTitle": "projects/fairway-house.html",
+    "anchor": "outside",
+    "href": "/projects/fairway-house.html#outside",
+    "eyebrow": "Exterior",
+    "heading": "The terrace the plan leaves behind",
+    "text": "Exterior The terrace the plan leaves behind Splitting the house into three volumes is what makes this corner. The terrace is sheltered on two sides by rooms rather than by anything built for the purpose. The entry side is the quiet one, with the pergola marking the door. From the course at the end of the day, which is the view most people have of it. More residential work New houses, renovations and additions across the North Shore. All residential → Building where everyone can see? A house on a course or a lake is on show from one side and wants privacy on the other. Get in touch and we'll work out which side is which. Start a conversation →"
+  },
+  {
     "page": "projects/havenwood-house.html",
     "pageTitle": "Project · Havenwood House",
     "anchor": "havenwood-house",
