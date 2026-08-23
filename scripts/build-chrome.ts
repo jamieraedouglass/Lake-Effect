@@ -29,6 +29,7 @@ export const PAGE_KEYS: Record<string, string> = {
   'projects/links-residence.html': 'residential',
   'projects/forest-cove-residence.html': 'residential',
   'projects/village-market-building.html': 'commercial',
+  'projects/village-commons.html': 'commercial',
 };
 
 const nav = (active: string | null): string => `<nav id="main-nav">
@@ -112,6 +113,7 @@ const TITLES: Record<string, string> = {
   'projects/links-residence.html': 'The Links Residence',
   'projects/forest-cove-residence.html': 'The Forest Cove Residence',
   'projects/village-market-building.html': 'Village Market Building',
+  'projects/village-commons.html': 'The Village Commons',
 };
 
 const SHARE_IMAGES: Record<string, string> = {
@@ -128,6 +130,7 @@ const SHARE_IMAGES: Record<string, string> = {
   'projects/del-monte-forest-residence.html': 'assets/del-monte-forest-residence/exterior-approach.jpg',
   'projects/center-avenue-house.html': 'assets/center-avenue-house/exterior-front.jpg',
   'projects/village-market-building.html': 'assets/village-market-building/share.jpg',
+  'projects/village-commons.html': 'assets/village-commons/exterior-southwest.jpg',
   'projects/havenwood-residence.html': 'assets/havenwood-residence/exterior-southeast.jpg',
   'projects/woodland-meadow-residence.html': 'assets/woodland-meadow-residence/exterior-front.jpg',
   'projects/cottage-residence.html': 'assets/cottage-residence/exterior-front.jpg',
@@ -149,6 +152,7 @@ const SHARE_NAMES: Record<string, string> = {
   'projects/del-monte-forest-residence.html': 'The Del Monte Forest Residence, Pebble Beach · Lake Effect Architects',
   'projects/center-avenue-house.html': 'The Center Avenue House, Lake Bluff · Lake Effect Architects',
   'projects/village-market-building.html': 'Village Market Building · Lake Effect Architects',
+  'projects/village-commons.html': 'The Village Commons, Lake Bluff · Lake Effect Architects',
   'projects/havenwood-residence.html': 'The Havenwood Residence, Lake Forest · Lake Effect Architects',
   'projects/woodland-meadow-residence.html': 'The Woodland Meadow Residence, Lake Forest · Lake Effect Architects',
   'projects/cottage-residence.html': 'The Cottage Residence, Lake Bluff · Lake Effect Architects',
