@@ -22,6 +22,15 @@
     {
       "page": "about.html",
       "pageTitle": "About the Studio",
+      "anchor": "rob-douglass",
+      "href": "/about.html#rob-douglass",
+      "eyebrow": "",
+      "heading": "",
+      "text": "Who you work with Robert Dun Douglass, architect . Rob has run Lake Effect Architects from Lake Bluff since 1996. Before that he spent four years as Vice President of Residential Development and Marketing at Conway Farms in Lake Forest, and before that drew in Chicago for Eifler & Associates, Booth/Hanson & Associates, Skidmore, Owings & Merrill, and Tigerman, Fugman, McCurry. Through the early years of the practice he was also Vice President of Rideway Builders in Lake Forest, and from 2008 to 2025 a managing partner of Lake Effect Holdings and Lake Effect Properties. That is an unusual amount of time spent on the development and construction side of the table for someone who draws for a living, and it is most of the reason this office talks about budget in the first meeting rather than the fourth. He took a Master of Architecture at the University of Illinois at Chicago in 1989, after a Bachelor of Arts at Macalester College, and has been licensed in Illinois since 1992. Outside the practice he served as President of the Lake Forest & Lake Bluff History Center from 2012 to 2016, and as Commissioner and then President of the Lake Bluff Park District from 2009 to 2019. Thirty years of drawing on the North Shore, and a fair share of the meetings about it."
+    },
+    {
+      "page": "about.html",
+      "pageTitle": "About the Studio",
       "anchor": "process",
       "href": "/about.html#process",
       "eyebrow": "",
@@ -44,7 +53,7 @@
       "href": "/about.html#based-in-lake-bluff-illinois",
       "eyebrow": "",
       "heading": "Based in Lake Bluff, Illinois",
-      "text": "Find us Based in Lake Bluff, Illinois We work mainly on the North Shore, from Evanston up through Lake County. It's an area with a long residential architecture tradition and a lot of housing stock worth keeping. Studio Lake Bluff, Illinois Phone 847.234.4688 Email rob@leffect.com Licence Licensed Architect, State of Illinois No. 001-014968 Start a conversation"
+      "text": "Find us Based in Lake Bluff, Illinois We work mainly on the North Shore, from Evanston up through Lake County. It's an area with a long residential architecture tradition and a lot of housing stock worth keeping. Studio Lake Bluff, Illinois Phone 847.987.1000 Email rob@leffect.com Licence Licensed Architect, State of Illinois No. 001-014968 Start a conversation"
     },
     {
       "page": "commercial.html",
@@ -89,7 +98,7 @@
       "href": "/contact.html#studio-details",
       "eyebrow": "",
       "heading": "",
-      "text": "Phone 847.234.4688 Monday to Friday, 9am to 5pm CT Fax 847.234.8911 Email rob@leffect.com For project inquiries and general correspondence Studio Lake Bluff, Illinois Post is best sent by email; call the office to arrange a meeting."
+      "text": "Phone 847.987.1000 Monday to Friday, 9am to 5pm CT Email rob@leffect.com For project inquiries and general correspondence Studio Lake Bluff, Illinois Post is best sent by email; call the office to arrange a meeting."
     },
     {
       "page": "contact.html",
@@ -143,7 +152,7 @@
       "href": "/#tell-us-about-your-project",
       "eyebrow": "",
       "heading": "",
-      "text": "Phone 847.234.4688 Fax 847.234.8911 Email rob@leffect.com Studio Lake Bluff, Illinois"
+      "text": "Phone 847.987.1000 Email rob@leffect.com Studio Lake Bluff, Illinois"
     },
     {
       "page": "index.html",
@@ -206,7 +215,7 @@
       "href": "/privacy.html#privacy-detail",
       "eyebrow": "",
       "heading": "Who we are",
-      "text": "Last updated 22 August 2026 Who we are Lake Effect Architects, Inc., an architecture practice based in Lake Bluff, Illinois. If you want to reach us about anything on this page, email rob@leffect.com or call 847.234.4688. What we collect Only what you type into the inquiry form on the contact page: Your name and email address Your phone number, if you give one The project type, location and budget range you select Whatever you write in the message field We use it to answer you and, if the project goes ahead, to run it. We do not sell it, rent it, or send you marketing you did not ask for. What we do not collect This site sets no cookies and stores nothing in your browser. There is no advertising, no tracking pixels, no account to create, and nothing that follows you to other sites. We do count which pages get opened, which is described below, and that count cannot be traced back to you. Third parties A few services see something when you use this site: Our host serves the pages and keeps standard server logs, which include IP addresses. Our host also counts page visits for us: which pages were opened, roughly which country the request came from, and which site linked here. It sets no cookie, builds no profile, and cannot identify you. Google Fonts serves the two typefaces. Your browser requests them from Google, which means Google receives your IP address. Nothing else is sent."
+      "text": "Last updated 22 August 2026 Who we are Lake Effect Architects, Inc., an architecture practice based in Lake Bluff, Illinois. If you want to reach us about anything on this page, email rob@leffect.com or call 847.987.1000. What we collect Only what you type into the inquiry form on the contact page: Your name and email address Your phone number, if you give one The project type, location and budget range you select Whatever you write in the message field We use it to answer you and, if the project goes ahead, to run it. We do not sell it, rent it, or send you marketing you did not ask for. What we do not collect This site sets no cookies and stores nothing in your browser. There is no advertising, no tracking pixels, no account to create, and nothing that follows you to other sites. We do count which pages get opened, which is described below, and that count cannot be traced back to you. Third parties A few services see something when you use this site: Our host serves the pages and keeps standard server logs, which include IP addresses. Our host also counts page visits for us: which pages were opened, roughly which country the request came from, and which site linked here. It sets no cookie, builds no profile, and cannot identify you. Google Fonts serves the two typefaces. Your browser requests them from Google, which means Google receives your IP address. Nothing else is sent."
     },
     {
       "page": "projects/center-avenue-house.html",
@@ -292,20 +301,20 @@
     {
       "page": "projects/cottage-residence.html",
       "pageTitle": "projects/cottage-residence.html",
-      "anchor": "inside",
-      "href": "/projects/cottage-residence.html#inside",
-      "eyebrow": "Interior",
-      "heading": "One room leading to the next",
-      "text": "Interior One room leading to the next The living room opens to the kitchen through a single wide opening, so the two rooms borrow light from each other without becoming one room. The fireplace wall, with cupboards below and shelves above on both sides. The range sits between the two windows, with the arch to the living room on the right. The stair turns as it rises, lit by a window on the landing. Ovens to one side, sink to the other, and the island between them. The doors at the back lead through to the pantry, laundry and mud room. The sun room is glazed on three sides. It faces the street, which in a village is a reason to sit in it rather than a reason not to."
-    },
-    {
-      "page": "projects/cottage-residence.html",
-      "pageTitle": "projects/cottage-residence.html",
       "anchor": "outside",
       "href": "/projects/cottage-residence.html#outside",
       "eyebrow": "Exterior",
       "heading": "Gables to the street",
-      "text": "Exterior Gables to the street Two gables to the street rather than one long face, which is what keeps a house of this size from reading as a large one. More residential work New houses, renovations and additions across the North Shore. All residential → Building in an older village? A new house on an established street has neighbours to answer to. Get in touch and we'll walk the block first. Start a conversation →"
+      "text": "Exterior Gables to the street Two gables to the street rather than one long face, which is what keeps a house of this size from reading as a large one."
+    },
+    {
+      "page": "projects/cottage-residence.html",
+      "pageTitle": "projects/cottage-residence.html",
+      "anchor": "inside",
+      "href": "/projects/cottage-residence.html#inside",
+      "eyebrow": "Interior",
+      "heading": "One room leading to the next",
+      "text": "Interior One room leading to the next The living room opens to the kitchen through a single wide opening, so the two rooms borrow light from each other without becoming one room. The fireplace wall, with cupboards below and shelves above on both sides. The range sits between the two windows, with the arch to the living room on the right. The stair turns as it rises, lit by a window on the landing. Ovens to one side, sink to the other, and the island between them. The doors at the back lead through to the pantry, laundry and mud room. The sun room is glazed on three sides. It faces the street, which in a village is a reason to sit in it rather than a reason not to. More residential work New houses, renovations and additions across the North Shore. All residential → Building in an older village? A new house on an established street has neighbours to answer to. Get in touch and we'll walk the block first. Start a conversation →"
     },
     {
       "page": "projects/del-monte-forest-residence.html",
@@ -328,20 +337,20 @@
     {
       "page": "projects/del-monte-forest-residence.html",
       "pageTitle": "Project · The Del Monte Forest Residence",
-      "anchor": "open-to-the-tree-line",
-      "href": "/projects/del-monte-forest-residence.html#open-to-the-tree-line",
-      "eyebrow": "Interior",
-      "heading": "Open to the tree line",
-      "text": "Interior Open to the tree line The living room runs full height, with clerestory glazing above the fireplace carrying light deep into the plan. Glazing turns both corners, so the room reads as open on three sides. Looking back toward dining, and out to the deck past it. The kitchen sits under the same vaulted timber ceiling, glazed on two sides. Built-in shelving and low cabinets keep the dining wall flush. The primary suite keeps the vaulted ceiling and picks up windows on two corners. Lower level bedroom, with its own window onto the forest floor. Each of the lower bedrooms opens straight onto the deck. The sliders line up with the rail so the deck reads as part of the room."
-    },
-    {
-      "page": "projects/del-monte-forest-residence.html",
-      "pageTitle": "Project · The Del Monte Forest Residence",
       "anchor": "decks-under-the-pines",
       "href": "/projects/del-monte-forest-residence.html#decks-under-the-pines",
       "eyebrow": "Exterior",
       "heading": "Decks under the pines",
       "text": "Exterior Decks under the pines From the drive the house is one long low bay, the colonnade holding a consistent line across the glazing and the garage. An open trellis runs the length of the entry walk, throwing a moving pattern across the boards through the day. The deck sits at canopy height. Cable rail keeps the view uninterrupted."
+    },
+    {
+      "page": "projects/del-monte-forest-residence.html",
+      "pageTitle": "Project · The Del Monte Forest Residence",
+      "anchor": "open-to-the-tree-line",
+      "href": "/projects/del-monte-forest-residence.html#open-to-the-tree-line",
+      "eyebrow": "Interior",
+      "heading": "Open to the tree line",
+      "text": "Interior Open to the tree line The living room runs full height, with clerestory glazing above the fireplace carrying light deep into the plan. Glazing turns both corners, so the room reads as open on three sides. Looking back toward dining, and out to the deck past it. The kitchen sits under the same vaulted timber ceiling, glazed on two sides. Built-in shelving and low cabinets keep the dining wall flush. The primary suite keeps the vaulted ceiling and picks up windows on two corners. Lower level bedroom, with its own window onto the forest floor. Each of the lower bedrooms opens straight onto the deck. The sliders line up with the rail so the deck reads as part of the room."
     },
     {
       "page": "projects/del-monte-forest-residence.html",
@@ -391,20 +400,20 @@
     {
       "page": "projects/forest-cove-residence.html",
       "pageTitle": "projects/forest-cove-residence.html",
-      "anchor": "inside",
-      "href": "/projects/forest-cove-residence.html#inside",
-      "eyebrow": "Interior",
-      "heading": "Around the stair",
-      "text": "Interior Around the stair The living room takes windows on three sides because the plan pushes it clear of the rest of the house. The stair at the bottom. And at the top, two floors later, still lit from the side. The kitchen runs into the breakfast area through an arch rather than a doorway. A window seat on one side, doors to the terrace on the other. The dining room keeps two walls of window and no fixed light over the table. The primary bedroom looks straight into the trees on two sides."
-    },
-    {
-      "page": "projects/forest-cove-residence.html",
-      "pageTitle": "projects/forest-cove-residence.html",
       "anchor": "outside",
       "href": "/projects/forest-cove-residence.html#outside",
       "eyebrow": "Exterior",
       "heading": "Set into the trees",
-      "text": "Exterior Set into the trees From above the house is nearly lost in the trees, which is the point of where it sits. The garden front, with the low wing running out along the terrace. Brick walls hold the terrace up out of the lawn rather than fencing it off. The sheltered corner of the terrace, which faces the woods rather than the lawn. The entrance bay, gathered into one vertical piece of the elevation. More residential work New houses, renovations and additions across the North Shore. All residential → Building on a wooded site? Which trees stay decides most of the plan, and it is worth settling before anything is drawn. Get in touch and we'll walk it. Start a conversation →"
+      "text": "Exterior Set into the trees From above the house is nearly lost in the trees, which is the point of where it sits. The garden front, with the low wing running out along the terrace. Brick walls hold the terrace up out of the lawn rather than fencing it off. The sheltered corner of the terrace, which faces the woods rather than the lawn. The entrance bay, gathered into one vertical piece of the elevation."
+    },
+    {
+      "page": "projects/forest-cove-residence.html",
+      "pageTitle": "projects/forest-cove-residence.html",
+      "anchor": "inside",
+      "href": "/projects/forest-cove-residence.html#inside",
+      "eyebrow": "Interior",
+      "heading": "Around the stair",
+      "text": "Interior Around the stair The living room takes windows on three sides because the plan pushes it clear of the rest of the house. The stair at the bottom. And at the top, two floors later, still lit from the side. The kitchen runs into the breakfast area through an arch rather than a doorway. A window seat on one side, doors to the terrace on the other. The dining room keeps two walls of window and no fixed light over the table. The primary bedroom looks straight into the trees on two sides. More residential work New houses, renovations and additions across the North Shore. All residential → Building on a wooded site? Which trees stay decides most of the plan, and it is worth settling before anything is drawn. Get in touch and we'll walk it. Start a conversation →"
     },
     {
       "page": "projects/havenwood-residence.html",
@@ -472,20 +481,20 @@
     {
       "page": "projects/links-residence.html",
       "pageTitle": "projects/links-residence.html",
-      "anchor": "inside",
-      "href": "/projects/links-residence.html#inside",
-      "eyebrow": "Interior",
-      "heading": "Light from above the roofline",
-      "text": "Interior Light from above the roofline The central volume is taller than the two beside it, which leaves room for a clerestory on all four sides. The light arrives from above the rooms next door rather than through them. The upper hall is open to the room below on one side and glazed on the other two."
-    },
-    {
-      "page": "projects/links-residence.html",
-      "pageTitle": "projects/links-residence.html",
       "anchor": "outside",
       "href": "/projects/links-residence.html#outside",
       "eyebrow": "Exterior",
       "heading": "The terrace the plan leaves behind",
-      "text": "Exterior The terrace the plan leaves behind Splitting the house into three volumes is what makes this corner. The terrace is sheltered on two sides by rooms rather than by anything built for the purpose. The entry side is the quiet one, with the pergola marking the door. From the course at the end of the day, which is the view most people have of it. More residential work New houses, renovations and additions across the North Shore. All residential → Building where everyone can see? A house on a course or a lake is on show from one side and wants privacy on the other. Get in touch and we'll work out which side is which. Start a conversation →"
+      "text": "Exterior The terrace the plan leaves behind Splitting the house into three volumes is what makes this corner. The terrace is sheltered on two sides by rooms rather than by anything built for the purpose. The entry side is the quiet one, with the pergola marking the door. From the course at the end of the day, which is the view most people have of it."
+    },
+    {
+      "page": "projects/links-residence.html",
+      "pageTitle": "projects/links-residence.html",
+      "anchor": "inside",
+      "href": "/projects/links-residence.html#inside",
+      "eyebrow": "Interior",
+      "heading": "Light from above the roofline",
+      "text": "Interior Light from above the roofline The central volume is taller than the two beside it, which leaves room for a clerestory on all four sides. The light arrives from above the rooms next door rather than through them. The upper hall is open to the room below on one side and glazed on the other two. More residential work New houses, renovations and additions across the North Shore. All residential → Building where everyone can see? A house on a course or a lake is on show from one side and wants privacy on the other. Get in touch and we'll work out which side is which. Start a conversation →"
     },
     {
       "page": "projects/ravine-residence.html",
@@ -508,20 +517,20 @@
     {
       "page": "projects/ravine-residence.html",
       "pageTitle": "Project · The Ravine Residence",
-      "anchor": "one-room-end-to-end",
-      "href": "/projects/ravine-residence.html#one-room-end-to-end",
-      "eyebrow": "Interior",
-      "heading": "One room, end to end",
-      "text": "Interior One room, end to end Living, dining and kitchen read as one room. The painted beams are the original 1954 structure, uncovered when the partitions came out. Looking east from the living room toward the kitchen. Dining, with glazing turning the corner to the ravine. The island faces the garden. Sliding doors open to the patio. The living room keeps the original brick fireplace and looks the full length of the house."
-    },
-    {
-      "page": "projects/ravine-residence.html",
-      "pageTitle": "Project · The Ravine Residence",
       "anchor": "approach-and-entry-court",
       "href": "/projects/ravine-residence.html#approach-and-entry-court",
       "eyebrow": "Exterior",
       "heading": "Approach and entry court",
       "text": "Exterior Approach and entry court The walk from the drive, with a rain chain off the low-slope roof. The court between the garage and the main volume. Brick piers, clerestory glazing and a deep eave carry the original language. The cedar garage door and the planting are new."
+    },
+    {
+      "page": "projects/ravine-residence.html",
+      "pageTitle": "Project · The Ravine Residence",
+      "anchor": "one-room-end-to-end",
+      "href": "/projects/ravine-residence.html#one-room-end-to-end",
+      "eyebrow": "Interior",
+      "heading": "One room, end to end",
+      "text": "Interior One room, end to end Living, dining and kitchen read as one room. The painted beams are the original 1954 structure, uncovered when the partitions came out. Looking east from the living room toward the kitchen. Dining, with glazing turning the corner to the ravine. The island faces the garden. Sliding doors open to the patio. The living room keeps the original brick fireplace and looks the full length of the house."
     },
     {
       "page": "projects/ravine-residence.html",
@@ -625,20 +634,20 @@
     {
       "page": "projects/woodland-meadow-residence.html",
       "pageTitle": "Project · The Woodland Meadow Residence",
-      "anchor": "inside",
-      "href": "/projects/woodland-meadow-residence.html#inside",
-      "eyebrow": "Interior",
-      "heading": "Light from three sides",
-      "text": "Interior Light from three sides The living room carries its roof on exposed trusses, left white against the grey walls. Doors and transoms run the full length of both sides, so the meadow is in the room from either seat. Looking back to the fireplace, with the vault carrying through overhead. From the loft, the height of the volume reads at once. The kitchen island runs the length of the room, with the loft open above it. Eating and cooking share one room, which is how the house is used."
-    },
-    {
-      "page": "projects/woodland-meadow-residence.html",
-      "pageTitle": "Project · The Woodland Meadow Residence",
       "anchor": "outside",
       "href": "/projects/woodland-meadow-residence.html#outside",
       "eyebrow": "Exterior",
       "heading": "Volumes and the spaces between",
-      "text": "Exterior Volumes and the spaces between From the south-west, the three volumes read separately. The terraces sit in the gaps the massing leaves. Sheltered on more than one side, which is the point of breaking the plan up. The kitchen garden, off the room that uses it. The stair tower, the tallest of the three volumes. The entrance. More residential work New houses, renovations and additions across the North Shore. All residential → Building beside open land? What a house looks out on usually decides how it should be arranged. Get in touch and we'll walk the site. Start a conversation →"
+      "text": "Exterior Volumes and the spaces between From the south-west, the three volumes read separately. The terraces sit in the gaps the massing leaves. Sheltered on more than one side, which is the point of breaking the plan up. The kitchen garden, off the room that uses it. The stair tower, the tallest of the three volumes. The entrance."
+    },
+    {
+      "page": "projects/woodland-meadow-residence.html",
+      "pageTitle": "Project · The Woodland Meadow Residence",
+      "anchor": "inside",
+      "href": "/projects/woodland-meadow-residence.html#inside",
+      "eyebrow": "Interior",
+      "heading": "Light from three sides",
+      "text": "Interior Light from three sides The living room carries its roof on exposed trusses, left white against the grey walls. Doors and transoms run the full length of both sides, so the meadow is in the room from either seat. Looking back to the fireplace, with the vault carrying through overhead. From the loft, the height of the volume reads at once. The kitchen island runs the length of the room, with the loft open above it. Eating and cooking share one room, which is how the house is used. More residential work New houses, renovations and additions across the North Shore. All residential → Building beside open land? What a house looks out on usually decides how it should be arranged. Get in touch and we'll walk the site. Start a conversation →"
     },
     {
       "page": "residential.html",

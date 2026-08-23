@@ -71,7 +71,7 @@ const footer = `<footer>
     <div>
       <div class="footer-col-title">Contact</div>
       <ul class="footer-links">
-        <li><a href="tel:8472344688">847.234.4688</a></li>
+        <li><a href="tel:8479871000">847.987.1000</a></li>
         <li><a href="mailto:rob@leffect.com">rob@leffect.com</a></li>
         <li><a href="/contact.html">Start a project</a></li>
       </ul>
@@ -173,8 +173,7 @@ function structuredData(): string {
     logo: `${SITE_URL}/brand/logo.svg`,
     image: `${SITE_URL}/assets/del-monte-forest-residence/exterior-approach.jpg`,
     email: 'rob@leffect.com',
-    telephone: '+1-847-234-4688',
-    faxNumber: '+1-847-234-8911',
+    telephone: '+1-847-987-1000',
     description: "Architecture for homes, clubs and commercial buildings on Chicago's North Shore.",
     address: {
       '@type': 'PostalAddress',

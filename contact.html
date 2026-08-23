@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact</title>
-  <meta name="description" content="Start a conversation with Lake Effect Architects in Lake Bluff, Illinois. Call 847.234.4688, email, or send a note about your project.">
+  <meta name="description" content="Start a conversation with Lake Effect Architects in Lake Bluff, Illinois. Call 847.987.1000, email, or send a note about your project.">
   <link rel="canonical" href="https://lake-effect-brown.vercel.app/contact">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Lake Effect Architects">
   <meta property="og:title" content="Contact · Lake Effect Architects">
-  <meta property="og:description" content="Start a conversation with Lake Effect Architects in Lake Bluff, Illinois. Call 847.234.4688, email, or send a note about your project.">
+  <meta property="og:description" content="Start a conversation with Lake Effect Architects in Lake Bluff, Illinois. Call 847.987.1000, email, or send a note about your project.">
   <meta property="og:url" content="https://lake-effect-brown.vercel.app/contact">
   <meta property="og:image" content="https://lake-effect-brown.vercel.app/assets/del-monte-forest-residence/living-room-2.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Contact · Lake Effect Architects">
-  <meta name="twitter:description" content="Start a conversation with Lake Effect Architects in Lake Bluff, Illinois. Call 847.234.4688, email, or send a note about your project.">
+  <meta name="twitter:description" content="Start a conversation with Lake Effect Architects in Lake Bluff, Illinois. Call 847.987.1000, email, or send a note about your project.">
   <meta name="twitter:image" content="https://lake-effect-brown.vercel.app/assets/del-monte-forest-residence/living-room-2.jpg">
   <link rel="icon" type="image/svg+xml" href="/brand/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png">
@@ -48,6 +48,10 @@
 </nav>
 
 <main id="main" tabindex="-1">
+
+
+
+
 
 
 
@@ -236,19 +240,15 @@
     <div class="form-success" id="form-success" hidden>
       <div class="success-icon">✓</div>
       <div class="success-title">Thanks, that's come through</div>
-      <p class="success-body">We'll be in touch within one business day. If it's urgent, call the office on 847.234.4688.</p>
+      <p class="success-body">We'll be in touch within one business day. If it's urgent, call the office on 847.987.1000.</p>
     </div>
   </div>
 
   <div class="contact-info-side" id="studio-details">
     <div class="info-block">
       <div class="info-label">Phone</div>
-      <div class="info-value"><a href="tel:8472344688">847.234.4688</a></div>
+      <div class="info-value"><a href="tel:8479871000">847.987.1000</a></div>
       <div class="info-sub">Monday to Friday, 9am to 5pm CT</div>
-    </div>
-    <div class="info-block">
-      <div class="info-label">Fax</div>
-      <div class="info-value">847.234.8911</div>
     </div>
     <div class="info-block">
       <div class="info-label">Email</div>
@@ -629,6 +629,18 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 </main>
 
 <noscript>
@@ -659,7 +671,7 @@
     <div>
       <div class="footer-col-title">Contact</div>
       <ul class="footer-links">
-        <li><a href="tel:8472344688">847.234.4688</a></li>
+        <li><a href="tel:8479871000">847.987.1000</a></li>
         <li><a href="mailto:rob@leffect.com">rob@leffect.com</a></li>
         <li><a href="/contact.html">Start a project</a></li>
       </ul>
@@ -708,7 +720,7 @@
       const { error } = await res.json().catch(() => ({}));
       const notWired = res.status === 404 || res.status === 503 || error === 'not_configured';
       errorMsg.textContent = notWired
-        ? 'The form isn’t connected yet. Please email rob@leffect.com or call 847.234.4688.'
+        ? 'The form isn’t connected yet. Please email rob@leffect.com or call 847.987.1000.'
         : 'That didn’t send. Try again, or email rob@leffect.com directly.';
       errorMsg.hidden = false;
       errorMsg.focus();
