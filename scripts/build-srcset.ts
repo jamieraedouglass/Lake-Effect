@@ -24,6 +24,8 @@ const SIZES: Array<[RegExp, string]> = [
 function sizesFor(html: string, imgStart: number, tag: string, planSizes: string): string | null {
   const own = tag.match(/class="([^"]*)"/)?.[1] ?? '';
   if (/\bhero-image\b/.test(own)) return '(max-width: 860px) 100vw, 50vw';
+  // Capped by .studio-portrait rather than by a share of the column.
+  if (/\bstudio-portrait\b/.test(own)) return '(max-width: 860px) 180px, 240px';
   if (/plan-image/.test(html.slice(Math.max(0, imgStart - 120), imgStart))) return planSizes;
 
   const before = html.slice(Math.max(0, imgStart - 600), imgStart);
