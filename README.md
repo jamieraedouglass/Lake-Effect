@@ -35,7 +35,7 @@ If you see "Answering from site search" on the live site the function is not
 being reached, and that line names the reason. Keyword search is the safety
 net, not the product; its answers are noticeably worse and always will be.
 
-The whole site is about 7,500 tokens, so the *entire* site goes into the system
+The whole site is about 9,000 tokens, so the *entire* site goes into the system
 prompt. There is no vector database and no retrieval step to maintain.
 
 `assets/site-index.json` is generated, never hand-edit it:
@@ -101,7 +101,7 @@ Nothing breaks in the meantime.
 Open `/api/ask` in a browser. A GET returns what is actually running:
 
     {"ok":true,"keyConfigured":true,"keyName":"LE_ANTHROPIC_API_KEY",
-     "zod":"4.x","structuredOutputs":true,"sections":66,
+     "zod":"4.x","structuredOutputs":true,"sections":76,
      "hourlyCeilingUsd":2,"spentThisHour":0.0413,"commit":"e5f4ed1"}
 
 - `commit` is the build Vercel is serving. If it is behind, it has not
@@ -116,7 +116,7 @@ Open `/api/ask` in a browser. A GET returns what is actually running:
 
 ### Cost
 
-At roughly 12,900 tokens of site in a cached prompt and 500 tokens back, a
+At roughly 13,000 tokens of site in a cached prompt and 500 tokens back, a
 question costs about **$0.046** on Opus 5. So a **$5 monthly cap is about 108
 questions, four a day**. Worth knowing before setting it: if the site gets any
 real traffic that runs out.
@@ -331,9 +331,9 @@ The two PNGs are rendered from it and must be regenerated whenever it changes:
     brand/favicon-32.png       32x32, transparency kept
     brand/apple-touch-icon.png 180x180, drawn on a solid background
 
-The Apple icon is deliberately opaque. `brand/favicon.svg` has rounded corners, so its
-own corners are transparent, and iOS renders transparency as black behind the
-mask it applies. Render it over the mark's background colour rather than letting
+The Apple icon is deliberately opaque. `brand/favicon.svg` has rounded corners,
+so its own corners are transparent, and iOS renders transparency as black
+behind the mask it applies. Render it over the mark's background colour rather than letting
 the corners through.
 
 ## Security
@@ -368,14 +368,15 @@ Squarespace site.
 `SITE_URL=https://example.com npm run build` works for a one-off.
 
 The old Squarespace site has eighteen paths in its sitemap. The moment the
-domain points here, every one stops being served by Squarespace, and thirteen
-have no equivalent path on this site. They are permanent redirects in
+domain points here, every one stops being served by Squarespace, and fifteen of
+them have no equivalent path on this site. Those are permanent redirects in
 `vercel.json`, mapped to the project each became where one exists and to the
 listing page where none does. `npm test` reads that list, so renaming a project
 page cannot quietly orphan a URL Google already knows about.
 
-Four projects on the old site have no page here: Forest Cove, Catskills Mtns,
-Mayflower and Clubhouse Renderings. They currently redirect to the listings.
+Three projects on the old site still have no page here: Catskills Mtns,
+Mayflower and Clubhouse Renderings. They redirect to the listings. Forest Cove
+had a page built for it, so /forest-cove now points at the project itself.
 
 ## Still outstanding
 
