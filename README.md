@@ -379,26 +379,39 @@ Mayflower and Clubhouse Renderings. They currently redirect to the listings.
 
 ## Still outstanding
 
-- `LE_RESEND_API_KEY` is not set, so `api/contact.ts` returns 503 and every
+Needing someone outside this repository:
+
+- **`LE_RESEND_API_KEY` is not set**, so `api/contact.ts` returns 503 and every
   inquiry is lost. Verify the sending domain in Resend and check the `FROM`
-  address at the top of that file matches a verified sender.
-- Interior photographs on two projects carry a photographer's watermark
-  (Meadow House, Ivy Cottage). Whether they can be published at all is a
-  licensing question, not a retouching one.
-- Only Corner House and Ravine House state their scope. The `data-category`
-  on the other five cards, which drives the residential filter, was inferred
-  rather than told to us and five were guessed as new construction. Rob says he
-  does minimal new construction, so those need confirming before the filter can
-  be trusted, and before the words go back on the cards.
-- Three residential cards have no floor area: Corner House, Fairway House and
-  Havenwood House. The markup is commented where each one goes. Havenwood's
-  page mentions "approximately 32-acres", which is the size of the original
-  estate and not the house, so do not use it.
-- Nothing on the site answers "who is Rob". There is no bio.
-- The Village Market page is a stub pending Rob's write-up.
-- Fairway House has no floor plans, and its site plan exists only as a 450px
-  scan.
-- `privacy.html` and `terms.html` are written in plain language and describe
-  what the site actually does. Neither has been reviewed by a lawyer.
-- Body copy is 11 to 12px on every viewport. It is a deliberate editorial
-  choice rather than an oversight, but it is small on a phone.
+  address at the top of that file matches a verified sender. Nothing else on
+  this list matters as much.
+- **The domain**. See "Going live" above.
+- **Vercel Analytics** is tagged on every page but does nothing until it is
+  switched on under Analytics in the dashboard. Its onboarding shows React
+  instructions; ignore them, this site has no framework and the tag is already
+  in place.
+- **`LE_SHEET_WEBHOOK_URL`** is unset, so inquiries go only to email. Deploy
+  `docs/inquiries-sheet.gs` and paste the web app URL in.
+- **A monthly cap in the Anthropic Console**, under Billing, Usage limits. At
+  about $0.046 a question, $5 is roughly 108 questions.
+
+Thin or unfinished content:
+
+- **The Village Market Building** is a stub: one photograph, no description, no
+  facts. Every other project has a paragraph and four facts.
+- **The Havenwood Residence** has two photographs where the others have five to
+  twelve. Its elevation and both floor plans carry the page.
+- **The Links Residence** has no floor plans, and its site plan exists only as
+  a 450px scan, which is why `.plan-image.native` exists.
+- **No testimonials anywhere.** With the licence, the bio and ten projects in
+  place, one attributed line from a past client is the largest remaining gain
+  for a visitor deciding whether to write in.
+
+Judgement calls someone else should make:
+
+- **`privacy.html` and `terms.html`** are written in plain language and
+  describe what the site actually does. Neither has been reviewed by a lawyer.
+- **Body copy is 11 to 12px** at every width. It is a deliberate editorial
+  choice, not an oversight, but it is small on a phone.
+- **"Rideway Builders"** in Rob's bio is spelled as his resume spells it and
+  has not been verified, unlike Booth/Hansen which was corrected.
