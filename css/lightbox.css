@@ -22,6 +22,11 @@
   letter-spacing: 0.04em;
   color: rgba(255,255,255,0.72);
   margin: 0;
+  /* The controls never give way; the caption takes whatever is left and stops
+     at two lines rather than wrapping into a tall narrow column. */
+  min-width: 0;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .lightbox-tools { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
 .lightbox-btn {
@@ -43,6 +48,15 @@
   color: rgba(255,255,255,0.6);
   min-width: 44px; text-align: center;
 }
+/* Where you are in the set, in the same quiet register as the zoom level. */
+.lightbox-count {
+  font-size: 10px; letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.6);
+  min-width: 46px; text-align: center;
+}
+.lightbox-count:empty { display: none; }
+.lightbox-prev, .lightbox-next { font-size: 22px; }
+.lightbox-next { margin-right: 8px; }
 
 .lightbox-stage {
   flex: 1;
@@ -73,9 +87,13 @@
 
 @media (max-width: 560px) {
   .lightbox-bar { padding: 12px 14px; gap: 12px; }
-  .lightbox-caption { font-size: 10px; }
+  /* On a phone the controls need the whole bar. The caption is on the page
+     under the photograph anyway. */
+  .lightbox-caption { display: none; }
   .lightbox-btn { width: 30px; height: 30px; font-size: 15px; }
   .lightbox-level { min-width: 38px; }
+  .lightbox-count { min-width: 40px; }
+  .lightbox-prev, .lightbox-next { font-size: 19px; }
   .lightbox-stage img { max-width: 98%; }
   .lightbox-hint { font-size: 9px; padding: 8px 14px 12px; }
 }

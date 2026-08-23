@@ -143,7 +143,7 @@ export const sections: Section[] = [
     "href": "/#recent-projects",
     "eyebrow": "Selected Work",
     "heading": "Recent projects",
-    "text": "Selected Work Recent projects The Ravine Residence Mid-Century Modern · Lake Bluff, IL ↗ The Del Monte Forest Residence Pebble Beach, CA The Cottage Residence Lake Bluff, IL"
+    "text": "Selected Work Recent projects The Ravine Residence Mid-Century Modern · Lake Bluff, IL The Del Monte Forest Residence Pebble Beach, CA The Cottage Residence Lake Bluff, IL"
   },
   {
     "page": "index.html",

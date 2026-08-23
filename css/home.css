@@ -284,12 +284,7 @@
   letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--accent-dark); margin-top: 4px;
 }
-.work-arrow {
-  font-size: 18px; color: var(--accent-dark);
-  flex-shrink: 0; transition: transform 0.2s;
-}
-.work-card:hover .work-arrow { transform: translate(4px, -4px); }
-
+.work-card:hover 
 .work-sidebar { display: flex; flex-direction: column; gap: 2px; background: var(--border); }
 .work-side-info {
   padding: 20px 24px;

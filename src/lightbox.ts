@@ -3,6 +3,9 @@ const LIGHTBOX_HTML = `
   <div class="lightbox-bar">
     <p class="lightbox-caption" id="lightbox-caption"></p>
     <div class="lightbox-tools">
+      <button type="button" class="lightbox-btn lightbox-prev" aria-label="Previous image">&lsaquo;</button>
+      <span class="lightbox-count" id="lightbox-count"></span>
+      <button type="button" class="lightbox-btn lightbox-next" aria-label="Next image">&rsaquo;</button>
       <button type="button" class="lightbox-btn" data-zoom="out" aria-label="Zoom out">−</button>
       <span class="lightbox-level" id="lightbox-level">100%</span>
       <button type="button" class="lightbox-btn" data-zoom="in" aria-label="Zoom in">+</button>
@@ -12,7 +15,7 @@ const LIGHTBOX_HTML = `
   <div class="lightbox-stage" id="lightbox-stage">
     <img id="lightbox-img" alt="">
   </div>
-  <p class="lightbox-hint" id="lightbox-hint">Scroll to zoom, drag to move</p>
+  <p class="lightbox-hint" id="lightbox-hint">Swipe or use the arrow keys. Scroll to zoom, drag to move.</p>
 </div>`;
 
 const STEPS = [1, 1.5, 2, 3, 4] as const;
@@ -30,6 +33,11 @@ let panX = 0;
 let panY = 0;
 let lastOpened: HTMLImageElement | null = null;
 let dragging: Drag | null = null;
+// The images the visitor can move between: the others in the same section, so
+// a swipe inside Interior does not wander off into Exterior.
+let group: HTMLImageElement[] = [];
+let current = 0;
+let swipe: { x: number; y: number } | null = null;
 
 function boxEl<T extends HTMLElement>(id: string): T {
   const found = document.getElementById(id);
@@ -79,18 +87,46 @@ function largestSource(source: HTMLImageElement): string {
   return candidates[0]?.url ?? source.src;
 }
 
-function openLightbox(source: HTMLImageElement): void {
-  lastOpened = source;
-  const img = boxEl<HTMLImageElement>('lightbox-img');
+/** The other zoomable images in the same section as this one. */
+function groupFor(source: HTMLImageElement): HTMLImageElement[] {
+  const scope = source.closest('section, .project-hero-image') ?? document;
+  const found = [...scope.querySelectorAll<HTMLImageElement>(ZOOMABLE)];
+  return found.length ? found : [source];
+}
 
+function show(position: number): void {
+  const source = group[position];
+  if (!source) return;
+  current = position;
+  lastOpened = source;
+
+  const img = boxEl<HTMLImageElement>('lightbox-img');
   img.src = largestSource(source);
   img.alt = source.alt || '';
   boxEl('lightbox-caption').textContent = source.dataset['caption'] ?? source.alt ?? '';
+  boxEl('lightbox-count').textContent = group.length > 1 ? `${current + 1} / ${group.length}` : '';
 
+  const alone = group.length < 2;
+  for (const selector of ['.lightbox-prev', '.lightbox-next']) {
+    boxEl('lightbox').querySelector<HTMLButtonElement>(selector)?.toggleAttribute('hidden', alone);
+  }
+
+  // A new picture starts unzoomed, or the previous zoom would frame it wrongly.
   scale = 1;
   panX = 0;
   panY = 0;
   apply();
+}
+
+/** Move by one, wrapping, so the set never dead-ends. */
+function go(by: number): void {
+  if (group.length < 2) return;
+  show((current + by + group.length) % group.length);
+}
+
+function openLightbox(source: HTMLImageElement): void {
+  group = groupFor(source);
+  show(Math.max(0, group.indexOf(source)));
 
   boxEl('lightbox').hidden = false;
   document.body.style.overflow = 'hidden';
@@ -112,6 +148,8 @@ function onLightboxKey(event: KeyboardEvent): void {
   if (event.key === 'Escape') closeLightbox();
   if (event.key === '+' || event.key === '=') step(1);
   if (event.key === '-') step(-1);
+  if (event.key === 'ArrowRight') go(1);
+  if (event.key === 'ArrowLeft') go(-1);
 
   if (event.key === 'Tab') {
     const items = [...box.querySelectorAll<HTMLButtonElement>('button')];
@@ -156,6 +194,8 @@ function initLightbox(): void {
   const stage = boxEl('lightbox-stage');
 
   box.querySelector<HTMLButtonElement>('.lightbox-close')?.addEventListener('click', closeLightbox);
+  box.querySelector<HTMLButtonElement>('.lightbox-prev')?.addEventListener('click', () => go(-1));
+  box.querySelector<HTMLButtonElement>('.lightbox-next')?.addEventListener('click', () => go(1));
   for (const button of box.querySelectorAll<HTMLButtonElement>('[data-zoom]')) {
     button.addEventListener('click', () => step(button.dataset['zoom'] === 'in' ? 1 : -1));
   }
@@ -189,7 +229,12 @@ function initLightbox(): void {
   );
 
   stage.addEventListener('pointerdown', event => {
-    if (scale === 1) return;
+    if (scale === 1) {
+      // Unzoomed, a drag means "show me the next one". Zoomed in it means pan,
+      // so the two never compete for the same gesture.
+      swipe = { x: event.clientX, y: event.clientY };
+      return;
+    }
     dragging = { x: event.clientX - panX, y: event.clientY - panY };
     stage.setPointerCapture(event.pointerId);
   });
@@ -202,8 +247,17 @@ function initLightbox(): void {
   });
 
   for (const done of ['pointerup', 'pointercancel'] as const) {
-    stage.addEventListener(done, () => {
+    stage.addEventListener(done, event => {
       dragging = null;
+      if (!swipe) return;
+      const movedX = event.clientX - swipe.x;
+      const movedY = event.clientY - swipe.y;
+      swipe = null;
+      // Far enough sideways, and more sideways than vertical, so scrolling a
+      // tall picture on a phone is not read as a swipe.
+      if (Math.abs(movedX) > 45 && Math.abs(movedX) > Math.abs(movedY)) {
+        go(movedX < 0 ? 1 : -1);
+      }
     });
   }
 
