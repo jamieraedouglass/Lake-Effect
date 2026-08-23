@@ -68,7 +68,11 @@ for (const page of sitePages().filter(f => f !== '404.html')) {
       href: page === 'index.html' ? `/#${id}` : `/${page}#${id}`,
       eyebrow: strip(eyebrowMatch?.[1] ?? ''),
       heading: strip(headingMatch?.[1] ?? ''),
-      text: text.slice(0, 1400),
+      // Long enough that no section loses its last paragraph. At 1400 the
+      // About page's mission section was cut before "We don't have a house
+      // style", so the panel could not answer what styles the office works
+      // in and listed only the ones the project pages happen to show.
+      text: text.slice(0, 3000),
     });
   }
 }
