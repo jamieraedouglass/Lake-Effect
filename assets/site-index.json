@@ -197,7 +197,7 @@
       "href": "/privacy.html#privacy",
       "eyebrow": "",
       "heading": "What this site collects",
-      "text": "Privacy What this site collects Short version: the inquiry form, and nothing else. No analytics, no advertising, no cookies."
+      "text": "Privacy What this site collects Short version: the inquiry form, plus a count of which pages get opened. No cookies, no advertising, nothing that follows you anywhere else."
     },
     {
       "page": "privacy.html",
@@ -206,7 +206,7 @@
       "href": "/privacy.html#privacy-detail",
       "eyebrow": "",
       "heading": "Who we are",
-      "text": "Last updated 21 August 2026 Who we are Lake Effect Architects, Inc., an architecture practice based in Lake Bluff, Illinois. If you want to reach us about anything on this page, email rob@leffect.com or call 847.234.4688. What we collect Only what you type into the inquiry form on the contact page: Your name and email address Your phone number, if you give one The project type, location and budget range you select Whatever you write in the message field We use it to answer you and, if the project goes ahead, to run it. We do not sell it, rent it, or send you marketing you did not ask for. What we do not collect This site sets no cookies and stores nothing in your browser. There is no analytics, no advertising or tracking pixels, and no account to create. We do not know who visits, only that the site was served. Third parties Three services see something when you use this site: Our host serves the pages and keeps standard server logs, which include IP addresses. Google Fonts serves the two typefaces. Your browser requests them from Google, which means Google receives your IP address. Nothing else is sent. Anthropic receives the text of any question you type into the Ask panel, in order to answer it. Do not put personal or confidential information into that box; use the inquiry form or email instead. Inquiries submitted through the form are delivered to us by email through our em"
+      "text": "Last updated 22 August 2026 Who we are Lake Effect Architects, Inc., an architecture practice based in Lake Bluff, Illinois. If you want to reach us about anything on this page, email rob@leffect.com or call 847.234.4688. What we collect Only what you type into the inquiry form on the contact page: Your name and email address Your phone number, if you give one The project type, location and budget range you select Whatever you write in the message field We use it to answer you and, if the project goes ahead, to run it. We do not sell it, rent it, or send you marketing you did not ask for. What we do not collect This site sets no cookies and stores nothing in your browser. There is no advertising, no tracking pixels, no account to create, and nothing that follows you to other sites. We do count which pages get opened, which is described below, and that count cannot be traced back to you. Third parties A few services see something when you use this site: Our host serves the pages and keeps standard server logs, which include IP addresses. Our host also counts page visits for us: which pages were opened, roughly which country the request came from, and which site linked here. It sets no cookie, builds no profile, and cannot identify you. Google Fonts serves the two typefaces. Your browser requests them from Google, which means Google receives your IP address. Nothing else is sent."
     },
     {
       "page": "projects/center-avenue-house.html",

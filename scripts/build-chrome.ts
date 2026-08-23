@@ -225,6 +225,8 @@ function shareTags(page: string, canonical: string, description: string): string
 
 const SKIP_LINK = '<a class="skip-link" href="#main">Skip to content</a>';
 
+const ANALYTICS = '<script defer src="/_vercel/insights/script.js"></script>';
+
 const NOSCRIPT = `<noscript>
   <p class="noscript-note">This site works without JavaScript, but the project filter and the Ask panel need it.</p>
 </noscript>`;
@@ -272,6 +274,9 @@ export function build(): { pages: number; changed: number } {
 
     s = s.replace('<body>\n\n',
       `<body>\n\n${SKIP_LINK}\n${nav(PAGE_KEYS[page] ?? null)}\n\n<main id="main" tabindex="-1">\n`);
+    s = s.replace(/\n?<script defer src="\/_vercel\/insights\/script\.js"><\/script>/g, '');
+    s = s.replace('</body>', `${ANALYTICS}\n</body>`);
+
     s = s.replace('<script src="/js/ask.js"></script>',
       `</main>\n\n${NOSCRIPT}\n\n${footer}\n\n<script src="/js/ask.js"></script>`);
     if (!s.includes('/js/lightbox.js')) {

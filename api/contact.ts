@@ -105,7 +105,7 @@ async function contact(request: Request): Promise<Response> {
     `<p style="font:14px/1.7 -apple-system,Segoe UI,sans-serif;white-space:pre-wrap">${escapeHtml(message || '(no message)')}</p>`,
   ].join('');
 
-  try {
+  const sendEmail = async (): Promise<void> => {
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -121,16 +121,45 @@ async function contact(request: Request): Promise<Response> {
         html,
       }),
     });
+    if (!res.ok) throw new Error(`resend ${res.status}: ${await res.text()}`);
+  };
 
-    if (!res.ok) {
-      console.error('resend', res.status, await res.text());
-      return json({ error: 'failed' }, 502);
-    }
-    return json({ ok: true });
-  } catch (error) {
-    console.error('contact:', error);
-    return json({ error: 'failed' }, 502);
-  }
+  const sheetHook = process.env['LE_SHEET_WEBHOOK_URL'];
+
+  const appendToSheet = async (): Promise<void> => {
+    if (!sheetHook) return;
+    const hook = sheetHook;
+    const res = await fetch(hook, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        receivedAt: new Date().toISOString(),
+        first,
+        last,
+        email,
+        phone: field('phone'),
+        projectType,
+        location,
+        budget: field('budget'),
+        message,
+      }),
+    });
+    if (!res.ok) throw new Error(`sheet ${res.status}`);
+  };
+
+  // Both are attempted. The visitor is told it worked if either did, because by
+  // then the inquiry exists somewhere. Only losing both is a failure: a
+  // spreadsheet being down must never cost Rob a message.
+  const [mail, sheet] = await Promise.allSettled([sendEmail(), appendToSheet()]);
+  if (mail.status === 'rejected') console.error('contact: email failed:', mail.reason);
+  if (sheet.status === 'rejected') console.error('contact: sheet failed:', sheet.reason);
+
+  // An unconfigured sheet resolves without writing anything, so it only counts
+  // as a place the inquiry landed when there is actually a sheet to land in.
+  const saved =
+    mail.status === 'fulfilled' || (Boolean(sheetHook) && sheet.status === 'fulfilled');
+  if (!saved) return json({ error: 'failed' }, 502);
+  return json({ ok: true });
 }
 
 function json(body: unknown, status = 200): Response {

@@ -103,7 +103,8 @@ console.log('\nLake Effect site checks\n');
       const raw = m[1] ?? '';
       if (/^(https?:|mailto:|tel:|data:|#|\/\/)/.test(raw)) continue;
       const target = (raw.split('#')[0] ?? '').trim();
-      if (!target || target.startsWith('/api/')) continue;
+      // /api/ and /_vercel/ are served by the platform, not from the repo.
+      if (!target || target.startsWith('/api/') || target.startsWith('/_vercel/')) continue;
       const resolved = target.startsWith('/') ? target.slice(1) : join(dir, target);
       if (!existsSync(join(root, resolved))) problems.push(`${page}: ${raw} -> /${resolved}`);
     }

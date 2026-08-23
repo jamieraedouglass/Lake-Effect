@@ -143,6 +143,33 @@ monthly cap in the Anthropic Console**, under Billing, Usage limits. When it is
 reached the API returns errors and the panel falls back to keyword search,
 which is the degradation it was built for: the site keeps working.
 
+### Where an inquiry goes
+
+The contact endpoint writes to two places and treats them independently:
+
+- **Email**, through Resend, to the address at the top of `api/contact.ts`.
+- **A spreadsheet**, if `LE_SHEET_WEBHOOK_URL` is set: a Google Apps Script web
+  app that appends a row. `docs/inquiries-sheet.gs` is the script and carries
+  its own setup steps.
+
+The visitor is told it worked if either succeeded, because by then the inquiry
+exists somewhere. Only losing both is a failure. An unset webhook does not
+count as a success, or an email failure with no sheet configured would report
+a delivery that never happened.
+
+The web app URL is a secret: "Anyone with the link" is how Apps Script exposes
+it, so it lives in the Vercel environment and never in the repo or the page.
+
+### Visitors
+
+`build-chrome` puts Vercel's analytics tag on every page. It is served from
+this domain, so the Content-Security-Policy needs no third party host, it sets
+no cookie, and there is no consent banner to show. Switch it on under Analytics
+in the Vercel dashboard; the tag does nothing until you do.
+
+It counts pages, referrers and countries. It cannot identify anyone, which is
+what `privacy.html` now says.
+
 ### Abuse
 
 `api/_guard.ts` rejects requests whose Origin or Referer is not this site, and
