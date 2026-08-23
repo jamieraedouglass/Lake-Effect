@@ -3,6 +3,7 @@ import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { pages as sitePages } from './pages.ts';
 import { SMALL_WIDTH, smallName } from './build-images.ts';
+import { avifName } from './build-avif.ts';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -44,6 +45,7 @@ function sizesFor(html: string, imgStart: number, tag: string, planSizes: string
 const pages = sitePages();
 let touched = 0;
 let tagged = 0;
+let withAvif = 0;
 const missing: string[] = [];
 
 for (const page of pages) {
@@ -54,6 +56,8 @@ for (const page of pages) {
     ? '(max-width: 860px) 100vw, 900px'
     : '(max-width: 860px) 100vw, 50vw';
 
+  // Unwrap first, or a second build nests one <picture> inside another.
+  s = s.replace(/<picture>\s*<source[^>]*>\s*/g, '').replace(/\s*<\/picture>/g, '');
   s = s.replace(/\n?\s*srcset="[^"]*"/g, '').replace(/\n?\s*sizes="[^"]*"/g, '');
 
   s = s.replace(/<img\b[^>]*>/g, (tag, offset) => {
@@ -73,9 +77,28 @@ for (const page of pages) {
     if (!width) return tag;
 
     tagged++;
-    return tag.replace(/>$/,
+    const jpeg = tag.replace(/>$/,
       `\n           srcset="/${small} ${SMALL_WIDTH}w, /${src} ${width}w"\n           sizes="${sizes}">`);
+
+    // AVIF where it exists, with the jpeg left as the fallback. A browser that
+    // cannot read AVIF ignores the source and takes the img, which is exactly
+    // what shipped before this existed.
+    const avifFull = avifName(src);
+    const avifSmall = avifName(small);
+    if (!existsSync(join(root, avifFull)) || !existsSync(join(root, avifSmall))) return jpeg;
+    withAvif++;
+    return `<picture>\n          <source type="image/avif"\n           srcset="/${avifSmall} ${SMALL_WIDTH}w, /${avifFull} ${width}w"\n           sizes="${sizes}">\n          ${jpeg}\n        </picture>`;
   });
+
+  // The hero is the largest paint on the page, so tell the browser about it
+  // before the parser reaches the markup. Preload exactly what <picture> picks.
+  s = s.replace(/\n?  <link rel="preload" as="image"[^>]*>/g, '');
+  const hero = s.match(/<picture>\s*<source type="image\/avif"\s*\n\s*srcset="([^"]+)"\s*\n\s*sizes="([^"]+)"/);
+  if (hero) {
+    const tag = `  <link rel="preload" as="image" imagesrcset="${hero[1]}" imagesizes="${hero[2]}" type="image/avif">`;
+    s = s.replace('  <link rel="stylesheet" href="/css/base.css">',
+      `${tag}\n  <link rel="stylesheet" href="/css/base.css">`);
+  }
 
   if (s !== original) {
     writeFileSync(path, s);
@@ -83,7 +106,7 @@ for (const page of pages) {
   }
 }
 
-console.log(`srcset on ${tagged} images across ${touched} pages`);
+console.log(`srcset on ${tagged} images (${withAvif} with avif) across ${touched} pages`);
 if (missing.length) {
   console.log('no sizes rule matched:');
   for (const m of missing) console.log(`  ${m}`);

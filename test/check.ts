@@ -23,6 +23,28 @@ function check(label: string, problems: string[]): void {
   }
 }
 
+/**
+ * Structural check on an ISO base media container, which is what an AVIF is.
+ * Each top-level box declares its own length; together they must account for
+ * the whole file. Returns a reason, or null when the file is sound.
+ */
+function avifFault(bytes: Buffer): string | null {
+  if (bytes.length < 16) return 'too small to be an image';
+  if (bytes.subarray(4, 8).toString('latin1') !== 'ftyp') return 'does not start with an ftyp box';
+  const brands = bytes.subarray(8, 24).toString('latin1');
+  if (!/avif|avis|mif1/.test(brands)) return 'ftyp box does not claim an avif brand';
+  let at = 0;
+  while (at < bytes.length) {
+    if (at + 8 > bytes.length) return 'ends part way through a box header';
+    const size = bytes.readUInt32BE(at);
+    if (size === 0) break;             // "to end of file", legal for the last box
+    if (size < 8) return `box at ${at} declares an impossible length`;
+    at += size;
+  }
+  if (at > bytes.length) return `truncated: boxes claim ${at} bytes, file has ${bytes.length}`;
+  return null;
+}
+
 const read = (f: string): string => readFileSync(join(root, f), 'utf8');
 const stripComments = (css: string): string => css.replace(/\/\*[\s\S]*?\*\//g, '');
 
@@ -206,6 +228,52 @@ console.log('\nLake Effect site checks\n');
     if (!listings.includes(`href="/${page}"`)) problems.push(`${page} is not linked from any listing page`);
   }
   check('every project is reachable from a listing page', problems);
+}
+
+{
+  // A <source> the browser picks but cannot fetch is a broken image, not a
+  // fallback: picture chooses by type, never by whether the file exists.
+  const problems: string[] = [];
+  for (const page of pages) {
+    const html = read(page);
+    for (const block of html.matchAll(/<picture>([\s\S]*?)<\/picture>/g)) {
+      const inner = block[1] ?? '';
+      if (!/<img\b/.test(inner)) { problems.push(`${page}: a <picture> with no <img> fallback`); continue; }
+      if (!/<source[^>]+type="image\/avif"/.test(inner)) problems.push(`${page}: a <picture> with no avif source`);
+      for (const m of inner.matchAll(/\/?(assets\/[^\s"]+\.avif)\s+\d+w/g)) {
+        if (!existsSync(join(root, m[1] ?? ''))) problems.push(`${page}: source points at missing ${m[1]}`);
+      }
+      const sourceSizes = inner.match(/<source[\s\S]*?sizes="([^"]*)"/)?.[1];
+      const imgSizes = inner.match(/<img[\s\S]*?sizes="([^"]*)"/)?.[1];
+      if (sourceSizes && imgSizes && sourceSizes !== imgSizes) {
+        problems.push(`${page}: source and img disagree on sizes`);
+      }
+    }
+  }
+  check('every avif source has a working fallback', problems);
+}
+
+{
+  // Every shipped photograph should have an avif twin, or the saving is
+  // silently partial.
+  const problems: string[] = [];
+  for (const dir of readdirSync(join(root, 'assets'))) {
+    const full = join(root, 'assets', dir);
+    if (!statSync(full).isDirectory()) continue;
+    for (const name of readdirSync(full)) {
+      if (!/\.(jpe?g|png)$/i.test(name) || name === 'share.jpg') continue;
+      const twin = name.replace(/\.(jpe?g|png)$/i, '.avif');
+      const at = join(full, twin);
+      if (!existsSync(at)) { problems.push(`assets/${dir}/${name} has no avif`); continue; }
+      // Present is not the same as readable: a <source> the browser picks and
+      // cannot decode shows a broken image, with no fallback. Walk the boxes.
+      // They must tile the file exactly, which a truncated file will not.
+      const bytes = readFileSync(at);
+      const fault = avifFault(bytes);
+      if (fault) problems.push(`assets/${dir}/${twin}: ${fault}`);
+    }
+  }
+  check('every image has an avif twin', problems);
 }
 
 {

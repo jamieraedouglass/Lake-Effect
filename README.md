@@ -235,6 +235,41 @@ The relaxed rule is deliberate. Build scripts index regex match groups
 constantly, where the strict rule adds noise without catching anything a
 crashing build would not. Shipped code keeps it.
 
+## Images
+
+Every photograph ships twice: the JPEG that has always been there, and an AVIF
+beside it. `build-srcset` wraps each one in a `<picture>` whose AVIF `<source>`
+comes first, so a browser that reads AVIF takes it and one that does not takes
+the JPEG and behaves exactly as it did before.
+
+    npm run build:avif
+
+`sharp` writes them, and it is a devDependency: Vercel never runs the build, it
+only runs the checks, and the generated files are committed. If sharp is
+missing the step logs and skips rather than failing.
+
+**Do not use `sips` for this.** It can write AVIF and the result opens in
+Safari and Chrome, but roughly half the files it produced were rejected by
+libavif, which is what Firefox uses. That matters more than it sounds: a
+`<picture>` chooses a source by MIME type, never by whether the file decodes,
+so a bad AVIF is a broken image with no fallback at all. `sharp` produced 14
+of 14 valid.
+
+Photographs are written at quality 70 and drawings at 58. At one setting a
+kitchen measures around 36 dB against the original and a floor plan around 45,
+because line work on white has far less to lose. Two settings, not a
+compromise wrong for both.
+
+`npm test` walks the box structure of every AVIF rather than checking it
+exists, because a truncated file exists perfectly well.
+
+`picture { display: contents }` keeps the wrapper out of the layout, so every
+CSS rule written for the `img` inside still applies.
+
+The hero on each project page is preloaded with `imagesrcset` matching what
+`<picture>` will choose, so the largest paint starts before the parser reaches
+the markup.
+
 ## Checks
 
     npm test

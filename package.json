@@ -5,7 +5,7 @@
   "description": "Marketing site for Lake Effect Architects, Lake Bluff IL",
   "scripts": {
     "start": "python3 -m http.server 8000",
-    "build": "npm run build:js && npm run build:images && npm run build:srcset && npm run build:chrome && npm run build:index && npm run build:sitemap",
+    "build": "npm run build:js && npm run build:images && npm run build:avif && npm run build:srcset && npm run build:chrome && npm run build:index && npm run build:sitemap",
     "build:js": "tsc -p tsconfig.browser.json",
     "build:images": "node scripts/build-images.ts",
     "build:srcset": "node scripts/build-srcset.ts",
@@ -14,7 +14,8 @@
     "build:sitemap": "node scripts/build-sitemap.ts",
     "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.tools.json",
     "verify": "npm run typecheck && node test/check.ts",
-    "test": "npm run verify"
+    "test": "npm run verify",
+    "build:avif": "node scripts/build-avif.ts"
   },
   "author": "Jamie Douglass",
   "license": "MIT",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "@types/node": "^26.2.0",
+    "sharp": "^0.35.3",
     "typescript": "^7.0.2"
   }
 }
