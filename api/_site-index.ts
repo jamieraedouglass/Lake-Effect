@@ -80,7 +80,7 @@ export const sections: Section[] = [
     "href": "/commercial.html#commercial-work",
     "eyebrow": "Selected Projects",
     "heading": "Commercial work",
-    "text": "Selected Projects Commercial work Retail & Offices The Village Commons Lake Bluff, Illinois Commercial Village Market Building Write-up to follow"
+    "text": "Selected Projects Commercial work Retail & Offices The Village Commons Lake Bluff, Illinois Retail & Offices The Village Market Building Lake Bluff, Illinois"
   },
   {
     "page": "contact.html",
@@ -592,17 +592,35 @@ export const sections: Section[] = [
     "anchor": "village-market-building",
     "href": "/projects/village-market-building.html#village-market-building",
     "eyebrow": "",
-    "heading": "Village Market Building",
-    "text": "Commercial Village Market Building A commercial building, photographed on completion. A fuller account of the project is being written and will appear here."
+    "heading": "The Village Market Building",
+    "text": "Commercial · Restoration The Village Market Building Lake Bluff, Illinois. The oldest commercial building in downtown Lake Bluff, taken back to its original character and reopened in 2006. Built 1902 Restored 2005 to 2006 Scope Restoration Use Retail below, offices above"
   },
   {
     "page": "projects/village-market-building.html",
     "pageTitle": "projects/village-market-building.html",
-    "anchor": "the-building",
-    "href": "/projects/village-market-building.html#the-building",
-    "eyebrow": "The Building",
-    "heading": "From the street",
-    "text": "The Building From the street Photographs only for now. The description of the work follows. More commercial work Private clubs, clubhouses and retail, run to the same standard as the residential work. All commercial → Planning a commercial project? A building the public uses answers to a lot of people at once. Get in touch and we'll talk it through. Start a conversation →"
+    "anchor": "the-project",
+    "href": "/projects/village-market-building.html#the-project",
+    "eyebrow": "The project",
+    "heading": "",
+    "text": "The project Built in 1902, the Village Market building is the oldest commercial building in downtown Lake Bluff. In the fall of 2005, Lake Effect acquired the property and completely renovated and restored the building to its original historic character. The building reopened in the summer of 2006. Today, the ground floor features local retail favorites like Hansa Coffee Roasters and Toned Yoga while the second floor provides dedicated local office spaces."
+  },
+  {
+    "page": "projects/village-market-building.html",
+    "pageTitle": "projects/village-market-building.html",
+    "anchor": "plans",
+    "href": "/projects/village-market-building.html#plans",
+    "eyebrow": "Plans",
+    "heading": "Shops below, offices above",
+    "text": "Plans Shops below, offices above Floor plan A long narrow block, which is why the retail sits along the street and the offices go above rather than behind. Click to enlarge."
+  },
+  {
+    "page": "projects/village-market-building.html",
+    "pageTitle": "projects/village-market-building.html",
+    "anchor": "outside",
+    "href": "/projects/village-market-building.html#outside",
+    "eyebrow": "The building",
+    "heading": "A hundred and twenty years on",
+    "text": "The building A hundred and twenty years on A restoration of a building this old is mostly a series of decisions about what to keep. The answer here was nearly all of it. The front, as it reopened in 2006. It has been the oldest thing on this street since 1902, and still is. More commercial work Clubs, clubhouses and retail on the North Shore. All commercial → An old building worth keeping? What can stay is usually more than anyone expects. Get in touch and we'll take a look at it with you. Start a conversation →"
   },
   {
     "page": "projects/woodland-meadow-residence.html",

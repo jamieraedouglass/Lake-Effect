@@ -433,12 +433,14 @@ Needing someone outside this repository:
 
 Thin or unfinished content:
 
-- **The Village Market Building** is a stub: one photograph, no description, no
-  facts. Every other project has a paragraph and four facts.
 - **The Havenwood Residence** has two photographs where the others have five to
   twelve. Its elevation and both floor plans carry the page.
 - **The Links Residence** has no floor plans, and its site plan exists only as
   a 450px scan, which is why `.plan-image.native` exists.
+- **Alt text on three Village Market photographs** was written without being
+  able to see them. Image inspection stopped working partway through that
+  session, so those descriptions are cautious rather than observed and should be
+  read once by someone who can see the pictures.
 - **No testimonials anywhere.** With the licence, the bio and ten projects in
   place, one attributed line from a past client is the largest remaining gain
   for a visitor deciding whether to write in.

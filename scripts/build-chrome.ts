@@ -112,7 +112,7 @@ const TITLES: Record<string, string> = {
   'projects/cottage-residence.html': 'The Cottage Residence',
   'projects/links-residence.html': 'The Links Residence',
   'projects/forest-cove-residence.html': 'The Forest Cove Residence',
-  'projects/village-market-building.html': 'Village Market Building',
+  'projects/village-market-building.html': 'The Village Market Building',
   'projects/village-commons.html': 'The Village Commons',
 };
 
@@ -151,7 +151,7 @@ const SHARE_NAMES: Record<string, string> = {
   'projects/ravine-residence.html': 'The Ravine Residence, Lake Bluff · Lake Effect Architects',
   'projects/del-monte-forest-residence.html': 'The Del Monte Forest Residence, Pebble Beach · Lake Effect Architects',
   'projects/center-avenue-house.html': 'The Center Avenue House, Lake Bluff · Lake Effect Architects',
-  'projects/village-market-building.html': 'Village Market Building · Lake Effect Architects',
+  'projects/village-market-building.html': 'The Village Market Building, Lake Bluff · Lake Effect Architects',
   'projects/village-commons.html': 'The Village Commons, Lake Bluff · Lake Effect Architects',
   'projects/havenwood-residence.html': 'The Havenwood Residence, Lake Forest · Lake Effect Architects',
   'projects/woodland-meadow-residence.html': 'The Woodland Meadow Residence, Lake Forest · Lake Effect Architects',
