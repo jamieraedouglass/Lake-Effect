@@ -91,7 +91,7 @@
   border-bottom: 0.5px solid var(--border);
 }
 .principle {
-  padding: 48px 36px 44px;
+  padding: 48px 48px 44px;
   border-right: 0.5px solid var(--border);
   display: flex; flex-direction: column;
   transition: background 0.25s;
@@ -353,7 +353,7 @@
   .services-section, .work-teaser { padding: 72px 28px; }
   .approach-content { padding: 64px 32px; }
   .home-cta-left, .home-cta-right { padding: 64px 28px; }
-  .principle { padding: 40px 24px 36px; }
+  .principle { padding: 40px 28px 36px; }
   .service-card { padding: 40px 28px; }
 }
 
