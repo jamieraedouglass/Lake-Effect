@@ -2,7 +2,11 @@ import { sameSite, clientKey, atAnyLimit, recordHits } from './_guard.ts';
 import { handleRequest } from './_adapter.ts';
 
 const TO = 'rob@leffect.com';
-const FROM = 'Lake Effect Site <inquiries@leffect.com>';
+// Resend verifies send.leffect.com, not the apex, which keeps its DNS clear of
+// the MX and SPF records carrying Rob's real mail. Resend refuses to send from
+// a domain it has not verified, so the From has to sit on that subdomain. DKIM
+// signs as send.leffect.com and the From matches it, so DMARC still aligns.
+const FROM = 'Lake Effect Site <inquiries@send.leffect.com>';
 type FieldName = 'first_name' | 'last_name' | 'email' | 'phone'
   | 'project_type' | 'location' | 'budget' | 'message';
 

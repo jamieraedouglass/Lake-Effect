@@ -148,6 +148,11 @@ which is the degradation it was built for: the site keeps working.
 The contact endpoint writes to two places and treats them independently:
 
 - **Email**, through Resend, to the address at the top of `api/contact.ts`.
+  Resend verifies `send.leffect.com` rather than the apex, so its DNS records sit
+  clear of the MX and SPF that carry Rob's real mail at `rob@leffect.com`. Resend
+  will not send from a domain it has not verified, which is why `FROM` is on that
+  subdomain and not on `leffect.com`. Replies still reach a person: `reply_to` is
+  set to whatever address the visitor typed.
 - **A spreadsheet**, if `LE_SHEET_WEBHOOK_URL` is set: a Google Apps Script web
   app that appends a row. `docs/inquiries-sheet.gs` is the script and carries
   its own setup steps.
