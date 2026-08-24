@@ -12,7 +12,10 @@
   color: var(--charcoal);
 }
 .mission-statement em { font-style: italic; color: var(--accent-dark); }
-.mission-body { font-size: 13px; line-height: 2.0; color: var(--mid); }
+/* Capped to the measure the rest of the site reads at. Left to fill the
+   column it ran past 100 characters a line, and on a wide screen it ran out
+   above the portrait beside it, leaving a band of empty cream. */
+.mission-body { font-size: 13px; line-height: 2.0; color: var(--mid); max-width: 660px; }
 .mission-body p + p { margin-top: 1.3em; }
 .mission-body a {
   color: var(--accent-dark); text-decoration: none;
@@ -154,8 +157,8 @@
   display: block;
   width: 100%; max-width: 240px;
   height: auto;
-  margin-top: 32px;
+  margin-bottom: 32px;
 }
 @media (max-width: 860px) {
-  .studio-portrait { max-width: 180px; margin-top: 24px; }
+  .studio-portrait { max-width: 180px; margin-bottom: 24px; }
 }

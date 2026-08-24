@@ -115,11 +115,23 @@
    A portrait one keeps its own proportions rather than being cropped to a
    panoramic box. */
 .gallery figure:only-child { grid-column: 1 / -1; }
-.gallery figure.tall:only-child .shot {
+/* A portrait photograph across the full width would be cropped to a letterbox,
+   so it keeps its own proportions and sits centred instead. */
+.gallery figure.tall:only-child .shot,
+.gallery figure.tall.full .shot {
   align-self: start; aspect-ratio: auto; min-height: 0;
   max-width: 620px; margin: 0 auto;
 }
-.gallery figure.tall:only-child .shot img { height: auto; }
+/* A drawing is not a photograph. Cropping an elevation to a photographic box
+   cuts the ends off the building, so a wide one runs full width at its own
+   proportions. */
+.gallery figure.wide { grid-column: 1 / -1; }
+.gallery figure.wide .shot {
+  aspect-ratio: auto; min-height: 0; align-self: start;
+}
+.gallery figure.wide .shot img { height: auto; }
+.gallery figure.tall:only-child .shot img,
+.gallery figure.tall.full .shot img { height: auto; }
 .gallery .shot img {
   width: 100%; height: 100%;
   object-fit: cover; display: block;
@@ -173,7 +185,9 @@
   .project-body { grid-template-columns: 1fr; gap: 24px; }
   .plans { grid-template-columns: 1fr; }
   .gallery { grid-template-columns: 1fr; }
-  .gallery figure.tall .shot { aspect-ratio: 4/3; }
+  /* Stacked single file, a portrait photograph stays portrait. Cropping it
+     to a landscape box would throw away half the building. */
+  .gallery figure.tall .shot { aspect-ratio: 4/5; }
   .project-footer { grid-template-columns: 1fr; }
   .project-footer-left {
     border-right: none; border-bottom: 0.5px solid var(--border);

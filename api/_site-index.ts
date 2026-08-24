@@ -251,7 +251,7 @@ export const sections: Section[] = [
     "href": "/projects/center-avenue-house.html#new-rooms-old-proportions",
     "eyebrow": "Interior",
     "heading": "New rooms, old proportions",
-    "text": "Interior New rooms, old proportions The new kitchen. Painted frame-and-panel cabinetry and a plate rail keep it in period, while the island and the working layout are entirely current. Looking through to the breakfast bay, which sits in the new work. The foyer and stair, original to the house and left alone. The new living room, with the mantel and sconce spacing set to the older rooms. A cased arch and flanking built-ins carry the opening through, the way the original plan handles its own doorways."
+    "text": "Interior New rooms, old proportions The foyer and stair, original to the house and left alone. The new kitchen. Painted frame-and-panel cabinetry and a plate rail keep it in period, while the island and the working layout are entirely current. Looking through to the breakfast bay, which sits in the new work. The new living room, with the mantel and sconce spacing set to the older rooms. A cased arch and flanking built-ins carry the opening through, the way the original plan handles its own doorways."
   },
   {
     "page": "projects/center-avenue-house.html",
@@ -557,7 +557,7 @@ export const sections: Section[] = [
     "href": "/projects/village-commons.html#village-commons",
     "eyebrow": "",
     "heading": "The Village Commons",
-    "text": "Commercial · Retail & Offices The Village Commons Lake Bluff, Illinois. A block built to close the gap on the north side of the Village Green, with shops at street level and offices above. Use Retail below, offices above Floors Three Scope New Construction Precedent Stanley Anderson, east end of downtown"
+    "text": "Commercial · Retail & Offices The Village Commons Lake Bluff, Illinois. A block built to close the gap on the north side of the Village Green, with shops at street level and offices above. Area 39,231 sq ft Floors Three Scope New Construction Precedent Stanley Anderson, east end of downtown"
   },
   {
     "page": "projects/village-commons.html",
@@ -593,7 +593,7 @@ export const sections: Section[] = [
     "href": "/projects/village-market-building.html#village-market-building",
     "eyebrow": "",
     "heading": "The Village Market Building",
-    "text": "Commercial · Restoration The Village Market Building Lake Bluff, Illinois. The oldest commercial building in downtown Lake Bluff, taken back to its original character and reopened in 2006. Built 1902 Restored 2005 to 2006 Scope Restoration Use Retail below, offices above"
+    "text": "Commercial · Restoration The Village Market Building Lake Bluff, Illinois. The oldest commercial building in downtown Lake Bluff, taken back to its original character and reopened in 2006. Area 4,917 sq ft Built 1902 Restored 2005 to 2006 Scope Restoration"
   },
   {
     "page": "projects/village-market-building.html",

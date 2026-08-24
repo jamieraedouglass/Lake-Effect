@@ -597,5 +597,98 @@ check('every class used has a matching rule', problems);
   check('no copy that outlived what it described', problems);
 }
 
+
+/**
+ * The width and height a JPEG declares in its frame header.
+ */
+function jpegSize(file: string): { width: number; height: number } | null {
+  const d = readFileSync(file);
+  let i = 2;
+  while (i + 9 < d.length) {
+    if (d[i] !== 0xff) { i++; continue; }
+    const marker = d[i + 1] ?? 0;
+    // Start-of-frame markers carry the dimensions; SOI, EOI and RSTn have no length.
+    if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) {
+      return { height: d.readUInt16BE(i + 5), width: d.readUInt16BE(i + 7) };
+    }
+    if (marker === 0xd8 || marker === 0xd9 || (marker >= 0xd0 && marker <= 0xd7)) { i += 2; continue; }
+    i += 2 + d.readUInt16BE(i + 2);
+  }
+  return null;
+}
+
+/**
+ * A gallery box crops whatever does not fit it. A portrait photograph dropped
+ * into a landscape box loses half the building, which is how three of them sat
+ * on the site for a while. Each class implies a shape, so the shape of the
+ * picture and the shape of its box have to agree.
+ */
+{
+  const problems = [];
+  // A full-width portrait keeps its own proportions, so nothing is cropped.
+  const boxRatio: Record<string, number | null> = {
+    '': 4 / 3,
+    'full': 16 / 9,
+    'tall': 3 / 4,
+    'full tall': null,
+    'wide': null,
+    'tall full': null,
+  };
+  const figures = /<figure(?: class="([^"]*)")?>[\s\S]*?src="(\/assets\/[^"]+\.jpg)"/g;
+  for (const page of pages.filter(p => p.startsWith('projects/'))) {
+    const html = read(page);
+    const start = html.indexOf('<div class="gallery"');
+    if (start < 0) continue;
+    const seen: string[] = [];
+    for (const m of html.slice(start).matchAll(figures)) {
+      const cls = (m[1] ?? '').trim();
+      const src = m[2] ?? '';
+      seen.push(cls);
+      const box = cls in boxRatio ? boxRatio[cls] : undefined;
+      if (box === undefined) { problems.push(`${page} ${src}: unknown figure class "${cls}"`); continue; }
+      if (box === null) continue;
+      const size = jpegSize(join(root, src.slice(1)));
+      if (!size) { problems.push(`${page} ${src}: no readable jpeg header`); continue; }
+      const ratio = size.width / size.height;
+      const shown = ratio > box ? box / ratio : ratio / box;
+      const lost = Math.round((1 - shown) * 100);
+      if (lost > 30) {
+        problems.push(
+          `${page} ${src.split('/').pop()}: ${lost}% cropped away ` +
+          `(picture ${ratio.toFixed(2)}, box ${box.toFixed(2)}), wrong figure class`,
+        );
+      }
+    }
+    // Figures share a row with their neighbour and are stretched to match it, so
+    // a lone "tall" would drag a landscape picture into a portrait box.
+    const spans = ['full', 'full tall', 'tall full', 'wide'];
+    const halves = seen.filter(c => !spans.includes(c));
+    for (let i = 0; i < halves.length; i += 2) {
+      if (halves[i] !== (halves[i + 1] ?? halves[i])) {
+        problems.push(`${page}: a "${halves[i]}" figure shares a row with a "${halves[i + 1]}" one`);
+      }
+    }
+  }
+  check('every photograph is in a box its own shape', problems);
+}
+
+/**
+ * The build strips its own chrome out of each page and puts it back. When a
+ * strip reclaimed less whitespace than the insert added, the seams crept a line
+ * further apart on every build: one page had reached 361 blank lines in a row.
+ * Nothing renders differently, which is exactly why it went unnoticed.
+ */
+{
+  const problems = [];
+  for (const page of pages) {
+    const runs = read(page).match(/\n\n\n+/g) ?? [];
+    if (runs.length > 0) {
+      const worst = Math.max(...runs.map(r => r.length - 1));
+      problems.push(`${page}: ${runs.length} gap(s) of consecutive blank lines, longest ${worst}`);
+    }
+  }
+  check('the build puts its chrome back where it found it', problems);
+}
+
 console.log(`\n${checks - failures}/${checks} checks passed\n`);
 process.exit(failures ? 1 : 0);

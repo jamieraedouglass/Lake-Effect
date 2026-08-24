@@ -9,6 +9,11 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
 const SIZES: Array<[RegExp, string]> = [
   [/class="project-hero-image"/, '100vw'],
+  // More specific first: these tie on match position with the plainer
+  // patterns below, and a tie goes to whichever is listed earlier.
+  // A full-width portrait is capped at 620px by .gallery figure.tall.full.
+  [/<figure class="(?:full tall|tall full)">/, '(max-width: 860px) 100vw, 620px'],
+  [/<figure class="[^"]*\bwide\b[^"]*">/, '100vw'],
   [/<figure class="[^"]*\bfull\b[^"]*">/, '100vw'],
   [/<figure class="[^"]*\btall\b[^"]*">/, '(max-width: 860px) 100vw, 50vw'],
   [/<figure>/, '(max-width: 860px) 100vw, 50vw'],
@@ -79,17 +84,31 @@ for (const page of pages) {
     if (!width) return tag;
 
     tagged++;
-    const jpeg = tag.replace(/>$/,
-      `\n           srcset="/${small} ${SMALL_WIDTH}w, /${src} ${width}w"\n           sizes="${sizes}">`);
+    // Indent to wherever the tag already sits, so a block written by hand at
+    // one depth does not come back from the build at another.
+    const lineStart = s.lastIndexOf('\n', offset) + 1;
+    const before = s.slice(lineStart, offset);
+    const pad = /^[ \t]*$/.test(before) ? before : '';
 
     // AVIF where it exists, with the jpeg left as the fallback. A browser that
     // cannot read AVIF ignores the source and takes the img, which is exactly
     // what shipped before this existed.
     const avifFull = avifName(src);
     const avifSmall = avifName(small);
-    if (!existsSync(join(root, avifFull)) || !existsSync(join(root, avifSmall))) return jpeg;
+    const wrap = existsSync(join(root, avifFull)) && existsSync(join(root, avifSmall));
+
+    // Wrapping moves the img a level in. Its own attribute lines are re-indented
+    // rather than shifted, so running the build twice leaves the same file
+    // rather than pushing everything two spaces further right each time.
+    const imgPad = wrap ? `${pad}  ` : pad;
+    const attr = `${imgPad} `;
+    const body = tag.replace(/\n[ \t]*/g, `\n${attr}`);
+    const jpeg = body.replace(/>$/,
+      `\n${attr}srcset="/${small} ${SMALL_WIDTH}w, /${src} ${width}w"\n${attr}sizes="${sizes}">`);
+    if (!wrap) return jpeg;
+
     withAvif++;
-    return `<picture>\n          <source type="image/avif"\n           srcset="/${avifSmall} ${SMALL_WIDTH}w, /${avifFull} ${width}w"\n           sizes="${sizes}">\n          ${jpeg}\n        </picture>`;
+    return `<picture>\n${imgPad}<source type="image/avif"\n${attr}srcset="/${avifSmall} ${SMALL_WIDTH}w, /${avifFull} ${width}w"\n${attr}sizes="${sizes}">\n${imgPad}${jpeg}\n${pad}</picture>`;
   });
 
   // The hero is the largest paint on the page, so tell the browser about it

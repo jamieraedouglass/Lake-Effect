@@ -265,11 +265,14 @@ export function build(): { pages: number; changed: number } {
       s = s.replace('</head>', `${structuredData()}\n</head>`);
     }
 
-    s = s.replace(/<nav id="main-nav">[\s\S]*?<\/nav>\n?/, '');
-    s = s.replace(/<footer>[\s\S]*?<\/footer>\n?/, '');
-    s = s.replace(/<a class="skip-link"[^>]*>.*?<\/a>\n?/, '');
-    s = s.replace(/<noscript>[\s\S]*?<\/noscript>\n?/, '');
-    s = s.replace(/<main id="main"[^>]*>\n?/, '').replace(/\n?<\/main>\n?/, '\n');
+    // Each of these is put back below with blank lines around it, so the strip
+    // has to take the blank lines with it. Taking only one newline left a spare
+    // behind every build, and the seams crept a line further apart each time.
+    s = s.replace(/<nav id="main-nav">[\s\S]*?<\/nav>\n*/, '');
+    s = s.replace(/<footer>[\s\S]*?<\/footer>\n*/, '');
+    s = s.replace(/<a class="skip-link"[^>]*>.*?<\/a>\n*/, '');
+    s = s.replace(/<noscript>[\s\S]*?<\/noscript>\n*/, '');
+    s = s.replace(/<main id="main"[^>]*>\n*/, '').replace(/\n*<\/main>\n*/, '\n');
 
     s = s.replace('<body>\n\n',
       `<body>\n\n${SKIP_LINK}\n${nav(PAGE_KEYS[page] ?? null)}\n\n<main id="main" tabindex="-1">\n`);
