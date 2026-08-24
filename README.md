@@ -390,15 +390,14 @@ canonical pointing at a domain that does not host these pages tells search
 engines to ignore the real ones. `npm test` fails if those four ever name
 different hosts.
 
-It is currently the Vercel URL, because `leffect.com` still serves the old
-Squarespace site.
+It is `https://www.leffect.com`, which is where the site is actually served.
+Note the `www`: the bare `leffect.com` answers with a 308 to the `www` host, so a
+canonical on the apex would point every page at a redirect.
 
-**At cutover:**
-
-1. Set `SITE_URL` to `https://leffect.com` in `scripts/build-chrome.ts`.
-2. `npm run build`.
-3. Change the `Sitemap:` line in `robots.txt` to match.
-4. Commit and deploy.
+The cutover is done. If the host ever changes again, set `SITE_URL` in
+`scripts/build-chrome.ts`, run `npm run build`, change the `Sitemap:` line in
+`robots.txt` to match, and deploy. `npm test` fails if the canonicals, the
+sitemap, `robots.txt` and the structured data ever name different hosts.
 
 `SITE_URL=https://example.com npm run build` works for a one-off.
 
@@ -421,7 +420,6 @@ Needing someone outside this repository:
   inquiry is lost. Verify the sending domain in Resend and check the `FROM`
   address at the top of that file matches a verified sender. Nothing else on
   this list matters as much.
-- **The domain**. See "Going live" above.
 - **Vercel Analytics** is tagged on every page but does nothing until it is
   switched on under Analytics in the dashboard. Its onboarding shows React
   instructions; ignore them, this site has no framework and the tag is already

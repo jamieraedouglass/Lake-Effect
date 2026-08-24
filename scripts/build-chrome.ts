@@ -4,7 +4,7 @@ import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-export const SITE_URL = process.env.SITE_URL ?? 'https://lake-effect-brown.vercel.app';
+export const SITE_URL = process.env.SITE_URL ?? 'https://www.leffect.com';
 
 // Root-relative: project pages sit a directory down, and a bare
 // 'residential.html' resolves to /projects/residential.html from there.
