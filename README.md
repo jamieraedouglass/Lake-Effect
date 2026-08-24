@@ -147,7 +147,10 @@ which is the degradation it was built for: the site keeps working.
 
 The contact endpoint writes to two places and treats them independently:
 
-- **Email**, through Resend, to the address at the top of `api/contact.ts`.
+- **Email**, through Resend, to `LE_INQUIRY_TO`, from `LE_INQUIRY_FROM`. Both
+  have defaults at the top of `api/contact.ts` and both can be set in Vercel, so
+  changing where a firm's post goes does not need a deploy. Resend will not send
+  from a domain it has not verified, so the From is not free-form.
   Resend verifies `send.leffect.com` rather than the apex, so its DNS records sit
   clear of the MX and SPF that carry Rob's real mail at `rob@leffect.com`. Resend
   will not send from a domain it has not verified, which is why `FROM` is on that
