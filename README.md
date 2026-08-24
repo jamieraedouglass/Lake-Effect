@@ -401,6 +401,13 @@ sitemap, `robots.txt` and the structured data ever name different hosts.
 
 `SITE_URL=https://example.com npm run build` works for a one-off.
 
+Every other spelling of the address redirects to `https://www.leffect.com`:
+`http://leffect.com`, `http://www.leffect.com` and `https://leffect.com` all
+answer 308. Anything that has to be told where the site lives, Search Console
+included, wants the `https://www` form or it will be pointed at a redirect and
+report the pages as unindexable. In Search Console a Domain property, verified
+by DNS, covers all four at once and is worth preferring to a URL prefix.
+
 The old Squarespace site has eighteen paths in its sitemap. The moment the
 domain points here, every one stops being served by Squarespace, and fifteen of
 them have no equivalent path on this site. Those are permanent redirects in
@@ -420,10 +427,6 @@ Needing someone outside this repository:
   inquiry is lost. Verify the sending domain in Resend and check the `FROM`
   address at the top of that file matches a verified sender. Nothing else on
   this list matters as much.
-- **Vercel Analytics** is tagged on every page but does nothing until it is
-  switched on under Analytics in the dashboard. Its onboarding shows React
-  instructions; ignore them, this site has no framework and the tag is already
-  in place.
 - **`LE_SHEET_WEBHOOK_URL`** is unset, so inquiries go only to email. Deploy
   `docs/inquiries-sheet.gs` and paste the web app URL in.
 - **A monthly cap in the Anthropic Console**, under Billing, Usage limits. At
