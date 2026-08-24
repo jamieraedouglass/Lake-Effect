@@ -690,5 +690,24 @@ function jpegSize(file: string): { width: number; height: number } | null {
   check('the build puts its chrome back where it found it', problems);
 }
 
+/**
+ * Google proves ownership of the domain by fetching one file and comparing it
+ * byte for byte. It ends in .html but it is not a page, and if the build ever
+ * puts a nav and a footer through it the site quietly loses its Search Console
+ * verification, which nothing else here would notice.
+ */
+{
+  const problems = [];
+  const roots = readdirSync(root).filter(name => name.endsWith('.html'));
+  const untouched = roots.filter(name => !pages.includes(name));
+  for (const name of untouched) {
+    const body = readFileSync(join(root, name), 'utf8');
+    for (const mark of ['<nav', '<footer', '<!DOCTYPE', '<script']) {
+      if (body.includes(mark)) problems.push(`${name} has had ${mark} put into it by the build`);
+    }
+  }
+  check('files that prove we own the domain are left exactly as they arrived', problems);
+}
+
 console.log(`\n${checks - failures}/${checks} checks passed\n`);
 process.exit(failures ? 1 : 0);
