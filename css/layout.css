@@ -123,7 +123,9 @@ footer {
 
 @media (max-width: 1080px) {
   nav { padding: 0 28px; }
-  .nav-links { gap: 22px; }
+  /* Five items rather than four. At the bottom of this band the centred
+     links were coming within a few pixels of the logo. */
+  .nav-links { gap: 16px; }
   footer { padding: 56px 28px 32px; }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 40px 32px; }
 }

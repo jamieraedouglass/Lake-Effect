@@ -12,6 +12,9 @@ const SIZES: Array<[RegExp, string]> = [
   // More specific first: these tie on match position with the plainer
   // patterns below, and a tie goes to whichever is listed earlier.
   // A full-width portrait is capped at 620px by .gallery figure.tall.full.
+  // Held to 340px by .gallery figure.tall.full.slender, so asking for a full
+  // width image would fetch four times the pixels it can show.
+  [/<figure class="[^"]*\bslender\b[^"]*">/, '340px'],
   [/<figure class="(?:full tall|tall full)">/, '(max-width: 860px) 100vw, 620px'],
   [/<figure class="[^"]*\bwide\b[^"]*">/, '100vw'],
   [/<figure class="[^"]*\bfull\b[^"]*">/, '100vw'],

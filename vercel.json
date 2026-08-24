@@ -115,11 +115,6 @@
       "permanent": true
     },
     {
-      "source": "/furniture",
-      "destination": "/residential",
-      "permanent": true
-    },
-    {
       "source": "/club-house-renderings",
       "destination": "/commercial",
       "permanent": true

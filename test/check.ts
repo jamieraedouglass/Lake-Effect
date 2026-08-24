@@ -625,17 +625,21 @@ function jpegSize(file: string): { width: number; height: number } | null {
  */
 {
   const problems = [];
-  // A full-width portrait keeps its own proportions, so nothing is cropped.
-  const boxRatio: Record<string, number | null> = {
-    '': 4 / 3,
-    'full': 16 / 9,
-    'tall': 3 / 4,
-    'full tall': null,
-    'wide': null,
-    'tall full': null,
+  // Read the classes as a set rather than as one exact string, so a variant
+  // like "full tall slender" is understood instead of reported as unknown.
+  // A full width portrait, and any drawing, keeps its own proportions.
+  const KNOWN = ['full', 'tall', 'wide', 'slender'];
+  const boxOf = (cls: string): number | null | undefined => {
+    const parts = cls.split(/\s+/).filter(Boolean);
+    if (parts.some(c => !KNOWN.includes(c))) return undefined;
+    if (parts.includes('wide')) return null;
+    if (parts.includes('tall') && parts.includes('full')) return null;
+    if (parts.includes('full')) return 16 / 9;
+    if (parts.includes('tall')) return 3 / 4;
+    return 4 / 3;
   };
   const figures = /<figure(?: class="([^"]*)")?>[\s\S]*?src="(\/assets\/[^"]+\.jpg)"/g;
-  for (const page of pages.filter(p => p.startsWith('projects/'))) {
+  for (const page of pages) {
     const html = read(page);
     const start = html.indexOf('<div class="gallery"');
     if (start < 0) continue;
@@ -644,7 +648,7 @@ function jpegSize(file: string): { width: number; height: number } | null {
       const cls = (m[1] ?? '').trim();
       const src = m[2] ?? '';
       seen.push(cls);
-      const box = cls in boxRatio ? boxRatio[cls] : undefined;
+      const box = boxOf(cls);
       if (box === undefined) { problems.push(`${page} ${src}: unknown figure class "${cls}"`); continue; }
       if (box === null) continue;
       const size = jpegSize(join(root, src.slice(1)));
@@ -661,8 +665,9 @@ function jpegSize(file: string): { width: number; height: number } | null {
     }
     // Figures share a row with their neighbour and are stretched to match it, so
     // a lone "tall" would drag a landscape picture into a portrait box.
-    const spans = ['full', 'full tall', 'tall full', 'wide'];
-    const halves = seen.filter(c => !spans.includes(c));
+    const spansRow = (cls: string): boolean =>
+      cls.split(/\s+/).some(c => c === 'full' || c === 'wide');
+    const halves = seen.filter(c => !spansRow(c));
     for (let i = 0; i < halves.length; i += 2) {
       if (halves[i] !== (halves[i + 1] ?? halves[i])) {
         problems.push(`${page}: a "${halves[i]}" figure shares a row with a "${halves[i + 1]}" one`);

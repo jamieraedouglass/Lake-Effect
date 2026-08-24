@@ -11,6 +11,7 @@ export const SITE_URL = process.env.SITE_URL ?? 'https://www.leffect.com';
 const NAV_ITEMS: Array<[string, string, string]> = [
   ['/residential.html', 'residential', 'Residential'],
   ['/commercial.html', 'commercial', 'Commercial'],
+  ['/furniture.html', 'furniture', 'Furniture'],
   ['/philosophy.html', 'philosophy', 'Philosophy'],
   ['/about.html', 'about', 'About'],
 ];
@@ -18,6 +19,7 @@ const NAV_ITEMS: Array<[string, string, string]> = [
 export const PAGE_KEYS: Record<string, string> = {
   'residential.html': 'residential',
   'commercial.html': 'commercial',
+  'furniture.html': 'furniture',
   'philosophy.html': 'philosophy',
   'about.html': 'about',
   'projects/ravine-residence.html': 'residential',
@@ -98,6 +100,7 @@ const TITLES: Record<string, string> = {
   'index.html': 'Lake Effect Architects',
   'residential.html': 'Residential',
   'commercial.html': 'Commercial',
+  'furniture.html': 'Furniture',
   'philosophy.html': 'Philosophy',
   'about.html': 'About',
   'contact.html': 'Contact',
@@ -120,6 +123,7 @@ const SHARE_IMAGES: Record<string, string> = {
   'index.html': 'assets/del-monte-forest-residence/exterior-approach.jpg',
   'residential.html': 'assets/ravine-residence/exterior-entry-drive.jpg',
   'commercial.html': 'assets/village-market-building/share.jpg',
+  'furniture.html': 'assets/furniture/round-dining-table.jpg',
   'philosophy.html': 'assets/ravine-residence/living-dining-kitchen.jpg',
   'about.html': 'assets/center-avenue-house/exterior-front.jpg',
   'contact.html': 'assets/del-monte-forest-residence/living-room-2.jpg',
@@ -143,6 +147,7 @@ const SHARE_NAMES: Record<string, string> = {
   '404.html': 'Page not found',
   'residential.html': 'Residential · Lake Effect Architects',
   'commercial.html': 'Commercial · Lake Effect Architects',
+  'furniture.html': 'Furniture · Lake Effect Architects',
   'philosophy.html': 'Design Philosophy · Lake Effect Architects',
   'about.html': 'About the Studio · Lake Effect Architects',
   'contact.html': 'Contact · Lake Effect Architects',

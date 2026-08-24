@@ -125,6 +125,10 @@
 /* A drawing is not a photograph. Cropping an elevation to a photographic box
    cuts the ends off the building, so a wide one runs full width at its own
    proportions. */
+/* A long case clock is nearly three times as tall as it is wide. Left at the
+   width a full portrait gets, it would run most of a screen high, so it is held
+   narrower and reads as the tall thing it is. */
+.gallery figure.tall.full.slender .shot { max-width: 340px; }
 .gallery figure.wide { grid-column: 1 / -1; }
 .gallery figure.wide .shot {
   aspect-ratio: auto; min-height: 0; align-self: start;
