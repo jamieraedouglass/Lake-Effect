@@ -65,6 +65,14 @@ On Vercel, which is what this is set up for:
    only one Vercel installs from, and the root is `"type": "module"` so the
    `api/` files load as ESM.
 
+`@types/node` is a runtime dependency rather than a dev one, which looks wrong
+until you deploy. `tsconfig.json` asks for `"types": ["node"]`, and Vercel
+compiles each file in `api/` separately after the build command has finished,
+in a context where dev dependencies are not there. It answers `TS2688: Cannot
+find type definition file for 'node'`, once per endpoint, and deploys anyway
+because that pass only transpiles. The types are erased, so nothing reaches the
+browser either way.
+
 `.env.example` lists every variable the site reads.
 
 Files in `api/` whose names begin with an underscore are private modules.
