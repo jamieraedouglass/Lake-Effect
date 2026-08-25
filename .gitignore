@@ -5,3 +5,7 @@ node_modules/
 .env.*
 !.env.example
 .vercel
+
+# Camera originals waiting to be sized and placed. Kept out of the repo so
+# twenty-odd megabytes of unused photographs do not ship with the site.
+incoming/

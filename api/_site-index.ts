@@ -553,6 +553,15 @@ export const sections: Section[] = [
   {
     "page": "projects/ravine-residence.html",
     "pageTitle": "Project · The Ravine Residence",
+    "anchor": "the-garden-side",
+    "href": "/projects/ravine-residence.html#the-garden-side",
+    "eyebrow": "Exterior",
+    "heading": "The garden side",
+    "text": "Exterior The garden side The garden side. The eave runs the length of the house and the glass runs up to meet it. The terrace the living room opens onto. The chimney brick is the one warm material on this elevation."
+  },
+  {
+    "page": "projects/ravine-residence.html",
+    "pageTitle": "Project · The Ravine Residence",
     "anchor": "one-room-end-to-end",
     "href": "/projects/ravine-residence.html#one-room-end-to-end",
     "eyebrow": "Interior",
