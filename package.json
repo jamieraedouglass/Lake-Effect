@@ -16,7 +16,8 @@
     "verify": "npm run typecheck && node test/check.ts",
     "test": "npm run verify",
     "build:avif": "node scripts/build-avif.ts",
-    "check:mail": "node scripts/check-mail.ts"
+    "check:mail": "node scripts/check-mail.ts",
+    "check:assets": "node scripts/check-assets.ts"
   },
   "author": "Jamie Douglass",
   "license": "MIT",
