@@ -20,6 +20,11 @@ const PAGE_TITLES: Record<string, string> = {
   'projects/center-avenue-house.html': 'Project · The Center Avenue House',
   'projects/havenwood-residence.html': 'Project · The Havenwood Residence',
   'projects/woodland-meadow-residence.html': 'Project · The Woodland Meadow Residence',
+  'projects/english-cottage-residence.html': 'Project · The English Cottage Residence',
+  'projects/catskill-lodge.html': 'Project · The Catskill Lodge',
+  'projects/prairie-residence.html': 'Project · The Prairie Residence',
+  'projects/mayflower-residence.html': 'Project · The Mayflower Residence',
+  'projects/moffett-cottage.html': 'Project · The Moffett Cottage',
   'privacy.html': 'Privacy',
   'terms.html': 'Terms of Use',
 };

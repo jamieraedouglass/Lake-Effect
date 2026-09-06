@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { pages as sitePages } from './pages.ts';
-import { SMALL_WIDTH, smallName } from './build-images.ts';
+import { smallName, pixelSize } from './build-images.ts';
 import { avifName } from './build-avif.ts';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -57,6 +57,7 @@ let touched = 0;
 let tagged = 0;
 let withAvif = 0;
 const missing: string[] = [];
+const unreadable: string[] = [];
 
 for (const page of pages) {
   const path = join(root, page);
@@ -86,6 +87,13 @@ for (const page of pages) {
     const width = Number(tag.match(/width="(\d+)"/)?.[1] ?? 0);
     if (!width) return tag;
 
+    // What the small file actually came out at, not what it was asked for.
+    // `sips -Z` fits the longest edge, so a portrait one is around 600px wide
+    // and describing it as 800w had browsers pick it for slots it cannot fill.
+    // Its avif twin is made from it and shares the width.
+    const smallWidth = pixelSize(join(root, small))?.width;
+    if (!smallWidth) { unreadable.push(`${page}: ${small}`); return tag; }
+
     tagged++;
     // Indent to wherever the tag already sits, so a block written by hand at
     // one depth does not come back from the build at another.
@@ -107,11 +115,11 @@ for (const page of pages) {
     const attr = `${imgPad} `;
     const body = tag.replace(/\n[ \t]*/g, `\n${attr}`);
     const jpeg = body.replace(/>$/,
-      `\n${attr}srcset="/${small} ${SMALL_WIDTH}w, /${src} ${width}w"\n${attr}sizes="${sizes}">`);
+      `\n${attr}srcset="/${small} ${smallWidth}w, /${src} ${width}w"\n${attr}sizes="${sizes}">`);
     if (!wrap) return jpeg;
 
     withAvif++;
-    return `<picture>\n${imgPad}<source type="image/avif"\n${attr}srcset="/${avifSmall} ${SMALL_WIDTH}w, /${avifFull} ${width}w"\n${attr}sizes="${sizes}">\n${imgPad}${jpeg}\n${pad}</picture>`;
+    return `<picture>\n${imgPad}<source type="image/avif"\n${attr}srcset="/${avifSmall} ${smallWidth}w, /${avifFull} ${width}w"\n${attr}sizes="${sizes}">\n${imgPad}${jpeg}\n${pad}</picture>`;
   });
 
   // The hero is the largest paint on the page, so tell the browser about it
@@ -134,5 +142,9 @@ console.log(`srcset on ${tagged} images (${withAvif} with avif) across ${touched
 if (missing.length) {
   console.log('no sizes rule matched:');
   for (const m of missing) console.log(`  ${m}`);
-  process.exit(1);
 }
+if (unreadable.length) {
+  console.log('could not read a width off:');
+  for (const m of unreadable) console.log(`  ${m}`);
+}
+if (missing.length || unreadable.length) process.exit(1);

@@ -1,5 +1,5 @@
 {
-  "builtFrom": "13 pages",
+  "builtFrom": "18 pages",
   "sections": [
     {
       "page": "about.html",
@@ -245,6 +245,42 @@
       "text": "Last updated 22 August 2026 Who we are Lake Effect Architects, Inc., an architecture practice based in Lake Bluff, Illinois. If you want to reach us about anything on this page, email rob@leffect.com or call 847.987.1000. What we collect Only what you type into the inquiry form on the contact page: Your name and email address Your phone number, if you give one The project type, location and budget range you select Whatever you write in the message field We use it to answer you and, if the project goes ahead, to run it. We do not sell it, rent it, or send you marketing you did not ask for. What we do not collect This site sets no cookies and stores nothing in your browser. There is no advertising, no tracking pixels, no account to create, and nothing that follows you to other sites. We do count which pages get opened, which is described below, and that count cannot be traced back to you. Third parties A few services see something when you use this site: Our host serves the pages and keeps standard server logs, which include IP addresses. Our host also counts page visits for us: which pages were opened, roughly which country the request came from, and which site linked here. It sets no cookie, builds no profile, and cannot identify you. Google Fonts serves the two typefaces. Your browser requests them from Google, which means Google receives your IP address. Nothing else is sent. Anthropic receives the text of any question you type into the Ask panel, in order to answer it. Do not put personal or confidential information into that box; use the inquiry form or email instead. Inquiries submitted through the form are delivered to us by email through our email provider, and are also written to a private spreadsheet we keep, so that a message is not lost if an email fails to arrive. Nobody outside the practice has access to it. How long we keep it Inquiry emails stay in our mail account, and a copy stays in the spreadsheet. Correspondence and records for projects we take on are kept as long as we need them for the work and for our professional and insurance obligations afterwards. Your choices Ask us for a copy of what we hold about you, ask us to correct it, or ask us to delete it, and we will. Email rob@leffect.com . If deleting something would leave us unable to meet a legal or professional obligation, we will tell you which part we have to keep and why. Children This site is not directed at children and we do not knowingly collect information from them. Changes If this page changes we will update the date at the top. There is no mailing list to notify, because we do not keep one. This page is written in plain language rather than legal boilerplate, and describes what the site actually does. It has not been reviewed by a lawyer. If the practice starts collecting anything beyond the inquiry form, or takes on clients in a jurisdiction with its own requirements, have it reviewed."
     },
     {
+      "page": "projects/catskill-lodge.html",
+      "pageTitle": "Project · The Catskill Lodge",
+      "anchor": "catskill-lodge",
+      "href": "/projects/catskill-lodge.html#catskill-lodge",
+      "eyebrow": "",
+      "heading": "The Catskill Lodge",
+      "text": "Residential · Timber Frame The Catskill Lodge Catskill Mountains, New York. A weekend house built around the one already standing on the site, and turned to face Hunter Mountain through a south wall of glass. Scope Addition & Renovation Use Weekend retreat Outlook Hunter Mountain From New York 2½ hours"
+    },
+    {
+      "page": "projects/catskill-lodge.html",
+      "pageTitle": "Project · The Catskill Lodge",
+      "anchor": "the-project",
+      "href": "/projects/catskill-lodge.html#the-project",
+      "eyebrow": "The project",
+      "heading": "",
+      "text": "The project Located in the Catskill Mountains, approximately two and one-half hours from New York City, this weekend retreat was designed to capture expansive views of Hunter Mountain. Constructed over an existing structure, the residence was conceived as a “house within a house,” allowing the new building envelope to incorporate and transform the original dwelling. The vaulted living space and its south-facing wall of glass contribute to the home's passive environmental strategy. During the winter months, the space acts as a solar collector, while a heat pump distributes conditioned air throughout the house. In summer, a two-foot roof overhang shades the glazing, limiting direct solar gain while preserving views of the surrounding mountain landscape."
+    },
+    {
+      "page": "projects/catskill-lodge.html",
+      "pageTitle": "Project · The Catskill Lodge",
+      "anchor": "site",
+      "href": "/projects/catskill-lodge.html#site",
+      "eyebrow": "Site",
+      "heading": "Along the slope, not across it",
+      "text": "Site Along the slope, not across it Site plan The footprint holds to one line along the contours, and the existing trees are kept right up against it on the wooded sides. Only the side with the view is cleared. Click to enlarge."
+    },
+    {
+      "page": "projects/catskill-lodge.html",
+      "pageTitle": "Project · The Catskill Lodge",
+      "anchor": "inside",
+      "href": "/projects/catskill-lodge.html#inside",
+      "eyebrow": "Interior",
+      "heading": "A room that collects the sun",
+      "text": "Interior A room that collects the sun In winter the glass is doing the heating; in summer the two-foot overhang above it is doing the shading. Neither season costs the room its view, which is the whole reason the house is where it is. More residential work New houses, renovations and additions across the North Shore and beyond. All residential → Working with the house you have? An addition can leave the original building inside it rather than beside it. Get in touch and we'll start with what is worth keeping. Start a conversation →"
+    },
+    {
       "page": "projects/center-avenue-house.html",
       "pageTitle": "Project · The Center Avenue House",
       "anchor": "center-avenue-house",
@@ -398,6 +434,42 @@
       "text": "Planning something on a difficult site? Slopes, trees and view corridors tend to set the plan before anything else does. Get in touch and we'll walk it with you. Start a conversation →"
     },
     {
+      "page": "projects/english-cottage-residence.html",
+      "pageTitle": "Project · The English Cottage Residence",
+      "anchor": "english-cottage-residence",
+      "href": "/projects/english-cottage-residence.html#english-cottage-residence",
+      "eyebrow": "",
+      "heading": "The English Cottage Residence",
+      "text": "Residential · Traditional The English Cottage Residence Lake Forest, Illinois. A new house on a half-acre lot in the east of the village, built to the grain of a street that was laid out a century before it. Area ≈ 3,800 sq ft Accommodation 4 bed, study Scope New Construction Site Half an acre, East Lake Forest"
+    },
+    {
+      "page": "projects/english-cottage-residence.html",
+      "pageTitle": "Project · The English Cottage Residence",
+      "anchor": "the-project",
+      "href": "/projects/english-cottage-residence.html#the-project",
+      "eyebrow": "The project",
+      "heading": "",
+      "text": "The project Located on a half-acre site in East Lake Forest, this 3,800 square foot English Cottage style residence is thoughtfully integrated into the established architectural character of the neighbourhood. The design draws upon the traditions of early twentieth-century residential architecture while accommodating the needs of contemporary family life. At the heart of the first floor is a generous kitchen adjoining the family room, creating an open and inviting setting for everyday living. The main level also includes a living room and study, a formal dining room, and a light-filled sun room. The second floor is organised around a primary suite and three additional bedrooms."
+    },
+    {
+      "page": "projects/english-cottage-residence.html",
+      "pageTitle": "Project · The English Cottage Residence",
+      "anchor": "plans",
+      "href": "/projects/english-cottage-residence.html#plans",
+      "eyebrow": "Plans",
+      "heading": "Where the rooms sit",
+      "text": "Plans Where the rooms sit First floor The garage, porch and laundry make one route in from the drive, which leaves the foyer to be a front door rather than a back one. Click to enlarge. Second floor Four bedrooms and a study off a single landing, with the primary suite and its bath held to their own end of it. Click to enlarge."
+    },
+    {
+      "page": "projects/english-cottage-residence.html",
+      "pageTitle": "Project · The English Cottage Residence",
+      "anchor": "inside",
+      "href": "/projects/english-cottage-residence.html#inside",
+      "eyebrow": "Interior",
+      "heading": "The heart of the first floor",
+      "text": "Interior The heart of the first floor The island runs almost the length of the room, which is what lets the working side of the kitchen and the sitting side of it share the same counter. The ceiling follows the gable instead of cutting across it, so the room is as tall as the roof over it allows. The one dark room in the house, and the only one kept for a single use. It faces the deck through three windows and reads as an evening room rather than a daytime one. The living room doubles as the study, which is why it sits straight off the foyer rather than beyond the family room. Glazed on three sides and floored in tile, which is what makes it usable in February as well as in June. More residential work New houses, renovations and additions across the North Shore. All residential → Building among older houses? A new house on a settled street has to answer to the ones already on it. Get in touch and we'll start with what is there. Start a conversation →"
+    },
+    {
       "page": "projects/forest-cove-residence.html",
       "pageTitle": "projects/forest-cove-residence.html",
       "anchor": "forest-cove-residence",
@@ -524,6 +596,105 @@
       "text": "Interior Light from above the roofline The central volume is taller than the two beside it, which leaves room for a clerestory on all four sides. The light arrives from above the rooms next door rather than through them. The upper hall is open to the room below on one side and glazed on the other two. More residential work New houses, renovations and additions across the North Shore. All residential → Building where everyone can see? A house on a course or a lake is on show from one side and wants privacy on the other. Get in touch and we'll work out which side is which. Start a conversation →"
     },
     {
+      "page": "projects/mayflower-residence.html",
+      "pageTitle": "Project · The Mayflower Residence",
+      "anchor": "mayflower-residence",
+      "href": "/projects/mayflower-residence.html#mayflower-residence",
+      "eyebrow": "",
+      "heading": "The Mayflower Residence",
+      "text": "Residential · Georgian The Mayflower Residence Lake Forest, Illinois. A whole-house renovation of a Georgian residence of 1995, which gave the front a portico to stand under and rebuilt the garage wing so that it belongs to the house beside it. Area ≈ 14,000 sq ft Built 1995 Scope Renovation Added Portico, library, wine cellar, porch"
+    },
+    {
+      "page": "projects/mayflower-residence.html",
+      "pageTitle": "Project · The Mayflower Residence",
+      "anchor": "the-project",
+      "href": "/projects/mayflower-residence.html#the-project",
+      "eyebrow": "The project",
+      "heading": "",
+      "text": "The project The original 14,000 square foot residence was constructed in 1995. Following its acquisition by new owners, we performed an extensive renovation to transform both the interior and exterior of the home. The interior programme included relocating the primary suite to the second floor, as well as creating a wood-panelled library, a wine cellar with an adjoining tasting room, and a new family room and kitchen. A screened porch was added adjacent to the kitchen, extending the living spaces into the landscape. On the front elevation, the garage wing was redesigned to establish a stronger architectural relationship with the main body of the house. A new entrance portico was also introduced to provide a more gracious sense of arrival while visually moderating the residence's substantial vertical scale. Collectively, these interventions reinforce the home's Georgian character and unify its two wings into a more cohesive architectural composition."
+    },
+    {
+      "page": "projects/mayflower-residence.html",
+      "pageTitle": "Project · The Mayflower Residence",
+      "anchor": "the-front",
+      "href": "/projects/mayflower-residence.html#the-front",
+      "eyebrow": "The Front",
+      "heading": "Before, and after",
+      "text": "The Front Before, and after Before. The centre of the house was flat against the wall, so two full storeys of brick met you at the door with nothing in front of them. The wing beside it was stucco over a carriage arch: a second building that happened to be attached to the first. After. The portico gives the front a middle and puts something between you and the height of it. The wing is rebuilt in the same brick, with the dormers and the slate carried across, so the two halves read as one house rather than two. More residential work New houses, renovations and additions across the North Shore. All residential → A large house that reads as two? Wings added at different moments rarely agree with each other. Get in touch and we'll look at what it would take to make them one building. Start a conversation →"
+    },
+    {
+      "page": "projects/moffett-cottage.html",
+      "pageTitle": "Project · The Moffett Cottage",
+      "anchor": "moffett-cottage",
+      "href": "/projects/moffett-cottage.html#moffett-cottage",
+      "eyebrow": "",
+      "heading": "The Moffett Cottage",
+      "text": "Residential · English Cottage The Moffett Cottage Lake Bluff, Illinois. A new house raised on the foundation of a 1950s ranch, stucco from the ground to the gables, standing where the road comes into the east side of the village. Scope New house on an existing foundation Accommodation 4 bed, primary on the ground floor Walls Stucco throughout Setting East Lake Bluff"
+    },
+    {
+      "page": "projects/moffett-cottage.html",
+      "pageTitle": "Project · The Moffett Cottage",
+      "anchor": "the-project",
+      "href": "/projects/moffett-cottage.html#the-project",
+      "eyebrow": "The project",
+      "heading": "",
+      "text": "The project Built on the foundation of a 1950s ranch, this new house in the English Cottage style tradition is finished in stucco throughout, and warmly addresses the southern entry point into east Lake Bluff. The house has a ground floor primary bedroom, a gourmet kitchen and a family room, with three bedrooms on the second floor."
+    },
+    {
+      "page": "projects/moffett-cottage.html",
+      "pageTitle": "Project · The Moffett Cottage",
+      "anchor": "outside",
+      "href": "/projects/moffett-cottage.html#outside",
+      "eyebrow": "Exterior",
+      "heading": "The same front, in February",
+      "text": "Exterior The same front, in February Stucco is carried over every wall and every gable, and the only colour on the house is in the shutters and the edge of the eaves. Under snow it comes down to very nearly its outline, which is a fair test of whether the shapes were right. More residential work New houses, renovations and additions across the North Shore. All residential → Keeping a foundation, losing the house? An old foundation is sometimes worth more than the building standing on it. Get in touch and we'll find out what yours will carry. Start a conversation →"
+    },
+    {
+      "page": "projects/prairie-residence.html",
+      "pageTitle": "Project · The Prairie Residence",
+      "anchor": "prairie-residence",
+      "href": "/projects/prairie-residence.html#prairie-residence",
+      "eyebrow": "",
+      "heading": "The Prairie Residence",
+      "text": "Residential · Contemporary The Prairie Residence Lake Bluff, Illinois. An office and library added to a house of 1988, glazed on three sides so that most of what encloses the room is the fifteen acres around it. Scope Addition Built 1988 Site 15-acre prairie Added Office, library and roof deck"
+    },
+    {
+      "page": "projects/prairie-residence.html",
+      "pageTitle": "Project · The Prairie Residence",
+      "anchor": "the-project",
+      "href": "/projects/prairie-residence.html#the-project",
+      "eyebrow": "The project",
+      "heading": "",
+      "text": "The project The original residence was constructed in 1988 on a 15-acre prairie framed by mature stands of oak trees. The addition was designed to provide the owner with a new office and library adjacent to the family room and kitchen. The primary objective was to create a highly transparent space that would establish a strong visual connection to the surrounding landscape. Upon entering from the kitchen, the view is directed toward a terra-cotta-coloured feature wall, where a sculpture provides a carefully composed focal point. Within the office, floor-to-ceiling glazing on three sides creates an immersive connection to the prairie. A second-floor viewing deck extends the living space outdoors and offers expansive views across the surrounding landscape."
+    },
+    {
+      "page": "projects/prairie-residence.html",
+      "pageTitle": "Project · The Prairie Residence",
+      "anchor": "plans",
+      "href": "/projects/prairie-residence.html#plans",
+      "eyebrow": "Plans",
+      "heading": "Books on one wall, glass on the others",
+      "text": "Plans Books on one wall, glass on the others First floor, and the deck above One wall carries the bookcases and the sculpture; the others are glass, with the deck running outside them. The smaller drawing above is the deck on the roof. Click to enlarge."
+    },
+    {
+      "page": "projects/prairie-residence.html",
+      "pageTitle": "Project · The Prairie Residence",
+      "anchor": "outside",
+      "href": "/projects/prairie-residence.html#outside",
+      "eyebrow": "Exterior",
+      "heading": "A glass room in tall grass",
+      "text": "Exterior A glass room in tall grass The prairie is allowed to come right up to the glass. Nothing is mown between the room and the fifteen acres it was built to look at."
+    },
+    {
+      "page": "projects/prairie-residence.html",
+      "pageTitle": "Project · The Prairie Residence",
+      "anchor": "inside",
+      "href": "/projects/prairie-residence.html#inside",
+      "eyebrow": "Interior",
+      "heading": "Three sides of prairie",
+      "text": "Interior Three sides of prairie Coming in from the kitchen, the wall opposite is the one surface in the room that is not glass. That is why the sculpture stands against it, and why the wall is the colour it is. More residential work New houses, renovations and additions across the North Shore. All residential → Adding on to a house that works? An addition does not have to argue with the house it joins. Get in touch and we'll start with what the original already does well. Start a conversation →"
+    },
+    {
       "page": "projects/ravine-residence.html",
       "pageTitle": "Project · The Ravine Residence",
       "anchor": "ravine-residence",
@@ -557,7 +728,16 @@
       "href": "/projects/ravine-residence.html#the-garden-side",
       "eyebrow": "Exterior",
       "heading": "The garden side",
-      "text": "Exterior The garden side The garden side. The eave runs the length of the house and the glass runs up to meet it. The terrace the living room opens onto. The chimney brick is the one warm material on this elevation."
+      "text": "Exterior The garden side The garden side. The eave runs the length of the house and the glass runs up to meet it. The terrace the living room opens onto. The chimney brick is the one warm material on this elevation. Looking back along the garden side. A rain chain takes the water off the eave down into a bed of gravel."
+    },
+    {
+      "page": "projects/ravine-residence.html",
+      "pageTitle": "Project · The Ravine Residence",
+      "anchor": "screened-on-three-sides",
+      "href": "/projects/ravine-residence.html#screened-on-three-sides",
+      "eyebrow": "Porch",
+      "heading": "Screened on three sides",
+      "text": "Porch Screened on three sides The seating end of the porch. With screens rather than glass on three sides, the woodland is the wall. The other end takes a table. The screen door opens onto the lawn and the terrace."
     },
     {
       "page": "projects/ravine-residence.html",

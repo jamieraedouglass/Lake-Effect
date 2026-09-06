@@ -4,6 +4,7 @@ import { execFileSync } from 'node:child_process';
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { pages as sitePages } from '../scripts/pages.ts';
+import { pixelSize } from '../scripts/build-images.ts';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const pages = sitePages();
@@ -531,6 +532,46 @@ check('every class used has a matching rule', problems);
   check('responsive images resolve', problems);
 }
 
+/**
+ * A `w` descriptor is taken on trust: the browser picks a candidate by what it
+ * is told, and only then finds out how wide the file really is. `sips -Z` fits
+ * the longest edge, so the "800px" variant of a portrait photograph comes back
+ * about 600px wide. The build quoted the width it had asked for rather than the
+ * width it got, and twelve portraits across the site were offered to browsers
+ * as 800w files that could only ever fill 600, and were upscaled to fit.
+ */
+{
+  /** The width an AVIF declares in its image spatial extents box. */
+  const avifWidth = (bytes: Buffer): number | null => {
+    const at = bytes.indexOf('ispe', 0, 'latin1');
+    // Four bytes of version and flags sit between the box type and the width.
+    return at < 0 ? null : bytes.readUInt32BE(at + 8);
+  };
+  const widthOf = (file: string): number | null => /\.avif$/i.test(file)
+    ? avifWidth(readFileSync(file))
+    : pixelSize(file)?.width ?? null;
+
+  const problems = [];
+  for (const page of pages) {
+    // imagesrcset, on the hero preload, has to agree with the markup it preloads.
+    for (const set of read(page).matchAll(/(?:image)?srcset="([^"]+)"/g)) {
+      for (const candidate of (set[1] ?? '').split(',')) {
+        const [url, descriptor] = candidate.trim().split(/\s+/);
+        if (!url || !descriptor?.endsWith('w')) continue;
+        const file = join(root, url.replace(/^\//, ''));
+        // A missing file is already reported as a missing file.
+        if (!existsSync(file)) continue;
+        const real = widthOf(file);
+        if (real === null) { problems.push(`${page}: no width readable off ${url}`); continue; }
+        if (real !== Number(descriptor.slice(0, -1))) {
+          problems.push(`${page}: ${url} is offered as ${descriptor} but is ${real}w`);
+        }
+      }
+    }
+  }
+  check('every srcset describes a file at the width it really is', problems);
+}
+
 {
   const problems = [];
   const drafts = pages.filter(p => /\bTODO\b/.test(read(p)));
@@ -599,25 +640,6 @@ check('every class used has a matching rule', problems);
 
 
 /**
- * The width and height a JPEG declares in its frame header.
- */
-function jpegSize(file: string): { width: number; height: number } | null {
-  const d = readFileSync(file);
-  let i = 2;
-  while (i + 9 < d.length) {
-    if (d[i] !== 0xff) { i++; continue; }
-    const marker = d[i + 1] ?? 0;
-    // Start-of-frame markers carry the dimensions; SOI, EOI and RSTn have no length.
-    if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) {
-      return { height: d.readUInt16BE(i + 5), width: d.readUInt16BE(i + 7) };
-    }
-    if (marker === 0xd8 || marker === 0xd9 || (marker >= 0xd0 && marker <= 0xd7)) { i += 2; continue; }
-    i += 2 + d.readUInt16BE(i + 2);
-  }
-  return null;
-}
-
-/**
  * A gallery box crops whatever does not fit it. A portrait photograph dropped
  * into a landscape box loses half the building, which is how three of them sat
  * on the site for a while. Each class implies a shape, so the shape of the
@@ -651,8 +673,8 @@ function jpegSize(file: string): { width: number; height: number } | null {
       const box = boxOf(cls);
       if (box === undefined) { problems.push(`${page} ${src}: unknown figure class "${cls}"`); continue; }
       if (box === null) continue;
-      const size = jpegSize(join(root, src.slice(1)));
-      if (!size) { problems.push(`${page} ${src}: no readable jpeg header`); continue; }
+      const size = pixelSize(join(root, src.slice(1)));
+      if (!size) { problems.push(`${page} ${src}: no readable image header`); continue; }
       const ratio = size.width / size.height;
       const shown = ratio > box ? box / ratio : ratio / box;
       const lost = Math.round((1 - shown) * 100);

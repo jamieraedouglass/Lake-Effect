@@ -28,15 +28,24 @@ export const PAGE_KEYS: Record<string, string> = {
   'projects/woodland-meadow-residence.html': 'residential',
   'projects/del-monte-forest-residence.html': 'residential',
   'projects/cottage-residence.html': 'residential',
+  'projects/english-cottage-residence.html': 'residential',
+  'projects/catskill-lodge.html': 'residential',
+  'projects/prairie-residence.html': 'residential',
+  'projects/mayflower-residence.html': 'residential',
+  'projects/moffett-cottage.html': 'residential',
   'projects/links-residence.html': 'residential',
   'projects/forest-cove-residence.html': 'residential',
   'projects/village-market-building.html': 'commercial',
   'projects/village-commons.html': 'commercial',
 };
 
+// 154x52 is the box the logo actually occupies: the file is 340x115, and
+// .nav-logo-img holds it to 52px tall with the width left to follow. The 180
+// it claimed before was a wider box than it ever fills, so the space reserved
+// for it before it loaded was the wrong shape.
 const nav = (active: string | null): string => `<nav id="main-nav">
   <a class="nav-logo" href="/">
-    <img src="/brand/logo.svg" alt="Lake Effect Architects" class="nav-logo-img" width="180" height="52">
+    <img src="/brand/logo.svg" alt="Lake Effect Architects" class="nav-logo-img" width="154" height="52">
   </a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -113,6 +122,11 @@ const TITLES: Record<string, string> = {
   'projects/havenwood-residence.html': 'The Havenwood Residence',
   'projects/woodland-meadow-residence.html': 'The Woodland Meadow Residence',
   'projects/cottage-residence.html': 'The Cottage Residence',
+  'projects/english-cottage-residence.html': 'The English Cottage Residence',
+  'projects/catskill-lodge.html': 'The Catskill Lodge',
+  'projects/prairie-residence.html': 'The Prairie Residence',
+  'projects/mayflower-residence.html': 'The Mayflower Residence',
+  'projects/moffett-cottage.html': 'The Moffett Cottage',
   'projects/links-residence.html': 'The Links Residence',
   'projects/forest-cove-residence.html': 'The Forest Cove Residence',
   'projects/village-market-building.html': 'The Village Market Building',
@@ -138,6 +152,11 @@ const SHARE_IMAGES: Record<string, string> = {
   'projects/havenwood-residence.html': 'assets/havenwood-residence/exterior-southeast.jpg',
   'projects/woodland-meadow-residence.html': 'assets/woodland-meadow-residence/exterior-front.jpg',
   'projects/cottage-residence.html': 'assets/cottage-residence/exterior-front.jpg',
+  'projects/english-cottage-residence.html': 'assets/english-cottage-residence/exterior-front.jpg',
+  'projects/catskill-lodge.html': 'assets/catskill-lodge/exterior-south.jpg',
+  'projects/prairie-residence.html': 'assets/prairie-residence/exterior-prairie.jpg',
+  'projects/mayflower-residence.html': 'assets/mayflower-residence/exterior-front.jpg',
+  'projects/moffett-cottage.html': 'assets/moffett-cottage/exterior-street.jpg',
   'projects/links-residence.html': 'assets/links-residence/exterior-south.jpg',
   'projects/forest-cove-residence.html': 'assets/forest-cove-residence/exterior-front.jpg',
 };
@@ -161,6 +180,11 @@ const SHARE_NAMES: Record<string, string> = {
   'projects/havenwood-residence.html': 'The Havenwood Residence, Lake Forest · Lake Effect Architects',
   'projects/woodland-meadow-residence.html': 'The Woodland Meadow Residence, Lake Forest · Lake Effect Architects',
   'projects/cottage-residence.html': 'The Cottage Residence, Lake Bluff · Lake Effect Architects',
+  'projects/english-cottage-residence.html': 'The English Cottage Residence, Lake Forest · Lake Effect Architects',
+  'projects/catskill-lodge.html': 'The Catskill Lodge, Catskill Mountains · Lake Effect Architects',
+  'projects/prairie-residence.html': 'The Prairie Residence, Lake Bluff · Lake Effect Architects',
+  'projects/mayflower-residence.html': 'The Mayflower Residence, Lake Forest · Lake Effect Architects',
+  'projects/moffett-cottage.html': 'The Moffett Cottage, Lake Bluff · Lake Effect Architects',
   'projects/links-residence.html': 'The Links Residence, Lake Forest · Lake Effect Architects',
   'projects/forest-cove-residence.html': 'The Forest Cove Residence, Lake Bluff · Lake Effect Architects',
 };

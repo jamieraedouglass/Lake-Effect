@@ -1,4 +1,4 @@
-import { readdirSync, statSync, existsSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { join, dirname, resolve, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -21,9 +21,35 @@ function haveSips(): boolean {
   }
 }
 
+/**
+ * The size a JPEG or PNG declares in its own header.
+ *
+ * Worth reading rather than assuming, because `sips -Z` fits the longest edge:
+ * a portrait original comes back about 600px wide, not 800. Anything that
+ * quotes a width to a browser has to take it off the file.
+ */
+export function pixelSize(file: string): { width: number; height: number } | null {
+  const d = readFileSync(file);
+  // PNG carries width and height in the IHDR box, at a fixed offset.
+  if (d.length > 24 && d.readUInt32BE(0) === 0x89504e47) {
+    return { width: d.readUInt32BE(16), height: d.readUInt32BE(20) };
+  }
+  let i = 2;
+  while (i + 9 < d.length) {
+    if (d[i] !== 0xff) { i++; continue; }
+    const marker = d[i + 1] ?? 0;
+    // Start-of-frame markers carry the dimensions; SOI, EOI and RSTn have no length.
+    if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) {
+      return { height: d.readUInt16BE(i + 5), width: d.readUInt16BE(i + 7) };
+    }
+    if (marker === 0xd8 || marker === 0xd9 || (marker >= 0xd0 && marker <= 0xd7)) { i += 2; continue; }
+    i += 2 + d.readUInt16BE(i + 2);
+  }
+  return null;
+}
+
 function widthOf(file: string): number {
-  const out = execFileSync('sips', ['-g', 'pixelWidth', file], { encoding: 'utf8' });
-  return Number(out.match(/pixelWidth: (\d+)/)?.[1] ?? 0);
+  return pixelSize(file)?.width ?? 0;
 }
 
 export function listOriginals(): string[] {
