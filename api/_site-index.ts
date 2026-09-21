@@ -31,6 +31,15 @@ export const sections: Section[] = [
   {
     "page": "about.html",
     "pageTitle": "About the Studio",
+    "anchor": "career",
+    "href": "/about.html#career",
+    "eyebrow": "Career",
+    "heading": "Forty years, in order",
+    "text": "Career Forty years, in order Professional experience 1996 – present President Lake Effect Architects, Inc. · Lake Bluff, Illinois 2008 – 2025 Managing Partner Lake Effect Holdings, LLC and Lake Effect Properties, LLC · Lake Bluff, Illinois 1996 – 2002 Vice President Rideway Builders, Inc. · Lake Forest, Illinois 1992 – 1996 Vice President, Residential Development & Marketing Conway Farms · Lake Forest, Illinois 1990 – 1992 Senior Associate Architect Eifler & Associates · Chicago 1989 – 1990 Associate Architect Booth/Hansen & Associates Ltd. · Chicago 1988 Intern Architect Skidmore, Owings & Merrill · Chicago 1987 Intern Architect Tigerman, Fugman, McCurry · Chicago 1982 – 1986 R.D. Renovation, Inc. Minneapolis, Minnesota Education 1989 Master of Architecture University of Illinois at Chicago 1979 Bachelor of Arts Macalester College · St Paul, Minnesota Licence and affiliations 1992 – present Licensed Architect State of Illinois 2012 – 2016 President Lake Forest & Lake Bluff History Center 2009 – 2019 Commissioner, then President Lake Bluff Park District"
+  },
+  {
+    "page": "about.html",
+    "pageTitle": "About the Studio",
     "anchor": "process",
     "href": "/about.html#process",
     "eyebrow": "",
@@ -468,6 +477,51 @@ export const sections: Section[] = [
     "eyebrow": "Interior",
     "heading": "The heart of the first floor",
     "text": "Interior The heart of the first floor The island runs almost the length of the room, which is what lets the working side of the kitchen and the sitting side of it share the same counter. The ceiling follows the gable instead of cutting across it, so the room is as tall as the roof over it allows. The one dark room in the house, and the only one kept for a single use. It faces the deck through three windows and reads as an evening room rather than a daytime one. The living room doubles as the study, which is why it sits straight off the foyer rather than beyond the family room. Glazed on three sides and floored in tile, which is what makes it usable in February as well as in June. More residential work New houses, renovations and additions across the North Shore. All residential → Building among older houses? A new house on a settled street has to answer to the ones already on it. Get in touch and we'll start with what is there. Start a conversation →"
+  },
+  {
+    "page": "projects/english-tudor-residence.html",
+    "pageTitle": "Project · The English Tudor Residence",
+    "anchor": "english-tudor-residence",
+    "href": "/projects/english-tudor-residence.html#english-tudor-residence",
+    "eyebrow": "",
+    "heading": "The English Tudor Residence",
+    "text": "Residential · Tudor The English Tudor Residence Lake Forest, Illinois. A house of 1926, extended at one end by a storey and a half, so that the new rooms belong to the old composition rather than hanging off it. Scope Addition Built 1926 Added ≈ 1,800 sq ft Storeys One and a half"
+  },
+  {
+    "page": "projects/english-tudor-residence.html",
+    "pageTitle": "Project · The English Tudor Residence",
+    "anchor": "the-project",
+    "href": "/projects/english-tudor-residence.html#the-project",
+    "eyebrow": "The project",
+    "heading": "",
+    "text": "The project Located in East Lake Forest, this English Tudor style residence was originally constructed in 1926. The homeowners sought to expand the residence with an approximately 1,800 square foot, one-and-a-half storey addition at the west end of the existing house. The addition includes a family room, mudroom, new kitchen, third garage bay, primary bedroom suite, and an observatory room at the top of the stairs. The design was carefully developed to integrate seamlessly with the original residence, complementing its architectural character, materials and picturesque composition."
+  },
+  {
+    "page": "projects/english-tudor-residence.html",
+    "pageTitle": "Project · The English Tudor Residence",
+    "anchor": "plans",
+    "href": "/projects/english-tudor-residence.html#plans",
+    "eyebrow": "Plans",
+    "heading": "Where the house was extended",
+    "text": "Plans Where the house was extended First floor The heavy walls are the new ones. The family room, mudroom and kitchen take the end of the house, with the third garage bay beyond them and a round stair at the join. Click to enlarge. Second floor The primary suite sits over the new rooms below, and the stair keeps going to the observatory at the top of it. Click to enlarge."
+  },
+  {
+    "page": "projects/english-tudor-residence.html",
+    "pageTitle": "Project · The English Tudor Residence",
+    "anchor": "massing",
+    "href": "/projects/english-tudor-residence.html#massing",
+    "eyebrow": "Massing",
+    "heading": "The tower at the join",
+    "text": "Massing The tower at the join The whole house from above. The tower stands where old meets new, and the glass dome on top of it is the observatory: the room the stair was built to arrive at."
+  },
+  {
+    "page": "projects/english-tudor-residence.html",
+    "pageTitle": "Project · The English Tudor Residence",
+    "anchor": "the-front",
+    "href": "/projects/english-tudor-residence.html#the-front",
+    "eyebrow": "Exterior",
+    "heading": "Before, and after",
+    "text": "Exterior Before, and after Before. The house ended in a gable with a balcony over the garage: a proper end, but an end, with nowhere for a family room and kitchen to go. After. The tower takes the join, so the eye stops there rather than on a seam. The stone, the roof and the timbered dormers carry straight across, and the garage is still the last thing, as it was before. More residential work New houses, renovations and additions across the North Shore. All residential → Extending a house with a character? The best addition is the one nobody can find afterwards. Get in touch and we'll start with what makes the original what it is. Start a conversation →"
   },
   {
     "page": "projects/forest-cove-residence.html",

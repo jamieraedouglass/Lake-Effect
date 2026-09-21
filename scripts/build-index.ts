@@ -25,6 +25,7 @@ const PAGE_TITLES: Record<string, string> = {
   'projects/prairie-residence.html': 'Project · The Prairie Residence',
   'projects/mayflower-residence.html': 'Project · The Mayflower Residence',
   'projects/moffett-cottage.html': 'Project · The Moffett Cottage',
+  'projects/english-tudor-residence.html': 'Project · The English Tudor Residence',
   'privacy.html': 'Privacy',
   'terms.html': 'Terms of Use',
 };

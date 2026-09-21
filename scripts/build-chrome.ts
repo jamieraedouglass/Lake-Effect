@@ -33,6 +33,7 @@ export const PAGE_KEYS: Record<string, string> = {
   'projects/prairie-residence.html': 'residential',
   'projects/mayflower-residence.html': 'residential',
   'projects/moffett-cottage.html': 'residential',
+  'projects/english-tudor-residence.html': 'residential',
   'projects/links-residence.html': 'residential',
   'projects/forest-cove-residence.html': 'residential',
   'projects/village-market-building.html': 'commercial',
@@ -127,6 +128,7 @@ const TITLES: Record<string, string> = {
   'projects/prairie-residence.html': 'The Prairie Residence',
   'projects/mayflower-residence.html': 'The Mayflower Residence',
   'projects/moffett-cottage.html': 'The Moffett Cottage',
+  'projects/english-tudor-residence.html': 'The English Tudor Residence',
   'projects/links-residence.html': 'The Links Residence',
   'projects/forest-cove-residence.html': 'The Forest Cove Residence',
   'projects/village-market-building.html': 'The Village Market Building',
@@ -157,6 +159,7 @@ const SHARE_IMAGES: Record<string, string> = {
   'projects/prairie-residence.html': 'assets/prairie-residence/exterior-prairie.jpg',
   'projects/mayflower-residence.html': 'assets/mayflower-residence/exterior-front.jpg',
   'projects/moffett-cottage.html': 'assets/moffett-cottage/exterior-street.jpg',
+  'projects/english-tudor-residence.html': 'assets/english-tudor-residence/exterior-front.jpg',
   'projects/links-residence.html': 'assets/links-residence/exterior-south.jpg',
   'projects/forest-cove-residence.html': 'assets/forest-cove-residence/exterior-front.jpg',
 };
@@ -185,6 +188,7 @@ const SHARE_NAMES: Record<string, string> = {
   'projects/prairie-residence.html': 'The Prairie Residence, Lake Bluff · Lake Effect Architects',
   'projects/mayflower-residence.html': 'The Mayflower Residence, Lake Forest · Lake Effect Architects',
   'projects/moffett-cottage.html': 'The Moffett Cottage, Lake Bluff · Lake Effect Architects',
+  'projects/english-tudor-residence.html': 'The English Tudor Residence, Lake Forest · Lake Effect Architects',
   'projects/links-residence.html': 'The Links Residence, Lake Forest · Lake Effect Architects',
   'projects/forest-cove-residence.html': 'The Forest Cove Residence, Lake Bluff · Lake Effect Architects',
 };

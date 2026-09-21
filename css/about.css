@@ -53,6 +53,33 @@
 }
 .phase-desc { font-size: 11px; line-height: 1.9; color: var(--mid); }
 
+/* The career, as a list you can run a finger down. The prose above tells the
+   story; this is for the reader who wants the dates. */
+.career-section {
+  padding: 96px 48px;
+  border-top: 0.5px solid var(--border);
+}
+.career-group { margin-top: 56px; }
+.career-group-title {
+  font-size: 9px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--muted); padding-bottom: 14px;
+  border-bottom: 0.5px solid var(--border-strong);
+}
+.career-row {
+  display: grid; grid-template-columns: 150px 1fr 1fr; gap: 40px;
+  padding: 22px 0; border-bottom: 0.5px solid var(--border);
+}
+.career-row:last-child { border-bottom: none; }
+.career-years {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; font-style: italic; color: var(--accent-dark); padding-top: 3px;
+}
+.career-role {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px; font-weight: 400; color: var(--charcoal); line-height: 1.25;
+}
+.career-where { font-size: 11px; line-height: 1.85; color: var(--mid); padding-top: 4px; }
+
 .values-section {
   padding: 96px 48px;
   border-bottom: 0.5px solid var(--border);
@@ -126,6 +153,8 @@
 
 @media (max-width: 1080px) {
   .mission-section, .process-section, .values-section { padding: 72px 28px; }
+  .career-section { padding: 72px 28px; }
+  .career-row { grid-template-columns: 130px 1fr 1fr; gap: 28px; }
   .mission-section { gap: 48px; }
   .location-left { padding: 64px 28px; }
   .value-card { padding: 40px 28px; }
@@ -137,6 +166,8 @@
   .mission-left { position: static; }
   .phase { grid-template-columns: 1fr; gap: 10px; padding: 32px 0; }
   .phase-num { padding-top: 0; }
+  .career-row { grid-template-columns: 1fr; gap: 4px; padding: 18px 0; }
+  .career-years, .career-where { padding-top: 0; }
   .values-grid { grid-template-columns: 1fr; }
   .location-band { grid-template-columns: 1fr; }
   .location-right { min-height: 300px; order: 2; }
