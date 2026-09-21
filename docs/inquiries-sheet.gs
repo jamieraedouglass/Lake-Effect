@@ -1,6 +1,9 @@
 /**
- * Google Apps Script that receives an inquiry from api/contact.ts and appends
- * it as a row.
+ * Google Apps Script that receives an inquiry from api/contact.ts, or a
+ * question and answer from api/ask.ts, and appends it as a row. Inquiries go
+ * on the "Inquiries" tab and Ask panel exchanges on the "Ask" tab; which one
+ * is decided by the "kind" field of the post, and a post without one is an
+ * inquiry, so the endpoint that predates the field still lands where it did.
  *
  * Setup, once:
  *   1. Make a Google Sheet. Name the first tab "Inquiries".
@@ -13,37 +16,49 @@
  *   4. Copy the web app URL. Put it in Vercel as LE_SHEET_WEBHOOK_URL, ticked
  *      for Production and Preview. Redeploy.
  *
- * The header row is written the first time a submission arrives.
+ * The header row of each tab is written the first time something arrives for it.
+ *
+ * After changing this file: Deploy -> Manage deployments -> edit the existing
+ * deployment -> Version: New version -> Deploy. A new deployment would mean a
+ * new URL and another trip to Vercel; a new version keeps the one that is set.
  */
 
-var HEADERS = [
-  'Received', 'First name', 'Last name', 'Email', 'Phone',
-  'Project type', 'Location', 'Budget', 'Message',
-];
+var TABS = {
+  inquiry: {
+    name: 'Inquiries',
+    headers: ['Received', 'First name', 'Last name', 'Email', 'Phone',
+              'Project type', 'Location', 'Budget', 'Message'],
+    row: function (d) {
+      return [d.receivedAt || new Date().toISOString(), d.first || '', d.last || '',
+              d.email || '', d.phone || '', d.projectType || '', d.location || '',
+              d.budget || '', d.message || ''];
+    },
+  },
+  ask: {
+    name: 'Ask',
+    headers: ['Asked', 'Page', 'Turn', 'Question', 'Answer', 'Covered', 'Links'],
+    row: function (d) {
+      return [d.askedAt || new Date().toISOString(), d.page || '', d.turn || '',
+              d.question || '', d.answer || '', d.covered ? 'yes' : 'no',
+              (d.links || []).join(' ')];
+    },
+  },
+};
 
 function doPost(e) {
   try {
     var data = JSON.parse(e.postData.contents);
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Inquiries')
-      || SpreadsheetApp.getActiveSpreadsheet().insertSheet('Inquiries');
+    var tab = TABS[data.kind] || TABS.inquiry;
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(tab.name)
+      || SpreadsheetApp.getActiveSpreadsheet().insertSheet(tab.name);
 
     if (sheet.getLastRow() === 0) {
-      sheet.appendRow(HEADERS);
-      sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight('bold');
+      sheet.appendRow(tab.headers);
+      sheet.getRange(1, 1, 1, tab.headers.length).setFontWeight('bold');
       sheet.setFrozenRows(1);
     }
 
-    sheet.appendRow([
-      data.receivedAt || new Date().toISOString(),
-      data.first || '',
-      data.last || '',
-      data.email || '',
-      data.phone || '',
-      data.projectType || '',
-      data.location || '',
-      data.budget || '',
-      data.message || '',
-    ]);
+    sheet.appendRow(tab.row(data));
 
     return ContentService
       .createTextOutput(JSON.stringify({ ok: true }))

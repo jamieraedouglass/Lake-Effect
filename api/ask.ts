@@ -97,6 +97,49 @@ Site content:
 
 ${CORPUS}`;
 
+/**
+ * Keeps a record of what visitors ask and what they were told, on its own tab
+ * of the inquiries spreadsheet. Rob reads it to find out what the site is not
+ * explaining. Nothing that identifies the visitor goes with it: no address, no
+ * name, only the page they asked from.
+ *
+ * The answer has already been decided by the time this runs, so a slow or
+ * broken sheet must not hold it up or turn it into an error. Three seconds,
+ * then give up; a lost log line is a lost log line.
+ */
+async function logExchange(entry: {
+  page: string | null;
+  turn: number;
+  question: string;
+  answer: string;
+  covered: boolean;
+  links: string[];
+}): Promise<void> {
+  const hook = process.env['LE_SHEET_WEBHOOK_URL'];
+  if (!hook) return;
+  try {
+    const res = await fetch(hook, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ kind: 'ask', askedAt: new Date().toISOString(), ...entry }),
+      signal: AbortSignal.timeout(3000),
+    });
+    if (!res.ok) console.error(`ask: log failed: sheet ${res.status}`);
+  } catch (error) {
+    console.error('ask: log failed:', error instanceof Error ? error.message : String(error));
+  }
+}
+
+function pageOf(request: Request): string | null {
+  const referer = request.headers.get('referer');
+  if (!referer) return null;
+  try {
+    return new URL(referer).pathname;
+  } catch {
+    return null;
+  }
+}
+
 async function ask(request: Request): Promise<Response> {
   if (request.method === 'GET') {
     return json({
@@ -107,6 +150,7 @@ async function ask(request: Request): Promise<Response> {
       zod: ZOD_VERSION,
       structuredOutputs: typeof z.toJSONSchema === 'function',
       sections: sections.length,
+      logConfigured: Boolean(process.env['LE_SHEET_WEBHOOK_URL']),
       hourlyCeilingUsd: ceiling,
       spentThisHour: Number(spentThisHour().toFixed(4)),
       commit: process.env['VERCEL_GIT_COMMIT_SHA']?.slice(0, 7) ?? null,
@@ -183,7 +227,11 @@ async function ask(request: Request): Promise<Response> {
       }));
     }
 
+    const question = turns.at(-1)?.content ?? '';
+    const page = pageOf(request);
+
     if (response.stop_reason === 'refusal' || !response.parsed_output) {
+      await logExchange({ page, turn: turns.length, question, answer: '(no answer)', covered: false, links: [] });
       return json({
         answer: 'Sorry, I could not answer that one. The contact page is the best route.',
         links: [{ label: 'Contact', href: 'contact.html' }],
@@ -195,11 +243,14 @@ async function ask(request: Request): Promise<Response> {
     const known = new Set(sections.map(s => s.href));
     known.add('contact.html');
     const result = response.parsed_output;
+    const links = result.links.filter(link => known.has(link.href));
 
-    return json({
-      ...result,
-      links: result.links.filter(link => known.has(link.href)),
+    await logExchange({
+      page, turn: turns.length, question,
+      answer: result.answer, covered: result.covered, links: links.map(l => l.href),
     });
+
+    return json({ ...result, links });
   } catch (error) {
     if (error instanceof Anthropic.RateLimitError) {
       return json({ error: 'busy' }, 429);

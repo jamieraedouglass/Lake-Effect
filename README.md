@@ -166,7 +166,10 @@ The contact endpoint writes to two places and treats them independently:
   set to whatever address the visitor typed.
 - **A spreadsheet**, if `LE_SHEET_WEBHOOK_URL` is set: a Google Apps Script web
   app that appends a row. `docs/inquiries-sheet.gs` is the script and carries
-  its own setup steps.
+  its own setup steps. The same script and URL take the Ask panel's log, on a
+  second tab: `api/ask.ts` posts each question and answer there, without
+  anything that identifies the visitor, so Rob can read what people wanted to
+  know. `GET /api/ask` reports `logConfigured` so the state is visible.
 
 The visitor is told it worked if either succeeded, because by then the inquiry
 exists somewhere. Only losing both is a failure. An unset webhook does not
