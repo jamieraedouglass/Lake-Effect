@@ -108,7 +108,7 @@
       </div>
       <div class="form-row">
         <label class="form-label" for="message">Tell us about your project</label>
-        <textarea id="message" name="message" class="form-input form-textarea" placeholder="A brief description of what you're considering..." aria-required="true" required></textarea>
+        <textarea id="message" name="message" minlength="10" class="form-input form-textarea" placeholder="A brief description of what you're considering..." aria-required="true" required></textarea>
       </div>
       <div class="form-submit-row">
         <button type="submit" class="form-submit">Send inquiry <span>→</span></button>
@@ -250,9 +250,16 @@
 
       const { error } = await res.json().catch(() => ({}));
       const notWired = res.status === 404 || res.status === 503 || error === 'not_configured';
+      // The server says what was wrong with a submission it refused, in words
+      // meant for the visitor. Pass those on rather than replacing them with a
+      // shrug; only a failure it could not explain gets the generic line.
       errorMsg.textContent = notWired
         ? 'The form isn’t connected yet. Please email rob@leffect.com or call 847.987.1000.'
-        : 'That didn’t send. Try again, or email rob@leffect.com directly.';
+        : res.status === 429
+          ? 'A few messages have come from this connection in the last few minutes. Wait a little and try again, or email rob@leffect.com.'
+          : res.status === 400 && typeof error === 'string' && error
+            ? error
+            : 'That didn’t send. Try again, or email rob@leffect.com directly.';
       errorMsg.hidden = false;
       errorMsg.focus();
     } catch (err) {
